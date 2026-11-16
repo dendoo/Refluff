@@ -1,0 +1,348 @@
+YouTube transcript
+Video ID: 1agSNKuAfTM
+Language: en
+Captions: authored or unspecified
+
+[0:00] hey folks in this video I'm going to show you how to take flat boring scenes like these and
+[0:03] turn them into something Punchy and striking in unity art can't fix a bad game but it can boost
+[0:08] a good one and luckily it's not too difficult to create solid visuals nowadays even if you're not
+[0:12] an artist I hear from programmers all the time want to get into making games but worry that
+[0:16] they don't have the art chops to make something visually interesting before getting into games
+[0:20] my background was in software development so in this video I want to show you how you can create
+[0:24] beautiful visuals without necessarily needing to know 3D modeling and texturing cuz here's the
+[0:28] thing if you already know how to write a little bit of code then you actually have a superpower
+[0:32] shaders but more on that later I'm currently doing some art prototypes for my next game and
+[0:36] I threw together two basic scenes to play with but you could totally imagine grabbing these from
+[0:40] an asset pack now let's create some striking and performant visuals in unity's urp through shaders
+[0:45] POS processing lighting Reflections and just a dash of code to bring some life to these static
+[0:49] scenes the first thing we need to do is decide on our art direction for the first scene I'm going to
+[0:54] go with a textured relatively realistic art style which can actually be much simpler than something
+[0:59] stylized realism is great if you're using assets because for the most part it's much easier to
+[1:03] keep consistent and you'll find a ton of freely available realistic textures to work with from
+[1:07] sites like ambient CG and textures.com the lit Shader provided by unity is PBR based which of
+[1:12] course stands for Professional Bull Riders nope physically based rendering this means it aims to
+[1:17] offer realistic lighting and surface properties so it's a solid starting point for a realistic scene
+[1:22] a stylized art style is more work upfront as we have to be a bit more intentional with crafting
+[1:26] our art Direction and writing all of our shaders for my game farewell North it took me me about
+[1:30] 2 years to really nail down the artart style but it can be a really great way to mask some
+[1:33] of your artistic limitations if I'm honest the uncolored World in farewell North was originally
+[1:38] a tool to mask my inability to create textures at the time and allowed me to slowly learn texturing
+[1:43] over the years we'll stick with realism for the first scene but we'll write some shaders of our
+[1:46] own to add some artistic flare like volumetric lights once we're done with that we'll create
+[1:50] a more stylized art style for that second scene which doesn't rely on Textures and leans much more
+[1:55] into Tech art let's go I filled out the scene with some freely available textures from CG we'll write
+[2:00] some shaders of our own later but there are three tricks I want to quickly run through for getting
+[2:04] the most out of the default lit Shader first up the detail inputs allow us to Overlay additional
+[2:09] textures on top of the base shading I like to use this to add a little bit of noise maybe simulating
+[2:14] some dirt or wear and tear over top you could bake this into the main texture in Photoshop but what's
+[2:18] nice about doing it this way is that we can break up repetitive tiling and control the intensity of
+[2:22] the detail at runtime maybe the house gets dirtier as the game progresses or as the player loses
+[2:27] their sanity you can also provide a mask texture to apply the effect to only certain areas of the
+[2:31] surface maybe to have the dirt concentrated to the bottom of the wall or to an area that the
+[2:35] player has damaged the height map or Parallax map uses some perspective trickery to mimic depth on
+[2:40] an otherwise flat surface this goes much further than a simple normal map actually appearing to
+[2:45] elevate certain portions of the surface based on a grayscale texture where white areas are
+[2:49] raised if you're using textures from ambient CG or textures.com then they'll actually come with
+[2:53] the height map textures that you need they'll also come with occlusion Maps throughout this
+[2:57] video we're going to apply three different types of ambient occlusion the first being this very
+[3:00] simple grayscale image on the material ambient occlusion simulates shadows and this texture
+[3:05] in particular is a great way for pre-baking very finely detailed shadows in the cracks and crevices
+[3:10] like in between the wooden planks of our floor the darker the pixel in the texture the less
+[3:14] light is reaching that point the base shading is just setting the stage for the lighting
+[3:17] and postprocessing to come which will really take things to the next level so don't worry that it's
+[3:21] looking super Bland right now all right let's get into the good stuff before we get too carried away
+[3:25] with the lighting let's talk a little bit about the goals of this scene what's the game that we're
+[3:29] making the house is definitely old maybe it's an old farmhouse and we can imagine the floorboards
+[3:33] creaking beneath our feet as we walk through it it could be horror but I feel like making
+[3:37] something a bit more vibrant so let's imagine it's a calm sunny day a gentle breeze coming through
+[3:41] the window as we explore the house the sound of leaves and birds reaching us from outside
+[3:45] maybe it's just the new Superman trailer but I'm feeling Clark Kent's family home in Kansas Vibes a
+[3:50] peaceful quiet place where we feel safe Nostalgia basically now why am I wasting your time with this
+[3:55] well lighting does a lot to convey emotion so when we're lighting a scene we need to understand what
+[3:59] emotion it is we're trying to convey are we happy sad scared isolated keeping the emotion
+[4:04] front of mind will help you craft a scene that supports it and when you put good sound design
+[4:08] on top of it that's magic I've positioned the Sun so that it comes through the window and it crosses
+[4:14] the hallway at an angle which will give us a nice space for the volumetrics we're going with a calm
+[4:18] summer day Motif so let's get a nice warm orange glow on the directional light which will act as
+[4:22] our sun it looks a little bit cold right now but when we write the volumetric lighting Shader in a
+[4:26] moment then it'll warm up quite a bit let's bake this to get some indect direct lighting going
+[4:30] which is going to give us a much richer texture to all of our static surfaces here are the settings
+[4:34] I'm using I'm not going to go through all of them but the main things to note are that I'm using
+[4:37] baked indirect boosting the albo and indirect intensity and reducing the Skybox intensity as
+[4:42] it's quite heavily exposed and we don't really want that ambient lighting blowing up our indoor
+[4:46] scene once that bakes we're going to see much improved lighting what's happened is that we've
+[4:50] pre-computed all the light bouncing calculations and stored them into light map textures simple
+[4:54] images for all of our static surfaces which get sampled in the Shader for now it looks really
+[4:58] washed out almost gray but don't worry this is going to be fixed when we do some color grading
+[5:02] soon a lot of devs make the mistake of leaving the shadow strength at one this makes the Shadows a
+[5:07] little bit too dark in my opinion especially in dimly lit horror games where it might look fine
+[5:11] on your screen but it ends up being pitch black on many of your players so dropping that strength
+[5:15] just a little bit will help bring out some more detail from your textures that aren't directly
+[5:18] lit this is especially clear with post-processing again we'll get to that soon we still want to keep
+[5:22] a lot of that shadowy contrast but dropping just a little bit to say 0.9 usually gives a really
+[5:27] good balance I did include a ambient occlusion in my bake settings but let's also add a realtime
+[5:32] screen space ambient occlusion pass in the urp renderer settings ssao fakes Dark Shadows where
+[5:38] surfaces meet and it really grounds the contact point of objects you can really see this around
+[5:42] the mirror and where the bench makes contact with the floor it's really easy to go too far with ssao
+[5:47] but here are the settings that I'm using now onto my favorite part I love volumetrics it's a real
+[5:52] simple pleasure to walk through an environment and watch the light shafts flicker between the Shadows
+[5:56] or the fog roll over the terrain it just adds so much in my opinion thankfully it's not terribly
+[6:01] difficult to implement either now we can't do a full-on Shader tutorial inside this video so I'm
+[6:05] going to focus on explaining the algorithm and the more interesting bits of the code if you want to
+[6:09] just grab the code and drop it right into your urp project then I've added the full volumetric
+[6:13] lighting implementation in this whole sample scene with all the effects that we'll create in
+[6:16] this video to my code bundle for patrons on the ospray tier this bundle includes a whole bunch
+[6:20] of tools that I use to build games including my full world streaming solution that I built
+[6:24] to handle streaming over 700 scenes in farewell North fully optimized to run on platforms like
+[6:29] the Nintendo switch so check that out if you're interested but let's go through the core of the
+[6:32] implementation so that you can build the effect yourself if you prefer the algorithm we're going
+[6:36] to use for this is called Ray marching it's a fun little algorithm and the basic idea is that after
+[6:40] drawing our scene for each pixel we cast a ray from the camera towards the world position of
+[6:45] the pixel found in the depth buffer by the way the depth buffer is just a special image that contains
+[6:49] the distance of each pixel from the camera and allows us to calculate its World position but
+[6:53] instead of doing a single aray we're going to March through the world in steps starting from
+[6:57] the camera and ending at the world position of our pixel or some max distance if the seam depth is
+[7:01] too far this is just an optimization at each step we check if the current world position is in light
+[7:06] or in Shadow and we add up all the accumulated light before normalizing this over the number of
+[7:11] steps that we took if we then run this Shader in screen space and visualize the accumulated
+[7:15] light in the red channel it's not looking so hot we have these Jagged edges around the light this
+[7:20] is because we're limiting the number of steps the algorithm can take for performance which isn't
+[7:24] really an accurate representation of how Light reaches our eyes the more steps we allow the
+[7:27] better the result but the worse the performance the reason the lack of precision is causing this
+[7:31] Jagged Edge is because it's uniformly lacking meaning in a given cluster of pixels they're
+[7:36] all getting the same slightly inaccurate result but what if we introduce a little bit of noise
+[7:41] to the simulation so in a given cluster of pixels they're all getting slightly different slightly
+[7:46] inaccurate results sounds like a bad idea like it would just make things worse but in the context
+[7:50] of rearching this is known as Jitter and it's actually essential to the algorithm by introducing
+[7:54] a little bit of noise we're able to smooth out the inaccuracies and get a more refined result
+[7:59] let's go back to where we initialized the start position and add a random offset as you can see
+[8:03] increasing the Jitter value reduces the harshness of the edges without requiring extra steps we can
+[8:08] go too far with the Jitter and add too much noise to the simulation but as long as we keep
+[8:12] the Jitter reasonable then it's a solid trade-off between performance and accuracy without banding
+[8:17] or harsh edges it certainly does add noise to the final result but the good news is that we
+[8:20] can actually fix the noise with an optimization which is always a great bonus currently we're
+[8:24] running the ray March algorithm at full resolution for every pixel every frame at 1080p that's over
+[8:30] 2 million pixels and in 4k that's about 8.3 million pixels when you factor in the number
+[8:34] of steps we're doing per pixel that is a lot of work if instead we were to run the algorithm on
+[8:39] a downscaled version of the image say a half or a quarter resolution then we get progressively more
+[8:44] pixelated results depending on how many times we downscale that's not particularly useful on its
+[8:49] own but I've added two more Shader passes to run an optimized gaussian blur on our downscaled Ray
+[8:53] March results now we can run a variable number of blur passes and assuming we don't push it too far
+[8:58] our pixelated down sampled version is suddenly quite good this allows us to keep the rayar
+[9:03] steps low run the algorithm on a smaller image and get a really satisfying result for my game
+[9:07] farewell North I tied these down sample and blur settings to the game's quality settings so at the
+[9:12] highest tiers it ran out half resolution and on the lowest tiers it ran out a quarter or even an
+[9:16] eighth resolution with more blur of course on the lowest tiers the volumetric lighting was disabled
+[9:21] entirely so this is looking good and it's well optimized but we're not done yet obviously we
+[9:25] can't render the world as this red image so let's add one final Shader pass to composite this onto
+[9:29] the color buffer the remay March buffer we've created this red texture tells us the intensity
+[9:33] of the light at a given pixel and we can add that onto the color buffer like so we don't add red
+[9:38] though we multiply that intensity by the color we want our light to be based on our environment the
+[9:43] color of the sun in this case and you can see how this already adds a lot to the atmosphere
+[9:47] and we can move this sun around and the volume metrics happily fill in the space there's a lot
+[9:50] more we can do to improve this implementation such as scattering and I've included some of
+[9:54] those improvements in the patron repo but this gets us most of the way there once again color
+[9:58] grading is really what's going to take this to the next level but we'll get to that very soon
+[10:02] this method of Ray merched Shadow map sampling to create volumetrics is really nice because it's
+[10:06] fully Dynamic you don't have to hand create light shafts for every opening and light source and it
+[10:10] interacts with real-time Shadow Maps so the light will dance between leaves and other objects in
+[10:14] motion it's pretty performant especially with the downscaling and it won't really have much
+[10:18] impact on a modern GPU but you probably won't have budget for it on the switch or low-end PCS
+[10:23] so I definitely suggest tying this to your quality settings and potentially falling back to a cheaper
+[10:27] method if the light shafts are critical to your art Direction one really simple alternative would
+[10:30] be to create light cards and I'll show you what I mean beneath the chair here feels a little too
+[10:35] brightly lit for me and the ambient occlusion doesn't really have anything to latch onto to
+[10:38] darken the floorboards here we can really easily fix this by creating a Shadow Card a simple plane
+[10:43] with a basic gradient on it and place this beneath the chair let's make it black and semi-transparent
+[10:47] using the unlit particle Shader provided by urp and position it so it roughly feels like a shadow
+[10:52] cast by the chair I'll add a second angled card going up onto the wall behind the chair and enable
+[10:58] soft particles on the sh to ease the transition into opaque surfaces like the wall and avoid those
+[11:03] harsh edges it's a simple little trick that lets us layer Shadows to suit our vision and ground
+[11:07] the chair into the scene and you could totally do the opposite by making the card a warm orange and
+[11:11] placing it in the window this is an effect a lot of games use but for lights that you're able to
+[11:15] walk into you'll have to go a little bit further with it to avoid some clipping issues and whatnot
+[11:19] especially if the camera can move through the card even with full volumetric Lighting in fwell North
+[11:24] I still wrote some light card shaders for using caves in indoor areas which scroll a soft gradient
+[11:28] texture in opposing directions across the card to add some motion as if the light is hitting dust
+[11:33] particles in the air I also gently fade the card out as you approach to avoid the camera clipping
+[11:37] through it and let the volumetrics take over we'll create some light cards later for the styliz scene
+[11:42] but volumetrics are perfect for this scene so I think we can call it there let's finish off the
+[11:45] lighting section with a simple lens flare using the provided lens flare SRP component I've made a
+[11:50] two-part flare composed of pentagons and a texture consisting of some blurred circles I created in
+[11:54] [ __ ] again if you just want to grab this and drop it into your project all of this is in
+[11:57] the patron repo all right I'm sure we're all very sick of looking at this washed out scene so let's
+[12:03] finally get into some postprocessing I like to break this down into three segments color grading
+[12:07] lighting and artistic effects you don't need a degree in the Arts but a very basic understanding
+[12:12] of some fundamentals will really help you out color theory is one area in particular where you
+[12:17] can get a lot of bang for your buck and picking colors becomes a much simpler process when you
+[12:20] understand how colors can play off one another and evoke an emotional response this scene has a lot
+[12:25] of Blues and oranges in it and that's no accident these are one of the complimentary color pairs
+[12:28] which are opposite colors on the color wheel complimentary colors create a strong contrast
+[12:32] and are generally pleasing to the eye but there are many other color harmonies you can work with
+[12:36] depending on how many colors you want and what you're trying to evoke flow Studio has a wonderful
+[12:40] video on color theory for noobs which I'd highly recommend checking out after this video to better
+[12:44] understand how to use color we do already have a color scheme we're happy with but we can still do
+[12:48] some color grading to give it some extra pop okay the first thing that we're going to add is a tone
+[12:52] mapper now tone mapping is actually quite a deep Rabbit Hole to go down but suffice to say that
+[12:57] the aces tone mapper is going to give us a more cinematic look and it's going to add some much
+[13:01] needed contrast to get rid of that washed out gray look that we have speaking of contrast let's add
+[13:06] some color adjustments so I'm going to increase the contrast quite a bit here and because it's
+[13:12] so hard to know when to stop I find the easiest thing to do is to go away too far with it and
+[13:16] then dial it back a bit until you get to an area that you're a little bit happier with and we're
+[13:20] also going to increase the saturation we're going to do the same thing go too far and then bring
+[13:24] it back a bit and give it that kind of like warm homey feel okay let's close out the color grading
+[13:28] with some shadows midtones and highlights now if you don't know what this is shadows midtones and
+[13:33] highlights Define the sections of the screen or they divide up the screen by luminance and you
+[13:37] can see those limits defined down here you can see this blue section of this chart here is defining
+[13:42] what the what's considered a shadow midtones are everything in the middle and highlights are on the
+[13:46] upper end so if we highlight midtone adjustments and we bring that up you're going to see all the
+[13:51] sections of screen that fall into this middle band of luminance are going to be raised or lowered as
+[13:56] as we want to so what we're going to do is we're going to increase the midtones a little bit and
+[13:59] you're going to bring the Shadows down just a little bit it's a very subtle difference but we're
+[14:04] just adding a little bit of separation between the shadows and the midtones of the scene to make the
+[14:08] Shadows a little bit darker and the midtones a little bit brighter now there's a lot more you
+[14:11] can do with color grading but these are kind of my three go-tos that I use in pretty much every scene
+[14:15] and they act as a really good starting point but let's move on to some lighting tweaks so the first
+[14:19] thing I'm going to do is add a vignette going to do a pretty soft vignette here kind of low
+[14:23] intensity something like that and pretty smooth so what this is doing is just kind of darkening
+[14:30] the edges of the scene and it's kind of drawing our eyes into the center of the frame finally
+[14:34] everyone's favorite we have Bloom so this is going to play really nicely with the volumetric lighting
+[14:39] uh I'm going to bring the threshold down a little bit say like 25ish and increase the intensity and
+[14:45] what this is going to do is it's going to cause a little bit of an intentional blowout in the
+[14:49] brighter areas of the scene like the the light is kind of scattering through the scene um and you
+[14:54] can see that that plays really nicely with like the the Overexposed window and the volumetric
+[14:58] lighting and just kind of gives it a little bit more of like a dreamy look which again kind of
+[15:03] goes with the feel I'm going through here that Nostalgia feel one of the biggest mistakes people
+[15:07] make when they discover postprocessing is they go way too far with the bloom you might even say
+[15:10] that this has gone too far but for the the look I'm going for this is actually what I want but
+[15:14] generally speaking you want to kind of less is more with Bloom essentially now Bloom is also
+[15:20] kind of an expensive postprocessing effect so one thing we can do similar to what we did with
+[15:24] the volumetric lighting is we can downscale it and run it on a smaller resolution texture so in
+[15:28] this case I'm going to go with half and I'm also going to limit the maximum iterations a little
+[15:31] bit uh so like four or five maybe five that's just going to reduce the cost of the effects we're not
+[15:37] going crazy with the performance he finally let's close out the postprocessing with some artistic
+[15:42] adjustments the one artistic uh element I am going to go with is a film grain now this is going to
+[15:47] be very very subtle you might not even be able to see it with YouTube so I'm actually going to
+[15:51] just crank it way up just so you can even see what I'm talking about so you can see it adds this kind
+[15:55] of graininess to the scene right this is this is way too far but is adding it as graininess to the
+[16:00] scene and the purpose of that is to again kind of give this like old school kind of cinematic look
+[16:06] but it also has a practical benefit so when your game is streamed or recorded on YouTube or twitch
+[16:11] or whatever the compression is going to add a lot of color banding if you have a lot of like subtle
+[16:15] gradients the film grain can help add some noise and some texture to it to break up that banding so
+[16:20] it's it kind of acts as a bit of an anti- banding it is definitely an artistic choice though um not
+[16:24] everyone loves film greens you could always put a setting to disable this if it's not important
+[16:28] to your art Direction personally I like it for this kind of narrative driven cinematic kind of
+[16:33] Adventure game uh so I'm going to include it but again it's an artistic choice you don't
+[16:37] have to all right looking good so we've gone from this really flat washed out gray environment with
+[16:42] very little contrast to something that's much more Punchy it's much more contrasty it kind of pulls
+[16:46] you into the environment has some emotional weight to it there's like a hint of loneliness there to
+[16:51] me this is kind of conveying or sense of nostalgia and this warm environment much better than the the
+[16:56] washed out low contrast version uh that we started with or maybe you want the scene to
+[17:00] feel sad and we can reduce the contrast and shift to some Bluer Hues to evoke that post-processing
+[17:05] carries a ton of weight as long as you know the emotion you're trying to convey there are plenty
+[17:09] more effects that come stock with unity and it's really just a collection of shaders so you can go
+[17:12] wild writing your own post-processing shaders to get whatever look you're after just like
+[17:16] we did with the volumetric lighting with all our lighting and postprocessing in place the scene is
+[17:21] looking much better but this mirror is really sticking out like a sore thumb it's currently
+[17:25] reflecting the Blue Sky Box as if the house didn't exist in order to get proper Reflections we need
+[17:31] two things on the material I've maxed out the smoothness and increased the metallic while
+[17:34] enabling environmental Reflections there are no albo or normal textures or anything but I do still
+[17:39] include the same detail inputs as I do on all the other surfaces to add a little bit of roughness
+[17:43] and texture so it's not entirely flat the second thing we need is a reflection probe I've set this
+[17:47] up in front of the mirror and baked it which will render the reflected scene into a cube map which
+[17:52] is then sampled by any nearby materials with environmental Reflections such as the mirror
+[17:56] with that in place we can see the Reflections in the mirror but we can also see some more subtle
+[17:59] reflective properties on surfaces nearby such as the banister and the wooden furniture even though
+[18:04] these surfaces aren't as smooth and reflective as a mirror this still helps tie the scene together
+[18:08] and ground the objects into the world now a lot of devs would stop here but the scene is still
+[18:14] too well still that's to say there's no motion and we can easily bring a lot more life and depth to
+[18:20] it this is where we can get really clever finding places to add life to the scene the easiest place
+[18:24] to start is with some dust particles I created a very simple VFX graph which just initially
+[18:28] izes some tiny particles in a sphere around the camera with randomized velocity it helps give the
+[18:33] scene a little bit of added depth and starts separating it from a still image next up the
+[18:37] window is open and yet the curtains are completely still so that's the next thing I want to improve
+[18:42] I whipped up a very quick Shader in Shader graph just to show that you don't even need to know how
+[18:46] to write hlsl to benefit from shaders this Shader runs a very simple sine wave over the curtains
+[18:51] taking the sign of time multiplied by some speed which gives a value from minus1 to 1 and acts as
+[18:56] the wind strength for the current frame we then multiply this by a wind direction that we Define
+[19:00] in World space so we'll quickly convert that to object space and add it to the current vertex
+[19:04] position we now have some motion but obviously the curtains shouldn't be going through the wall
+[19:08] so let's normalize the sine wave to be between 0 and 1 better but something still feels off we
+[19:14] probably want the curtain to have more movement towards the open window and be anchored at the
+[19:19] top now you don't necessarily need to learn 3D modeling and texturing if you just want to use
+[19:22] assets but I promise you that just a little bit of familiarity in blender and Photoshop will pay
+[19:28] huge dividend ends as a tech artist I recommend spending a few hours one weekend just getting
+[19:32] familiar with the tools doing some tutorials and then from there just learn on the job as
+[19:37] you make your game I'm opening the curtains back up in blender and painting the vertices so that
+[19:40] they're red where we want motion and black where we want them to be still the vertex color from
+[19:44] the input geometry is then used in the Shader multiplied by the motion if the red channel is
+[19:48] black then we'll get zero and if it's red we'll get one and that gradient will transition between
+[19:52] full motion and stationary vertices it's not a perfect cloth simulation by any means there's
+[19:57] a lot we could do to improve the wind especially having it fold inwards a bit and adding some noise
+[20:02] but for a background decoration it's a really quick win for 5 minutes Fork we finally have
+[20:06] some life inside the house but outside still feels static we could start introducing some
+[20:10] outdoor props but I want the players focused to stay indoors I'm quite proud of this I came up
+[20:14] with a little idea which brings more motion into the house but convinces you that there's motion
+[20:19] outside I started by creating an empty game object and added a whole bunch of child capsules setting
+[20:24] the renderer to only render Shadows randomly scattering them to create a sparse cyinder
+[20:28] of these capsules I wrote a very simple script to just infinitely spin the parent game object
+[20:33] and place it outside the window the effect is that we get this motion of Shadows on the ground
+[20:37] and A disruption of the light volumetrics and you can imagine with some good sound design that this
+[20:40] would make for a pretty convincing flock of birds it is a bit repetitive if you stare so I added a
+[20:45] second group that spins in the opposite direction at a slightly different speed just to kind of
+[20:49] break up the repetition of course we could spend an entire afternoon writing a full boid simulation
+[20:53] for realistic flocking behavior and set up vertex animation shaders similar to the curtains
+[20:57] to create a very performant flying animation but again for 5 minutes of work this buys us a lot of
+[21:02] added life and if the player can't see out the window with the bloom anyways there's no real
+[21:06] need to go much further than this I am definitely known for getting a little bit carried away on the
+[21:10] technical stuff so I try to remind myself often to keep it simple and lean into the constraints
+[21:14] of the world and the affordances that they offer you until you really need the added complexity
+[21:19] there are always far more important things that you could be doing so this is perfectly fine
+[21:22] for now so far we focused on realism with a dash of art direction to help us stand out now let's
+[21:28] to our second scene and apply the same techniques to create a more stylistic art Direction with
+[21:32] this scene I'm going for a darker nautical theme inspired by games like control where textures are
+[21:37] minimal and shape light contrast and color take priority this scene is pretty much using all the
+[21:42] same techniques as the first even the wind Shader is getting some use on the dangling chains the
+[21:46] idea being that we're on a ship and simulating the swaying motion there are a few major differences
+[21:51] though and this stylized look is going to make environments and props a whole lot easier to
+[21:55] create with this art style I really wanted to avoid having to texture each object individually
+[21:59] which will save a ton of time not only in texture creation but also in UV unwrapping which is the
+[22:04] process where we project a 2D image onto a 3D model instead we'll use a very simple color
+[22:08] palette texture for the whole world now texturing an object is as simple as unwrapping the entire
+[22:13] UV into the color from our palette no need to think too hard about how to efficiently pack the
+[22:17] UV creating a texture per object or any of that timeconsuming stuff and I think this actually
+[22:21] looks pretty interesting already with the lighting and the postprocessing really doing the heavy
+[22:25] lifting but it's a bit too flat for my personal taste so we'll multiply the palette color color by
+[22:28] a global noise to add a little bit of texture now I really don't want to bring back UVS for this so
+[22:32] I'm using a technique known as tripler mapping to do this this is a Shader technique where we
+[22:36] generate three UV coordinates based on the world position one for each axis and weigh each UV based
+[22:41] on the normal Vector of the current fragment we can then sample the texture three times
+[22:45] and multiply each sample by the weight to get our final sample multiplying this noise by the color
+[22:49] selected from our palet and we have the final color this seamlessly projects a repeating texture
+[22:53] onto the object without having to unwrap UVS and this really gives the world a lot more texture
+[22:58] I'm using the same surface imperfections texture we used in The Realistic scene for the detail map
+[23:02] and tiling it throughout the entire world with our tripler mapping we can go one step further
+[23:06] and try planer map a normal texture on top as well just to add a little bit more grittiness to the
+[23:11] scene and we're done now every object is using the same Shader it can all be drawn in a single
+[23:15] batch which is super performant the three samples per texture does have a cost but we're more than
+[23:20] making up for that with this batching and in total we only have seven texture samples across three
+[23:24] textures which is still pretty lightweight even on devices like the switch aside from that main
+[23:28] shading change there are a few smaller changes in the scene as well in this scene the volumetrics
+[23:32] are based on sdfs which approximate the shape of the lights if you're not familiar with sdfs
+[23:37] then check out this video where I go for them in full showing how I created the color effect
+[23:40] from fwell North this is more efficient for many lights than sampling the shadow map of each but
+[23:45] the downside is that the Shadows aren't considered and there's more manual work per light to get the
+[23:49] volume feeling right this is definitely still a work in progress but once it's ready I'll be
+[23:53] adding it to the patron code bundle as well I'm also using light cards on the main Spotlight to
+[23:57] give it a more defined sh shape this is a simple cone with a semi-transparent Shader on top and a
+[24:01] noise texture scrolling across it to give us some movement and add some depth to the effect I use
+[24:05] two one larger and one smaller to give the center of the light volume a little bit more brightness
+[24:10] to tie it all together and help mask some of the Simplicity in the shading I'm also using
+[24:13] the built-in fog I'm using a light blue to give a bit of a sense of cold and help with that nautical
+[24:18] theme I'm going for thank you so much to all my patrons who voted on this video and a special
+[24:22] thank you to my Magpie supporters and my osprey's elegon purple SLO Studio Jason Hansen El Raven
+[24:29] painted and Justice Lind now of course there's so much more we could do decals and a wetness mask
+[24:34] are two things which I think would be particularly helpful for this scene but I hope that this video
+[24:38] sparked some curiosity showed you what you can do with a little bit of knowhow and a dash of
+[24:42] coding knowledge to bring your scenes to life and create striking visuals without necessarily
+[24:46] needing to know 3D modeling or texturing thank you so much for watching and I'll see you next time

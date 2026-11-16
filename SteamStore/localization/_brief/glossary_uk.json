@@ -1,0 +1,253 @@
+{
+ "language": "Ukrainian",
+ "code": "uk",
+ "steam": "ukrainian",
+ "_about": "The game's own UI text in this language (already shipped in the game). Reuse these terms whenever the store text names the same thing, so the store page matches what the player sees in the game. They also show how the game addresses the player (formal / informal).",
+ "terms": [
+  {
+   "en": "Scraper",
+   "yours": "Шкребок",
+   "where": "Tool name (carpet strip and shop). A hand scraper blade that scrapes dried crust and mud off the carpet."
+  },
+  {
+   "en": "Dry vacuum",
+   "yours": "Пилосос",
+   "where": "Tool name. A vacuum cleaner for dry dust and crumbs."
+  },
+  {
+   "en": "Hose",
+   "yours": "Шланг",
+   "where": "Tool name. A water hose with a spray nozzle: wets the carpet and rinses it."
+  },
+  {
+   "en": "Foam sprayer",
+   "yours": "Піногенератор",
+   "where": "Tool name. Sprays cleaning foam (carpet shampoo / detergent foam)."
+  },
+  {
+   "en": "Brush",
+   "yours": "Щітка",
+   "where": "Tool name. A rotary scrubbing brush (a floor-scrubber machine with a spinning brush head)."
+  },
+  {
+   "en": "Squeegee",
+   "yours": "Згін",
+   "where": "Tool name. A rubber squeegee that pushes water off the carpet."
+  },
+  {
+   "en": "Wet vacuum",
+   "yours": "Водосос",
+   "where": "Tool name. A wet vacuum / extractor that sucks up water and foam."
+  },
+  {
+   "en": "Dryer",
+   "yours": "Сушарка",
+   "where": "Tool name. A carpet dryer / air mover blowing warm air."
+  },
+  {
+   "en": "Detergent",
+   "yours": "Мийний засіб",
+   "where": "Floor tool name (right strip). Sprays floor detergent on the tiles."
+  },
+  {
+   "en": "Mop",
+   "yours": "Швабра",
+   "where": "Floor tool name (right strip). A mop for the tiles."
+  },
+  {
+   "en": "Hand over",
+   "yours": "Віддати клієнту",
+   "where": "Big green button that appears when the carpet is clean: give the carpet back to its owner (the client) and get paid. Hotkey H."
+  },
+  {
+   "en": "Upgrades",
+   "yours": "Покращення",
+   "where": "Top-right button that opens the upgrade shop (hotkey U, shown on a key chip next to it)."
+  },
+  {
+   "en": "UPGRADES",
+   "yours": "ПОКРАЩЕННЯ",
+   "where": "Caption at the top of the upgrade shop."
+  },
+  {
+   "en": "Tune your kit",
+   "yours": "Прокачай інструменти",
+   "where": "Big title of the upgrade shop: improve your cleaning equipment."
+  },
+  {
+   "en": "POWER",
+   "yours": "СИЛА",
+   "where": "Upgrade stat name on every tool card: how strongly and fast the tool works."
+  },
+  {
+   "en": "AREA",
+   "yours": "ЗОНА",
+   "where": "Upgrade stat name on every tool card: how wide an area the tool covers in one stroke."
+  },
+  {
+   "en": "POWER works faster",
+   "yours": "СИЛА — швидкість роботи",
+   "where": "Legend under the shop title explaining the POWER stat."
+  },
+  {
+   "en": "AREA covers more per stroke",
+   "yours": "ЗОНА — площа за один прохід",
+   "where": "Legend explaining the AREA stat."
+  },
+  {
+   "en": "Speed bonus",
+   "yours": "Бонус за швидкість",
+   "where": "Pay slip line: bonus for finishing fast."
+  },
+  {
+   "en": "Spotless",
+   "yours": "Ні плямки",
+   "where": "Pay slip line: bonus for a 100 % clean carpet."
+  },
+  {
+   "en": "Bone dry",
+   "yours": "Ні краплі",
+   "where": "Pay slip line: bonus for a 100 % dry carpet."
+  },
+  {
+   "en": "Combo",
+   "yours": "Комбо",
+   "where": "Pay slip line: bonus for spotless AND bone dry together."
+  },
+  {
+   "en": "COMBO!",
+   "yours": "КОМБО!",
+   "where": "Big stamp slammed onto the corner of the pay slip for a combo."
+  },
+  {
+   "en": "Base pay",
+   "yours": "Базова оплата",
+   "where": "Pay slip line: the base payment for the job."
+  },
+  {
+   "en": "CARPET DELIVERED",
+   "yours": "ЗАМОВЛЕННЯ ВИКОНАНО",
+   "where": "Caption at the top of the pay slip card that appears after a hand-over."
+  },
+  {
+   "en": "INSPECTION",
+   "yours": "ОГЛЯД",
+   "where": "Shop caption above the two inspection-lamp items."
+  },
+  {
+   "en": "Moisture highlight",
+   "yours": "Підсвітка вологи",
+   "where": "One-time shop item (key Z): a lamp mode that makes wet spots glow."
+  },
+  {
+   "en": "Wet pile and puddles glow blue",
+   "yours": "Мокрий ворс і калюжі світяться синім",
+   "where": "Description of 'Moisture highlight'. 'pile' = the carpet's fibres."
+  },
+  {
+   "en": "Dirt highlight",
+   "yours": "Підсвітка бруду",
+   "where": "One-time shop item (key X): a lamp mode that makes remaining dirt glow."
+  },
+  {
+   "en": "Every trace of soil glows amber",
+   "yours": "Кожен слід бруду світиться бурштиновим",
+   "where": "Description of 'Dirt highlight'."
+  },
+  {
+   "en": "CARPET",
+   "yours": "КИЛИМ",
+   "where": "Caption above the left tool strip (the tools that work on the carpet)."
+  },
+  {
+   "en": "FLOOR",
+   "yours": "ПІДЛОГА",
+   "where": "Caption above the right tool strip (the tools for the tiled floor around the carpet)."
+  },
+  {
+   "en": "CLEAN",
+   "yours": "ЧИСТОТА",
+   "where": "Caption of the cleanliness meter (0-100 %), top-left card."
+  },
+  {
+   "en": "DRY",
+   "yours": "СУХІСТЬ",
+   "where": "Caption of the dryness meter (100 % = completely dry), under CLEAN."
+  },
+  {
+   "en": "Filthy",
+   "yours": "Брудніше нікуди",
+   "where": "Pay slip title: extremely dirty."
+  },
+  {
+   "en": "Heavy soil",
+   "yours": "Сильне забруднення",
+   "where": "Pay slip title: heavily soiled."
+  },
+  {
+   "en": "Scrape the dry crust off",
+   "yours": "Зішкреби засохлий бруд",
+   "where": "Hint pill at the top centre: the next step the game suggests. Tool: Scraper."
+  },
+  {
+   "en": "Wet it down",
+   "yours": "Полий килим зі шланга",
+   "where": "Hint. Tool: Hose (soak the dried mud with water)."
+  },
+  {
+   "en": "Brush the mud loose",
+   "yours": "Відітри бруд щіткою",
+   "where": "Hint. Tool: Brush (scrub the softened mud loose)."
+  },
+  {
+   "en": "Squeegee the dirty water off",
+   "yours": "Зжени брудну воду з килима",
+   "where": "Hint. Tool: Squeegee."
+  },
+  {
+   "en": "Wet-vac the water and foam out",
+   "yours": "Збери воду й піну водососом",
+   "where": "Hint. Tool: Wet vacuum."
+  },
+  {
+   "en": "Dry it",
+   "yours": "Просуши килим",
+   "where": "Hint. Tool: Dryer."
+  },
+  {
+   "en": "Sparkling clean!",
+   "yours": "Сяє чистотою!",
+   "where": "Hint when the carpet is perfectly clean and dry."
+  },
+  {
+   "en": "Handed over to the client!",
+   "yours": "Килим віддано клієнту!",
+   "where": "Hint while the finished carpet flies away to its owner."
+  },
+  {
+   "en": "Fresh carpet coming in...",
+   "yours": "Новий килим на підході…",
+   "where": "Hint while the next dirty carpet drops in."
+  },
+  {
+   "en": "Owned: press {0} to switch it on and off",
+   "yours": "Куплено: клавіша {0} вмикає й вимикає",
+   "where": "Replaces the item description once the item is bought."
+  },
+  {
+   "en": "the job clock is paused while you shop",
+   "yours": "поки ти в крамниці, таймер стоїть",
+   "where": "Small grey note at the right of the legend."
+  },
+  {
+   "en": "Money and upgrades are saved as you play.",
+   "yours": "Гроші й покращення зберігаються під час гри.",
+   "where": "Small note at the bottom of the pause menu (wraps to two lines if needed)."
+  },
+  {
+   "en": "Thank you for playing.",
+   "yours": "Дякуємо за гру!",
+   "where": "Credits page."
+  }
+ ]
+}

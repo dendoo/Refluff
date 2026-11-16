@@ -1,0 +1,13 @@
+{
+  "_lang": "vi",
+  "ACH_FIRST_CARPET": { "name": "Khởi đầu êm ái", "desc": "Giao tấm thảm đầu tiên cho khách." },
+  "ACH_SPOTLESS": { "name": "Không tì vết", "desc": "Giặt sạch 100% một tấm thảm bẩn rồi giao cho khách." },
+  "ACH_BONE_DRY": { "name": "Khô cong", "desc": "Làm ướt sũng một tấm thảm rồi giao khi đã khô 100%." },
+  "ACH_COMBO": { "name": "Mới như bóc tem", "desc": "Giặt sạch 100% và sấy khô 100% một tấm thảm bẩn rồi giao cho khách." },
+  "ACH_FILTHY": { "name": "Từ cực bẩn đến cực êm", "desc": "Giặt sạch 100% một tấm thảm cực bẩn rồi giao cho khách." },
+  "ACH_EXPRESS": { "name": "Dịch vụ hỏa tốc", "desc": "Nhận trọn thưởng tốc độ khi giao một tấm thảm bẩn nặng." },
+  "ACH_REGULARS": { "name": "Khách quen", "desc": "Giao 25 tấm thảm." },
+  "ACH_FULL_KIT": { "name": "Dốc hết đồ nghề", "desc": "Dùng đủ cả 10 dụng cụ." },
+  "ACH_MAXED_OUT": { "name": "Kịch khung", "desc": "Nâng SỨC MẠNH và PHẠM VI của cùng một dụng cụ lên TỐI ĐA." },
+  "ACH_INSPECTOR": { "name": "Thanh tra", "desc": "Mua Đèn soi độ ẩm và Đèn soi vết bẩn." }
+}

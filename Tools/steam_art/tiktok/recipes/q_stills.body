@@ -1,0 +1,19 @@
+// Still tests of the macro angles (RenderView, 1080x1920) -> SteamStore/_work/tiktok/stills/<name>.png. Appended to
+// look_on.inc by stills.sh; world = carpet centred at the origin, x = (u-0.5)*1.2, z = (v-0.5)*1.5, pile top y ~0.01.
+{ var adS = System.AppDomain.CurrentDomain;   // a take's camera hook would override RenderView's pose
+  var hS = adS.GetData("ttCamHook") as System.Action<UnityEngine.Rendering.ScriptableRenderContext, System.Collections.Generic.List<UnityEngine.Camera>>;
+  if (hS != null) { UnityEngine.Rendering.RenderPipelineManager.beginContextRendering -= hS; adS.SetData("ttCamHook", null); } }
+var camS = UnityEngine.Camera.main; float near0 = camS.nearClipPlane; camS.nearClipPlane = 0.01f;
+var res = new System.Text.StringBuilder("near0=" + near0 + " pile=" + UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.CarpetRenderer>().pileHeightM + " ");
+System.Action<string, float, float, float, float, float, float, float, float> V = (n, px, py, pz, tx, ty, tz, fov, foc) => {
+  var e = UnityEngine.Quaternion.LookRotation(new UnityEngine.Vector3(tx - px, ty - py, tz - pz)).eulerAngles;
+  var sw = System.Diagnostics.Stopwatch.StartNew();
+  var dofS = (UnityEngine.Rendering.Universal.DepthOfField)System.AppDomain.CurrentDomain.GetData("ttDof");
+  dofS.active = foc > 0f; if (foc > 0f) dofS.focusDistance.value = foc;
+  CarpetCleaning.StoreShotApi.RenderView("tiktok/stills/" + n + ".png", 1080, 1920, px, py, pz, e.x, e.y, 0f, fov);
+  res.Append(n + " " + sw.ElapsedMilliseconds + "ms; ");
+};
+try {
+STILLS
+} finally { camS.nearClipPlane = near0; }
+return res.ToString();

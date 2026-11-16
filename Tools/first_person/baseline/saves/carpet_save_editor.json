@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "money": 90150,
+    "lifetimeEarned": 2570,
+    "carpetsDelivered": 12,
+    "perfectClean": 11,
+    "perfectDry": 12,
+    "combos": 11,
+    "bestSeconds": 0.0,
+    "power": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+    ],
+    "area": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+    ],
+    "items": [
+        1,
+        1
+    ],
+    "achieved": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1
+    ],
+    "toolsUsed": 255
+}

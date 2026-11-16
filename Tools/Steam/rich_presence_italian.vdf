@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "italian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Pulisce un tappeto: pulito al %clean%"
+		"#Status_Spotless" "Il tappeto è immacolato, pronto per la consegna"
+		"#Status_BetweenCarpets" "Tra un tappeto e l’altro, pulisce il pavimento"
+	}
+}

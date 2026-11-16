@@ -1,0 +1,12 @@
+UnityEditor.EditorApplication.isPaused = true;
+CarpetCleaning.CarpetDebugApi.StrokeNow(8, -0.07f,-0.09f, -0.07f,1.09f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(8, -0.09f,-0.07f, 0.55f,-0.07f, 40, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(8, -0.05f,1.07f, 0.55f,1.07f, 40, 1f);
+CarpetCleaning.CarpetDebugApi.RunFrames(30);
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, -0.08f,1.10f, -0.08f,-0.10f, 70, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, -0.18f,-0.10f, -0.18f,1.10f, 70, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, -0.08f,-0.10f, -0.08f,1.10f, 70, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, -0.1f,-0.07f, 0.6f,-0.07f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, 0.6f,1.07f, -0.1f,1.07f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+return CarpetCleaning.CarpetDebugApi.FloorStatsJson();

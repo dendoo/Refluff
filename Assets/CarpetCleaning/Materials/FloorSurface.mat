@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FloorSurface
+  m_Shader: {fileID: 4800000, guid: ab5a0ebbbe9e4b841ab306e1cc0204fe, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _CleanGloss: 0.61
+    - _CleanSheen: 0.21
+    - _DetSparkle: 0.35
+    m_Colors:
+    - _DetTint: {r: 0.86, g: 0.94, b: 0.98, a: 1}
+    - _DustColor: {r: 0.4, g: 0.33, b: 0.23, a: 1}
+    - _GroutColor: {r: 0.55, g: 0.53, b: 0.47, a: 1}
+    - _ResidueColor: {r: 0.19, g: 0.13, b: 0.07, a: 1}
+    - _SkyColor: {r: 0.62, g: 0.68, b: 0.76, a: 1}
+    - _TileColor: {r: 0.67, g: 0.65, b: 0.57, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

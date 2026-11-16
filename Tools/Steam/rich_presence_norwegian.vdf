@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "norwegian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Rengjør et teppe: %clean% rent"
+		"#Status_Spotless" "Teppet er flekkfritt og klart til levering"
+		"#Status_BetweenCarpets" "Vasker gulvet mellom to tepper"
+	}
+}

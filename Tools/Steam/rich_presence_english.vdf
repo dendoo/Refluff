@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "english"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Cleaning a carpet: %clean% clean"
+		"#Status_Spotless" "The carpet is spotless, ready to hand over"
+		"#Status_BetweenCarpets" "Between carpets, tidying the floor"
+	}
+}

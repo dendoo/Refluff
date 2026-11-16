@@ -1,0 +1,10 @@
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+for (int i = 0; i < 6 && !CarpetCleaning.CarpetDebugApi.HandoverJson().Contains("rug_salor"); i++) CarpetCleaning.CarpetDebugApi.NewCarpetNow();
+CarpetCleaning.CarpetDebugApi.Reset(14, 0.35f);
+CarpetCleaning.CarpetDebugApi.Zigzag(2, 0.15f,0.25f, 0.85f,0.75f, 7, 40, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(5, 0.85f,0.62f, 0.30f,0.62f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(5, 0.85f,0.48f, 0.30f,0.48f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(5, 0.85f,0.34f, 0.40f,0.34f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(5, 0.40f, 0.34f, true);
+CarpetCleaning.StoreShotApi.RenderScene("test/sq1.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.HandoverJson() + CarpetCleaning.CarpetDebugApi.StatsJson();

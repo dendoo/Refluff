@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"romanian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Un început pufos"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Predă primul tău covor."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Curat lună"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Predă 100% curat un covor care a venit murdar."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Uscat bocnă"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Udă leoarcă un covor, apoi predă-l 100% uscat."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Ca nou-nouț"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Predă 100% curat și 100% uscat un covor care a venit murdar."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"De la jegos la pufos"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Predă 100% curat un covor extrem de murdar."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Serviciu expres"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Obține tot bonusul de viteză la un covor cu murdărie puternică."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Clienți de-ai casei"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Predă 25 de covoare."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Toate uneltele din dubiță"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Folosește toate cele 10 unelte."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Dat la maxim"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Du o unealtă la MAX atât la PUTERE, cât și la ARIE."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Ochi de vultur"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Cumpără Evidențierea umezelii și Evidențierea murdăriei."
+	}
+}

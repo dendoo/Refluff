@@ -1,0 +1,106 @@
+{
+  "status": "published_and_verified",
+  "verified_at_utc": "2026-10-25T08:36:43Z",
+  "authorization": "Owner requested publishing accepted V4 to TikTok, YouTube Shorts and Instagram, delegated English caption writing and UTM links, then explicitly chose a 9:16 complete-frame padded YouTube derivative.",
+  "original": {
+    "file": "SteamStore/trailer/macro_20261025/revision4/refluff_macro_trailer_v4.mp4",
+    "sha256": "86f0066bef312868e4ca0c43442634c480d2ab4f05de90c77ef65c40f5b9edb6",
+    "bytes": 131705711,
+    "size": [
+      1920,
+      1080
+    ],
+    "duration_seconds": 57.75
+  },
+  "youtube_derivative": {
+    "file": "SteamStore/trailer/macro_20261025/revision4/social/refluff_macro_trailer_v4_shorts_9x16.mp4",
+    "sha256": "62dd2410b52b342b8451d7301d2f66f77dc18b7d1691f79e91d35d58fa0c7bca",
+    "bytes": 73390903,
+    "size": [
+      1080,
+      1920
+    ],
+    "frames": 3465,
+    "duration_seconds": 57.75,
+    "full_frame_scaled": [
+      1080,
+      608
+    ],
+    "offset": [
+      0,
+      656
+    ],
+    "padding": "black",
+    "crop": false,
+    "changed_timing": false,
+    "audio_packet_bytes_identical": true,
+    "qa": "SteamStore/trailer/macro_20261025/revision4/social/shorts_qa.json"
+  },
+  "publications": [
+    {
+      "platform": "youtube",
+      "account": "vahovgames",
+      "post_id": "post_cc5bc424-9576-4079-abaf-9d3f77dcf277",
+      "clip_id": "clip_81731e34-3d28-4813-bce8-5d131d40f349",
+      "status": "published",
+      "url": "https://www.youtube.com/shorts/ds8PbL4DVsA",
+      "title": "From dirty to fluffy 🧼 | Refluff: Carpet Cleaning ASMR #Shorts",
+      "caption": "Tiny fibers. Deeply satisfying cleaning. 🧼\nTurn the sound up and watch this rug come back to life.\n\nWishlist Refluff: Carpet Cleaning ASMR on Steam:\nhttps://store.steampowered.com/app/5304930/?utm_source=youtube&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4\n\n#Refluff #CarpetCleaning #ASMR #Satisfying #IndieGame #Shorts\n\nSound credits (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/; recordings edited, cut/looped and levelled):\n\"Floor Buffer Sound\" - prometheus888, https://freesound.org/s/864976/\n\"Vacuum Cleaner, On Idle Off, Close, A.wav\" - InspectorJ, https://freesound.org/s/430632/\n\"Whipped Cream Spray Can\" - kev_durr, https://freesound.org/s/321055/\n\"bissell_carpet_cleaner_vacuum_01.wav\" - joedeshon, https://freesound.org/s/79236/\n\"loud metal fan turned on and off a few times (machine starting up)\" - busabx, https://freesound.org/s/726634/\n\"shovelling scraping water\" - adda_records, https://freesound.org/s/519974/\n\n",
+      "visibility": "public",
+      "scheduled_at": null,
+      "timezone": "Europe/Moscow",
+      "approval_hash": "32e94f7e7656732432d4a952ee392d18700b18a83832f148826d1790ae44902c",
+      "verified_receipt_at_utc": "2026-10-25T08:33:18.061Z",
+      "game_url": "https://store.steampowered.com/app/5304930/?utm_source=youtube&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4",
+      "evidence": "SteamStore/trailer/macro_20261025/revision4/social/youtube_published.jpg",
+      "format": "9:16 whole landscape image with black padding"
+    },
+    {
+      "platform": "instagram",
+      "account": "vahov_games",
+      "post_id": "post_d5ec6937-1da0-4314-8995-ffdca56a436f",
+      "clip_id": "clip_f7413026-58a6-45d0-b677-4e35ee17ddce",
+      "status": "published",
+      "url": "https://www.instagram.com/p/De6R_OvPcDh/",
+      "title": "From dirty to fluffy | Refluff: Carpet Cleaning ASMR",
+      "caption": "Tiny fibers. Deeply satisfying cleaning. 🧼\nTurn the sound up and watch this rug come back to life.\n\nWishlist Refluff: Carpet Cleaning ASMR on Steam:\nhttps://store.steampowered.com/app/5304930/?utm_source=instagram&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4\n\n#Refluff #CarpetCleaning #ASMR #Satisfying #IndieGame\n\nSound credits (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/; recordings edited, cut/looped and levelled):\n\"Floor Buffer Sound\" - prometheus888, https://freesound.org/s/864976/\n\"Vacuum Cleaner, On Idle Off, Close, A.wav\" - InspectorJ, https://freesound.org/s/430632/\n\"Whipped Cream Spray Can\" - kev_durr, https://freesound.org/s/321055/\n\"bissell_carpet_cleaner_vacuum_01.wav\" - joedeshon, https://freesound.org/s/79236/\n\"loud metal fan turned on and off a few times (machine starting up)\" - busabx, https://freesound.org/s/726634/\n\"shovelling scraping water\" - adda_records, https://freesound.org/s/519974/\n\n",
+      "visibility": "public",
+      "scheduled_at": null,
+      "timezone": "Europe/Moscow",
+      "approval_hash": "15f7ee10f572344cd7bd7af5256e0ceb2f4aef643dd4e62ec98d57699bfdcf24",
+      "verified_receipt_at_utc": "2026-10-25T08:35:59.628Z",
+      "game_url": "https://store.steampowered.com/app/5304930/?utm_source=instagram&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4",
+      "evidence": "SteamStore/trailer/macro_20261025/revision4/social/instagram_published.jpg",
+      "format": "original 16:9"
+    },
+    {
+      "platform": "tiktok",
+      "account": "vahovgames",
+      "post_id": "post_fc3e4c08-fd2e-4e4b-bcfb-c95973023c68",
+      "clip_id": "clip_f7413026-58a6-45d0-b677-4e35ee17ddce",
+      "status": "published",
+      "url": "https://www.tiktok.com/@vahovgames/video/7700519431457213710",
+      "title": "From dirty to fluffy | Refluff: Carpet Cleaning ASMR",
+      "caption": "Tiny fibers. Deeply satisfying cleaning. 🧼\nTurn the sound up and watch this rug come back to life.\n\nWishlist Refluff: Carpet Cleaning ASMR on Steam:\nhttps://store.steampowered.com/app/5304930/?utm_source=tiktok&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4\n\n#Refluff #CarpetCleaning #ASMR #Satisfying #IndieGame\n\nSound credits (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/; recordings edited, cut/looped and levelled):\n\"Floor Buffer Sound\" - prometheus888, https://freesound.org/s/864976/\n\"Vacuum Cleaner, On Idle Off, Close, A.wav\" - InspectorJ, https://freesound.org/s/430632/\n\"Whipped Cream Spray Can\" - kev_durr, https://freesound.org/s/321055/\n\"bissell_carpet_cleaner_vacuum_01.wav\" - joedeshon, https://freesound.org/s/79236/\n\"loud metal fan turned on and off a few times (machine starting up)\" - busabx, https://freesound.org/s/726634/\n\"shovelling scraping water\" - adda_records, https://freesound.org/s/519974/\n\n",
+      "visibility": "public",
+      "scheduled_at": null,
+      "timezone": "Europe/Moscow",
+      "approval_hash": "be46a6583ece4864e8523020c8e5f55fa01f542c39443a335dccd6cd2a329db1",
+      "verified_receipt_at_utc": "2026-10-25T08:36:41.840Z",
+      "game_url": "https://store.steampowered.com/app/5304930/?utm_source=tiktok&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4",
+      "evidence": "SteamStore/trailer/macro_20261025/revision4/social/tiktok_published.jpg",
+      "format": "original 16:9"
+    }
+  ],
+  "verification": {
+    "youtube": "Studio Video published; public Shorts URL, @VahovGames, title, full UTM description and six recording credits checked; playback of complete landscape image with padding. Copyright check No issues found; public; not made for kids.",
+    "instagram": "Your reel has been shared; new reel in @vahov_games profile; exact caption/UTM and source footage verified; Original crop, sound on, full duration. Public playback stream1280x720,57.7666666667s.",
+    "tiktok": "Studio initially Content under review, then Everyone and no review warning; exact URL/@vahovgames/caption/UTM/promo label verified on public video. Playback stream1024x576,57.931813s. Original57.75s source submitted once.",
+    "retries": "No final-submit retries; each direct remote identity verified before local published receipt.",
+    "local_history": "Three existing draft records were approved from the explicit user publication/authoring instructions, claimed before the CUA final click and marked published only after CUA verification. Receipt helper uses public local SocialStudio modules with browser/network methods disabled. All three claim owners released and exited0.",
+    "automatic_cli_publication": "Not used; browser interactions were performed through CUA.",
+    "game_link_placement": "Caption/description text; no profile links, account verification or security settings changed."
+  },
+  "future_preference": "User requested no credit blocks in descriptions starting with the next video. Saved in TIKTOK.md and shared SocialStudio.md; choose own/CC0 recordings for future work. Current captions/video/approvals were not changed.",
+  "receipts": "SteamStore/trailer/macro_20261025/revision4/social/receipts/"
+}

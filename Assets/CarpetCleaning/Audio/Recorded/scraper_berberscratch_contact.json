@@ -1,0 +1,35 @@
+{
+ "slot": "contact",
+ "file": "scraper_berberscratch_contact.wav",
+ "source": "178499__akent__berbercarpetscratching.ogg",
+ "credit": "BerberCarpetScratching.wav by akent, https://freesound.org/s/178499/, CC BY 3.0 (two takes joined into a loop, levelled)",
+ "rate": 48000,
+ "channels": 2,
+ "seconds": 11.13,
+ "rmsDb": -19.22,
+ "peakDb": -1.0,
+ "lufs": -16.21,
+ "spans": [
+  [
+   1.05,
+   5.75
+  ],
+  [
+   8.05,
+   14.6
+  ]
+ ],
+ "highPassHz": 80.0,
+ "duck": [],
+ "method": "spans",
+ "limitDb": 6.0,
+ "limitReleaseS": 0.02,
+ "gainDb": 20.23,
+ "peakLimited": true,
+ "referenceLufs": -12.64,
+ "xfadeS": 0.06,
+ "wrapStepOverRms": 0.019,
+ "typicalStepOverRms": 0.059,
+ "wrapHighBandDb": -5.07,
+ "loudestNearbyDb": 18.83
+}

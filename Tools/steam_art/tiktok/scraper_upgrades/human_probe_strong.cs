@@ -1,0 +1,13 @@
+var ad = System.AppDomain.CurrentDomain;
+((System.Func<string>)ad.GetData("scu.human.stagestrong"))();
+var tools = CarpetCleaning.CarpetDebugApi.Tools;
+tools.ScriptedPointer = true;
+tools.ScriptedUv = new UnityEngine.Vector2(-5f,-5f);
+tools.ScriptedDown = false;
+UnityEditor.EditorApplication.Step();
+CarpetCleaning.ToolTuning.Set(CarpetCleaning.ToolId.Scraper,20f,5f);
+ad.SetData("scu.human.initialheading.strong",90f);
+var result = CarpetCleaning.StoreGifApi.SeqBegin("scu_probe_strong",32,32,0,0,0,0,false,10000,true,1080,1920,60,false);
+((System.Func<string,string>)ad.GetData("scu.human.replay"))("strong");
+CarpetCleaning.StoreGifApi.Away(.3f);
+return result;

@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"czech"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Načechraná premiéra"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Předej zákazníkovi svůj první koberec."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Čisťoučký"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Vyčisti špinavý koberec a předej ho s čistotou 100 %."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Suchoučký"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Pořádně namoč koberec a pak ho předej se suchostí 100 %."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Jako ze škatulky"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Vyčisti špinavý koberec a předej ho s čistotou a suchostí 100 %."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Z bláta do chmýří"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Vyčisti příšerně špinavý koberec a předej ho s čistotou 100 %."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Expresní čištění"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Získej plný bonus za rychlost u hodně špinavého koberce."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Stálí zákazníci"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Předej 25 koberců."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Celá výbava v akci"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Použij všech 10 nástrojů na koberec i na podlahu."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Vyladěno nadoraz"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Vylepši VÝKON i ZÁBĚR jednoho nástroje na MAX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspektor"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Kup Zvýraznění vlhkosti i Zvýraznění špíny."
+	}
+}

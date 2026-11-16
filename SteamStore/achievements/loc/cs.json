@@ -1,0 +1,43 @@
+{
+  "_lang": "cs",
+  "ACH_FIRST_CARPET": {
+    "name": "Načechraná premiéra",
+    "desc": "Předej zákazníkovi svůj první koberec."
+  },
+  "ACH_SPOTLESS": {
+    "name": "Čisťoučký",
+    "desc": "Vyčisti špinavý koberec a předej ho s čistotou 100 %."
+  },
+  "ACH_BONE_DRY": {
+    "name": "Suchoučký",
+    "desc": "Pořádně namoč koberec a pak ho předej se suchostí 100 %."
+  },
+  "ACH_COMBO": {
+    "name": "Jako ze škatulky",
+    "desc": "Vyčisti špinavý koberec a předej ho s čistotou a suchostí 100 %."
+  },
+  "ACH_FILTHY": {
+    "name": "Z bláta do chmýří",
+    "desc": "Vyčisti příšerně špinavý koberec a předej ho s čistotou 100 %."
+  },
+  "ACH_EXPRESS": {
+    "name": "Expresní čištění",
+    "desc": "Získej plný bonus za rychlost u hodně špinavého koberce."
+  },
+  "ACH_REGULARS": {
+    "name": "Stálí zákazníci",
+    "desc": "Předej 25 koberců."
+  },
+  "ACH_FULL_KIT": {
+    "name": "Celá výbava v akci",
+    "desc": "Použij všech 10 nástrojů na koberec i na podlahu."
+  },
+  "ACH_MAXED_OUT": {
+    "name": "Vyladěno nadoraz",
+    "desc": "Vylepši VÝKON i ZÁBĚR jednoho nástroje na MAX."
+  },
+  "ACH_INSPECTOR": {
+    "name": "Inspektor",
+    "desc": "Kup Zvýraznění vlhkosti i Zvýraznění špíny."
+  }
+}

@@ -1,0 +1,253 @@
+{
+ "language": "Japanese",
+ "code": "ja",
+ "steam": "japanese",
+ "_about": "The game's own UI text in this language (already shipped in the game). Reuse these terms whenever the store text names the same thing, so the store page matches what the player sees in the game. They also show how the game addresses the player (formal / informal).",
+ "terms": [
+  {
+   "en": "Scraper",
+   "yours": "スクレーパー",
+   "where": "Tool name (carpet strip and shop). A hand scraper blade that scrapes dried crust and mud off the carpet."
+  },
+  {
+   "en": "Dry vacuum",
+   "yours": "乾式掃除機",
+   "where": "Tool name. A vacuum cleaner for dry dust and crumbs."
+  },
+  {
+   "en": "Hose",
+   "yours": "ホース",
+   "where": "Tool name. A water hose with a spray nozzle: wets the carpet and rinses it."
+  },
+  {
+   "en": "Foam sprayer",
+   "yours": "泡スプレー",
+   "where": "Tool name. Sprays cleaning foam (carpet shampoo / detergent foam)."
+  },
+  {
+   "en": "Brush",
+   "yours": "ブラシ",
+   "where": "Tool name. A rotary scrubbing brush (a floor-scrubber machine with a spinning brush head)."
+  },
+  {
+   "en": "Squeegee",
+   "yours": "スクイージー",
+   "where": "Tool name. A rubber squeegee that pushes water off the carpet."
+  },
+  {
+   "en": "Wet vacuum",
+   "yours": "湿式掃除機",
+   "where": "Tool name. A wet vacuum / extractor that sucks up water and foam."
+  },
+  {
+   "en": "Dryer",
+   "yours": "ドライヤー",
+   "where": "Tool name. A carpet dryer / air mover blowing warm air."
+  },
+  {
+   "en": "Detergent",
+   "yours": "洗剤",
+   "where": "Floor tool name (right strip). Sprays floor detergent on the tiles."
+  },
+  {
+   "en": "Mop",
+   "yours": "モップ",
+   "where": "Floor tool name (right strip). A mop for the tiles."
+  },
+  {
+   "en": "Hand over",
+   "yours": "引き渡す",
+   "where": "Big green button that appears when the carpet is clean: give the carpet back to its owner (the client) and get paid. Hotkey H."
+  },
+  {
+   "en": "Upgrades",
+   "yours": "強化",
+   "where": "Top-right button that opens the upgrade shop (hotkey U, shown on a key chip next to it)."
+  },
+  {
+   "en": "UPGRADES",
+   "yours": "強化",
+   "where": "Caption at the top of the upgrade shop."
+  },
+  {
+   "en": "Tune your kit",
+   "yours": "道具を強化しよう",
+   "where": "Big title of the upgrade shop: improve your cleaning equipment."
+  },
+  {
+   "en": "POWER",
+   "yours": "パワー",
+   "where": "Upgrade stat name on every tool card: how strongly and fast the tool works."
+  },
+  {
+   "en": "AREA",
+   "yours": "範囲",
+   "where": "Upgrade stat name on every tool card: how wide an area the tool covers in one stroke."
+  },
+  {
+   "en": "POWER works faster",
+   "yours": "パワー：作業が速くなる",
+   "where": "Legend under the shop title explaining the POWER stat."
+  },
+  {
+   "en": "AREA covers more per stroke",
+   "yours": "範囲：一度に広く掃除できる",
+   "where": "Legend explaining the AREA stat."
+  },
+  {
+   "en": "Speed bonus",
+   "yours": "スピードボーナス",
+   "where": "Pay slip line: bonus for finishing fast."
+  },
+  {
+   "en": "Spotless",
+   "yours": "ピカピカ",
+   "where": "Pay slip line: bonus for a 100 % clean carpet."
+  },
+  {
+   "en": "Bone dry",
+   "yours": "カラカラ",
+   "where": "Pay slip line: bonus for a 100 % dry carpet."
+  },
+  {
+   "en": "Combo",
+   "yours": "コンボ",
+   "where": "Pay slip line: bonus for spotless AND bone dry together."
+  },
+  {
+   "en": "COMBO!",
+   "yours": "コンボ！",
+   "where": "Big stamp slammed onto the corner of the pay slip for a combo."
+  },
+  {
+   "en": "Base pay",
+   "yours": "基本報酬",
+   "where": "Pay slip line: the base payment for the job."
+  },
+  {
+   "en": "CARPET DELIVERED",
+   "yours": "引き渡し完了",
+   "where": "Caption at the top of the pay slip card that appears after a hand-over."
+  },
+  {
+   "en": "INSPECTION",
+   "yours": "点検ライト",
+   "where": "Shop caption above the two inspection-lamp items."
+  },
+  {
+   "en": "Moisture highlight",
+   "yours": "水分ハイライト",
+   "where": "One-time shop item (key Z): a lamp mode that makes wet spots glow."
+  },
+  {
+   "en": "Wet pile and puddles glow blue",
+   "yours": "濡れた毛足と水たまりが青く光る",
+   "where": "Description of 'Moisture highlight'. 'pile' = the carpet's fibres."
+  },
+  {
+   "en": "Dirt highlight",
+   "yours": "汚れハイライト",
+   "where": "One-time shop item (key X): a lamp mode that makes remaining dirt glow."
+  },
+  {
+   "en": "Every trace of soil glows amber",
+   "yours": "わずかな汚れもオレンジ色に光る",
+   "where": "Description of 'Dirt highlight'."
+  },
+  {
+   "en": "CARPET",
+   "yours": "カーペット",
+   "where": "Caption above the left tool strip (the tools that work on the carpet)."
+  },
+  {
+   "en": "FLOOR",
+   "yours": "床",
+   "where": "Caption above the right tool strip (the tools for the tiled floor around the carpet)."
+  },
+  {
+   "en": "CLEAN",
+   "yours": "清潔度",
+   "where": "Caption of the cleanliness meter (0-100 %), top-left card."
+  },
+  {
+   "en": "DRY",
+   "yours": "乾燥度",
+   "where": "Caption of the dryness meter (100 % = completely dry), under CLEAN."
+  },
+  {
+   "en": "Filthy",
+   "yours": "汚れまみれ",
+   "where": "Pay slip title: extremely dirty."
+  },
+  {
+   "en": "Heavy soil",
+   "yours": "ひどい汚れ",
+   "where": "Pay slip title: heavily soiled."
+  },
+  {
+   "en": "Scrape the dry crust off",
+   "yours": "カピカピの汚れを削り取ろう",
+   "where": "Hint pill at the top centre: the next step the game suggests. Tool: Scraper."
+  },
+  {
+   "en": "Wet it down",
+   "yours": "ホースでカーペットを濡らそう",
+   "where": "Hint. Tool: Hose (soak the dried mud with water)."
+  },
+  {
+   "en": "Brush the mud loose",
+   "yours": "ブラシで泥を浮かせよう",
+   "where": "Hint. Tool: Brush (scrub the softened mud loose)."
+  },
+  {
+   "en": "Squeegee the dirty water off",
+   "yours": "スクイージーで汚れた水を押し出そう",
+   "where": "Hint. Tool: Squeegee."
+  },
+  {
+   "en": "Wet-vac the water and foam out",
+   "yours": "湿式掃除機で水と泡を吸い取ろう",
+   "where": "Hint. Tool: Wet vacuum."
+  },
+  {
+   "en": "Dry it",
+   "yours": "ドライヤーで乾かそう",
+   "where": "Hint. Tool: Dryer."
+  },
+  {
+   "en": "Sparkling clean!",
+   "yours": "ピカピカに仕上がった！",
+   "where": "Hint when the carpet is perfectly clean and dry."
+  },
+  {
+   "en": "Handed over to the client!",
+   "yours": "お客さんに引き渡した！",
+   "where": "Hint while the finished carpet flies away to its owner."
+  },
+  {
+   "en": "Fresh carpet coming in...",
+   "yours": "新しいカーペットが届くよ…",
+   "where": "Hint while the next dirty carpet drops in."
+  },
+  {
+   "en": "Owned: press {0} to switch it on and off",
+   "yours": "購入済み：{0}キーでオン／オフ",
+   "where": "Replaces the item description once the item is bought."
+  },
+  {
+   "en": "the job clock is paused while you shop",
+   "yours": "買い物中は作業タイマーが止まります",
+   "where": "Small grey note at the right of the legend."
+  },
+  {
+   "en": "Money and upgrades are saved as you play.",
+   "yours": "お金と強化はプレイ中に自動で保存されます。",
+   "where": "Small note at the bottom of the pause menu (wraps to two lines if needed)."
+  },
+  {
+   "en": "Thank you for playing.",
+   "yours": "遊んでくれてありがとう。",
+   "where": "Credits page."
+  }
+ ]
+}

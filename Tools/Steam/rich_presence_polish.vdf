@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "polish"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Czyści dywan: czystość %clean%"
+		"#Status_Spotless" "Dywan bez skazy, gotowy do oddania"
+		"#Status_BetweenCarpets" "Między dywanami, sprząta podłogę"
+	}
+}

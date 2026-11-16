@@ -1,0 +1,218 @@
+{
+  "edl": "Tools/steam_art/trailer/macro_20261025/revision4/edl.json",
+  "duration": 57.75,
+  "fps": 60,
+  "size": [
+    1920,
+    1080
+  ],
+  "music": null,
+  "voice": null,
+  "date": null,
+  "takes": [
+    {
+      "id": "01",
+      "take": "SteamStore/_work/clips/mf01d_intro",
+      "required_seconds": 10.75,
+      "available_seconds": 10.750000537499998,
+      "frames": 645,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 0,
+      "warnings": [],
+      "credits": [],
+      "clips": []
+    },
+    {
+      "id": "02",
+      "take": "SteamStore/_work/clips/mf02_vacuum",
+      "required_seconds": 6,
+      "available_seconds": 6.0000003,
+      "frames": 360,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 4,
+      "warnings": [
+        "1 ToolAudio one-shot(s) (power on / off, tool switch) logged vol 0: their OneShot source is at volume 0, so the game plays them silent too (oneshot_source_volume=1 plays them)"
+      ],
+      "credits": [
+        "Dragging_On_Carpet.aif by crcavol, https://freesound.org/s/154630/, CC0",
+        "Vacuum Cleaner, On Idle Off, Close, A.wav by InspectorJ, https://freesound.org/s/430632/, CC BY 4.0 (cut, levelled)"
+      ],
+      "clips": [
+        "dryvacuum_carpetdrag_contact",
+        "dryvacuum_dyson_loop",
+        "dryvacuum_dyson_start",
+        "dryvacuum_dyson_stop"
+      ]
+    },
+    {
+      "id": "03",
+      "take": "SteamStore/_work/clips/mf03_hose",
+      "required_seconds": 6,
+      "available_seconds": 6.0000003,
+      "frames": 360,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 9,
+      "warnings": [
+        "1 ToolAudio one-shot(s) (power on / off, tool switch) logged vol 0: their OneShot source is at volume 0, so the game plays them silent too (oneshot_source_volume=1 plays them)"
+      ],
+      "credits": [
+        "Pressure Washer by richwise, https://freesound.org/s/580534/, CC0"
+      ],
+      "clips": [
+        "hose_pressurewasher_loop",
+        "hose_pressurewasher_start",
+        "hose_pressurewasher_stop"
+      ]
+    },
+    {
+      "id": "04",
+      "take": "SteamStore/_work/clips/mf04b_brush",
+      "required_seconds": 6,
+      "available_seconds": 6.0000003,
+      "frames": 360,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 5,
+      "warnings": [
+        "4 ToolAudio one-shot(s) (power on / off, tool switch) logged vol 0: their OneShot source is at volume 0, so the game plays them silent too (oneshot_source_volume=1 plays them)"
+      ],
+      "credits": [
+        "200088_RossJuterbock_Hair brush on carpet MSH-6.wav by RossJuterbock, https://freesound.org/s/543471/, CC0",
+        "Floor Buffer Sound by prometheus888, https://freesound.org/s/864976/, CC BY 4.0 (cut to 30 pad turns, levelled)",
+        "Whipped Cream Spray Can by kev_durr, https://freesound.org/s/321055/, CC BY 4.0 (cut, levelled)"
+      ],
+      "clips": [
+        "brush_floorbuffer_motor",
+        "brush_hairbrush_contact",
+        "foamsprayer_aerosol_loop",
+        "foamsprayer_aerosol_start",
+        "foamsprayer_aerosol_stop"
+      ]
+    },
+    {
+      "id": "05",
+      "take": "SteamStore/_work/clips/mf05_squeegee",
+      "required_seconds": 6,
+      "available_seconds": 6.0000003,
+      "frames": 360,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 1,
+      "warnings": [
+        "1 ToolAudio one-shot(s) (power on / off, tool switch) logged vol 0: their OneShot source is at volume 0, so the game plays them silent too (oneshot_source_volume=1 plays them)"
+      ],
+      "credits": [
+        "shovelling scraping water by adda_records, https://freesound.org/s/519974/, CC BY 4.0 (loud middles of the strokes re-joined into a loop, levelled)"
+      ],
+      "clips": [
+        "squeegee_waterpush_contact"
+      ]
+    },
+    {
+      "id": "06",
+      "take": "SteamStore/_work/clips/mf06_extract",
+      "required_seconds": 5,
+      "available_seconds": 5.000000249999999,
+      "frames": 300,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 4,
+      "warnings": [
+        "1 ToolAudio one-shot(s) (power on / off, tool switch) logged vol 0: their OneShot source is at volume 0, so the game plays them silent too (oneshot_source_volume=1 plays them)"
+      ],
+      "credits": [
+        "Slurping Water by yehdawgo, https://freesound.org/s/720073/, CC0",
+        "bissell_carpet_cleaner_vacuum_01.wav by joedeshon, https://freesound.org/s/79236/, CC BY 4.0 (cut, levelled, switch clicks softened)"
+      ],
+      "clips": [
+        "wetvacuum_bissell_loop",
+        "wetvacuum_bissell_start",
+        "wetvacuum_bissell_stop",
+        "wetvacuum_slurp_contact"
+      ]
+    },
+    {
+      "id": "07",
+      "take": "SteamStore/_work/clips/mf07_dryer",
+      "required_seconds": 9,
+      "available_seconds": 9.000000449999998,
+      "frames": 540,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 3,
+      "warnings": [
+        "1 ToolAudio one-shot(s) (power on / off, tool switch) logged vol 0: their OneShot source is at volume 0, so the game plays them silent too (oneshot_source_volume=1 plays them)"
+      ],
+      "credits": [
+        "loud metal fan turned on and off a few times (machine starting up) by busabx, https://freesound.org/s/726634/, CC BY 4.0 (cut, levelled, switch clicks softened)"
+      ],
+      "clips": [
+        "dryer_metalfan_loop",
+        "dryer_metalfan_start",
+        "dryer_metalfan_stop"
+      ]
+    },
+    {
+      "id": "08",
+      "take": "SteamStore/_work/clips/mf08_reveal",
+      "required_seconds": 5,
+      "available_seconds": 5.000000249999999,
+      "frames": 300,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 0,
+      "warnings": [],
+      "credits": [],
+      "clips": []
+    },
+    {
+      "id": "09",
+      "take": "SteamStore/_work/clips/mf09_end",
+      "required_seconds": 4,
+      "available_seconds": 4.0000002,
+      "frames": 240,
+      "size": [
+        1920,
+        1080
+      ],
+      "audio_origin_s": 0.0166666675,
+      "voices": 0,
+      "warnings": [],
+      "credits": [],
+      "clips": []
+    }
+  ],
+  "errors": [],
+  "logo": {
+    "path": "SteamStore/logo/refluff_logo.png",
+    "sha256": "4aa3f543073db4abfd83a286e6df0eae3228b9b1b670ae36bae463772765914d"
+  },
+  "ok": true
+}

@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"brazilian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Estreia fofinha"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Entregue seu primeiro tapete."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Impecável"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Entregue 100% limpo um tapete que chegou sujo."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Bem sequinho"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Encharque um tapete e depois entregue-o 100% seco."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Novinho em folha"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Entregue 100% limpo e 100% seco um tapete que chegou sujo."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Do imundo ao fofinho"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Entregue 100% limpo um tapete imundo."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Serviço expresso"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Ganhe o bônus de rapidez completo em um tapete com sujeira pesada."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Freguesia fiel"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Entregue 25 tapetes."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Não sobrou nada na van"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Use as 10 ferramentas."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Turbinado ao máximo"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Leve a POTÊNCIA e a ÁREA de uma mesma ferramenta ao MÁX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Olho de lince"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Compre o Realce de umidade e o Realce de sujeira."
+	}
+}

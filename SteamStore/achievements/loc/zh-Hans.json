@@ -1,0 +1,13 @@
+{
+  "_lang": "zh-Hans",
+  "ACH_FIRST_CARPET": { "name": "蓬松初体验", "desc": "交付第一张地毯。" },
+  "ACH_SPOTLESS": { "name": "一尘不染", "desc": "把脏地毯洗到清洁度 100% 再交付。" },
+  "ACH_BONE_DRY": { "name": "完全干透", "desc": "先把地毯彻底打湿，等干燥度达到 100% 再交付。" },
+  "ACH_COMBO": { "name": "宛如新品", "desc": "让脏地毯的清洁度和干燥度都达到 100% 再交付。" },
+  "ACH_FILTHY": { "name": "化脏污为蓬松", "desc": "把“极度脏污”的地毯洗到清洁度 100% 再交付。" },
+  "ACH_EXPRESS": { "name": "极速服务", "desc": "清洗重度以上脏污的地毯时拿满速度奖励。" },
+  "ACH_REGULARS": { "name": "回头客", "desc": "交付25张地毯。" },
+  "ACH_FULL_KIT": { "name": "全套工具齐上阵", "desc": "地毯工具和地面工具，10种全部用一遍。" },
+  "ACH_MAXED_OUT": { "name": "满级神器", "desc": "把同一个工具的功率和范围都升到满级。" },
+  "ACH_INSPECTOR": { "name": "质检员", "desc": "购买“水分高亮”和“污渍高亮”。" }
+}

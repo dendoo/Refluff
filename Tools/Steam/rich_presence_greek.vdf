@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "greek"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Καθαρίζει χαλί: %clean% καθαρό"
+		"#Status_Spotless" "Το χαλί είναι πεντακάθαρο, έτοιμο για παράδοση"
+		"#Status_BetweenCarpets" "Ανάμεσα σε χαλιά, συγυρίζει το πάτωμα"
+	}
+}

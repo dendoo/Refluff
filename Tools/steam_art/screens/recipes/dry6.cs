@@ -1,0 +1,10 @@
+CarpetCleaning.CarpetDebugApi.StrokeNow(7, 0.42f,0.20f, 0.46f,0.50f, 60, 1f);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 12; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+var cr = UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.CarpetRenderer>();
+cr.SetCursor(new UnityEngine.Vector2(0.46f, 0.50f), new UnityEngine.Vector2(0f, 1f), 135f, 0f, (CarpetCleaning.ToolId)7, true);
+CarpetCleaning.StoreShotApi.RenderScene("test/dry6a.png", 1280, 720);
+CarpetCleaning.CarpetDebugApi.SetHighlight(0, false);
+CarpetCleaning.StoreShotApi.RenderScene("test/dry6b.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.HighlightJson();

@@ -1,0 +1,15 @@
+UnityEditor.EditorApplication.isPaused=true;
+var t=CarpetCleaning.CarpetDebugApi.Tools;
+t.ScriptedPointer=true;t.ScriptedUv=new UnityEngine.Vector2(-5,-5);t.ScriptedDown=false;t.ScriptedRight=false;
+CarpetCleaning.CarpetDebugApi.SetTool(7);
+CarpetCleaning.CarpetDebugApi.PinToolHead(7,0.77000f,0.67000f,true);
+CarpetCleaning.CarpetDebugApi.Sim.RefreshStatsSync();
+CarpetCleaning.CarpetDebugApi.Sim.Paused=true;
+for(int i=0;i<35;i++)UnityEditor.EditorApplication.Step();
+CarpetCleaning.CarpetDebugApi.Sim.Paused=false;
+CarpetCleaning.EconomyDebugApi.SetOwned(0,true); CarpetCleaning.CarpetDebugApi.SetHighlight(0,true);
+var cp=new UnityEngine.Vector3(.52f,.15f,.02f);
+var ce=UnityEngine.Quaternion.LookRotation(new UnityEngine.Vector3(.47f,.01f,.24f)-cp).eulerAngles;
+var sr=CarpetCleaning.StoreShotApi.RenderView("shots/s08_rya_moisture_scene.png",3840,2160,cp.x,cp.y,cp.z,ce.x,ce.y,ce.z,48);
+var hr=CarpetCleaning.EconomyDebugApi.CaptureHud("C:/UnityProjects/CarpetCleaning/SteamStore/_work/shots/s08_rya_moisture_hud.png",2560,1440);
+return sr+hr+" stats="+CarpetCleaning.CarpetDebugApi.StatsJson()+" floor="+CarpetCleaning.CarpetDebugApi.FloorStatsJson();

@@ -1,0 +1,50 @@
+{
+  "sha256": "7a93108ea846291ccbc5d95ad30710789578ce0ff25180e7634204edd8eccd09",
+  "bytes": 8285636,
+  "vertices": 16738,
+  "triangles": 16977,
+  "originalTriangles": 1924471,
+  "reductionPercent": 99.11783549869028,
+  "materials": 1,
+  "finitePositions": true,
+  "finiteNormals": true,
+  "indicesInBounds": true,
+  "degenerateTriangles": 0,
+  "boundsMin": [
+    -0.3109130859375,
+    0.0,
+    -0.444854736328125
+  ],
+  "boundsMax": [
+    0.3109130859375,
+    0.97772216796875,
+    0.444854736328125
+  ],
+  "textures": [
+    {
+      "name": "refluff_workshop_extractor_17k_basecolor.jpg",
+      "size": [
+        4096,
+        4096
+      ],
+      "mode": "RGB"
+    },
+    {
+      "name": "refluff_workshop_extractor_17k_rm.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB"
+    },
+    {
+      "name": "refluff_workshop_extractor_17k_normal.jpg",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGB"
+    }
+  ],
+  "note": "Tripo image and HD model visually inspected before retopology; optimized model visually accepted front/side/back in Tripo. Root controls Unity import and scene placement."
+}

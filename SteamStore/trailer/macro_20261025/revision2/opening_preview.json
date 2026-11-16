@@ -1,0 +1,18 @@
+{
+  "duration": 13.5,
+  "width": 1920,
+  "height": 1080,
+  "codec": "h264",
+  "pix_fmt": "yuv420p",
+  "color": "tv, bt709, progressive",
+  "fps": 60.0,
+  "audio": true,
+  "streams": [
+    "video",
+    "audio"
+  ],
+  "frames": 810,
+  "bytes": 31324448,
+  "sha256": "2f2d97a3d5168764eb8212f7175f1c560d217731596ef69e19324e54f5464309",
+  "note": "Opening 13.5s from final56s master. Review video re-encoded; final master AAC audio stream copied unchanged."
+}

@@ -1,0 +1,35 @@
+{
+  "home": "C:/Users/denis/AppData/Local/GameSocialStudio",
+  "gameId": "refluff",
+  "clipId": "clip_e5afcde9-ff28-44d1-b4e8-95b87e6c910e",
+  "file": "revision3/refluff_between_fibers_en_v3.mp4",
+  "sha256": "0ca66e84f524d5102f93fbdb13b41484bc2ddc1614b31e1cb18f030b0b76b692",
+  "narrationLanguage": "English (user's standing preference)",
+  "captionFiles": "revision3/caption_tiktok_utm.txt, revision3/caption_instagram_utm.txt, revision3/caption_youtube_utm.txt",
+  "latestScenario": "Tools/steam_art/tiktok/between_fibers/take_red_v2.cs",
+  "previousMaster": "revision2/refluff_between_fibers_red_v2.mp4",
+  "originalMaster": "refluff_between_fibers_v1.mp4",
+  "posts": {
+    "tiktok": "post_ee072819-e7ea-46cf-afc0-1271b7d8f66c",
+    "instagram": "post_73fce87b-dac6-4316-bf3d-62283a2f43cd",
+    "youtube": "post_fc0bb007-7362-4e0f-b9fe-4072c1f0501d"
+  },
+  "visibility": "public",
+  "timing": "immediately after explicit approval of this exact video and post details",
+  "timezone": "Europe/Moscow",
+  "status": "publication in progress; explicit video, exact captions, public immediate posting and platform UTM links approved in chat",
+  "publicationResults": {
+    "youtube": {
+      "status": "published",
+      "remoteId": "D2BQtZstciI",
+      "url": "https://www.youtube.com/shorts/D2BQtZstciI"
+    },
+    "instagram": {
+      "status": "retry authorized after user confirmed absence",
+      "firstAttempt": "2026-10-23T15:03:16Z"
+    },
+    "tiktok": {
+      "status": "caption editor correction before submit"
+    }
+  }
+}

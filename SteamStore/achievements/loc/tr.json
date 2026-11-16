@@ -1,0 +1,13 @@
+{
+  "_lang": "tr",
+  "ACH_FIRST_CARPET": { "name": "Pofuduk Bir Başlangıç", "desc": "İlk halını teslim et." },
+  "ACH_SPOTLESS": { "name": "Tertemiz", "desc": "Kirli bir halıyı %100 temiz teslim et." },
+  "ACH_BONE_DRY": { "name": "Kupkuru", "desc": "Bir halıyı iyice ıslat, sonra %100 kuru teslim et." },
+  "ACH_COMBO": { "name": "Vitrinlik", "desc": "Kirli bir halıyı %100 temiz ve %100 kuru teslim et." },
+  "ACH_FILTHY": { "name": "Pislikten Pofuduğa", "desc": "Pislik içinde bir halıyı %100 temiz teslim et." },
+  "ACH_EXPRESS": { "name": "Ekspres Servis", "desc": "Çok kirli bir halıda hız bonusunun tamamını kazan." },
+  "ACH_REGULARS": { "name": "Sadık Müşteriler", "desc": "25 halı teslim et." },
+  "ACH_FULL_KIT": { "name": "Takım Taklavat", "desc": "10 aletin hepsini kullan." },
+  "ACH_MAXED_OUT": { "name": "Sonuna Kadar", "desc": "Bir aletin hem GÜÇ hem de ALAN seviyesini MAKS'a çıkar." },
+  "ACH_INSPECTOR": { "name": "Müfettiş", "desc": "Nem tespitini ve Kir tespitini satın al." }
+}

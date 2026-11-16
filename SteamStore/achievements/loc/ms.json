@@ -1,0 +1,13 @@
+{
+  "_lang": "ms",
+  "ACH_FIRST_CARPET": { "name": "Permulaan yang Gebu", "desc": "Serahkan permaidani pertama anda." },
+  "ACH_SPOTLESS": { "name": "Tanpa Cela", "desc": "Serahkan permaidani kotor dalam keadaan 100% bersih." },
+  "ACH_BONE_DRY": { "name": "Kering Kontang", "desc": "Basahkan permaidani hingga lencun, lalu serahkan dalam keadaan 100% kering." },
+  "ACH_COMBO": { "name": "Sedia Dipamerkan", "desc": "Serahkan permaidani kotor dalam keadaan 100% bersih dan 100% kering." },
+  "ACH_FILTHY": { "name": "Dari Comot ke Gebu", "desc": "Serahkan permaidani teramat kotor dalam keadaan 100% bersih." },
+  "ACH_EXPRESS": { "name": "Servis Ekspres", "desc": "Dapatkan bonus kelajuan sepenuhnya bagi permaidani sangat kotor." },
+  "ACH_REGULARS": { "name": "Pelanggan Tetap", "desc": "Serahkan 25 permaidani." },
+  "ACH_FULL_KIT": { "name": "Semua Alat Dikerahkan", "desc": "Gunakan kesemua 10 alat." },
+  "ACH_MAXED_OUT": { "name": "Sampai ke Puncak", "desc": "Naik taraf KUASA dan LIPUTAN satu alat hingga MAKS." },
+  "ACH_INSPECTOR": { "name": "Pemeriksa", "desc": "Beli Serlahan lembapan dan Serlahan kotoran." }
+}

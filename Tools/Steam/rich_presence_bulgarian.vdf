@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "bulgarian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Чисти килим: чистота %clean%"
+		"#Status_Spotless" "Килимът блести, готов за предаване"
+		"#Status_BetweenCarpets" "Между два килима, чисти пода"
+	}
+}

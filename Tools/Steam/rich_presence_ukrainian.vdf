@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "ukrainian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Чистить килим: чистота %clean%"
+		"#Status_Spotless" "Килим сяє, час віддавати клієнту"
+		"#Status_BetweenCarpets" "Між килимами, прибирає підлогу"
+	}
+}

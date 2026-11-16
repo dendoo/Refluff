@@ -1,0 +1,1159 @@
+{
+ "version": 3,
+ "status": "CUT 2 (2026-09-27): cut 1 + the 5-lane review fixes (#02 half a bar: logo at 4.0 s, chain 12.0-33.3 s, #14 inside the festival window; 60.0 s; room-tone bed; #13 retaken under the moisture lamp). Cam rects are in each take's saved-frame pixels (full 4K minus the take's crop origin). Schema: README_editor.md.",
+ "fps": 60,
+ "size": [
+  1920,
+  1080
+ ],
+ "bpm": 90,
+ "cover": {
+  "t": 34.4
+ },
+ "date": "October 2026",
+ "audio": {
+  "sr": 48000,
+  "lufs": -14.0,
+  "tp": -2.0,
+  "cut_fade_ms": 8,
+  "tail_silence": 0.5,
+  "tail_fade": 0.6,
+  "max_limit_db": 12,
+  "limiter_release_db_s": 120.0
+ },
+ "music": null,
+ "shots": [
+  {
+   "id": "01",
+   "bars": [
+    0,
+    1
+   ],
+   "take": "t01_hook",
+   "in": 1.53,
+   "note": "HOOK, Transylvanian (user): squeegee lane A plows the brown wave over the near-right rim onto the tile; crop origin (1000,560). Carries the room-tone bed for the whole trailer",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      160,
+      140,
+      2560,
+      1440
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      440,
+      320,
+      2240,
+      1260
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "audio": {
+    "carry": 0.12,
+    "extra": [
+     {
+      "wav": "Tools/steam_art/trailer/audio/roomtone_580534.wav",
+      "at": 0.0,
+      "gain_db": -6,
+      "bus": "foley"
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Recorded/squeegee_waterpush_contact.wav",
+      "in": 0.5,
+      "at": 1.95,
+      "dur": 0.85,
+      "fade_in": 0.05,
+      "fade_out": 0.4,
+      "gain_db": -8
+     }
+    ]
+   }
+  },
+  {
+   "id": "02",
+   "bars": [
+    1,
+    0.5
+   ],
+   "take": "t02_swirl",
+   "in": 0.55,
+   "note": "rotary brush (AREA 6) in pink foam on the same strip, close; crop origin (1280,800); framed past the pale reflection top left",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      280,
+      250,
+      1960,
+      1102
+     ]
+    },
+    {
+     "t": 1.3333,
+     "rect": [
+      380,
+      310,
+      1760,
+      990
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "audio": {
+    "gain_db": -3,
+    "carry": 0.8
+   }
+  },
+  {
+   "id": "03",
+   "bars": [
+    1.5,
+    1
+   ],
+   "take": "tr14_clean",
+   "in": 0.3,
+   "speed": 0,
+   "note": "title: logo whip over the clean star pile (take B rest plate), Headphones on",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      853,
+      400,
+      2133,
+      1200
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      960,
+      460,
+      1920,
+      1080
+     ],
+     "ease": "linear"
+    }
+   ],
+   "fx": [
+    {
+     "type": "logo_whip"
+    }
+   ],
+   "title": {
+    "text": "Headphones on",
+    "style": "headphones",
+    "pos": "under_logo",
+    "at": 0.3
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_whoosh.wav",
+      "at": 0.0,
+      "gain_db": -4
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 0.22,
+      "gain_db": -6
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.03,
+      "gain_db": -16
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.16,
+      "gain_db": -16
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.29,
+      "gain_db": -16
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.4,
+      "gain_db": -16
+     }
+    ]
+   }
+  },
+  {
+   "id": "04",
+   "bars": [
+    2.5,
+    1
+   ],
+   "take": "tr04_arrival",
+   "in": 0.39,
+   "hud": true,
+   "note": "take A: Away HUD, the dirty Anatolian (394 @0.9) flies in and lands; in 0.39 = after the HUD flips to CLEAN 0 %",
+   "title": {
+    "text": "Filthy rugs come in.",
+    "style": "line",
+    "shadow": "shade-strong"
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_whoosh.wav",
+      "at": 0.0,
+      "gain_db": -2
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_thud.wav",
+      "at": 0.83,
+      "gain_db": -8
+     }
+    ]
+   }
+  },
+  {
+   "id": "05",
+   "bars": [
+    3.5,
+    1
+   ],
+   "take": "tr04_arrival",
+   "in": 3.6,
+   "speed": 0,
+   "note": "take A rest plate (scene only): slow pan over the dried-mud slabs and the grime; a light crunch leads into SCRAPE",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      820,
+      900,
+      2260,
+      1271
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      1180,
+      640,
+      2260,
+      1271
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "Ten tools. One right order.",
+    "style": "line"
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Recorded/scraper_berberscratch_contact.wav",
+      "in": 1.0,
+      "at": 1.6,
+      "dur": 0.6,
+      "fade_in": 0.08,
+      "fade_out": 0.3,
+      "gain_db": -16
+     }
+    ]
+   }
+  },
+  {
+   "id": "06",
+   "bars": [
+    4.5,
+    1
+   ],
+   "take": "tr06_scrape",
+   "in": 0.46,
+   "note": "chain: 4 scraper legs over the slabs (the blade bites on the cut), shards onto the right tile; crop origin (480,360)",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      770,
+      310,
+      2240,
+      1260
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      890,
+      370,
+      1920,
+      1080
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "SCRAPE",
+    "style": "verb",
+    "num": 1
+   },
+   "audio": {
+    "gain_db": -3
+   }
+  },
+  {
+   "id": "07",
+   "bars": [
+    5.5,
+    1
+   ],
+   "take": "tr07_vacuum",
+   "in": 0.44,
+   "note": "dry vac row R->L, ring only; static camera: the ring crosses the frame and the dust-free stripe opens behind it",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      460,
+      250,
+      2240,
+      1260
+     ]
+    }
+   ],
+   "title": {
+    "text": "VACUUM",
+    "style": "verb",
+    "num": 2
+   },
+   "audio": {
+    "carry": 0.25
+   }
+  },
+  {
+   "id": "08",
+   "bars": [
+    6.5,
+    1
+   ],
+   "take": "tr08_soak",
+   "in": 0.04,
+   "note": "three half-pressure hose spots spread and join (in 0.04: the nozzle leaves after the cut)",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      360,
+      280,
+      2160,
+      1215
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      480,
+      345,
+      1920,
+      1080
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "SOAK",
+    "style": "verb",
+    "num": 3
+   },
+   "audio": {
+    "gain_db": -2,
+    "carry": 0.25
+   }
+  },
+  {
+   "id": "09",
+   "bars": [
+    7.5,
+    1
+   ],
+   "take": "tr09_foam",
+   "in": 0.41,
+   "note": "foam lane L->R, ring only; the camera follows the ring",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      0,
+      207,
+      2400,
+      1350
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      860,
+      207,
+      2400,
+      1350
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "FOAM",
+    "style": "verb",
+    "num": 4
+   },
+   "audio": {
+    "gain_db": -1.5,
+    "carry": 0.25
+   }
+  },
+  {
+   "id": "10",
+   "bars": [
+    8.5,
+    1
+   ],
+   "take": "tr10_scrub",
+   "in": 0.46,
+   "note": "rotary brush legs in the foam slab; wider than #02",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      325,
+      205,
+      2400,
+      1350
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      405,
+      250,
+      2240,
+      1260
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "SCRUB",
+    "style": "verb",
+    "num": 5
+   },
+   "audio": {
+    "gain_db": -3.5,
+    "carry": 0.3
+   }
+  },
+  {
+   "id": "11",
+   "bars": [
+    9.5,
+    1
+   ],
+   "take": "tr11_squeegee",
+   "in": 0.36,
+   "note": "horizontal squeegee pass at v 0.30: the star medallion opens, the soapy wave pours off the right rim (in 0.36: the blade's exit pop falls after the cut)",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      80,
+      70,
+      2880,
+      1620
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      400,
+      70,
+      2880,
+      1620
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "SQUEEGEE",
+    "style": "verb",
+    "num": 6
+   },
+   "audio": {
+    "duck_music": true,
+    "carry": 0.12,
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Recorded/squeegee_waterpush_contact.wav",
+      "in": 0.5,
+      "at": 2.1,
+      "dur": 0.7,
+      "fade_in": 0.05,
+      "fade_out": 0.35,
+      "gain_db": -8
+     }
+    ]
+   }
+  },
+  {
+   "id": "12",
+   "bars": [
+    10.5,
+    1
+   ],
+   "take": "tr12_extract",
+   "in": 0.44,
+   "note": "wet vac row 2 R->L swallows the far strip's foam haze; the camera follows the wand (lead room left)",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      1150,
+      250,
+      1700,
+      956
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      0,
+      275,
+      1700,
+      956
+     ],
+     "ease": "linear"
+    }
+   ],
+   "title": {
+    "text": "EXTRACT",
+    "style": "verb",
+    "num": 7
+   },
+   "audio": {
+    "duck_music": true,
+    "carry": 0.25
+   }
+  },
+  {
+   "id": "13",
+   "bars": [
+    11.5,
+    1
+   ],
+   "take": "tr13z_refluff",
+   "in": 1.3,
+   "note": "RETAKE under the moisture lamp Z (TRAILER.md 8.2 fallback): the damp band glows blue, the dryer cuts a dry dark lane through it",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      180,
+      210,
+      2400,
+      1350
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      300,
+      300,
+      2160,
+      1215
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "REFLUFF",
+    "style": "refluff",
+    "num": 8
+   },
+   "audio": {
+    "gain_db": 4,
+    "carry": 1.2
+   }
+  },
+  {
+   "id": "14",
+   "bars": [
+    12.5,
+    1
+   ],
+   "take": "tr04_arrival",
+   "in": 5.0,
+   "speed": 0,
+   "note": "before/after: take A's dirty rest plate, wiped L->R to take B (clean + the hand-over sparkle burst at the end); ends on #15's full framing",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      175,
+      199,
+      3490,
+      1963
+     ]
+    },
+    {
+     "t": 1.9,
+     "rect": [
+      175,
+      199,
+      3490,
+      1963
+     ],
+     "ease": "hold"
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      0,
+      0,
+      3840,
+      2160
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "fx": [
+    {
+     "type": "wipe",
+     "take": "tr14_clean",
+     "in": 0.0,
+     "speed": 1,
+     "t0": 0.2,
+     "t1": 1.9,
+     "ease": "linear"
+    }
+   ],
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_whoosh.wav",
+      "at": 0.3,
+      "gain_db": -12
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 1.75,
+      "gain_db": -7
+     }
+    ]
+   }
+  },
+  {
+   "id": "15",
+   "bars": [
+    13.5,
+    1
+   ],
+   "take": "tr15_payoff",
+   "in": 0.08,
+   "hud": true,
+   "note": "take C: the spotless star is handed over (real hand-over, gold + white burst), the card drops",
+   "title": {
+    "text": "Hand it over.",
+    "style": "line",
+    "shadow": "shade-strong"
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 0.6,
+      "gain_db": -7
+     }
+    ]
+   }
+  },
+  {
+   "id": "16",
+   "bars": [
+    14.5,
+    1
+   ],
+   "take": "tr15_payoff",
+   "in": 2.75,
+   "hud": true,
+   "note": "the pay slip at 1.6x (PayoutSeek): bone dry, COMBO stamp, $120, coins to the wallet; push in between the HUD columns, out to the wallet. Seeked = silent in the log: UI sounds placed on the card frames",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      0,
+      0,
+      3840,
+      2160
+     ]
+    },
+    {
+     "t": 0.53,
+     "rect": [
+      660,
+      0,
+      2600,
+      1462
+     ],
+     "ease": "smootherstep"
+    },
+    {
+     "t": 1.83,
+     "rect": [
+      660,
+      0,
+      2600,
+      1462
+     ],
+     "ease": "hold"
+    },
+    {
+     "t": 2.23,
+     "rect": [
+      0,
+      0,
+      2880,
+      1620
+     ],
+     "ease": "smootherstep"
+    }
+   ],
+   "title": {
+    "text": "Get paid.",
+    "style": "line",
+    "pos": "br",
+    "shadow": "shade-strong",
+    "at": 0.25
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 0.13,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 0.15,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 0.18,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 0.28,
+      "gain_db": -5
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 0.28,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_whoosh.wav",
+      "at": 0.4,
+      "gain_db": -14
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 0.51,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 0.62,
+      "gain_db": -5
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 0.62,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_stamp.wav",
+      "at": 0.915,
+      "gain_db": -2
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 0.92,
+      "gain_db": -6
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.6,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.66,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.71,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.75,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.79,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.82,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.85,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_tick.wav",
+      "at": 1.88,
+      "gain_db": -10
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_kaching.wav",
+      "at": 1.9,
+      "gain_db": -3
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 2.37,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 2.4,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 2.42,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 2.43,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 2.52,
+      "gain_db": -9
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 2.53,
+      "gain_db": -9
+     }
+    ]
+   }
+  },
+  {
+   "id": "17",
+   "bars": [
+    15.5,
+    1
+   ],
+   "take": "tr15_payoff",
+   "in": 5.77,
+   "hud": true,
+   "note": "the shop opens (first shop frame on the cut); push in to the shop panel before the brush POWER buy (pip pop, wallet $1,960 -> $1,885)",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      0,
+      0,
+      2880,
+      1620
+     ]
+    },
+    {
+     "t": 0.7,
+     "rect": [
+      520,
+      410,
+      2800,
+      1575
+     ],
+     "ease": "smootherstep"
+    }
+   ],
+   "title": {
+    "text": "Upgrade your kit.",
+    "style": "line"
+   }
+  },
+  {
+   "id": "18",
+   "bars": [
+    16.5,
+    1
+   ],
+   "take": "t18_lamp",
+   "in": 0.08,
+   "hud": true,
+   "note": "the lamp: X (amber leftovers) at +0.32 s, Z (damp zone blue) on top at +1.67 s; both key clicks from the log",
+   "title": {
+    "text": "Find every last spot.",
+    "style": "line"
+   },
+   "audio": {
+    "gain_db": 4
+   }
+  },
+  {
+   "id": "19a",
+   "bars": [
+    17.5,
+    0.5
+   ],
+   "take": "t19a_rya",
+   "in": 0.35,
+   "note": "Finnish rya: the foam ring runs down the pink band",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      810,
+      298,
+      2560,
+      1440
+     ]
+    }
+   ],
+   "title": {
+    "text": "Five real museum rugs.",
+    "style": "line",
+    "dur": 2.6667
+   },
+   "audio": {
+    "gain_db": -1.5,
+    "carry": 0.2
+   }
+  },
+  {
+   "id": "19b",
+   "bars": [
+    18,
+    0.5
+   ],
+   "take": "t19b_salor",
+   "in": 0.44,
+   "note": "Salor Turkmen: the hose nozzle draws a glossy sheet over the soaked field; wide enough for the rug's field and border",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      480,
+      300,
+      3200,
+      1800
+     ]
+    }
+   ],
+   "audio": {
+    "gain_db": -2
+   }
+  },
+  {
+   "id": "19c",
+   "bars": [
+    18.5,
+    0.5
+   ],
+   "take": "t19c_eu",
+   "in": 0.24,
+   "note": "European green: the dryer ring runs down a damp lane (its machine is only spinning up in the take: a louder stretch of the start clip laid on the cut)",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      352,
+      0,
+      3072,
+      1728
+     ]
+    }
+   ],
+   "title": {
+    "text": "A new mess every job.",
+    "style": "line",
+    "dur": 2.6667
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Recorded/dryer_metalfan_start.wav",
+      "in": 1.95,
+      "at": 0.0,
+      "dur": 1.4,
+      "fade_in": 0.01,
+      "fade_out": 0.08,
+      "gain_db": -4
+     }
+    ]
+   }
+  },
+  {
+   "id": "19d",
+   "bars": [
+    19,
+    0.5
+   ],
+   "take": "t19d_mop",
+   "in": 0.47,
+   "note": "the mop wipes the runoff off the tile beside the Transylvanian",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      0,
+      635,
+      2560,
+      1440
+     ]
+    }
+   ],
+   "audio": {
+    "gain_db": -3,
+    "carry": 0.3
+   }
+  },
+  {
+   "id": "20",
+   "bars": [
+    19.5,
+    1
+   ],
+   "take": "tr14_clean",
+   "in": 0.3,
+   "speed": 0,
+   "note": "quiet close-up of the clean dry star, slow push; the dryer winds down, one soft rustle of pile",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      720,
+      625,
+      2400,
+      1350
+     ]
+    },
+    {
+     "t": 2.6667,
+     "rect": [
+      960,
+      760,
+      1920,
+      1080
+     ],
+     "ease": "smoothstep"
+    }
+   ],
+   "title": {
+    "text": "Filthy in. Fluffy out.",
+    "style": "line"
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Recorded/dryer_metalfan_stop.wav",
+      "at": 0.0,
+      "gain_db": -9,
+      "dur": 5.2,
+      "fade_out": 2.4
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Recorded/brush_hairbrush_contact.wav",
+      "in": 1.0,
+      "at": 1.4,
+      "dur": 0.5,
+      "fade_in": 0.1,
+      "fade_out": 0.3,
+      "gain_db": -18
+     }
+    ]
+   }
+  },
+  {
+   "id": "21",
+   "bars": [
+    20.5,
+    2
+   ],
+   "take": "tr14_clean",
+   "in": 0.3,
+   "speed": 0,
+   "note": "end card over the slowly drifting clean star (blurred, darkened); 5.33 s, last 0.5 s silent",
+   "cam": [
+    {
+     "t": 0,
+     "rect": [
+      240,
+      316,
+      3072,
+      1728
+     ]
+    },
+    {
+     "t": 5.3333,
+     "rect": [
+      496,
+      316,
+      3072,
+      1728
+     ],
+     "ease": "linear"
+    }
+   ],
+   "fx": [
+    {
+     "type": "endcard",
+     "cta": "Wishlist now on Steam",
+     "studio": "Vahov Games"
+    }
+   ],
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 0.25,
+      "gain_db": -8
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_whoosh.wav",
+      "at": 0.45,
+      "gain_db": -12
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 0.7,
+      "gain_db": -16
+     }
+    ]
+   }
+  }
+ ]
+}

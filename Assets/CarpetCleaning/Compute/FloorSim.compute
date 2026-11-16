@@ -1,0 +1,576 @@
+// FloorSim.compute — LANE-A. 1280x1280 floor simulation over the whole workshop (12 m square), units mm and s.
+// Contract: Docs/FLOOR_SYSTEM.md section 4. Per-frame order (FloorSimulation.StepFrame):
+//   K_FInject -> nSub x (K_FFlux, K_FIntegrate) -> K_FChem.  Reset: K_FInit (both ping-pong halves) + K_FClearInject.
+// UAV counts (max 8): K_FInit 7, K_FClearInject 1, K_FInject 6, K_FFlux 1, K_FIntegrate 2, K_FChem 3, K_FClearStats 1, K_FReduce 1.
+#pragma kernel K_FInit
+#pragma kernel K_FClearInject
+#pragma kernel K_FInject
+#pragma kernel K_FFlux
+#pragma kernel K_FIntegrate
+#pragma kernel K_FChem
+#pragma kernel K_FClearStats
+#pragma kernel K_FReduce
+
+#include "FloorCommon.hlsl"
+
+// ============================================================================================
+// Tile relief profile (4.2): grout where frac(cmm/TILE)*TILE < GROUT_W on either axis -> -GROUT_DEPTH, with a smooth
+// 1.5 mm chamfer; per-tile tilt 0.25*dot(Hash2(tile)-0.5, localOffset/TILE); micro-noise 0.08*(Fbm(cmm*0.02)*2-1).
+// ============================================================================================
+float TileReliefMm(float2 cmm)
+{
+    float tile = max(_F_TILE, 1.0);
+    float2 tid = floor(cmm / tile);
+    float2 local = cmm - tid * tile;                        // 0..tile
+    float2 dGrout = (local < _F_GROUT_W) ? 0.0 : min(local - _F_GROUT_W, tile - local);   // distance to the nearest grout edge
+    float2 gAxis = 1.0 - smoothstep(0.0, 1.5, dGrout);
+    float g = max(gAxis.x, gAxis.y);
+    float2 localOffset = local - 0.5 * tile;
+    float tilt = 0.25 * dot(Hash2(tid) - 0.5, localOffset / tile);
+    float micro = 0.08 * (Fbm(cmm * 0.02) * 2.0 - 1.0);
+    return -_F_GROUT_DEPTH * g + tilt + micro;
+}
+
+// ============================================================================================
+// K_FInit (4.2): bed = plain tile relief (the +40 mm carpet wall is added at READ time in K_FFlux, because the carpet
+// can be carried away mid-play and the bed texture is written once); clear every state texture.
+// UAVs: FBed, FFluidOut, FSoapOut, FDeposit, FFlux, FToolFlow, FAgit = 7. C# dispatches it once per ping-pong half.
+// ============================================================================================
+[numthreads(8,8,1)]
+void K_FInit(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_FW || id.y >= (uint)_FH) return;
+    int2 cell = int2(id.xy);
+    float2 cmm = FloorCellCentreCMM(cell);
+    _FBed[cell]      = TileReliefMm(cmm);
+    _FFluidOut[cell] = float4(0.0, 0.0, 0.0, 0.0);
+    _FSoapOut[cell]  = float4(0.0, 0.0, 0.0, 0.0);
+    _FDeposit[cell]  = float4(0.0, 0.0, 0.0, 0.0);
+    _FFlux[cell]     = float4(0.0, 0.0, 0.0, 0.0);
+    _FToolFlow[cell] = float4(0.0, 0.0, 0.0, 0.0);
+    _FAgit[cell]     = float4(0.0, 0.0, 0.0, 0.0);
+}
+
+// ============================================================================================
+// K_FClearInject (4.2): zero the FW*FH*4 inject accumulators (1D, 256 threads per group).
+// ============================================================================================
+[numthreads(256,1,1)]
+void K_FClearInject(uint3 id : SV_DispatchThreadID)
+{
+    uint n = (uint)_FW * (uint)_FH * 4u;
+    if (id.x < n) _FInject[id.x] = 0u;
+}
+
+// ============================================================================================
+// K_FClearStats: zero the 16 stats accumulators.
+// ============================================================================================
+[numthreads(16,1,1)]
+void K_FClearStats(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x < 16u) _FStatsBuf[id.x] = 0u;
+}
+
+// ============================================================================================
+// EdgeOut pull: conservative along-edge overlaps and a normalized outward density.
+// The support is at least two floor cells. Its integral is exactly one even for a fractional final band;
+// at two full cells the old 60/40 split is preserved. Rug boundaries coincide with the floor grid.
+// Corner carpet texels hold both faces and are read half by each adjacent side.
+// ============================================================================================
+float EdgePull(float2 c, out float4 E, out float4 E2)
+{
+    E = 0.0; E2 = 0.0;
+    float dxOut = max(max(0.0 - c.x, c.x - CARPET_W_MM), 0.0);
+    float dyOut = max(max(0.0 - c.y, c.y - CARPET_H_MM), 0.0);
+    float dOut = max(dxOut, dyOut);
+    float dripWidth = max(_F_DRIP_W, 2.0 * _FDX);
+    if (dOut <= 0.0 || dOut - 0.5 * _FDX >= dripWidth) return 0.0;
+
+    bool xSide = dxOut >= dyOut;                      // side = axis with the larger outside distance
+    float along  = xSide ? c.y : c.x;
+    float extent = xSide ? CARPET_H_MM : CARPET_W_MM;
+    int   edgeLen = xSide ? CARPET_SIM_H : CARPET_SIM_W;
+    bool  lowSide = xSide ? (c.x < 0.0) : (c.y < 0.0);
+    int   fixedIdx = xSide ? (lowSide ? 0 : CARPET_SIM_W - 1) : (lowSide ? 0 : CARPET_SIM_H - 1);
+
+    float t0 = saturate((dOut - 0.5 * _FDX) / dripWidth);
+    float t1 = saturate((dOut + 0.5 * _FDX) / dripWidth);
+    // Integral of density (1.4 - 0.8 t) / dripWidth.
+    float wj = (1.4 * t1 - 0.4 * t1 * t1) - (1.4 * t0 - 0.4 * t0 * t0);
+
+    float a = clamp(along - 0.5 * _FDX, 0.0, extent);
+    float b = clamp(along + 0.5 * _FDX, 0.0, extent);
+    if (b <= a) return 0.0;
+    int k0 = clamp((int)floor(a / CARPET_DXC), 0, edgeLen - 1);
+    int k1 = clamp((int)floor((b - 1e-3) / CARPET_DXC), 0, edgeLen - 1);
+
+    [loop]
+    for (int k = k0; k <= k1; k++)
+    {
+        float lo = max(a, (float)k * CARPET_DXC);
+        float hi = min(b, (float)(k + 1) * CARPET_DXC);
+        float ok = max(hi - lo, 0.0) / CARPET_DXC;
+        if (k == 0 || k == edgeLen - 1) ok *= 0.5;    // corner texel holds the runoff of both open faces and is read by two sides
+        if (ok <= 0.0) continue;
+        int2 ec = xSide ? int2(fixedIdx, k) : int2(k, fixedIdx);
+        E  += ok * _EdgeOut[ec];
+        E2 += ok * _EdgeOut2[ec];
+    }
+    return wj;
+}
+
+// ============================================================================================
+// K_FInject (4.2 / 4.3 / 4.4): once per frame, own cell, in place on the current fluid/soap/deposit textures.
+// (a) EdgeOut pull, (b) _FInject consume (fixed point / INJECT_SCALE, then zeroed), (c) tool stamps.
+// _FAgit / _FToolFlow are fully rewritten (0 when no stamp touches the cell).
+// Cells under a carpet that is actually there only consume-and-drop (the floor under the carpet never holds state);
+// once the carpet has been handed over the same cells are ordinary tile and every tool works on them (HANDOVER.md 6).
+// UAVs: FFluidOut, FSoapOut, FDeposit, FAgit, FToolFlow, FInject = 6. SRVs: _EdgeOut, _EdgeOut2, _Stamps.
+// ============================================================================================
+[numthreads(8,8,1)]
+void K_FInject(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_FW || id.y >= (uint)_FH) return;
+    int2 cell = int2(id.xy);
+    float2 c = FloorCellCentreCMM(cell);
+    bool underCarpet = CarpetCoversCMM(c);
+
+    float4 fl = _FFluidOut[cell];  float h = max(fl.x, 0.0), u = fl.y, v = fl.z, s = max(fl.w, 0.0);
+    float4 sp = _FSoapOut[cell];   float sigma = max(sp.x, 0.0), F = max(sp.y, 0.0), Fd = max(sp.z, 0.0), Fage = sp.w;
+    float4 dp = _FDeposit[cell];   float dust = max(dp.x, 0.0), residue = max(dp.y, 0.0), wetFilm = dp.z, det = max(dp.w, 0.0);
+
+    // (a) carpet edge runoff
+    float4 E, E2;
+    float wj = EdgePull(c, E, E2);
+    if (wj > 0.0)
+    {
+        float FA = F * Fage;
+        h     += wj * E.x / FLOOR_AREA;
+        s     += wj * E.y;
+        F     += wj * E.z / FLOOR_AREA;
+        Fd    += wj * E.w;
+        sigma += wj * E2.x;
+        FA    += wj * E2.y / FLOOR_AREA;
+        Fage = max(FA, 0.0) / max(F, 1e-4);
+    }
+
+    // (b) debris deposits (droplets, dust, dissolved chunks)
+    {
+        uint i0 = FloorInjectIndex(cell, 0u);
+        float water  = (float)_FInject[i0 + 0u] / INJECT_SCALE;
+        float slurry = (float)_FInject[i0 + 1u] / INJECT_SCALE;
+        float foam   = (float)_FInject[i0 + 2u] / INJECT_SCALE;
+        float dustIn = (float)_FInject[i0 + 3u] / INJECT_SCALE;
+        _FInject[i0 + 0u] = 0u; _FInject[i0 + 1u] = 0u; _FInject[i0 + 2u] = 0u; _FInject[i0 + 3u] = 0u;
+        if (!underCarpet) { h += water; s += slurry; F += foam; dust += dustIn; }
+    }
+
+    // (c) tools on the floor
+    float agit = 0.0, inflow = 0.0, dryer = 0.0;
+    float2 vTool = 0.0; float wt = 0.0, wf = 0.0;
+    // static ~25 mm mottle that makes a dry mop leave real streaks instead of an even smear; hoisted out of the
+    // stamp loop on purpose (an Fbm inside it would run up to _StampCount times per cell)
+    float mopStreak = 0.25 + 0.75 * Fbm(c * 0.04 + 11.3);
+    if (!underCarpet)
+    {
+        [loop]
+        for (int k = 0; k < _StampCount; k++)
+        {
+            ToolStamp st = _Stamps[k];
+            float2 p = c - st.uv * CARPET_MM;
+            float m = FootprintWeight(p, st);
+            if (m <= 0.0) continue;
+
+            float mp   = m * st.pressure;
+            float mpw  = mp * ToolPower(st.tool);   // POWER upgrade (Docs/ECONOMY.md 2): effect rates only
+            float mech = saturate(st.speed / max(_F_SPEED_REF, EPS));
+            float dtS  = max(st.dtS, 0.0);
+            float pl   = length(p);
+            float2 radial = (pl > 1e-4) ? p / pl : float2(0.0, 0.0);
+
+            if (st.tool == 0)         // Scraper: scrapes dried residue into loose dust
+            {
+                float x = min(residue, residue * 0.3 * mpw * mech);
+                residue -= x; dust += 0.5 * x;
+            }
+            else if (st.tool == 1)    // DryVacuum: dust, a little residue, foam
+            {
+                dust    -= DecayAmount(dust, 6.0 * mpw, dtS);
+                residue -= DecayAmount(residue, 0.3 * mpw, dtS);
+                float fFrac = 1.0 - exp(-2.0 * mpw * dtS);
+                F -= F * fFrac; Fd -= Fd * fFrac;
+            }
+            else if (st.tool == 2)    // Hose: clean inflow, mild agitation, radial push
+            {
+                float add = max(0.0, min(_F_H_MAX - h, 150.0 * mpw * dtS));
+                h += add; inflow += add;
+                agit = max(agit, 0.5 * mpw);
+                vTool = radial * 400.0 * mpw; wt = max(wt, mp); wf = 1.0;
+            }
+            else if (st.tool == 3)    // FoamSprayer
+            {
+                sigma += 3.0 * mpw * dtS;
+                h += max(0.0, min(_F_H_MAX - h, 6.0 * mpw * dtS));
+                F = min(_F_F_MAX, F + 12.0 * mpw * dtS);
+            }
+            else if (st.tool == 4)    // Brush: the rotary pad (Docs/ROTARY_BRUSH.md) scrubs held still too and swirls the film
+            {
+                float2 vPad = BrushPadVelocity(p);
+                float rub = length(vPad + st.vStroke);
+                agit = max(agit, 1.5 * mpw * saturate(rub / max(_F_AGIT_SPEED, EPS)));
+                vTool = 0.8 * st.vStroke + _BRUSH_SWIRL * vPad + _BRUSH_FLING * length(vPad) * radial;
+                wt = max(wt, mp * saturate(length(vTool) / max(_F_SPEED_REF, EPS))); wf = 0.35;
+            }
+            else if (st.tool == 5)    // Squeegee
+            {
+                vTool = st.vStroke; wt = max(wt, mp * mech); wf = 1.0;
+                agit = max(agit, 0.3 * mp);
+            }
+            else if (st.tool == 6)    // WetVacuum: water with its slurry/soap, foam with its dirt, some dust
+            {
+                float dh = min(h, 200.0 * mpw * dtS);
+                float frac = saturate(dh / (h + 1e-3));
+                s -= s * frac; sigma -= sigma * frac;
+                h -= dh;
+                float dF = min(F, 60.0 * mpw * dtS);
+                Fd -= Fd * saturate(dF / max(F, 1e-4));
+                F -= dF;
+                dust -= DecayAmount(dust, 4.0 * mpw, dtS);
+            }
+            else if (st.tool == 7)    // Dryer: evaporation boost, radial foam push (wf untouched)
+            {
+                dryer = max(dryer, mp);
+                vTool = radial * 300.0 * mp; wt = max(wt, mp);
+            }
+            else if (st.tool == 8)    // FloorCleaner: a detergent film plus a little liquid and surfactant
+            {
+                // deliberately no agit and only a trace of surfactant: K_FChem generates foam from agit * soapy * wet,
+                // so a spray bottle would otherwise raise a pink foam mound and steal the foam sprayer's identity
+                det   += max(0.0, min(_F_DET_MAX - det, _F_DET_RATE * mpw * dtS));
+                sigma += _F_DET_SOAP * mpw * dtS;
+                h     += max(0.0, min(_F_H_MAX - h, _F_DET_WATER * mp * dtS));
+            }
+            else if (st.tool == 9)    // Mop: spotless AND dry where the film is, streaky where it is not
+            {
+                float detv = saturate(det / max(_F_DET_REF, EPS));
+                float k = lerp(_F_MOP_K_DRY * mopStreak, _F_MOP_K, detv) * mpw;
+                dust    -= DecayAmount(dust, k, dtS);
+                residue -= DecayAmount(residue, k * lerp(0.35, 1.0, detv), dtS);          // dried rings still prefer the detergent
+                float dh = min(max(h - _F_MOP_FILM, 0.0), _F_MOP_SOAK * mpw * dtS);        // soaks the water up with its dirt
+                float frac = saturate(dh / (h + 1e-3));
+                s -= s * frac; sigma -= sigma * frac; h -= dh;
+                s -= DecayAmount(s, k, dtS);                                              // and wipes the slurry film
+                float dFm = min(F, _F_MOP_FOAM * mpw * dtS);
+                Fd -= Fd * saturate(dFm / max(F, 1e-4)); F -= dFm;
+                // The head WRINGS the tile: it pulls the dark damp memory DOWN to a faint sheen instead of stamping one
+                // on (which is what made a mopped floor read soaked for a minute). Lerp by mp so the soft footprint edge
+                // dries less than the centre, never the other way round.
+                wetFilm = lerp(wetFilm, min(wetFilm, _F_MOP_WET), mp);
+                det -= DecayAmount(det, _F_MOP_EAT * mp, dtS);                            // the head carries the film away
+                vTool = st.vStroke * 0.9; wt = max(wt, mp * mech); wf = 1.0;               // pushes water like a squeegee
+            }
+        }
+    }
+
+    if (underCarpet) { h = 0.0; u = 0.0; v = 0.0; s = 0.0; sigma = 0.0; F = 0.0; Fd = 0.0; Fage = 0.0; dust = 0.0; residue = 0.0; wetFilm = 0.0; det = 0.0; }   // the wall never holds state
+    h = max(h, 0.0); F = clamp(F, 0.0, _F_F_MAX);
+    s = max(s, 0.0); sigma = max(sigma, 0.0); Fd = max(Fd, 0.0);
+    dust = max(dust, 0.0); residue = max(residue, 0.0);
+    wetFilm = saturate(wetFilm);                      // the mop writes it here now, so it must be clamped here too
+    det = clamp(det, 0.0, _F_DET_MAX);
+    _FFluidOut[cell] = float4(h, u, v, s);
+    _FSoapOut[cell]  = float4(sigma, F, Fd, Fage);
+    _FDeposit[cell]  = float4(dust, residue, wetFilm, det);
+    _FAgit[cell]     = float4(min(agit, 2.0 * max(ToolPower(4), 1.0)), inflow, saturate(dryer), 0.0);
+    _FToolFlow[cell] = float4(vTool, saturate(wt), wf);
+}
+
+// ============================================================================================
+// K_FFlux (4.2): virtual pipes on head = bed + h. Only the mobile height hm moves (h - H_REST unless a tool acts);
+// drag = lerp(DRAG_HI, DRAG_LO, sat(h/2)); ghost neighbours h = 0, bed = b_i - EDGE_DROP (open domain edge);
+// tool blend as the carpet; limiter K = min(1, hm FDX^2 / (dt sumF)).
+// UAVs: FFlux = 1. SRVs: _FFluidIn, _FBedIn, _FToolFlowIn.
+// ============================================================================================
+static const int2 kFOffs[4] = { int2(-1, 0), int2(1, 0), int2(0, -1), int2(0, 1) };
+
+// Floor cells under the carpet rect are a solid wall (K_FInit adds +40 mm there): no water or foam face may cross into them,
+// and they never hold state. Same geometric test as K_FInit / K_FInject so the three never disagree.
+bool FloorWallCell(int2 c) { return CarpetCoversCMM(FloorCellCentreCMM(c)); }
+// bed + the carpet side wall. The wall is a read-time term, not baked into _FBed, so a hand-over opens the rect up
+// (and a new carpet closes it again) without re-running K_FInit, which would also wipe the floor the player cleaned.
+float BedAt(int2 c) { return _FBedIn[c] + (FloorWallCell(c) ? 40.0 : 0.0); }
+
+[numthreads(8,8,1)]
+void K_FFlux(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_FW || id.y >= (uint)_FH) return;
+    int2 cell = int2(id.xy);
+    if (FloorWallCell(cell)) { _FFlux[cell] = float4(0.0, 0.0, 0.0, 0.0); return; }
+    float h_i = max(_FFluidIn[cell].x, 0.0);
+    float b_i = BedAt(cell);
+    float4 fOld = _FFlux[cell];
+    float4 tool = _FToolFlowIn[cell];
+    float hm = (tool.z > 0.05) ? h_i : max(0.0, h_i - _F_H_REST);
+    float drag = lerp(_F_DRAG_HI, _F_DRAG_LO, saturate(h_i / 2.0));
+    float A = _FDX * hm;
+    float dt = _DtSim;
+    float invDX = 1.0 / max(_FDX, EPS);
+
+    float4 fNew = 0.0;
+    [unroll]
+    for (int n = 0; n < 4; n++)
+    {
+        int2 nc = cell + kFOffs[n];
+        float h_n, b_n;
+        bool wall = false;                                          // carpet side wall: closed face, also against tool pushes
+        if (InsideFloorGrid(nc)) { wall = FloorWallCell(nc); h_n = max(_FFluidIn[nc].x, 0.0); b_n = BedAt(nc); }
+        else                     { h_n = 0.0; b_n = b_i - _F_EDGE_DROP; }
+        float dh = (b_i + h_i) - (b_n + h_n);
+        float fn = max(0.0, fOld[n] * (1.0 - drag * dt) + dt * A * _F_G * dh * invDX);
+        if (tool.z > 0.0)
+        {
+            float2 nhat = float2(kFOffs[n]);
+            float fTool = hm * _FDX * max(0.0, dot(tool.xy, nhat));
+            fn = lerp(fn, max(fn, fTool), saturate(tool.z * tool.w));
+        }
+        fNew[n] = wall ? 0.0 : fn;
+    }
+    float sumF = fNew.x + fNew.y + fNew.z + fNew.w;
+    float K = min(1.0, hm * _FDX * _FDX / (dt * sumF + EPS));
+    _FFlux[cell] = K * fNew;
+}
+
+// ============================================================================================
+// K_FIntegrate (4.2): carpet K_Integrate with phi = 1 (no pile): h from face fluxes, u/v from net fluxes, s and sigma
+// carried with the water, foam transported with vF = FOAM_SLIP (u,v) + tool push (conservative upwind, limiter KF),
+// slump diffusion D_FOAM on interior cells. Ghost faces are real loss, nothing comes back.
+// UAVs: FFluidOut, FSoapOut = 2. SRVs: _FFluidIn, _FSoapIn, _FFluxIn, _FToolFlowIn.
+// ============================================================================================
+float4 FFoamOutflow(int2 c)
+{
+    float4 fl = _FFluidIn[c];
+    float4 tool = _FToolFlowIn[c];
+    float F = max(_FSoapIn[c].y, 0.0);
+    float2 vF = clamp(_F_FOAM_SLIP * fl.yz + tool.z * tool.xy, -600.0, 600.0);
+    float4 o;
+    o.x = max(0.0, -vF.x) * _FDX * F;
+    o.y = max(0.0,  vF.x) * _FDX * F;
+    o.z = max(0.0, -vF.y) * _FDX * F;
+    o.w = max(0.0,  vF.y) * _FDX * F;
+    if (FloorWallCell(c)) return float4(0.0, 0.0, 0.0, 0.0);
+    if (FloorWallCell(c + kFOffs[0])) o.x = 0.0;                   // foam piles up against the carpet side instead of vanishing under it
+    if (FloorWallCell(c + kFOffs[1])) o.y = 0.0;
+    if (FloorWallCell(c + kFOffs[2])) o.z = 0.0;
+    if (FloorWallCell(c + kFOffs[3])) o.w = 0.0;
+    float sum = o.x + o.y + o.z + o.w;
+    float KF = min(1.0, F * _FDX * _FDX / (_DtSim * sum + EPS));
+    return o * KF;
+}
+
+[numthreads(8,8,1)]
+void K_FIntegrate(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_FW || id.y >= (uint)_FH) return;
+    int2 cell = int2(id.xy);
+    if (FloorWallCell(cell)) { _FFluidOut[cell] = float4(0.0, 0.0, 0.0, 0.0); _FSoapOut[cell] = float4(0.0, 0.0, 0.0, 0.0); return; }
+    float dt = _DtSim;
+    float area = _FDX * _FDX;
+
+    float4 fl = _FFluidIn[cell];   float h = max(fl.x, 0.0), s = max(fl.w, 0.0);
+    float4 sp = _FSoapIn[cell];    float sigma = max(sp.x, 0.0), F = max(sp.y, 0.0), Fd = max(sp.z, 0.0), Fage = sp.w;
+    float4 fx = _FFluxIn[cell];
+
+    float outSum = fx.x + fx.y + fx.z + fx.w;
+    float outFrac = saturate(dt * outSum / (area * h + EPS));
+
+    float inFArr[4] = { 0.0, 0.0, 0.0, 0.0 };
+    float sIn = 0.0, sigIn = 0.0;
+    float4 foamOut = FFoamOutflow(cell);
+    float foamOutSum = foamOut.x + foamOut.y + foamOut.z + foamOut.w;
+    float FA = F * Fage;
+    float3 QIn = 0.0;
+
+    [unroll]
+    for (int n = 0; n < 4; n++)
+    {
+        int2 nc = cell + kFOffs[n];
+        if (!InsideFloorGrid(nc)) continue;
+        int opp = n ^ 1;
+        float4 fxn = _FFluxIn[nc];
+        float fin = fxn[opp];
+        inFArr[n] = fin;
+        float4 fln = _FFluidIn[nc];
+        float h_n = max(fln.x, 0.0);
+        float carry = saturate(dt * fin / (area * h_n + EPS));
+        float4 spn = _FSoapIn[nc];
+        sIn   += max(fln.w, 0.0) * carry;
+        sigIn += max(spn.x, 0.0) * carry;
+        float4 fo = FFoamOutflow(nc);
+        float fInF = fo[opp];
+        float F_n = max(spn.y, 0.0);
+        float share = saturate(dt * fInF / (F_n * area + EPS));
+        QIn += float3(F_n, max(spn.z, 0.0), F_n * spn.w) * share;
+    }
+    float4 inF = float4(inFArr[0], inFArr[1], inFArr[2], inFArr[3]);
+    float inVol = dt * (inF.x + inF.y + inF.z + inF.w);
+    float h_new = max(h - outFrac * h + inVol / area, 0.0);
+
+    float depth = _FDX * 0.5 * (h + h_new) + 1e-3;
+    float u = 0.5 * ((inF.x - fx.x) + (fx.y - inF.y)) / depth;
+    float v = 0.5 * ((inF.z - fx.z) + (fx.w - inF.w)) / depth;
+    u = clamp(u, -_F_U_MAX, _F_U_MAX); v = clamp(v, -_F_U_MAX, _F_U_MAX);
+
+    float s_new     = max(s     * (1.0 - outFrac) + sIn,   0.0);
+    float sigma_new = max(sigma * (1.0 - outFrac) + sigIn, 0.0);
+
+    float loss = saturate(dt * foamOutSum / (F * area + EPS));
+    float F_new  = F  - loss * F  + QIn.x;
+    float Fd_new = Fd - loss * Fd + QIn.y;
+    float FA_new = FA - loss * FA + QIn.z;
+    if (cell.x > 0 && cell.y > 0 && cell.x < _FW - 1 && cell.y < _FH - 1)
+    {
+        // zero-gradient taps across the carpet wall so slump diffusion cannot leak foam under the carpet
+        float fL = FloorWallCell(cell + int2(-1, 0)) ? F : _FSoapIn[cell + int2(-1, 0)].y;
+        float fR = FloorWallCell(cell + int2( 1, 0)) ? F : _FSoapIn[cell + int2( 1, 0)].y;
+        float fB = FloorWallCell(cell + int2(0, -1)) ? F : _FSoapIn[cell + int2(0, -1)].y;
+        float fT = FloorWallCell(cell + int2(0,  1)) ? F : _FSoapIn[cell + int2(0,  1)].y;
+        float lap = fL + fR + fB + fT - 4.0 * F;
+        F_new += dt * _F_D_FOAM * lap / area;
+    }
+    F_new = clamp(F_new, 0.0, _F_F_MAX); Fd_new = max(Fd_new, 0.0);
+    float Fage_new = max(FA_new, 0.0) / max(F_new, 1e-4);
+
+    _FFluidOut[cell] = float4(h_new, u, v, s_new);                 // no cap: the flux limiters already bound the export; runoff crests must not be discarded
+    _FSoapOut[cell]  = float4(sigma_new, F_new, Fd_new, Fage_new);
+}
+
+// ============================================================================================
+// K_FChem (4.2): once per frame, dt = _DtFrame, in place. Evaporation (dryer boosted) with residue rings from drying
+// slurry; wet film memory (TAU_WET); dust/residue dissolve into slurry when wet; dryer blows dust; foam generation,
+// collapse (returns foam dirt to slurry or residue) and scavenging; Fage.
+// UAVs: FFluidOut, FSoapOut, FDeposit = 3. SRV: _FAgitIn.
+// ============================================================================================
+[numthreads(8,8,1)]
+void K_FChem(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_FW || id.y >= (uint)_FH) return;
+    int2 cell = int2(id.xy);
+    float dt = max(_DtFrame, 0.0);
+
+    float4 fl = _FFluidOut[cell];  float h = max(fl.x, 0.0), s = max(fl.w, 0.0);
+    float4 sp = _FSoapOut[cell];   float sigma = max(sp.x, 0.0), F = max(sp.y, 0.0), Fd = max(sp.z, 0.0), Fage = sp.w;
+    float4 dp = _FDeposit[cell];   float dust = max(dp.x, 0.0), residue = max(dp.y, 0.0), wetFilm = saturate(dp.z), det = max(dp.w, 0.0);
+    float4 ag = _FAgitIn[cell];    float agit = ag.x, inflow = ag.y, dryer = ag.z;
+
+    // a detergent film counts as wet for dissolution (that is what it is for), but NOT for foam generation
+    float detv = saturate(det / max(_F_DET_REF, EPS));
+
+    // evaporation + residue rings
+    float boost = 1.0 + _F_DRYER_BOOST * ToolPower(7) * dryer;   // POWER upgrade of the dryer
+    float dEv = min(h, _F_E_SURF * boost * dt);
+    h -= dEv;
+    // the det guard matters: without it the dirt the film has just dissolved re-deposits as residue at the ragged
+    // fringe of every spray footprint, i.e. spraying would visibly DARKEN the floor
+    if (h < 0.05 && det < 0.02) { residue += s; s = 0.0; }
+    else { float r = _F_REDEP * s * dEv / (h + dEv + EPS); r = min(r, s); residue += r; s -= r; }
+
+    // wet film memory (dark damp look that outlives the water)
+    float wet = saturate(h / 0.2);
+    float wetEff = saturate(max(wet, detv));          // == wet wherever nothing has been sprayed, so the other 8 tools are unchanged
+    wetFilm = max(wetFilm, wet);
+    wetFilm -= wetFilm * (1.0 - exp(-dt * boost / max(_F_TAU_WET, EPS)));
+
+    // dust and residue dissolve into slurry when wet; the dryer blows dust away (visual only)
+    float dD = DecayAmount(dust, _F_K_DUST_DIS * wetEff, dt);   dust -= dD;    s += dD;
+    float kR = wetEff * (_F_K_RES_DIS + _F_K_RES_AGIT * agit) + _F_DET_K_RES * ToolPower(8) * detv;   // detergent POWER
+    float dR = DecayAmount(residue, kR, dt);                 residue -= dR; s += dR;
+    dust -= DecayAmount(dust, 4.0 * dryer, dt);
+
+    // foam generation locks surfactant
+    float soapC = sigma / (h + 1e-3);
+    float soapy = saturate(soapC / max(_F_SOAP_C_REF, EPS));
+    float gen  = _F_K_GEN * agit * soapy * wet;
+    float dGen = max(0.0, min(_F_F_MAX - F, gen * dt));
+    F += dGen;  sigma -= min(sigma, _F_GAMMA_SOAP * dGen);
+
+    // collapse: foam dirt returns to the slurry (wet) or to the residue (dry)
+    float collapse = _F_K_DRAIN + _F_K_DIL * saturate(inflow / (dt * 10.0 + EPS)) * (1.0 - soapy)
+                   + _F_K_DRYPOP * (1.0 - wet) + 0.3 * saturate((h - 4.0) / 4.0) + 3.0 * dryer;
+    float dF = DecayAmount(F, collapse, dt);  F -= dF;
+    float ret = Fd * dF / max(F + dF, 1e-4);  ret = min(ret, Fd);  Fd -= ret;
+    if (h > 0.05) s += ret; else residue += ret;
+
+    // foam scavenges slurry
+    float C = s / (h + 1e-3);
+    float dFd = min(s, _F_K_FD * F * C * dt);  s -= dFd;  Fd += dFd;
+
+    Fage = (F > 0.05) ? Fage + dt : 0.0;
+
+    // detergent film ages: it dries on a dry tile (leaving a faint soapy haze if it was never mopped) and is
+    // washed into the water where a puddle dilutes it
+    float dDry  = DecayAmount(det, _F_DET_DRY * (1.0 - saturate(h / 0.2)), dt);
+    // only STANDING water dilutes the film; the 0.2-0.4 mm the spray itself leaves must not wash it away
+    float dWash = DecayAmount(max(det - dDry, 0.0), _F_DET_WASH * saturate((h - 0.6) * 0.5), dt);
+    det -= dDry + dWash;
+    residue += _F_DET_TO_RES * dDry;
+    sigma   += 0.5 * dWash;
+
+    _FFluidOut[cell] = float4(max(h, 0.0), fl.y, fl.z, max(s, 0.0));
+    _FSoapOut[cell]  = float4(max(sigma, 0.0), clamp(F, 0.0, _F_F_MAX), max(Fd, 0.0), Fage);
+    _FDeposit[cell]  = float4(max(dust, 0.0), max(residue, 0.0), saturate(wetFilm), clamp(det, 0.0, _F_DET_MAX));
+}
+
+// ============================================================================================
+// K_FReduce: per 8x8 group reduction of 10 sums, thread 0 adds uint(sum*FREDUCE_SCALE + 0.5) per quantity.
+// Layout: 0 h, 1 s, 2 F, 3 Fd, 4 dust, 5 residue, 6 wetFilm, 7 count(h > 0.3), 8 detergent, 9 count(dirty cell).
+// UAVs: FStatsBuf = 1 (16 uints). SRVs: _FFluidIn, _FSoapIn, _FDepositIn.
+// ============================================================================================
+#define FREDUCE_N 10
+#define FREDUCE_SCALE 128.0 // Match FloorSimulation.kReduceScale; full 12 mm layer over 1280^2 cells fits uint32.
+groupshared float gsFSum[FREDUCE_N][64];
+
+[numthreads(8,8,1)]
+void K_FReduce(uint3 id : SV_DispatchThreadID, uint gi : SV_GroupIndex)
+{
+    float vals[FREDUCE_N];
+    [unroll]
+    for (int q = 0; q < FREDUCE_N; q++) vals[q] = 0.0;
+
+    if (id.x < (uint)_FW && id.y < (uint)_FH)
+    {
+        int2 cell = int2(id.xy);
+        float4 fl = _FFluidIn[cell];
+        float4 sp = _FSoapIn[cell];
+        float4 dp = _FDepositIn[cell];
+        vals[0] = max(fl.x, 0.0); vals[1] = max(fl.w, 0.0);
+        vals[2] = clamp(sp.y, 0.0, _F_F_MAX); vals[3] = max(sp.z, 0.0);
+        vals[4] = max(dp.x, 0.0); vals[5] = max(dp.y, 0.0); vals[6] = saturate(dp.z);
+        vals[7] = (fl.x > 0.3) ? 1.0 : 0.0;
+        vals[8] = clamp(dp.w, 0.0, 4.0);
+        // a mean cannot tell "spotless" from "a thin haze everywhere", and that is exactly what the mop claims
+        vals[9] = (max(dp.x, 0.0) > 0.02 || max(dp.y, 0.0) > 0.02 || max(fl.w, 0.0) > 0.02 || max(sp.y, 0.0) > 0.05) ? 1.0 : 0.0;
+    }
+    [unroll]
+    for (int q2 = 0; q2 < FREDUCE_N; q2++) gsFSum[q2][gi] = vals[q2];
+    GroupMemoryBarrierWithGroupSync();
+
+    [unroll]
+    for (uint stride = 32u; stride > 0u; stride >>= 1u)
+    {
+        if (gi < stride)
+        {
+            [unroll]
+            for (int q3 = 0; q3 < FREDUCE_N; q3++) gsFSum[q3][gi] += gsFSum[q3][gi + stride];
+        }
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    if (gi == 0u)
+    {
+        [unroll]
+        for (int q4 = 0; q4 < FREDUCE_N; q4++)
+        {
+            float sum = max(gsFSum[q4][0], 0.0);
+            InterlockedAdd(_FStatsBuf[q4], (uint)(sum * FREDUCE_SCALE + 0.5));
+        }
+    }
+}

@@ -1,0 +1,12 @@
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.CarpetDebugApi.StrokeNow(2, 0.47f,0.46f, 0.47f,0.64f, 40, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(2, 0.53f,0.64f, 0.53f,0.46f, 40, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(4, 0.46f,0.46f, 0.46f,0.64f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(4, 0.54f,0.64f, 0.54f,0.46f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.50f,0.40f, 0.50f,0.64f, 70, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.50f,0.40f, 0.50f,0.64f, 70, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(6, 0.50f, 0.645f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 20; i++) UnityEditor.EditorApplication.Step();
+CarpetCleaning.StoreShotApi.RenderScene("test/g2.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.StatsJson();

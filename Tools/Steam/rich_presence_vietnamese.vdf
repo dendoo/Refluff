@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "vietnamese"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Đang giặt thảm: sạch %clean%"
+		"#Status_Spotless" "Thảm đã sạch không tì vết, sẵn sàng giao"
+		"#Status_BetweenCarpets" "Chờ thảm mới, đang lau dọn sàn"
+	}
+}

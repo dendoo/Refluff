@@ -1,0 +1,13 @@
+{
+  "matches_revision3": true,
+  "sha256": {
+    "foley.wav": {
+      "revision3": "0ee62d57018b405db103ea1790a223a574936645c0c0cbd90b9d04e2d28764bb",
+      "revision4": "0ee62d57018b405db103ea1790a223a574936645c0c0cbd90b9d04e2d28764bb"
+    },
+    "mix.wav": {
+      "revision3": "4d0dc67c37fe2852d2c580ae0316b95c4e65403aeffb6a5419788948f526f64a",
+      "revision4": "4d0dc67c37fe2852d2c580ae0316b95c4e65403aeffb6a5419788948f526f64a"
+    }
+  }
+}

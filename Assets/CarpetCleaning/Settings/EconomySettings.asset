@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb8768a77d558641af882644caa130b, type: 3}
+  m_Name: EconomySettings
+  m_EditorClassIdentifier: Assembly-CSharp::CarpetCleaning.EconomySettings
+  basePay: 120
+  speedBonusMax: 80
+  perfectCleanBonus: 60
+  perfectDryBonus: 40
+  comboBonus: 100
+  perfectMin: 0.995
+  dirtRef: 1
+  roundTo: 5
+  parMinSeconds: 45
+  parFullSeconds: 600
+  speedZeroFactor: 2.5
+  maxLevel: 6
+  powerStep: 1.15
+  areaMax: 3
+  powerAnchor: 03000000010000000200000003000000000000000300000000000000000000000000000000000000i
+  areaAnchor: 00000000000000000000000000000000000000000000000000000000000000000000000000000000i
+  priceBase: 40
+  priceGrowth: 1.35
+  areaPriceFactor: 1.2
+  floorToolPriceFactor: 0.6
+  moistureHighlightPrice: 250
+  dirtHighlightPrice: 400
+  cardDelay: 0.3
+  cardIn: 0.35
+  firstLine: 0.55
+  lineGap: 0.55
+  missedLineGap: 0.3
+  countUp: 0.35
+  comboBeat: 0.8
+  totalCount: 0.6
+  coinFlight: 0.7
+  coins: 14
+  hold: 1.4
+  cardOut: 0.3

@@ -1,0 +1,1373 @@
+// CarpetSim.compute — LANE-SIM. 512x640 carpet-UV simulation, units mm and s (spec section 4).
+#pragma kernel K_Init
+#pragma kernel K_Stamp
+#pragma kernel K_Flux
+#pragma kernel K_Integrate
+#pragma kernel K_Chemistry
+#pragma kernel K_Fiber
+#pragma kernel K_ClearStats
+#pragma kernel K_Reduce
+#pragma kernel K_ClearEdge
+#pragma kernel K_Emit
+#pragma kernel K_ClearFiberSet
+#pragma kernel K_PlowScatter
+#pragma kernel K_PlowApply
+#pragma kernel K_PlowDrain
+#pragma kernel K_PlowClear
+
+#include "SimCommon.hlsl"
+
+// ============================================================================================
+// K_Init (spec 4.7): crust = 0.75 + 0.25 fbm(uv*6); mud = 0.5 + 0.5 fbm(uv*11+3.7); grit = 0;
+// stain = saturate(0.8 smoothstep(0.55,0.75, worley(uv*4+seed)) + splat); Voronoi plates -> _Crust;
+// bed = 1.5(fbm(uv*3)*2-1) + 0.4(fbm(uv*20+11)*2-1).
+// A new carpet's dirt (Docs/DIRT_LEVEL.md): the soil intensity S (level + mask) is spent on loose dust at light soil,
+// ground-in grime (mud) growing to print-hiding at full soil, dried-mud crust only in the carpet's crust patches, and
+// stains; the mix (_DirtMix) is rolled per carpet. Level 1 with the "fully soiled" mix (dust 0, mud 1, crust 1, spills 1)
+// is the old carpet above exactly (print fully hidden: crust >= 0.75, mud >= 0.5); level 0 = a spotless rug.
+// ============================================================================================
+
+// ~uniform 0..1 noise for the dirt fields: domain-warped fbm in cellMm cells at noise offset off. The fbm's sigma is ~0.13,
+// so smoothstep(0.25, 0.75) (same slope at the centre as its CDF) spreads it evenly over 0..1.
+float SoilNoise(float2 pMm, float cellMm, float2 off)
+{
+    float2 q = pMm / max(cellMm, 1.0) + off;
+    float2 warp = float2(Fbm(q * 0.7 + float2(5.2, 1.3)), Fbm(q * 0.7 + float2(9.7, 19.1))) - 0.5;
+    return smoothstep(0.25, 0.75, Fbm(q + max(_DIRT_MASK_WARP, 0.0) * warp));
+}
+
+// Soil intensity at carpet mm p: 0 = clean .. 1 = fully soiled. The ramp [a, a + spread] slides with the level from
+// above the noise's top (level 0: nothing) to below its bottom (level 1: everything); a wide spread runs one carpet
+// through every state from clean to filthy, a narrow one gives clean and soiled patches. Mottled +-_DIRT_GRAIN
+// (relative) in _DIRT_GRAIN_MM blotches: soil is never an even film.
+float SoilMask(float2 pMm)
+{
+    float level = _DirtMask.x;
+    if (level <= 0.0) return 0.0;
+    if (level >= 1.0) return 1.0;
+    float spread = max(_DirtMask.w, 1e-3);
+    float a = 1.0 - level * (1.0 + spread);
+    float S = smoothstep(a, a + spread, SoilNoise(pMm, _DIRT_MASK_MM, _DirtMask.yz));
+    float g = Fbm(pMm / max(_DIRT_GRAIN_MM, 1.0) + _DirtMask.zy + float2(91.7, 13.3));
+    return saturate(S * (1.0 + _DIRT_GRAIN * (g * 2.0 - 1.0)));
+}
+
+// Dried-mud cake patches, 0..1: the share _DirtMix.z of the carpet (0 = a carpet without crust, 1 = all of it).
+float CrustPatch(float2 pMm)
+{
+    float k = _DirtMix.z;
+    if (k <= 0.0) return 0.0;
+    if (k >= 1.0) return 1.0;
+    float a = 1.0 - k * 1.25;
+    return smoothstep(a, a + 0.25, SoilNoise(pMm, _DIRT_CRUST_MM, _DirtMask.yz + float2(57.3, 23.9)));
+}
+
+[numthreads(8,8,1)]
+void K_Init(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    float2 uv = (float2(cell) + 0.5) / float2(_SimW, _SimH);
+    float seed = (float)_Seed * 0.6180339 + 7.31;
+    float2 seed2 = float2(seed, seed * 1.37);
+    float2 pMm = uv * CARPET_MM;
+
+    // Dried-mud plates for the crust (2026-09-26, TRAILER.md 8.3 item 7: one ~16 mm cell per plate read as a pebble / cork mat):
+    // big irregular slabs (~40 mm Voronoi) split by the main cracks, about 60 % of them crazed by thin partial sub-cracks
+    // along the old ~16 mm cells. The scraper's damage D widens the shader's crack cut (CarpetFibers cw = 0.26 + 0.5 D, in
+    // units of 8 mm here), so the thin crazing opens first and a scraped slab breaks up into its small pieces.
+    // e = crack field in 8 mm units (0.26 = 2.1 mm from a crack line), plateShade = the slab's hash (tone + height).
+    // the slab grid is domain-warped (dried mud does not crack in straight convex polygons) and the crack width wanders
+    float2 warp = float2(Fbm(uv * 9.0 + seed2 * 0.37 + 2.1), Fbm(uv * 9.0 + seed2 * 0.53 + 17.9)) - 0.5;
+    float3 vorL = Voronoi(uv * float2(30.0, 37.5) + warp * 0.9 + seed2 * 0.71 + 5.3);   // 40 x 40 mm cells
+    float3 vorS = Voronoi(uv * float2(75.0, 94.0) + warp * 1.4 + seed2);                 // 16 x 16 mm cells
+    float mainMm = (vorL.y - vorL.x) * 40.0 * (0.72 + 0.5 * Fbm(uv * 17.0 + seed2 * 0.21 + 41.0));   // main cracks ~1.5-3 mm
+    float craze = step(0.4, Hash1(float2(vorL.z * 91.3, 7.7)));              // this slab is crazed
+    float subMm = (vorS.y - vorS.x) * 16.0 + 1.1 + 3.0 * saturate(Fbm(uv * 23.0 + seed2 * 1.3) * 2.0 - 0.7) + 40.0 * (1.0 - craze);
+    float e = saturate(min(mainMm, subMm) / 8.0);
+    float plateShade = saturate(0.82 * vorL.z + 0.18 * vorS.z);
+    float stainHue = Hash1(floor(uv * float2(4.0, 5.0)) + seed2);
+
+    // Soil intensity S -> the layers (Docs/DIRT_LEVEL.md). Every layer is exactly the old one at S = 1 with the fully soiled
+    // mix. Dust and grime are cut to 0 below a visible amount, so no invisible film holds the Clean bar down.
+    float S = SoilMask(pMm);
+    // loose dust (the grit channel: dry, the dry vacuum lifts it, water turns it into mud): what a rug collects first,
+    // already on light soil, giving way to ground-in grime on heavy soil
+    float grit = _DirtMix.x * _DIRT_DUST * smoothstep(0.0, 0.35, S) * lerp(1.0, 0.4, smoothstep(0.55, 1.0, S));
+    grit *= smoothstep(0.04, 0.05, grit);
+    // ground-in grime: nothing on light soil, a dull brown film at half, hides the print near full soil (S^2.2, no pow)
+    float mud = (0.5 + 0.5 * saturate(Fbm(uv * 11.0 + 3.7 + seed2))) * _DirtMix.y * S * S * (0.8 + 0.2 * S);
+    mud *= smoothstep(0.02, 0.03, mud);
+    // dried mud cake: only inside the carpet's crust patches and on well-soiled ground, a whole plate at a time
+    // (plateShade jitter), so a caked patch ends along its cracks
+    float gCrust = smoothstep(0.45, 0.90, CrustPatch(pMm) + 0.15 * (plateShade - 0.5)) * smoothstep(0.35, 0.75, S);
+    float crust = (0.75 + 0.25 * saturate(Fbm(uv * 6.0 + seed2))) * gCrust;
+    // ground-in stain blotches follow the soil
+    float stain = 0.8 * smoothstep(0.55, 0.75, Worley(uv * 4.0 + seed2)) * smoothstep(0.3, 0.8, S);
+
+    // 12 hashed splatter discs, radius 30..80 mm, amount 0.6. Spills are events of their own: the share _DirtMix.w of the
+    // discs is there, whole, wherever it landed (a clean rug can have a wine stain).
+    [loop]
+    for (int k = 0; k < 12; k++)
+    {
+        if (Hash1(float2(k * 1.7 + 0.3, seed * 0.37 + 11.1)) < _DirtMix.w)
+        {
+            float2 hk = Hash2(float2(k * 3.1 + 1.0, seed + k * 0.77));
+            float2 cMm = (float2(0.05, 0.05) + 0.9 * hk) * CARPET_MM;
+            float rMm = lerp(30.0, 80.0, Hash1(float2(seed + k * 2.3, k * 5.1 + 0.5)));
+            float dist = length(pMm - cMm);
+            stain += 0.6 * smoothstep(rMm, rMm * 0.6, dist);
+        }
+    }
+    stain = saturate(stain);
+
+    // Static bed (mm): low spots for pooling
+    float bed = 1.5 * (Fbm(uv * 3.0 + seed2 * 0.5) * 2.0 - 1.0) + 0.4 * (Fbm(uv * 20.0 + 11.0 + seed2) * 2.0 - 1.0);
+
+    // pile flattening starts where K_Fiber holds it (fTarget 0.6 crustCover): matted under crust, upright on clean ground;
+    // capped at the historical 0.55, which is what every cell of a fully soiled carpet starts at
+    float f0 = min(0.55, 0.6 * (1.0 - exp(-10.0 * crust)));
+
+    _Dirt[cell]     = float4(crust, mud, stain, grit);
+    _Crust[cell]    = float4(0.0, plateShade, stainHue, e);
+    _Bed[cell]      = bed;
+    _FiberOut[cell] = float4(0.0, 0.0, f0, 0.0);
+    _FiberVel[cell] = float4(0.0, 0.0, 0.0, 0.0);
+    _FluidOut[cell] = float4(0.0, 0.0, 0.0, 0.0);
+    _SoapOut[cell]  = float4(0.0, 0.0, 0.0, 0.0);
+    // _Agit / _ToolFlow are NOT written here (Unity caps a kernel at 8 UAVs; this one had 9).
+    // K_Stamp fully rewrites both at the start of every StepFrame before K_Flux/K_Chemistry read them.
+}
+
+// ============================================================================================
+// K_ClearStats (spec 4.8): zero the stats accumulators: 16 sums + the inspection lamp's two histograms (K_Reduce).
+// ============================================================================================
+// Inspection lamp (Docs/HIGHLIGHTS.md 4): per-cell DirtScore and wetness (the HUD bars' own measures), amount and cell
+// count per log bin. CarpetSimulation turns them into the lamp's level: what each cell holds above it is what is left to do
+// before the bar shows 100 %.
+#define HIST_NB       60        // bins per measure (CarpetSimulation.HistBins)
+#define HIST_LO       (-16.0)   // log2 of bin 0's lower edge (1.5e-5); smaller values land in bin 0, zero is skipped
+#define HIST_PER_OCT  3.0       // 60 bins cover 2^-16 .. 2^4
+#define HIST_SCALE    512.0     // 327680 cells x cap16 x512 =2684354560 <2^32 (match CarpetSimulation.HistScale)
+#define HIST_CAP      16.0
+#define STATS_HIST0   16        // amounts: dirt [16, 16 + NB), wet [16 + NB, 16 + 2 NB); cell counts: dirt, then wet, after them
+#define STATS_LEN     (STATS_HIST0 + 4 * HIST_NB)
+
+[numthreads(256,1,1)]
+void K_ClearStats(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x < (uint)STATS_LEN) _StatsBuf[id.x] = 0u;
+}
+
+// ============================================================================================
+// K_Stamp (spec 4.4): once per frame, own cell. Loops over _Stamps in order, applying each tool's
+// effect to local register copies of the cell state; _Agit/_ToolFlow are fully rewritten (0 when no
+// stamp touches the cell). All decays are bounded: x -= x*(1-exp(-k*dtS)).
+// ============================================================================================
+[numthreads(8,8,1)]
+void K_Stamp(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    float2 uv = (float2(cell) + 0.5) / float2(_SimW, _SimH);
+
+    // Local copies of all state
+    float4 fl = _FluidOut[cell];  float h = fl.x, u = fl.y, v = fl.z, s = fl.w;
+    float4 sp = _SoapOut[cell];   float sigma = sp.x, F = sp.y, Fd = sp.z, Fage = sp.w;
+    float4 di = _Dirt[cell];      float crust = di.x, mud = di.y, stain = di.z, grit = di.w;
+    float4 cr = _Crust[cell];     float D = cr.x, plateShade = cr.y, e = cr.w;
+    float4 fb = _FiberOut[cell];  float2 b = fb.xy; float f = fb.z, w = fb.w;
+    float4 fv = _FiberVel[cell];  float2 vb = fv.xy;
+    float chipAcc = max(fv.z, 0.0), dustAcc = max(fv.w, 0.0);   // FLOOR_SYSTEM 1.2: flying-chunk / dust-puff accumulators (zeroed by K_Fiber)
+
+    float agit = 0.0, inflow = 0.0, dryer = 0.0, collapseX = 0.0;
+    float2 vTool = 0.0; float wt = 0.0, wf = 0.0;
+
+    [loop]
+    for (int k = 0; k < _StampCount; k++)
+    {
+        ToolStamp st = _Stamps[k];
+        float2 p = (uv - st.uv) * CARPET_MM;
+        float m = FootprintWeight(p, st);
+        if (st.tool == 1)         // DryVacuum suction (Docs/FIBER_SET.md 6): the pile around the nozzle leans into it at once,
+        {                         // also beyond the footprint; K_Fiber pulls the set the same way, so the lean lasts
+            float pull = VacPullWeight(p, st.radiusMm) * st.pressure;
+            if (pull > 0.0)
+            {
+                float kp = 1.0 - exp(-max(_VAC_PULL_RATE, 0.0) * pull * max(st.dtS, 0.0));
+                b = lerp(b, -_VAC_PULL_B * p / max(length(p), 1e-3), kp);
+                vb *= 1.0 - kp;
+            }
+        }
+        if (m <= 0.0) continue;
+
+        float mp   = m * st.pressure;
+        // POWER upgrade (Docs/ECONOMY.md 2): multiplies the effect rates below, never the pile styling (f / b / vb)
+        float mpw  = mp * ToolPower(st.tool);
+        float mech = saturate(st.speed / max(_SPEED_REF, EPS));
+        float dtS  = max(st.dtS, 0.0);
+        float pl   = length(p);
+        float2 radial = (pl > 1e-4) ? p / pl : float2(0.0, 0.0);
+        float2 dir = st.dir;
+        float dl = dot(dir, dir);
+        dir = (dl > 1e-8) ? dir * rsqrt(dl) : float2(0.0, 0.0);
+        float wet = saturate(w + h / max(_H_FILM, EPS));
+        float access = exp(-5.0 * crust);
+        float waterTot = h + w * _W_CAP;
+
+        if (st.tool == 0)         // Scraper: crack plates from edges inward, chip dry crust into grit
+        {
+            float dry = saturate(1.0 - w / 0.3);
+            // crack proximity: this rate was tuned on the old ~16 mm crack field; the slab field (K_Init 2026-09-26) reads
+            // farther from a crack on average, and 0.84 x keeps its crust removal within +2..6 % of the old field (A/B, 2 passes: seed 1 +5.5 %, 394 @0.9 +1.9 %)
+            float eD = saturate(e * 0.84);
+            D = min(1.0, D + 0.6 * mpw * mech * (0.3 + 0.7 * (1.0 - eD)));
+            float chip = saturate((D - 0.35) / 0.4) * (0.5 + plateShade);
+            float x = min(crust, crust * 0.4 * mpw * mech * dry * chip);   // min: a strong scraper never chips more than there is
+            // split (FLOOR_SYSTEM 1.2): a fraction of the chipped crust flies off as chunks, the rest stays as grit/mud;
+            // dust is visual only (not mass-conserved). _D_CHIP_FLY <= 0.8 keeps the grit increment non-negative.
+            float fly = x * min(_D_CHIP_FLY, 0.8) * mech;
+            crust -= x; grit += 0.8 * x - fly; mud += 0.2 * x;
+            chipAcc += fly; dustAcc += x * _D_DUST_FRAC;
+            if (dry < 0.5)
+            {
+                x = min(crust, crust * 0.10 * mpw * mech);
+                crust -= x; mud += x;
+            }
+            f = max(f, 0.9 * mp);
+            b = lerp(b, 0.8 * dir, 0.5 * mp * mech);
+            vb += 1.0 * mp * mech * dir;
+        }
+        else if (st.tool == 1)    // DryVacuum: lifts grit and surface mud on dry pile, pulls the pile up under the head (the lean
+        {                         // into the nozzle around it is above the footprint test)
+            float dry = (1.0 - w) * (1.0 - w);
+            grit -= DecayAmount(grit, 6.0 * mpw * dry, dtS);
+            mud  -= DecayAmount(mud, 0.8 * mpw * dry, dtS) * access;
+            float fFrac = 1.0 - exp(-2.0 * mpw * dtS);
+            F  -= F * fFrac;
+            Fd -= Fd * fFrac;
+            f  -= DecayAmount(f, 5.0 * mp, dtS);
+            vb += -b * 20.0 * mp * dtS;
+        }
+        else if (st.tool == 2)    // Hose: clean inflow, mild agitation, radial surface push
+        {
+            float add = min(_H_MAX - h, 150.0 * mpw * dtS);
+            add = max(add, 0.0);
+            h += add; inflow += add;
+            agit = max(agit, 0.5 * mpw);
+            vTool = radial * 400.0 * mpw; wt = max(wt, mp); wf = 1.0;
+        }
+        else if (st.tool == 3)    // FoamSprayer: surfactant + a little water + starter foam
+        {
+            sigma += 3.0 * mpw * dtS;
+            h += max(0.0, min(_H_MAX - h, 6.0 * mpw * dtS));
+            F = min(_F_MAX, F + 12.0 * mpw * dtS);
+        }
+        else if (st.tool == 4)    // Brush = a rotary floor machine's brush (Docs/ROTARY_BRUSH.md): agitation, styles fibers,
+        {                         // pushes foam (water only a little), abrades wet crust
+            // The bristles rub the carpet at the pad's speed plus the stroke's, so the brush scrubs, styles and abrades
+            // held still too, combs the pile in arcs, and drags the foam round with it (and throws a little outward).
+            float2 vPad = BrushPadVelocity(p);
+            float2 vRub = vPad + st.vStroke;
+            float rub = length(vRub);
+            float2 rubDir = (rub > 1e-3) ? vRub / rub : dir;
+            float mechR = saturate(rub / max(_SPEED_REF, EPS));
+            agit = max(agit, 1.5 * mpw * saturate(rub / max(_AGIT_SPEED, EPS)));
+            b = lerp(b, 0.8 * rubDir, 0.6 * mp * mechR);
+            vb += 1.0 * mp * mechR * rubDir;
+            f = max(f, 0.5 * mp);
+            vTool = 0.8 * st.vStroke + _BRUSH_SWIRL * vPad + _BRUSH_FLING * length(vPad) * radial;
+            wt = max(wt, mp * saturate(length(vTool) / max(_SPEED_REF, EPS))); wf = 0.35;
+            crust -= crust * saturate(0.03 * mpw * mechR * wet);
+        }
+        else if (st.tool == 5)    // Squeegee: presses the pile to damp and mats it; K_PlowScatter moves the water + foam (Docs/SQUEEGEE.md)
+        {
+            // Wrings a soaked pile down to SQ_W_DAMP (only as far as h has headroom, so the H_MAX clamp deletes nothing)
+            // and presses a surface film into a drier pile up to it: behind the blade the pile is damp, never dry, never soaked.
+            // By footprint m, not pressure, so a light (right-button) pass leaves no water either. s / sigma are cell totals.
+            // No velocity push and no agitation any more: the push was stamp-gated (ribs at the 15 mm spacing, lag above
+            // 600 mm/s) and agitation regrew foam behind the blade (K_Chemistry K_GEN * agit * soapy * wet).
+            // POWER wrings the pile drier: 0.34 at the weakest level, _SQ_W_DAMP at the factory tuning, ~0.265 at the top
+            float tgt = clamp(_SQ_W_DAMP * pow(max(ToolPower(5), 0.05), -0.3), 0.20, 0.34);
+            float wcap = max(_W_CAP, EPS);
+            if (w > tgt) { float dq = min(m * (w - tgt) * wcap, max(_H_MAX - h, 0.0)); h += dq; w -= dq / wcap; }
+            else         { float dq = min(m * (tgt - w) * wcap, h);                    h -= dq; w += dq / wcap; }
+            f = max(f, 0.85 * mp);
+            b = lerp(b, 0.6 * dir, 0.5 * mp * mech);
+            vb += 0.5 * mp * mech * dir;
+        }
+        else if (st.tool == 6)    // WetVacuum: extracts water WITH its dissolved dirt, foam with its dirt, stripes the pile
+        {                         // it cannot dry the pile: w stops at WETVAC_W_MIN (damp and dark); the dryer finishes (Docs/FIBER_SET.md)
+            float dh = min(h, 200.0 * mpw * dtS);
+            float dw = min(max(w - _WETVAC_W_MIN, 0.0), 12.0 * mpw * dtS);
+            float rem = dh + dw * _W_CAP;
+            float frac = saturate(rem / (waterTot + 1e-3));
+            // the air pulled through the damp pile keeps flushing dissolved dirt / soap out of the moisture it leaves behind
+            frac = max(frac, 1.0 - exp(-max(_WETVAC_FLUSH, 0.0) * mpw * dtS));
+            s -= s * frac; sigma -= sigma * frac;
+            h -= dh; w -= dw;
+            float dF = min(F, 60.0 * mpw * dtS);
+            Fd -= Fd * saturate(dF / max(F, 1e-4));
+            F -= dF;
+            f = max(f, 0.4 * mp);
+            b = lerp(b, 0.6 * dir, 0.5 * mp * max(mech, 0.3));
+        }
+        else if (st.tool == 7)    // Dryer: evaporation boost, fluttering fluff, foam remnants collapse
+        {
+            dryer = max(dryer, mp);
+            float2 perpR = float2(-radial.y, radial.x);
+            float flutter = sin(_Time * 30.0 + (float)cell.x * 0.7 + (float)cell.y * 0.4);
+            vb += 25.0 * mp * dtS * (radial + 0.6 * flutter * perpR);
+            f -= DecayAmount(f, 0.3 * mp, dtS);
+            collapseX = max(collapseX, 3.0 * mp);
+            // FLOOR_SYSTEM 1.2: the air stream pushes FOAM radially (wf stays 0 -> K_Flux water blend tool.z*tool.w = 0)
+            vTool = radial * 300.0 * mp; wt = max(wt, mp);
+        }
+    }
+
+    // Clamp and write back (spec 4.4 write-back rules)
+    crust = saturate(crust); mud = saturate(mud); stain = saturate(stain); grit = saturate(grit);
+    D = saturate(D);
+    float bl = length(b); if (bl > 1.0) b /= bl;
+    f = saturate(f); w = saturate(w);
+    h = clamp(h, 0.0, _H_MAX); F = clamp(F, 0.0, _F_MAX);
+    s = max(s, 0.0); sigma = max(sigma, 0.0); Fd = max(Fd, 0.0);
+
+    _FluidOut[cell] = float4(h, u, v, s);
+    _SoapOut[cell]  = float4(sigma, F, Fd, Fage);
+    _Dirt[cell]     = float4(crust, mud, stain, grit);
+    _Crust[cell]    = float4(D, cr.y, cr.z, cr.w);
+    _FiberOut[cell] = float4(b, f, w);
+    _FiberVel[cell] = float4(vb, max(chipAcc, 0.0), max(dustAcc, 0.0));
+    _Agit[cell]     = float4(min(agit, 2.0 * max(ToolPower(4), 1.0)), inflow, saturate(dryer), collapseX);   // a stronger brush may agitate harder
+    _ToolFlow[cell] = float4(vTool, saturate(wt), wf);
+}
+
+// ============================================================================================
+// K_Flux (spec 4.2): virtual-pipe shallow water, own cell. Head = bed + BED_PILE*(pileTop - PILE_H) + h.
+// f_n' = max(0, f_n (1 - drag dt) + dt * DX*h_i * G * dh_n / DX); tool blend; limiter K keeps the
+// export <= cell volume. Ghost neighbours: h = 0, bed = b_i - EDGE_DROP (open edge = real runoff).
+// ============================================================================================
+float BedHeadAt(int2 c)
+{
+    float4 fb = _FiberOut[c];
+    return _Bed[c] + _BED_PILE * (PileTopMm(fb.z, fb.w) - _PILE_H);
+}
+
+[numthreads(8,8,1)]
+void K_Flux(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    float h_i = max(_FluidIn[cell].x, 0.0);
+    float b_i = BedHeadAt(cell);
+    float4 fOld = _Flux[cell];
+    float4 tool = _ToolFlow[cell];
+    float drag = lerp(_PILE_DRAG_HI, _PILE_DRAG_LO, saturate(h_i / 3.0));
+    float dt = _DtSim;
+    float invDX = 1.0 / max(_DX, EPS);
+
+    int2 offs[4] = { int2(-1, 0), int2(1, 0), int2(0, -1), int2(0, 1) };
+    float4 fNew = 0.0;
+    [unroll]
+    for (int n = 0; n < 4; n++)
+    {
+        int2 nc = cell + offs[n];
+        float h_n, b_n;
+        float h_f = h_i;                      // water this face can move
+        if (InsideGrid(nc)) { h_n = max(_FluidIn[nc].x, 0.0); b_n = BedHeadAt(nc); }
+        else                { h_n = 0.0; b_n = b_i - _EDGE_DROP; h_f = max(h_i - _EDGE_LIP, 0.0); }   // open edge (CARPET_EDGE.md): only water above the bound-edge lip runs off, the film stays in the rim cells
+        float dh = (b_i + h_f) - (b_n + h_n);
+        float fn = max(0.0, fOld[n] * (1.0 - drag * dt) + dt * _DX * h_f * _G * dh * invDX);
+        if (tool.z > 0.0)
+        {
+            float2 nhat = float2(offs[n]);
+            float fTool = h_f * _DX * max(0.0, dot(tool.xy, nhat));
+            fn = lerp(fn, max(fn, fTool), saturate(tool.z * tool.w));
+        }
+        fNew[n] = fn;
+    }
+    float sumF = fNew.x + fNew.y + fNew.z + fNew.w;
+    float K = min(1.0, h_i * _DX * _DX / (dt * sumF + EPS));
+    _Flux[cell] = K * fNew;
+}
+
+// ============================================================================================
+// K_Integrate (spec 4.3): h_new = h - outFrac*h + inVol/DX^2; u,v from net face fluxes; dissolved
+// species (s, sigma) move with the mobile fraction phi = h/(h + w W_CAP); foam has its own velocity
+// vF = FOAM_SLIP*(u,v) + tool push, conservative upwind with limiter KF; F, Fd, F*Fage transported;
+// slump diffusion D_FOAM on F (interior cells only). Ghost neighbours never send anything back.
+// ============================================================================================
+static const int2 kOffs[4] = { int2(-1, 0), int2(1, 0), int2(0, -1), int2(0, 1) };
+
+// Limited foam outflows of cell c in the 4 directions (ghost faces count as real loss).
+float4 FoamOutflow(int2 c)
+{
+    float4 fl = _FluidIn[c];
+    float4 tool = _ToolFlow[c];
+    float F = max(_SoapIn[c].y, 0.0);
+    float2 vW = _FOAM_SLIP * fl.yz;
+    float2 vT = tool.z * tool.xy;
+    float2 vF = clamp(vW + vT, -600.0, 600.0);
+    // open-edge faces (CARPET_EDGE.md): foam rides off the rim with water that actually spills over the lip, or under a
+    // tool push; the drainage velocity of a thin film (flux / tiny depth) must not strip the rim cells of their foam
+    float lipGate = saturate((max(fl.x, 0.0) - _EDGE_LIP) / max(0.5 * _EDGE_LIP, EPS));
+    float2 vE = clamp(vW * lipGate + vT, -600.0, 600.0);
+    float4 o;
+    o.x = max(0.0, -(InsideGrid(c + int2(-1, 0)) ? vF.x : vE.x)) * _DX * F;
+    o.y = max(0.0,  (InsideGrid(c + int2( 1, 0)) ? vF.x : vE.x)) * _DX * F;
+    o.z = max(0.0, -(InsideGrid(c + int2(0, -1)) ? vF.y : vE.y)) * _DX * F;
+    o.w = max(0.0,  (InsideGrid(c + int2(0,  1)) ? vF.y : vE.y)) * _DX * F;
+    float sum = o.x + o.y + o.z + o.w;
+    float KF = min(1.0, F * _DX * _DX / (_DtSim * sum + EPS));
+    return o * KF;
+}
+
+[numthreads(8,8,1)]
+void K_Integrate(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    float dt = _DtSim;
+    float area = _DX * _DX;
+
+    float4 fl = _FluidIn[cell];   float h = max(fl.x, 0.0), s = fl.w;
+    float4 sp = _SoapIn[cell];    float sigma = sp.x, F = max(sp.y, 0.0), Fd = sp.z, Fage = sp.w;
+    float4 fx = _Flux[cell];
+    float w = _FiberOut[cell].w;
+    float4 tool = _ToolFlow[cell];
+
+    // ---- water volume
+    float outSum = fx.x + fx.y + fx.z + fx.w;
+    float outFrac = saturate(dt * outSum / (area * h + EPS));
+    float phi_i = h / (h + w * _W_CAP + 1e-3);
+
+    float inFArr[4] = { 0.0, 0.0, 0.0, 0.0 }; // water inflow from L,R,B,T toward this cell (array: float4[n] is not an l-value in FXC)
+    float sIn = 0.0, sigIn = 0.0;
+    float4 foamIn = 0.0;                      // foam inflow F, Fd, FA
+    float4 foamOut = FoamOutflow(cell);
+    float foamOutSum = foamOut.x + foamOut.y + foamOut.z + foamOut.w;
+    float FA = F * Fage;
+    float3 QIn = 0.0;                         // (F, Fd, FA) received
+    // FLOOR_SYSTEM 1.1: what leaves through open (ghost) faces this substep, accumulated for the floor sim
+    float  edgeWater = 0.0, edgeS = 0.0, edgeSigma = 0.0, edgeF = 0.0, edgeFd = 0.0, edgeFA = 0.0;
+    bool   boundary = (cell.x == 0) || (cell.y == 0) || (cell.x == _SimW - 1) || (cell.y == _SimH - 1);
+
+    [unroll]
+    for (int n = 0; n < 4; n++)
+    {
+        int2 nc = cell + kOffs[n];
+        if (!InsideGrid(nc))
+        {
+            // open edge: this face's export is real runoff (water + dissolved species with the mobile fraction, foam with its dirt/age)
+            float dVol  = dt * fx[n];
+            float carryOut = phi_i * dVol / (area * h + EPS);
+            float shareOut = dt * foamOut[n] / (F * area + EPS);
+            edgeWater += dVol;
+            edgeS     += s * carryOut;
+            edgeSigma += sigma * carryOut;
+            edgeF     += dt * foamOut[n];
+            edgeFd    += Fd * shareOut;
+            edgeFA    += FA * shareOut * area;   // extensive (F*age*mm^2) like edgeF, see FLOOR_SYSTEM 1.1
+            continue;
+        }
+        int opp = n ^ 1;                      // L<->R, B<->T
+        float4 fxn = _Flux[nc];
+        float fin = fxn[opp];                 // neighbour's flux toward this cell
+        inFArr[n] = fin;
+        float4 fln = _FluidIn[nc];
+        float h_n = max(fln.x, 0.0);
+        float w_n = _FiberOut[nc].w;
+        float phi_n = h_n / (h_n + w_n * _W_CAP + 1e-3);
+        float carry = phi_n * dt * fin / (area * h_n + EPS);
+        float4 spn = _SoapIn[nc];
+        sIn   += fln.w * carry;
+        sigIn += spn.x * carry;
+        float4 fo = FoamOutflow(nc);
+        float fInF = fo[opp];
+        float F_n = max(spn.y, 0.0);
+        float share = dt * fInF / (F_n * area + EPS);
+        QIn += float3(F_n, spn.z, F_n * spn.w) * share;
+    }
+    float4 inF = float4(inFArr[0], inFArr[1], inFArr[2], inFArr[3]);
+    float inVol = dt * (inF.x + inF.y + inF.z + inF.w);
+    float h_new = max(h - outFrac * h + inVol / area, 0.0);
+
+    float depth = _DX * 0.5 * (h + h_new) + 1e-3;
+    float u = 0.5 * ((inF.x - fx.x) + (fx.y - inF.y)) / depth;
+    float v = 0.5 * ((inF.z - fx.z) + (fx.w - inF.w)) / depth;
+    u = clamp(u, -_U_MAX, _U_MAX); v = clamp(v, -_U_MAX, _U_MAX);
+
+    float s_new     = max(s     * (1.0 - phi_i * outFrac) + sIn,   0.0);
+    float sigma_new = max(sigma * (1.0 - phi_i * outFrac) + sigIn, 0.0);
+
+    // ---- foam transport
+    float loss = dt * foamOutSum / (F * area + EPS);
+    float F_new  = F  - loss * F  + QIn.x;
+    float Fd_new = Fd - loss * Fd + QIn.y;
+    float FA_new = FA - loss * FA + QIn.z;
+
+    // slump diffusion, zero-gradient at the rim (a clamped tap reads the cell itself): the rim cells take part and the
+    // total is conserved (excluding them left a one-cell trench along every edge, CARPET_EDGE.md)
+    {
+        float lap = SoapInC(cell + int2(-1, 0)).y + SoapInC(cell + int2(1, 0)).y
+                  + SoapInC(cell + int2(0, -1)).y + SoapInC(cell + int2(0, 1)).y - 4.0 * F;
+        F_new += dt * _D_FOAM * lap / area;
+    }
+    F_new = max(F_new, 0.0); Fd_new = max(Fd_new, 0.0);
+    float Fage_new = max(FA_new, 0.0) / max(F_new, 1e-4);
+
+    _FluidOut[cell] = float4(h_new, u, v, s_new);
+    _SoapOut[cell]  = float4(sigma_new, F_new, Fd_new, Fage_new);
+
+    // boundary cells accumulate their runoff over the substeps of this frame (K_ClearEdge zeroes it before K_Stamp)
+    if (boundary)
+    {
+        _EdgeOut[cell]  += max(float4(edgeWater, edgeS, edgeF, edgeFd), 0.0);
+        _EdgeOut2[cell] += max(float4(edgeSigma, edgeFA, 0.0, 0.0), 0.0);
+    }
+}
+
+// ============================================================================================
+// K_Chemistry (spec 4.5): once per frame, dt = _DtFrame, own cell.
+// infiltration q_abs = K_ABS(1-w)sat(h/H_FILM); evaporation E_SURF/E_PILE * (1 + DRYER_BOOST*dryer)
+// with redeposition r = REDEP*s*dEvP/(waterTot+dEvP); crust->mud hydration (soak + agitation);
+// grit->mud when wet; mud->slurry kDis = K_DIS wet room (0.15 + agit(1+2 soapy)) access;
+// stain->slurry with soap; foam generation K_GEN agit soapy wet; collapse = K_DRAIN + dilute +
+// K_DRYPOP(1-wet) + 0.3 sat((h-4)/4) + extra; foam scavenges slurry (K_FD) and brushed mud (K_FDM).
+// ============================================================================================
+[numthreads(8,8,1)]
+void K_Chemistry(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    float dt = max(_DtFrame, 0.0);
+
+    float4 fl = _FluidOut[cell];  float h = max(fl.x, 0.0), s = max(fl.w, 0.0);
+    float4 sp = _SoapOut[cell];   float sigma = max(sp.x, 0.0), F = max(sp.y, 0.0), Fd = max(sp.z, 0.0), Fage = sp.w;
+    float4 di = _Dirt[cell];      float crust = di.x, mud = di.y, stain = di.z, grit = di.w;
+    float4 fb = _FiberOut[cell];  float w = saturate(fb.w);
+    float4 ag = _Agit[cell];
+    float wcap = max(_W_CAP, EPS);
+
+    // infiltration: free water sinks into the pile (s, sigma are cell totals: unchanged)
+    float q_abs = _K_ABS * (1.0 - w) * saturate(h / max(_H_FILM, EPS));
+    float dAbs = min(h, q_abs * dt);
+    h -= dAbs; w += dAbs / wcap;
+
+    // evaporation (dryer boosted)
+    float boost = 1.0 + _DRYER_BOOST * ToolPower(7) * ag.z;   // POWER upgrade of the dryer (Docs/ECONOMY.md 2)
+    float dEvS = min(h, _E_SURF * boost * dt);  h -= dEvS;
+    // pile evaporation is RELATIVE to the moisture held (E_PILE * w): a damp patch loses a fixed fraction per second
+    float dEvP = min(w * wcap, _E_PILE * boost * w * dt);  w -= dEvP / wcap;
+    float waterTot = h + w * wcap;
+
+    // redeposition: dirt in evaporated water becomes mud (wicking rings)
+    if (waterTot < 0.05) { mud += s; s = 0.0; }
+    else { float r = _REDEP * s * dEvP / (waterTot + dEvP + EPS); r = min(r, s); mud += r; s -= r; }
+
+    float wet   = saturate(w + h / max(_H_FILM, EPS));
+    float C     = s / (waterTot + 1e-3);
+    float room  = saturate(1.0 - C / max(_C_SAT, EPS));
+    float agit  = ag.x;
+    float soapC = sigma / (waterTot + 1e-3);
+    float soapy = saturate(soapC / max(_SOAP_C_REF, EPS));
+    float access = exp(-5.0 * crust);
+
+    // crust hydration -> mud; wet grit -> mud
+    float dHyd = DecayAmount(crust, _K_HYD * wet + _K_HYD_AGIT * wet * agit, dt);  crust -= dHyd; mud += dHyd;
+    float dG   = DecayAmount(grit, _K_G2M * wet, dt);                              grit -= dG;   mud += dG;
+
+    // mud and stain dissolve into slurry
+    float kDis = _K_DIS * wet * room * (0.15 + agit * (1.0 + 2.0 * soapy)) * access;
+    float dDis = DecayAmount(mud, kDis, dt);    mud -= dDis;   s += dDis;
+    float kSt  = _K_STAIN * wet * room * soapy * (0.1 + agit) * access;
+    float dSt  = DecayAmount(stain, kSt, dt);   stain -= dSt;  s += 0.5 * dSt;
+
+    // foam generation locks surfactant
+    float gen  = _K_GEN * agit * soapy * wet;
+    float dGen = max(0.0, min(_F_MAX - F, gen * dt));
+    F += dGen;  sigma -= min(sigma, _GAMMA_SOAP * dGen);
+
+    // foam collapse releases its dirt back into the slurry
+    float dilute   = _K_DIL * saturate(ag.y / (dt * 10.0 + EPS)) * (1.0 - soapy);
+    float collapse = _K_DRAIN + dilute + _K_DRYPOP * (1.0 - wet) + 0.3 * saturate((h - 4.0) / 4.0) + ag.w;
+    float dF = DecayAmount(F, collapse, dt);  F -= dF;
+    float ret = Fd * dF / max(F + dF, 1e-4);  ret = min(ret, Fd);  Fd -= ret;  s += ret;
+
+    // foam scavenges slurry and (under agitation) accessible mud
+    float dFd = min(s, _K_FD * F * C * dt);  s -= dFd;  Fd += dFd;
+    float dFm = mud * access * (1.0 - exp(-_K_FDM * F * agit * dt));  mud -= dFm;  Fd += dFm;
+
+    Fage = (F > 0.05) ? Fage + dt : 0.0;
+
+    _FluidOut[cell] = float4(clamp(h, 0.0, _H_MAX), fl.y, fl.z, max(s, 0.0));
+    _SoapOut[cell]  = float4(max(sigma, 0.0), clamp(F, 0.0, _F_MAX), max(Fd, 0.0), Fage);
+    _Dirt[cell]     = saturate(float4(crust, mud, stain, grit));
+    _FiberOut[cell] = float4(fb.xy, fb.z, saturate(w));
+}
+
+// ============================================================================================
+// K_Fiber (spec 4.6): damped spring on the bend vector, dt = _DtFrame.
+// k = lerp(K_SPRING_DRY, K_SPRING_WET, w); c = lerp(C_DAMP_DRY, C_DAMP_WET, w); Fext = 0.0025 (u,v)
+// vb += (-k b - c vb + Fext) dt; b += vb dt; |b| <= 1 (radial velocity removed at the limit);
+// f -> fTarget = max(0.7 w, 0.6 crustCover) with tau = lerp(TAU_FLAT_DRY, TAU_FLAT_WET, w);
+// w += D_WICK dt laplacian(w)/DX^2 with clamped neighbours.
+// Fiber set (Docs/FIBER_SET.md): the spring rests at bSet instead of 0 and f relaxes to at least fSet.
+// A pressing tool on WET pile captures the current (b, f) into the set; it holds only while the pile is damp:
+// drying (wetness SET_W_LO -> 0.2 SET_W_LO) relaxes it at SET_DRY_RELAX, so fully dry pile always rests upright.
+// Dry brushing erases it too. Flowing water lays the pile the way it flows, the dry vacuum pulls it into its nozzle, and
+// the squeegee presses dry pile as well (that lay springs back up over a couple of seconds): FIBER_SET.md 5-7.
+// UAVs: _FiberOut, _FiberVel, _FluidOut, _Dirt, _FiberSet = 5 (_FiberIn, _Stamps are SRVs).
+// ============================================================================================
+[numthreads(8,8,1)]
+void K_ClearFiberSet(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    _FiberSet[int2(id.xy)] = float4(0.0, 0.0, 0.0, 0.0);
+}
+
+[numthreads(8,8,1)]
+void K_Fiber(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    float2 uv = (float2(cell) + 0.5) / float2(_SimW, _SimH);
+    float dt = max(_DtFrame, 0.0);
+
+    float4 fb = _FiberIn[cell];   float2 b = fb.xy; float f = fb.z, w = saturate(fb.w);
+    float2 vb = _FiberVel[cell].xy;
+    float4 fl = _FluidOut[cell];
+    float2 uvVel = fl.yz;
+    float crust = _Dirt[cell].x;
+    float4 fs = _FiberSet[cell];  float2 bSet = fs.xy; float fSet = saturate(fs.z);
+
+    // --- fiber set: this frame's stamps (K_Stamp already pressed b/f toward the stroke)
+    float wetness = saturate(w + fl.x / max(_H_FILM, EPS));
+    float wetSet = smoothstep(_SET_W_LO, max(_SET_W_HI, _SET_W_LO + 1e-3), wetness);
+    float dryGate = 1.0 - smoothstep(0.2 * _SET_W_LO, 0.5 * _SET_W_LO, wetness);   // only fully dry pile can be fluffed by brushing
+    float relaxGate = 1.0 - smoothstep(0.2 * _SET_W_LO, _SET_W_LO, wetness);         // drying pile springs back up
+
+    // --- water flowing over the pile lays it the way the water spreads (FIBER_SET.md 5). It goes into the set like a
+    // pressing tool's stroke, so a hosed patch keeps the pattern the water ran in until it dries or something presses it
+    // another way. Only a real flow counts (a settling puddle creeps at a few mm/s and must not rotate the lay), and a flow
+    // never lifts pile that already lies its way: the aim along the flow is at least what is there.
+    float spd = length(uvVel);
+    float drive = smoothstep(_FLOW_V_LO, max(_FLOW_V_HI, _FLOW_V_LO + 1e-3), spd)
+                * smoothstep(_FLOW_H_LO, max(_FLOW_H_HI, _FLOW_H_LO + 1e-3), fl.x);
+    if (drive > 0.0)
+    {
+        float2 fdir = uvVel / max(spd, 1e-3);
+        float capW = 1.0 - exp(-max(_FLOW_SET_RATE, 0.0) * drive * dt);
+        bSet = lerp(bSet, fdir * max(_FLOW_SET_B * drive, dot(bSet, fdir)), capW);
+        fSet = lerp(fSet, max(fSet, _FLOW_SET_F * drive), capW);
+    }
+
+    // Swept, not per stamp: a moving stamp covers the path since the previous one (travel = the tool's spacingMm).
+    // The cell's share of that sweep over the footprint's along-extent sums to exactly 1 per full pass, so the imprint
+    // has no banding at the stamp spacing and is frame-rate / speed independent; a full pass counts as _SET_CONTACT_S
+    // of contact. A hold stamp (speed 0) counts as its own dtS under the plain footprint.
+    // Pressing tools pull the set toward the state they impose in K_Stamp (aimB * dir, flattening aimF * pressure).
+    [loop]
+    for (int s = 0; s < _StampCount; s++)
+    {
+        ToolStamp st = _Stamps[s];
+        float2 p = (uv - st.uv) * CARPET_MM;
+        if (st.tool == 1)
+        {
+            // dry vacuum suction (FIBER_SET.md 6): the set leans into the nozzle around it, wet or dry, per real second of
+            // pull (dtS; the ring changes as the head passes, so it is not a swept imprint). A head moving on leaves the pile
+            // behind it combed its way; dry pile then stands back up at SET_DRY_RELAX, wet pile keeps it. The pile under the
+            // middle of the head is pulled straight up by the fluff below.
+            float pull = VacPullWeight(p, st.radiusMm) * st.pressure;
+            if (pull > 0.0)
+            {
+                float kp = 1.0 - exp(-max(_VAC_PULL_RATE, 0.0) * pull * max(st.dtS, 0.0));
+                bSet = lerp(bSet, -_VAC_PULL_B * p / max(length(p), 1e-3), kp);
+                fSet -= fSet * kp;
+            }
+        }
+        float2 dir = st.dir;
+        float dl = dot(dir, dir);
+        dir = (dl > 1e-8) ? dir * rsqrt(dl) : float2(1.0, 0.0);
+        float2 dirB = (dl > 1e-8) ? dir : float2(0.0, 0.0);    // a hold without a heading presses straight down
+        float mech = saturate(st.speed / max(_SPEED_REF, EPS));
+        float mp, tc;
+        int ti = clamp(st.tool, 0, 15);
+        float travel = _ToolSpacing[ti >> 2][ti & 3];          // stamps sit exactly spacingMm apart along a stroke
+        if (st.speed > 0.0 && travel > 1e-3)
+        {
+            float a = dot(p, dir);                             // cell along the stroke relative to the blade now
+            float q = dot(p, float2(-dir.y, dir.x));
+            float E, gate;
+            if (st.lengthMm > 0.0) { E = st.radiusMm + 2.0; gate = smoothstep(4.0, 0.0, abs(q) - st.lengthMm * 0.5); }
+            else { float R = 0.85 * st.radiusMm; E = sqrt(max(R * R - q * q, 0.0)); gate = 1.0; }
+            if (E <= 0.0 || gate <= 0.0) continue;
+            float overlap = max(0.0, min(a + travel, E) - max(a, -E));   // blade swept from a+travel to a this stamp
+            if (overlap <= 0.0) continue;
+            float Enorm = (st.lengthMm > 0.0) ? E : 0.85 * st.radiusMm;  // discs: chord / diameter, so stripe edges imprint less
+            mp = gate * st.pressure;
+            tc = _SET_CONTACT_S * overlap / (2.0 * max(Enorm, 1e-3));
+        }
+        else
+        {
+            float m = FootprintWeight(p, st);
+            if (m <= 0.0) continue;
+            mp = m * st.pressure;
+            tc = max(st.dtS, 0.0);
+        }
+
+        float aimB = 0.0, aimF = 0.0, mechB = mech, fluffK = 0.0;
+        if (st.tool == 0)      { aimB = 0.8; aimF = 0.9; }                              // scraper
+        else if (st.tool == 4)                                                           // brush: sets wet pile, fluffs dry pile
+        {
+            // rotary (Docs/ROTARY_BRUSH.md): the set follows the bristles' velocity over the carpet, so wet pile keeps the
+            // machine's arcs, and a pad held still presses and fluffs as well
+            float2 vRub = BrushPadVelocity(p) + st.vStroke;
+            float rub = length(vRub);
+            if (rub > 1e-3) dirB = vRub / rub;
+            mechB = saturate(rub / max(_SPEED_REF, EPS));
+            aimB = 0.8; aimF = 0.5; fluffK = _SET_FLUFF_BRUSH * mechB * dryGate;
+        }
+        else if (st.tool == 5) { aimB = 0.6; aimF = 0.85; }                             // squeegee
+        else if (st.tool == 6) { aimB = 0.6; aimF = 0.4; mechB = max(mech, 0.3); }      // wet vacuum
+        else if (st.tool == 1) fluffK = _SET_FLUFF_VAC;                                  // dry vacuum
+        // dryer (7): no direct term; it evaporates w and the drying relax below straightens the pile
+
+        if (aimF > 0.0)
+        {
+            // the squeegee lays dry pile too (FIBER_SET.md 7): the lay then springs back up at SET_DRY_RELAX over a few seconds
+            float gain = (st.tool == 5) ? max(wetSet, saturate(_SQ_SET_DRY)) : wetSet;
+            float capF = 1.0 - exp(-max(_SET_RATE, 0.0) * mp * gain * tc);
+            bSet = lerp(bSet, aimB * dirB, capF * mechB);
+            fSet = lerp(fSet, aimF * mp, capF);
+        }
+        float fluffX = 1.0 - exp(-max(fluffK, 0.0) * mp * tc);
+        bSet -= bSet * fluffX;
+        fSet -= fSet * fluffX;
+    }
+    float relaxX = 1.0 - exp(-max(_SET_DRY_RELAX, 0.0) * relaxGate * dt);
+    bSet -= bSet * relaxX;
+    fSet -= fSet * relaxX;
+    float bsl = length(bSet);
+    if (bsl > 1.0) bSet /= bsl;
+    fSet = saturate(fSet);
+
+    float k = lerp(_K_SPRING_DRY, _K_SPRING_WET, w);
+    float c = lerp(_C_DAMP_DRY, _C_DAMP_WET, w);
+    float2 Fext = 0.0025 * uvVel;
+    vb += (-k * (b - bSet) - c * vb + Fext) * dt;
+    b  += vb * dt;
+    float bl = length(b);
+    if (bl > 1.0)
+    {
+        b /= bl;
+        vb -= max(0.0, dot(vb, b)) * b;
+    }
+
+    float crustCover = 1.0 - exp(-10.0 * saturate(crust));
+    float fTarget = max(max(0.7 * w, 0.6 * crustCover), fSet);
+    float tau = max(lerp(_TAU_FLAT_DRY, _TAU_FLAT_WET, w), 1e-3);
+    f += (fTarget - f) * (1.0 - exp(-dt / tau));
+
+    // wicking: 5-point laplacian with clamped neighbours
+    float wL = FiberInC(cell + int2(-1, 0)).w, wR = FiberInC(cell + int2(1, 0)).w;
+    float wB = FiberInC(cell + int2(0, -1)).w, wT = FiberInC(cell + int2(0, 1)).w;
+    float lap = wL + wR + wB + wT - 4.0 * w;
+    w += _D_WICK * dt * lap / max(_DX * _DX, EPS);
+
+    _FiberOut[cell] = float4(b, saturate(f), saturate(w));
+    _FiberVel[cell] = float4(vb, 0.0, 0.0);
+    _FiberSet[cell] = float4(bSet, fSet, 0.0);
+}
+
+// ============================================================================================
+// K_Reduce (spec 4.8 / 3.3): per 8x8 group, parallel reduction of 14 quantities in groupshared
+// memory, then thread 0 does one InterlockedAdd per quantity of uint(sum*256 + 0.5).
+// Layout: 0 crust, 1 mud, 2 stain, 3 grit, 4 s, 5 Fd, 6 h, 7 w, 8 sigma, 9 F, 10 count(w>0.1), 11 count(h>0.3)
+// 12 count(grit>0.04), 13 count(crust>0.1): visible starting coverage (Docs/DIRT_LEVEL.md). Histogram offset stays 16.
+// Then the inspection lamp's histograms (see K_ClearStats): each cell's DirtScore and wetness go to a log bin; per group
+// every bin's amount is summed in float and added once as uint(sum * HIST_SCALE + 0.5), its cell count as is.
+// ============================================================================================
+#define REDUCE_N 14
+groupshared float gsSum[REDUCE_N][64];
+groupshared uint  gsBin[2][64];
+groupshared float gsVal[2][64];
+
+uint HistBin(float x)
+{
+    if (!(x > 0.0)) return 0xFFFFu;                                  // nothing there (or NaN): no bin
+    return (uint)clamp((int)floor((log2(x) - HIST_LO) * HIST_PER_OCT), 0, HIST_NB - 1);
+}
+
+[numthreads(8,8,1)]
+void K_Reduce(uint3 id : SV_DispatchThreadID, uint gi : SV_GroupIndex)
+{
+    float vals[REDUCE_N];
+    [unroll]
+    for (int q = 0; q < REDUCE_N; q++) vals[q] = 0.0;
+
+    if (id.x < (uint)_SimW && id.y < (uint)_SimH)
+    {
+        int2 cell = int2(id.xy);
+        float4 di = _Dirt[cell];
+        float4 fl = _FluidOut[cell];
+        float4 sp = _SoapOut[cell];
+        float4 fb = _FiberOut[cell];
+        vals[0] = saturate(di.x); vals[1] = saturate(di.y); vals[2] = saturate(di.z); vals[3] = saturate(di.w);
+        vals[4] = max(fl.w, 0.0); vals[5] = max(sp.z, 0.0);
+        vals[6] = clamp(fl.x, 0.0, _H_MAX); vals[7] = saturate(fb.w);
+        vals[8] = max(sp.x, 0.0); vals[9] = clamp(sp.y, 0.0, _F_MAX);
+        vals[10] = (fb.w > 0.1) ? 1.0 : 0.0;
+        vals[11] = (fl.x > 0.3) ? 1.0 : 0.0;
+        vals[12] = (di.w > 0.04) ? 1.0 : 0.0;
+        vals[13] = (di.x > 0.1) ? 1.0 : 0.0;
+    }
+    // the bars' per-cell measures: CarpetSimulation.DirtScore weights, Wetness = w + h / W_CAP (0 outside the grid)
+    float dCell = 1.0 * vals[0] + 0.8 * vals[1] + 0.6 * vals[2] + 0.9 * vals[3] + 0.7 * vals[4] + 0.5 * vals[5];
+    float wCell = vals[7] + vals[6] / max(_W_CAP, 1e-3);
+    gsBin[0][gi] = HistBin(dCell); gsVal[0][gi] = min(dCell, HIST_CAP);
+    gsBin[1][gi] = HistBin(wCell); gsVal[1][gi] = min(wCell, HIST_CAP);
+    [unroll]
+    for (int q2 = 0; q2 < REDUCE_N; q2++) gsSum[q2][gi] = vals[q2];
+    GroupMemoryBarrierWithGroupSync();
+
+    [unroll]
+    for (uint stride = 32u; stride > 0u; stride >>= 1u)
+    {
+        if (gi < stride)
+        {
+            [unroll]
+            for (int q3 = 0; q3 < REDUCE_N; q3++) gsSum[q3][gi] += gsSum[q3][gi + stride];
+        }
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    if (gi == 0u)
+    {
+        [unroll]
+        for (int q4 = 0; q4 < REDUCE_N; q4++)
+        {
+            float sum = max(gsSum[q4][0], 0.0);
+            InterlockedAdd(_StatsBuf[q4], (uint)(sum * 256.0 + 0.5));
+        }
+    }
+
+    // histograms: thread gi owns bins gi and gi + 64 of the 2 x HIST_NB (gsBin / gsVal were written before the first barrier
+    // and never touched by the sum reduction)
+    for (uint hb = gi; hb < 2u * (uint)HIST_NB; hb += 64u)
+    {
+        uint m = hb / (uint)HIST_NB;
+        uint b = hb - m * (uint)HIST_NB;
+        float hsum = 0.0;
+        uint hcnt = 0u;
+        for (uint j = 0u; j < 64u; j++)
+        {
+            bool hit = gsBin[m][j] == b;
+            hsum += hit ? gsVal[m][j] : 0.0;
+            hcnt += hit ? 1u : 0u;
+        }
+        if (hcnt > 0u)
+        {
+            InterlockedAdd(_StatsBuf[STATS_HIST0 + hb], (uint)(hsum * HIST_SCALE + 0.5));
+            InterlockedAdd(_StatsBuf[STATS_HIST0 + 2u * (uint)HIST_NB + hb], hcnt);
+        }
+    }
+}
+
+// ============================================================================================
+// K_ClearEdge (FLOOR_SYSTEM 1.1): zero this frame's edge-runoff accumulators. Dispatched at the top of
+// StepFrame before K_Stamp; the floor sim reads both textures (SRV) later in the same frame.
+// ============================================================================================
+[numthreads(8,8,1)]
+void K_ClearEdge(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    _EdgeOut[id.xy]  = 0.0;
+    _EdgeOut2[id.xy] = 0.0;
+}
+
+// ============================================================================================
+// K_Emit (FLOOR_SYSTEM 1.3): once per frame, own cell, after K_Stamp and before the substeps.
+// Turns the per-cell accumulators of this frame into debris emission requests:
+//   chunks   lambda = chipAcc * _D_CHIPS_PER_UNIT   (chipAcc = _FiberVel.z, written by the scraper)
+//   dust     lambda = dustAcc * _D_DUST_PER_UNIT    (dustAcc = _FiberVel.w)
+//   droplets lambda = inflow  * _D_DROPS_PER_MM     (inflow  = _Agit.y, hose mm this frame)
+// count = floor(lambda) + (hash < frac(lambda)); rates/cap scale with physical cell area.
+// Only UAV writes: _EmitBuf.Append (UAVs: _FiberVel, _Agit, _FluidOut, _FiberOut, _Crust, _EmitBuf = 6).
+// pos / vel are (CMM x, height mm, CMM y). Dust life is set by K_DebSpawn from `seed`, so pad = 0.
+// ============================================================================================
+int EmitCount(float lambda, float hash)
+{
+    lambda = clamp(lambda * EMIT_CELL_AREA_SCALE, 0.0, 3.0 * EMIT_CELL_AREA_SCALE);
+    return (int)floor(lambda) + ((hash < frac(lambda)) ? 1 : 0);
+}
+
+// three independent uniform numbers in [-1, 1]
+float3 Rand3Signed(float2 hb, float salt)
+{
+    float2 a = Hash2(hb + float2(salt, salt * 1.93 + 4.1));
+    float  b = Hash1(hb + float2(salt * 0.71 + 9.3, salt));
+    return float3(a.x, b, a.y) * 2.0 - 1.0;
+}
+
+[numthreads(8,8,1)]
+void K_Emit(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+
+    float4 fv = _FiberVel[cell];
+    float chipAcc = max(fv.z, 0.0);
+    float dustAcc = max(fv.w, 0.0);
+    float inflow  = max(_Agit[cell].y, 0.0);
+    if (chipAcc <= 0.0 && dustAcc <= 0.0 && inflow <= 0.0) return;   // cheap early out for the whole idle carpet
+
+    float2 uv  = (float2(cell) + 0.5) / float2(_SimW, _SimH);
+    float2 cmm = uv * CARPET_MM;
+    float4 fl  = _FluidOut[cell];  float h = max(fl.x, 0.0), s = max(fl.w, 0.0);
+    float4 fb  = _FiberOut[cell];  float w = saturate(fb.w);
+    float pileTop    = PileTopMm(saturate(fb.z), w);
+    float plateShade = saturate(_Crust[cell].y);
+
+    // best scraper (tool 0) and hose (tool 2) stamps at this cell by footprint weight
+    float bestScr = 0.0, bestHose = 0.0;
+    float2 dir = float2(1.0, 0.0);
+    float  speed = 150.0;
+    float2 hoseCentre = cmm;
+    float  hoseR = 0.0;
+    bool   hasHose = false;
+    [loop]
+    for (int k = 0; k < _StampCount; k++)
+    {
+        ToolStamp st = _Stamps[k];
+        if (st.tool != 0 && st.tool != 2) continue;
+        float2 p = cmm - st.uv * CARPET_MM;
+        float m = FootprintWeight(p, st);
+        if (st.tool == 0)
+        {
+            if (m > bestScr)
+            {
+                bestScr = m;
+                float2 d = st.dir; float dl = dot(d, d);
+                dir = (dl > 1e-8) ? d * rsqrt(dl) : float2(1.0, 0.0);
+                speed = clamp(st.speed, 150.0, 1500.0);
+            }
+        }
+        else if (m > bestHose)
+        {
+            bestHose = m;
+            hoseCentre = st.uv * CARPET_MM;
+            hoseR = st.radiusMm;
+            hasHose = true;
+        }
+    }
+    float2 perp = float2(-dir.y, dir.x);
+
+    // randomness: doc hash base (cell, time) + seed; every emitted item gets its own salt
+    float2 hb = float2(cell) * 0.37 + _Time * 13.1;
+    float  seedF = (float)_Seed * 0.6180339 + 3.17;
+    float  hCount = Hash1(hb + seedF);
+
+    // ---- chunks (kind 0): fly along the scraper stroke, plate-like shards, biased small
+    int nChunk = EmitCount(chipAcc * _D_CHIPS_PER_UNIT, hCount);
+    [loop]
+    for (int i = 0; i < nChunk; i++)
+    {
+        float  salt = 7.13 * (float)i + 1.7 + seedF;
+        float  hh   = Hash1(hb + float2(salt, 0.5 * salt + 2.9));
+        float2 h2   = Hash2(hb + float2(1.3 * salt + 5.3, salt + 0.7));
+        float2 jit  = (Hash2(hb + float2(salt + 11.1, 2.1 * salt)) - 0.5) * (0.96 * _DX);   // inside this cell, fixed physical density
+        float2 vxy  = dir * speed * (0.9 + 1.3 * h2.x) + perp * speed * 0.45 * (h2.y - 0.5) * 2.0;   // flicked off the blade: 0.9..2.2x stroke speed
+        float  vy   = speed * _D_CHIP_UP * (0.5 + 1.0 * hh);
+        DebrisEmit e;
+        e.pos    = float3(cmm.x + jit.x, pileTop + 4.0, cmm.y + jit.y);
+        e.size   = lerp(_D_CHIP_SIZE_MIN, _D_CHIP_SIZE_MAX, hh * hh);
+        e.vel    = float3(vxy.x, vy, vxy.y);
+        e.kind   = DEB_KIND_CHUNK;
+        e.amount = 1.0;
+        e.seed   = hh;
+        e.dirt   = plateShade;
+        e.pad    = 0.0;
+        _EmitBuf.Append(e);
+    }
+
+    // ---- dust puffs (kind 1): slow drift along the stroke, buoyant; life = _D_DUST_LIFE*(0.7+0.6 seed) set by K_DebSpawn
+    int nDust = EmitCount(dustAcc * _D_DUST_PER_UNIT, Hash1(hb + float2(seedF + 17.3, 4.7)));
+    [loop]
+    for (int j = 0; j < nDust; j++)
+    {
+        float  salt = 5.71 * (float)j + 23.9 + seedF;
+        float  hh   = Hash1(hb + float2(0.4 * salt + 1.1, salt));
+        float3 r3   = Rand3Signed(hb, salt) * 60.0;
+        float2 vxy  = dir * 0.35 * speed + r3.xz;
+        DebrisEmit e;
+        float2 dustPos = cmm + (Hash2(hb + float2(salt + 7.1, salt + 19.3)) - 0.5) * (0.96 * _DX);
+        e.pos    = float3(dustPos.x, pileTop + 10.0, dustPos.y);
+        e.size   = 35.0;
+        e.vel    = float3(vxy.x, 80.0 + r3.y, vxy.y);
+        e.kind   = DEB_KIND_DUST;
+        e.amount = _D_DUST_AMOUNT;
+        e.seed   = hh;
+        e.dirt   = 0.0;
+        e.pad    = 0.0;
+        _EmitBuf.Append(e);
+    }
+
+    // ---- splash droplets (kind 2): radial from the hose stamp centre (random direction without a hose stamp). They leave from
+    //      the nozzle's skirt (the stamp radius), not from the cell under the head, so none flies up through the head model.
+    int nDrop = EmitCount(inflow * _D_DROPS_PER_MM, Hash1(hb + float2(2.3, seedF + 41.7)));
+    if (nDrop > 0)
+    {
+        float C = s / (h + w * _W_CAP + 1e-3);          // slurry concentration carried by the droplet
+        [loop]
+        for (int q = 0; q < nDrop; q++)
+        {
+            float  salt = 3.37 * (float)q + 57.1 + seedF;
+            float  hh   = Hash1(hb + float2(salt, 0.9 * salt + 6.1));
+            float3 r3   = Rand3Signed(hb, salt + 0.5) * 150.0;
+            float2 source = cmm + (Hash2(hb + float2(salt + 9.7, salt + 28.3)) - 0.5) * (0.96 * _DX);
+            float2 rv = source - hoseCentre;
+            float rl = length(rv);
+            float2 radial = hasHose && rl > 1e-3 ? rv / rl : float2(0.0, 0.0);
+            float launchR = hasHose ? max(rl, hoseR) : 0.0;
+            if (dot(radial, radial) < 0.5)              // no hose stamp or exactly at its centre: random direction
+            {
+                float ang = 6.2831853 * Hash1(hb + float2(1.7 * salt + 3.3, salt + 8.8));
+                radial = float2(cos(ang), sin(ang));
+            }
+            // a splash crown, 50-57 degrees up (was 33-35): the same landing ring (80..500 mm beyond the skirt on the level) but an apex of
+            // 35-150 mm instead of 14-83, so the drops rise out of the pile into view and stay up 0.17-0.35 s instead of
+            // 0.11-0.26 (Docs/DEBRIS_SYSTEM.md, splash drop look). Size and water carried are unchanged.
+            float2 vxy = radial * _D_DROP_SPEED * (0.35 + 0.6 * hh) + r3.xz;
+            float  vy  = _D_DROP_SPEED * (0.55 + 0.6 * hh) + r3.y;
+            DebrisEmit e;
+            float2 lp = hasHose ? hoseCentre + radial * launchR : source;     // the skirt (radial is random at the exact centre)
+            e.pos    = float3(lp.x, pileTop + h + 2.0, lp.y);
+            e.size   = lerp(1.5, 3.0, hh);
+            e.vel    = float3(vxy.x, vy, vxy.y);
+            e.kind   = DEB_KIND_DROP;
+            e.amount = _D_DROP_WATER;
+            e.seed   = hh;
+            e.dirt   = max(C, 0.0);
+            e.pad    = 0.0;
+            _EmitBuf.Append(e);
+        }
+    }
+}
+
+// ============================================================================================
+// Squeegee plow (Docs/SQUEEGEE.md). The blade used to impose a velocity on the surface water / foam, but that push existed
+// only on frames where a stamp landed (every 15 mm of travel: ribs on slow drags) and was capped by the +-600 mm/s foam clamp
+// and the CFL limit (lag on fast drags). Now every sweep of the blade (ToolController -> CarpetSimulation.EnqueuePlow, one
+// per frame or per sub-sweep) moves the surface load geometrically, independent of speed and frame rate:
+//   K_PlowScatter  every cell the blade passed over (and every cell of the roll ahead that the packing overruns) sends its
+//                  water, foam and their dirt forward into a packed roll that starts bs = r + 1.5 DX ahead of the blade line,
+//                  with fixed-point InterlockedAdd into _PlowAcc. Exact: a source keeps orig - q/S of what it sent as q.
+//   K_PlowApply    adds the accumulators into the cells (in place; pushed water soaks into the pile up to SQ_W_ROLL first)
+//                  and zeroes them.
+//   K_PlowDrain    every frame: boundary cells pour their ghost-ring reservoir (what was pushed off the carpet) into
+//                  _EdgeOut / _EdgeOut2 at a capped rate; the floor clamps h / F in its 10 mm drip band, so a whole roll in
+//                  one frame would mostly be deleted there.
+// Blade frame at the end of a sweep: n1 = sign * a1 (travel), t = perp(a) (along the blade); sigma = (p-P1).n1, tau = (p-P1).t1.
+// bs > r + sqrt(2) DX, so no bilinear tap of the roll can land on a cell under or behind the blade body.
+// ============================================================================================
+#define PLOW_CH 6          // h, s, sigma, F, Fd, F*Fage
+#define PLOW_FAGE_MAX 600.0
+static const float kPlowScale[PLOW_CH] = { 16384.0, 4096.0, 4096.0, 16384.0, 4096.0, 32.0 };
+
+// g in [-1, W] x [-1, H]; anything further out is clamped onto the ring (the off-carpet spill reservoir)
+uint PlowIndex(int2 g)
+{
+    g = clamp(g, int2(-1, -1), int2(_SimW, _SimH));
+    return ((uint)(g.y + 1) * (uint)(_SimW + 2) + (uint)(g.x + 1)) * (uint)PLOW_CH;
+}
+
+float2 PlowCellMm() { return CARPET_MM / float2(_SimW, _SimH); }
+
+// How full a cell is as a roll cell: 1 = packed = SQ_H_PACK mm of free water or SQ_F_PACK of foam. The film is thin on
+// purpose: K_PlowApply soaks the pushed water into the pile first, so a roll is a band of soaked pile under a thin film,
+// and it lengthens instead of standing up as a free bead that would run back into the strip when the blade lifts.
+// Only the free surface counts: standing water ahead is what the roll pushes on; a merely damp pile ahead is not roll.
+float PlowFullness(float h, float F)
+{
+    return max(max(h, 0.0) / max(_SQ_H_PACK, 0.05), max(F, 0.0) / max(_SQ_F_PACK, EPS));
+}
+float PlowFullnessCell(int2 c)
+{
+    if (!InsideGrid(c)) return 0.0;
+    return PlowFullness(_FluidIn[c].x, _SoapIn[c].y);
+}
+
+float PlowFullnessAt(float2 q)    // bilinear, carpet mm
+{
+    float2 g = q / PlowCellMm() - 0.5;
+    int2 i0 = (int2)floor(g);
+    float2 f = g - (float2)i0;
+    float a = PlowFullnessCell(i0),              b = PlowFullnessCell(i0 + int2(1, 0));
+    float c = PlowFullnessCell(i0 + int2(0, 1)), d = PlowFullnessCell(i0 + int2(1, 1));
+    return lerp(lerp(a, b, f.x), lerp(c, d, f.x), f.y);
+}
+
+struct PlowGeo
+{
+    float2 P1, t1, n1, dP, dT;    // dP = P1 - P0, dT = t1 - t0
+    float  r, halfL, bs;
+};
+
+PlowGeo GetPlowGeo()
+{
+    PlowGeo g;
+    float2 a0 = _PlowB.xy, a1 = _PlowB.zw;
+    g.P1 = _PlowA.zw;
+    g.dP = _PlowA.zw - _PlowA.xy;
+    g.t1 = float2(-a1.y, a1.x);
+    g.dT = g.t1 - float2(-a0.y, a0.x);
+    g.n1 = ((_PlowC.x < 0.0) ? -1.0 : 1.0) * a1;
+    g.r = max(_PlowC.y, 0.0);
+    g.halfL = max(_PlowC.z, 0.0);
+    g.bs = g.r + 1.5 * _DX;
+    return g;
+}
+
+// The column at lateral tau: how far the blade travelled along n1 (D) and slid along itself (T) during the sweep.
+// The tau * dT term is the rotation: the outer end of a turning blade sweeps more than its centre.
+void PlowColumn(PlowGeo g, float tau, out float D, out float T)
+{
+    float2 d = g.dP + tau * g.dT;
+    D = clamp(dot(d, g.n1), 0.0, 400.0);
+    T = dot(d, g.t1);
+}
+
+// Lateral coverage at (sigma, tau): 1 when some position of the blade body during the sweep covered the point. The body
+// passes sigma at mu = 1 - lambda in [(-r - sigma)/D, (r - sigma)/D], where its tau reads tau + mu T. Ahead of the body
+// only the end position counts. Same 4 mm soft edge as FootprintWeight.
+float PlowLateral(PlowGeo g, float sigma, float tau, float D, float T)
+{
+    float mua = 0.0, mub = 0.0;
+    if (sigma < g.r)
+    {
+        float invD = 1.0 / max(D, 1e-3);
+        mua = saturate((-g.r - sigma) * invD);
+        mub = saturate(( g.r - sigma) * invD);
+    }
+    float x0 = tau + mua * T, x1 = tau + mub * T;
+    float dmin = (x0 * x1 <= 0.0) ? 0.0 : min(abs(x0), abs(x1));
+    return smoothstep(4.0, 0.0, dmin - g.halfL);
+}
+
+// Full grid, ping-pong: _FluidIn/_SoapIn (current, SRV) -> _FluidOut/_SoapOut (other half; exact copy for every cell that
+// does not move). _FiberIn (current fibre, SRV) only for w. UAVs: _FluidOut, _SoapOut, _PlowAcc = 3.
+[numthreads(8,8,1)]
+void K_PlowScatter(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    float4 fl = _FluidIn[cell];
+    float4 sp = _SoapIn[cell];
+
+    PlowGeo g = GetPlowGeo();
+    float2 cellMm = PlowCellMm();
+    float2 rel = (float2(cell) + 0.5) * cellMm - g.P1;
+    float sigma = dot(rel, g.n1), tau = dot(rel, g.t1);
+    float D, T;
+    PlowColumn(g, tau, D, T);
+    float sLo = -g.r - D;                                  // the blade's rear edge at the start of the sweep
+    float h = max(fl.x, 0.0), F = max(sp.y, 0.0);
+    float w = saturate(_FiberIn[cell].w);
+
+    float eta = 0.0;
+    if (sigma >= sLo && sigma < g.bs + max(_SQ_LOOKAHEAD, 0.0) && abs(tau) < g.halfL + abs(T) + 4.0)
+        eta = PlowLateral(g, sigma, tau, D, T);
+    float fill = eta * PlowFullness(h, F);
+    if (fill <= 1e-7)
+    {
+        _FluidOut[cell] = fl; _SoapOut[cell] = sp;
+        return;
+    }
+
+    // Packing: the load of the column is laid out from bs forward at fullness 1, in order; this cell's slot starts after
+    // everything behind it (back to the rear edge). A cell takes at most one cell of room: content denser than a packed
+    // cell (a deep puddle, thick foam) keeps its density instead of spreading forward on its own, and moves as a block
+    // once the roll actually reaches it. Midpoint rule on bilinear samples with an exact last step.
+    float len = (sigma - 0.5 * cellMm.x) - sLo;
+    float cum = 0.0;
+    if (len > 0.0)
+    {
+        int nS = min((int)ceil(len / cellMm.x), 192);
+        float stp = len / (float)nS;
+        [loop]
+        for (int k = 0; k < nS; k++)
+        {
+            float sk = sLo + ((float)k + 0.5) * stp;
+            float ek = PlowLateral(g, sk, tau, D, T);
+            if (ek > 0.0) cum += ek * min(PlowFullnessAt(g.P1 + sk * g.n1 + tau * g.t1), 1.0) * stp;
+        }
+    }
+    float span = eta * min(PlowFullness(h, F), 1.0) * cellMm.x;   // the room this cell takes in the roll
+    float y = g.bs + cum + 0.5 * span;
+    // Every cell the blade passed over moves (its slot is always >= bs). A cell ahead only moves when the packed roll
+    // overruns it: content never slides back toward the blade, and a held blade does not jitter a roll that is packed.
+    if (sigma >= g.bs && y < sigma + 0.25 * cellMm.x)
+    {
+        _FluidOut[cell] = fl; _SoapOut[cell] = sp;
+        return;
+    }
+
+    // ---- what moves: eta of the surface water and foam, and the share of the dissolved species that lives in that water
+    // (s, sigma are cell totals over h + w W_CAP). The pushed foam is crushed with the distance it is shoved: its dirt
+    // joins the water, and the roll turns into dirty water instead of growing without bound.
+    float s = max(fl.w, 0.0), sig = max(sp.x, 0.0), Fd = max(sp.z, 0.0), Fage = clamp(sp.w, 0.0, PLOW_FAGE_MAX);
+    float phi = h / (h + w * _W_CAP + 1e-3);
+    float crush = exp(-max(_SQ_FOAM_CRUSH, 0.0) * ToolPower(5) * D);   // a stronger blade crushes the pushed foam faster
+    float mFd = eta * Fd;
+    float amt[PLOW_CH];
+    amt[0] = eta * h;
+    amt[1] = eta * phi * s + mFd * (1.0 - crush);
+    amt[2] = eta * phi * sig;
+    amt[3] = eta * F * crush;
+    amt[4] = mFd * crush;
+    amt[5] = eta * F * crush * Fage;
+    uint q[PLOW_CH];
+    uint left[PLOW_CH];
+    [unroll]
+    for (int c = 0; c < PLOW_CH; c++) { q[c] = (uint)(max(amt[c], 0.0) * kPlowScale[c]); left[c] = q[c]; }
+
+    // the source keeps exactly what was not sent (floor quantisation leaves < 1/S behind)
+    float dirtOut = (float)q[1] / kPlowScale[1] + (float)q[4] / kPlowScale[4];
+    fl.x  = max(h - (float)q[0] / kPlowScale[0], 0.0);
+    fl.yz *= (1.0 - eta);
+    fl.w  = max(s - (dirtOut - mFd), 0.0);               // mFd came out of Fd, the rest of the dirt out of s
+    sp.x  = max(sig - (float)q[2] / kPlowScale[2], 0.0);
+    sp.y  = F * (1.0 - eta);                               // the rest of eta*F is in the roll or was crushed
+    sp.z  = max(Fd - mFd, 0.0);
+    _FluidOut[cell] = fl; _SoapOut[cell] = sp;
+
+    // ---- splat: bilinear onto 4 cells at the slot centre (slots are at most one cell apart, so the roll has no gaps);
+    // integer shares, the last tap takes the remainder, so the sum is exactly q
+    float tauD = clamp(tau, -g.halfL, g.halfL);
+    float2 gp = (g.P1 + y * g.n1 + tauD * g.t1) / cellMm - 0.5;
+    int2 i0 = (int2)floor(gp);
+    float2 f = gp - (float2)i0;
+    float wt[4] = { (1.0 - f.x) * (1.0 - f.y), f.x * (1.0 - f.y), (1.0 - f.x) * f.y, f.x * f.y };
+    [unroll]
+    for (int j = 0; j < 4; j++)
+    {
+        uint base = PlowIndex(i0 + int2(j & 1, j >> 1));
+        [unroll]
+        for (int c2 = 0; c2 < PLOW_CH; c2++)
+        {
+            uint a = (j == 3) ? left[c2] : min((uint)((float)q[c2] * wt[j]), left[c2]);
+            left[c2] -= a;
+            if (a > 0u) InterlockedAdd(_PlowAcc[base + (uint)c2], a);
+        }
+    }
+}
+
+// In place on the halves K_PlowScatter just wrote (and the current fibre). The pushed water soaks into the pile ahead up
+// to SQ_W_ROLL before any of it stands on top: a carpet is a sponge, and a free-standing 4 mm roll would run straight back
+// into the cleaned strip under gravity the moment the blade lifts. The blade wrings that band out again when it gets there
+// (K_Stamp tool 5), so the water still travels with the blade and off the edge. UAVs: _FluidOut, _SoapOut, _PlowAcc, _FiberOut = 4.
+[numthreads(8,8,1)]
+void K_PlowApply(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 cell = int2(id.xy);
+    uint base = PlowIndex(cell);
+    uint q[PLOW_CH];
+    uint anyQ = 0u;
+    [unroll]
+    for (int c = 0; c < PLOW_CH; c++) { q[c] = _PlowAcc[base + (uint)c]; anyQ |= q[c]; }
+    if (anyQ == 0u) return;
+    [unroll]
+    for (int c2 = 0; c2 < PLOW_CH; c2++) _PlowAcc[base + (uint)c2] = 0u;
+
+    float4 fl = _FluidOut[cell];
+    float4 sp = _SoapOut[cell];
+    float F0 = max(sp.y, 0.0);
+    float FA = F0 * max(sp.w, 0.0) + (float)q[5] / kPlowScale[5];
+    float water = (float)q[0] / kPlowScale[0];
+    if (water > 0.0)
+    {
+        float4 fb = _FiberOut[cell];
+        float wcap = max(_W_CAP, EPS);
+        float soak = min(water, max(saturate(_SQ_W_ROLL) - saturate(fb.w), 0.0) * wcap);
+        fb.w = saturate(fb.w) + soak / wcap;
+        water -= soak;
+        _FiberOut[cell] = fb;
+    }
+    fl.x = max(fl.x, 0.0) + water;
+    fl.w = max(fl.w, 0.0) + (float)q[1] / kPlowScale[1];
+    sp.x = max(sp.x, 0.0) + (float)q[2] / kPlowScale[2];
+    sp.y = F0 + (float)q[3] / kPlowScale[3];
+    sp.z = max(sp.z, 0.0) + (float)q[4] / kPlowScale[4];
+    sp.w = FA / max(sp.y, 1e-4);
+    _FluidOut[cell] = fl;
+    _SoapOut[cell]  = sp;
+}
+
+// Pours at most budgetH (mm of carpet-cell water) / budgetF (foam) of one ghost entry into the owner's runoff; the
+// dissolved species go in proportion. Units as K_Integrate writes them: water h DX^2 mm^3, foam F DX^2, FA F age DX^2.
+void PlowDrainGhost(int2 gc, float budgetH, float budgetF, inout float4 E, inout float4 E2)
+{
+    uint base = PlowIndex(gc);
+    uint q[PLOW_CH];
+    [unroll]
+    for (int c = 0; c < PLOW_CH; c++) q[c] = _PlowAcc[base + (uint)c];
+    if ((q[0] | q[1] | q[2] | q[3] | q[4] | q[5]) == 0u) return;
+    uint t[PLOW_CH];
+    t[0] = min(q[0], (uint)(max(budgetH, 0.0) * kPlowScale[0]));
+    t[3] = min(q[3], (uint)(max(budgetF, 0.0) * kPlowScale[3]));
+    float fw = (q[0] > 0u) ? (float)t[0] / (float)q[0] : 1.0;
+    float ff = (q[3] > 0u) ? (float)t[3] / (float)q[3] : 1.0;
+    t[1] = min(q[1], (uint)((float)q[1] * fw + 0.5));
+    t[2] = min(q[2], (uint)((float)q[2] * fw + 0.5));
+    t[4] = min(q[4], (uint)((float)q[4] * ff + 0.5));
+    t[5] = min(q[5], (uint)((float)q[5] * ff + 0.5));
+    [unroll]
+    for (int c2 = 0; c2 < PLOW_CH; c2++) _PlowAcc[base + (uint)c2] = q[c2] - t[c2];
+    float2 cm = PlowCellMm();
+    float area = cm.x * cm.y;
+    E.x  += (float)t[0] / kPlowScale[0] * area;
+    E.y  += (float)t[1] / kPlowScale[1];
+    E.z  += (float)t[3] / kPlowScale[3] * area;
+    E.w  += (float)t[4] / kPlowScale[4];
+    E2.x += (float)t[2] / kPlowScale[2];
+    E2.y += (float)t[5] / kPlowScale[5] * area;
+}
+
+// Every frame, after K_ClearEdge and before the substeps. Each ghost entry has exactly one owner: the boundary cell next to
+// it (corner ghosts: the corner cell, whose runoff EdgePull already splits between its two sides).
+// UAVs: _PlowAcc, _EdgeOut, _EdgeOut2 = 3.
+[numthreads(8,8,1)]
+void K_PlowDrain(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_SimW || id.y >= (uint)_SimH) return;
+    int2 c = int2(id.xy);
+    bool x0 = c.x == 0, x1 = c.x == _SimW - 1, y0 = c.y == 0, y1 = c.y == _SimH - 1;
+    if (!(x0 || x1 || y0 || y1)) return;
+    float bh = max(_SQ_SPILL_H_RATE, 0.0) * max(_DtFrame, 0.0);
+    float bf = max(_SQ_SPILL_F_RATE, 0.0) * max(_DtFrame, 0.0);
+    float4 E = 0.0, E2 = 0.0;
+    if (x0) PlowDrainGhost(int2(-1, c.y), bh, bf, E, E2);
+    if (x1) PlowDrainGhost(int2(_SimW, c.y), bh, bf, E, E2);
+    if (y0) PlowDrainGhost(int2(c.x, -1), bh, bf, E, E2);
+    if (y1) PlowDrainGhost(int2(c.x, _SimH), bh, bf, E, E2);
+    if (x0 && y0) PlowDrainGhost(int2(-1, -1), bh, bf, E, E2);
+    if (x0 && y1) PlowDrainGhost(int2(-1, _SimH), bh, bf, E, E2);
+    if (x1 && y0) PlowDrainGhost(int2(_SimW, -1), bh, bf, E, E2);
+    if (x1 && y1) PlowDrainGhost(int2(_SimW, _SimH), bh, bf, E, E2);
+    if (dot(E, 1.0) + dot(E2, 1.0) > 0.0)
+    {
+        _EdgeOut[c]  += E;
+        _EdgeOut2[c] += E2;
+    }
+}
+
+// Zeroes the whole accumulator incl. the ring (a new ComputeBuffer is not guaranteed to be zero). UAVs: _PlowAcc = 1.
+[numthreads(256,1,1)]
+void K_PlowClear(uint3 id : SV_DispatchThreadID)
+{
+    uint n = (uint)(_SimW + 2) * (uint)(_SimH + 2) * (uint)PLOW_CH;
+    if (id.x < n) _PlowAcc[id.x] = 0u;
+}

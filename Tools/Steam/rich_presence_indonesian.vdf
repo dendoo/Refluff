@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "indonesian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Membersihkan karpet: %clean% bersih"
+		"#Status_Spotless" "Karpet sudah bersih tanpa noda, siap diserahkan"
+		"#Status_BetweenCarpets" "Menunggu karpet berikutnya, merapikan lantai"
+	}
+}

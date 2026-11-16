@@ -1,0 +1,1460 @@
+/* =====================================================================================
+   CarpetHud.uss - the whole visual style of the HUD lives here (Docs/HUD.md).
+   Structure is CarpetHud.uxml, behaviour is Scripts/CleaningHUD.cs; neither of those
+   files picks a colour or a size, so a restyle is an edit of THIS file only.
+
+   Design language: light "spa glass" over a bright scene - near-white translucent
+   surfaces, one hairline rim, a soft baked drop shadow, deep-slate ink, and exactly
+   three accents (teal = active tool, emerald = hand over, blue = take a new carpet).
+
+   Vertical rhythm: every margin, padding, height and radius is a multiple of 2 and the
+   layout steps on a 4 px grid (4 / 8 / 12 / 16 / 24). The screen gutter is 24 px on all
+   four sides, so both edge strips and all four corners share one margin.
+   ===================================================================================== */
+
+.hud {
+    /* ---- ink ---- */
+    --ink:            rgb(26, 33, 43);
+    --ink-2:          rgb(84, 96, 112);
+    --ink-3:          rgba(26, 33, 43, 0.45);
+    --on-accent:      rgb(255, 255, 255);
+
+    /* ---- surfaces ---- */
+    --surface:        rgba(255, 255, 255, 0.92);
+    --surface-hover:  rgb(255, 255, 255);
+    --rim:            rgba(18, 26, 38, 0.08);
+    --sunken:         rgba(18, 26, 38, 0.08);
+    --chip:           rgba(18, 26, 38, 0.06);
+
+    /* ---- accents ---- */
+    --accent:         rgb(20, 174, 160);
+    --accent-wash:    rgba(20, 174, 160, 0.12);
+    --clean:          rgb(45, 196, 168);
+    --dry:            rgb(240, 173, 58);
+    --go:             rgb(23, 165, 122);
+    --go-lit:         rgb(44, 196, 148);
+    --new:            rgb(62, 123, 232);
+
+    /* ---- shadow tints ---- */
+    --shade:          rgba(16, 24, 36, 0.16);
+    --shade-strong:   rgba(16, 24, 36, 0.24);
+
+    /* ---- economy (Docs/ECONOMY.md): gold = money, violet = the combo's own accent ---- */
+    --money:          rgb(236, 160, 20);
+    --money-lit:      rgb(250, 190, 60);
+    --money-deep:     rgb(172, 106, 0);
+    --money-wash:     rgba(236, 160, 20, 0.14);
+    --clean-wash:     rgba(45, 196, 168, 0.14);
+    --clean-deep:     rgb(16, 140, 118);
+    --dry-wash:       rgba(240, 173, 58, 0.16);
+    --dry-deep:       rgb(190, 118, 12);
+    --combo:          rgb(140, 78, 226);
+    --combo-wash:     rgba(140, 78, 226, 0.13);
+    --late:           rgb(214, 96, 58);
+    --rim-strong:     rgba(18, 26, 38, 0.13);
+    --card-sunken:    rgba(18, 26, 38, 0.04);
+    --scrim:          rgba(14, 20, 30, 0.46);
+    --fx-gold:        rgb(246, 170, 22);
+    --fx-mint:        rgb(34, 196, 166);
+    --fx-amber:       rgb(248, 150, 40);
+    --fx-violet:      rgb(150, 92, 240);
+    --fx-rose:        rgb(240, 92, 150);
+    --fx-sky:         rgb(52, 150, 246);
+
+    /* ---- inspection lamp (Docs/HIGHLIGHTS.md): the same two hues the carpet glows in ---- */
+    --hl-dirt:        rgb(242, 146, 22);
+    --hl-dirt-lit:    rgb(250, 172, 60);
+    --hl-dirt-wash:   rgba(242, 146, 22, 0.14);
+    --hl-wet:         rgb(46, 140, 240);
+    --hl-wet-lit:     rgb(90, 166, 248);
+    --hl-wet-wash:    rgba(46, 140, 240, 0.13);
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* The UXML is instantiated inside a TemplateContainer, which does not stretch on its
+   own; without this every "bottom: 24px" would measure from a zero-height parent. */
+TemplateContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Chrome and Bars: two full-screen layers, see Docs/HUD.md section 1. */
+.layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: opacity 0.14s ease-out;
+}
+
+.layer--hidden { opacity: 0; }
+.layer--dim    { opacity: 0.45; }
+
+/* First-person HUD. Existing modal shop/menu and pay-slip keep their normal layout. */
+.fp-overlay { display: none; }
+.first-person #carpet-strip,
+.first-person #floor-strip,
+.first-person #shop-shortcut,
+.first-person #reset-wrap,
+.first-person .fps { display: none; }
+.first-person .hint { max-width: 48%; }
+.first-person .hint__label { white-space: normal; font-size: 15px; padding: 9px 20px; }
+.first-person .stats__body { background-color: rgba(255, 255, 255, 0.86); padding: 12px 14px; }
+.first-person .meter--second { margin-top: 10px; }
+.fp-reticle {
+    position: absolute;
+    left: 50%; top: 50%;
+    translate: -50% -50%;
+    width: 7px; height: 7px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgba(14, 25, 29, 0.68);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+.fp-reticle.is-interactive { width: 12px; height: 12px; background-color: var(--accent); border-color: white; }
+.fp-reticle.is-working { background-color: var(--accent); }
+.fp-workbench {
+    display: none;
+    position: absolute;
+    top: 56%; left: 50%;
+    translate: -50% 0;
+    flex-direction: row;
+    align-items: center;
+    max-width: 60%;
+    padding: 12px 18px;
+    background-color: var(--surface);
+    border-color: var(--rim);
+    border-width: 1px;
+    border-radius: 14px;
+}
+.fp-workbench__label { font-size: 18px; -unity-font-style: bold; margin: 0 0 0 12px; color: var(--ink); white-space: normal; }
+.fp-controls {
+    position: absolute;
+    left: 24px; bottom: 24px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background-color: rgba(255, 255, 255, 0.80);
+}
+.fp-control { flex-direction: row; align-items: center; margin: 2px 0; }
+.fp-control__key { width: auto; min-width: 52px; padding: 0 6px; font-size: 11px; }
+.fp-control__label { color: var(--ink-2); font-size: 12px; margin: 0 0 0 10px; padding: 0; }
+.fp-control__icon { width: 52px; height: 24px; align-items: center; justify-content: center; }
+.fp-mouse { width: 14px; height: 20px; border-width: 1px; border-color: var(--ink-2); border-radius: 6px; }
+.fp-mouse__wheel { position: absolute; top: 3px; left: 5px; width: 2px; height: 5px; background-color: var(--ink-2); border-radius: 1px; }
+.fp-mouse__left { position: absolute; top: 1px; left: 1px; width: 5px; height: 8px; background-color: var(--accent); border-radius: 3px 0 0 0; }
+.fp-belt {
+    position: absolute;
+    bottom: 24px; left: 50%;
+    translate: -50% 0;
+    align-items: center;
+    max-width: 46%;
+    transition: opacity 0.14s ease-out;
+}
+.fp-belt.is-working { opacity: 0.55; }
+.fp-held {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 10px 16px 10px 10px;
+    border-radius: 14px;
+    background-color: var(--surface);
+    border-width: 1px;
+    border-color: var(--rim);
+}
+.fp-held__key { background-color: var(--accent); color: white; }
+.fp-held__name { color: var(--ink); -unity-font-style: bold; font-size: 16px; white-space: normal; margin: 0 0 0 10px; padding: 0; }
+.fp-slots { flex-direction: row; }
+.fp-slot {
+    width: 24px; height: 24px;
+    margin: 0 2px; padding: 0;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: var(--ink-2);
+    font-size: 11px;
+    -unity-text-align: middle-center;
+}
+.fp-slot.is-active { color: white; background-color: var(--accent); }
+.lang-rtl .fp-workbench, .lang-rtl .fp-held, .lang-rtl .fp-control { flex-direction: row-reverse; }
+.lang-rtl .fp-workbench__label, .lang-rtl .fp-held__name, .lang-rtl .fp-control__label { margin-left: 0; margin-right: 10px; }
+
+/* ------------------------------------------------------------------ baked soft shadow
+   USS has no box-shadow, so every raised surface gets a 9-sliced blurred rounded rect
+   behind it. It sits slightly low and wide, the way a real shadow would. */
+.shadow {
+    position: absolute;
+    left: -22px;
+    right: -22px;
+    top: -14px;
+    bottom: -30px;
+    background-image: url("Textures/hud_shadow_lg.png");
+    -unity-background-image-tint-color: var(--shade);
+    -unity-slice-left: 56;
+    -unity-slice-right: 56;
+    -unity-slice-top: 56;
+    -unity-slice-bottom: 56;
+}
+
+.shadow--sm {
+    left: -12px;
+    right: -12px;
+    top: -8px;
+    bottom: -16px;
+    background-image: url("Textures/hud_shadow_sm.png");
+    -unity-slice-left: 28;
+    -unity-slice-right: 28;
+    -unity-slice-top: 28;
+    -unity-slice-bottom: 28;
+}
+
+.shadow--cta {
+    -unity-background-image-tint-color: var(--shade-strong);
+    top: -10px;
+    bottom: -20px;
+}
+
+/* ------------------------------------------------------------------ shared atoms */
+
+/* Small uppercase section label. USS has no text-transform, so the text itself is
+   written uppercase in the UXML / in C#. */
+.caption {
+    font-size: 11px;
+    letter-spacing: 1.4px;
+    color: var(--ink-3);
+    -unity-font-style: bold;
+    margin: 0;
+    padding: 0;
+}
+
+/* Keycap chip. */
+.kbd {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background-color: var(--chip);
+    color: var(--ink-2);
+    font-size: 12px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background-color 0.12s ease-out, color 0.12s ease-out;
+}
+
+.kbd--on-accent {
+    background-color: rgba(255, 255, 255, 0.22);
+    color: rgb(255, 255, 255);
+}
+
+/* ------------------------------------------------------------------ tool strips */
+/* min-width, not width: a longer tool name in another language widens the strip instead of spilling out (LOCALIZATION.md 6) */
+.strip {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    min-width: 184px;
+}
+
+.strip--left  { left: 24px; }
+.strip--right { right: 24px; }
+
+.strip__body {
+    background-color: var(--surface);
+    border-width: 1px;
+    border-color: var(--rim);
+    border-radius: 20px;
+    padding: 12px 8px 8px 8px;
+}
+
+.strip__caption { margin: 0 8px 10px 8px; }
+.strip--right .strip__caption { -unity-text-align: middle-right; }
+
+.tool {
+    flex-direction: row;
+    align-items: center;
+    height: 44px;
+    margin: 0 0 2px 0;
+    padding: 0 12px 0 8px;
+    border-width: 0;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.12s ease-out;
+}
+
+.tool:hover  { background-color: var(--accent-wash); }
+.tool:active { background-color: rgba(20, 174, 160, 0.22); }
+
+.tool__name {
+    font-size: 14px;
+    color: var(--ink);
+    margin: 0 0 0 10px;
+    padding: 0;
+    flex-grow: 1;
+    -unity-text-align: middle-left;
+    transition: color 0.12s ease-out;
+}
+
+/* A tool without a hotkey (none since 2026-09-26: the floor pair took 9 / 0) centres its name instead of leaving an
+   empty chip slot. */
+.tool--plain { padding: 0 12px; }
+.tool--plain .tool__name {
+    margin: 0;
+    -unity-text-align: middle-center;
+}
+
+.tool.is-active { background-color: var(--accent); }
+.tool.is-active .tool__name { color: var(--on-accent); }
+.tool.is-active .kbd {
+    background-color: rgba(255, 255, 255, 0.22);
+    color: var(--on-accent);
+}
+
+/* ------------------------------------------------------------------ hint */
+.hint {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    translate: -50% 0;
+    align-items: center;
+}
+
+.hint__label {
+    background-color: var(--surface);
+    border-width: 1px;
+    border-color: var(--rim);
+    border-radius: 24px;
+    padding: 11px 24px;
+    font-size: 18px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin: 0;
+}
+
+/* ------------------------------------------------------------------ top right */
+.top-right {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    align-items: flex-end;
+}
+
+/* A shadow needs a wrapper, because a child always draws over its parent background. */
+.raised { flex-shrink: 0; }
+
+.btn {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border-width: 1px;
+    transition: background-color 0.12s ease-out, border-color 0.12s ease-out;
+}
+
+.btn__label {
+    margin: 0;
+    padding: 0;
+    -unity-text-align: middle-center;
+}
+
+.btn--ghost {
+    height: 40px;
+    padding: 0 10px 0 16px;
+    border-radius: 14px;
+    background-color: var(--surface);
+    border-color: var(--rim);
+}
+
+.btn--ghost:hover {
+    background-color: var(--surface-hover);
+    border-color: rgba(20, 174, 160, 0.45);
+}
+
+.btn--ghost .btn__label {
+    font-size: 14px;
+    color: var(--ink);
+    margin-right: 10px;
+}
+
+.fps {
+    font-size: 12px;
+    color: var(--ink-3);
+    -unity-text-align: middle-right;
+    margin: 10px 4px 0 0;
+    padding: 0;
+}
+
+/* ------------------------------------------------------------------ primary actions */
+.actions {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    align-items: flex-end;
+}
+
+.btn--cta {
+    height: 60px;
+    padding: 0 20px 0 28px;
+    border-radius: 18px;
+    border-width: 0;
+}
+
+.btn--cta .btn__label {
+    font-size: 18px;
+    color: var(--on-accent);
+    -unity-font-style: bold;
+    margin-right: 16px;
+}
+
+/* The reward button breathes: CleaningHUD flips .is-lit on a timer and the long transition
+   below does the rest, so even the pulse colour stays in the stylesheet. */
+.btn--go {
+    background-color: var(--go);
+    transition: background-color 0.55s ease-in-out;
+}
+
+.btn--go.is-lit { background-color: var(--go-lit); }
+
+.btn--new { background-color: var(--new); }
+.btn--new:hover { background-color: rgb(86, 142, 240); }
+
+/* ------------------------------------------------------------------ meters */
+.stats {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    width: 300px;
+}
+
+.stats__body {
+    background-color: var(--surface);
+    border-width: 1px;
+    border-color: var(--rim);
+    border-radius: 18px;
+    padding: 14px 16px 16px 16px;
+}
+
+.meter--second { margin-top: 14px; }
+
+.meter__head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meter__title {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Z / X beside DRY / CLEAN: a small keycap, hidden until the item is bought (display from C#), filled while the lamp is on */
+.lamp-chip {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    font-size: 11px;
+    margin-left: 8px;
+    display: none;
+}
+
+.lamp-chip--dirt.is-on { background-color: var(--hl-dirt); color: var(--on-accent); }
+.lamp-chip--wet.is-on  { background-color: var(--hl-wet);  color: var(--on-accent); }
+
+.meter__value {
+    font-size: 13px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.track {
+    height: 8px;
+    border-radius: 4px;
+    background-color: var(--sunken);
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.track__fill {
+    height: 8px;
+    border-radius: 4px;
+    width: 0;
+    transition: width 0.2s ease-out;
+}
+
+.track__fill--clean { background-color: var(--clean); }
+.track__fill--dry   { background-color: var(--dry); }
+
+/* =====================================================================================
+   Economy (Docs/ECONOMY.md, Docs/HUD.md 7): wallet + job clock, Upgrades button, the
+   pay-slip card, the upgrade shop and the UI particles. C# (EconomyHud, PayoutView,
+   ShopView, UiFx) only writes translate / rotate / scale / opacity / text on a seekable
+   timeline; every colour and size is here. Gold = money, and the three existing accents
+   keep their meaning: teal = clean, amber = dry; violet is the combo's own.
+   ===================================================================================== */
+
+/* ------------------------------------------------------------------ icons (baked by HudArtBaker) */
+.icon {
+    flex-shrink: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.icon--coin    { background-image: url("Textures/fx_coin.png"); }
+.icon--clock   { background-image: url("Textures/icon_clock.png");   -unity-background-image-tint-color: var(--ink-2); }
+.icon--sparkle { background-image: url("Textures/icon_sparkle.png"); -unity-background-image-tint-color: var(--clean); }
+.icon--drop    { background-image: url("Textures/icon_drop.png");    -unity-background-image-tint-color: var(--dry); }
+.icon--star    { background-image: url("Textures/icon_star.png");    -unity-background-image-tint-color: var(--combo); }
+.icon--bolt    { background-image: url("Textures/icon_bolt.png");    -unity-background-image-tint-color: var(--money); }
+.icon--expand  { background-image: url("Textures/icon_expand.png");  -unity-background-image-tint-color: var(--clean); }
+.icon--eye     { background-image: url("Textures/icon_eye.png");     -unity-background-image-tint-color: var(--hl-dirt); }
+
+/* ------------------------------------------------------------------ top right: Upgrades beside Reset */
+.top-right__row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.top-right__row > .raised { margin-left: 8px; }
+
+.btn--shop { padding-left: 12px; }
+
+.btn__icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+}
+
+/* a dot on the button while something in the shop is affordable */
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    background-color: var(--money);
+    display: none;
+}
+
+/* ------------------------------------------------------------------ ledger: job clock + wallet (in the meters card) */
+.ledger {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top-width: 1px;
+    border-top-color: var(--rim);
+}
+
+.ledger__clock {
+    flex-direction: row;
+    align-items: center;
+}
+
+.ledger__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+
+.ledger__time {
+    font-size: 14px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.ledger__time.is-late { color: var(--late); }
+
+.ledger__par {
+    font-size: 12px;
+    color: var(--ink-3);
+    margin: 0 0 0 8px;
+    padding: 0;
+}
+
+.wallet {
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 12px 4px 6px;
+    border-radius: 14px;
+    background-color: var(--money-wash);
+}
+
+.wallet__coin {
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+}
+
+.wallet__value {
+    font-size: 18px;
+    color: var(--money-deep);
+    -unity-font-style: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.wallet--shop {
+    margin-right: 14px;
+    padding: 6px 16px 6px 8px;
+}
+
+.wallet--shop .wallet__coin { width: 28px; height: 28px; }
+.wallet--shop .wallet__value { font-size: 22px; }
+
+/* ------------------------------------------------------------------ pay-slip card */
+.payout-layer { display: none; }
+
+.payout {
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    width: 480px;
+    margin-left: -240px;
+}
+
+/* sunburst behind the card, only for a COMBO; C# turns it and fades it in */
+.payout__rays {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 1000px;
+    height: 1000px;
+    margin-left: -500px;
+    margin-top: -500px;
+    background-image: url("Textures/fx_rays.png");
+    -unity-background-image-tint-color: var(--money-lit);
+    opacity: 0;
+    display: none;
+}
+
+.payout__body {
+    background-color: var(--surface-hover);
+    border-width: 1px;
+    border-color: var(--rim);
+    border-radius: 26px;
+    padding: 20px 22px 14px 22px;
+    overflow: hidden;
+}
+
+.payout__head {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.payout__caption { color: var(--money-deep); }
+
+.payout__title {
+    font-size: 22px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    margin: 4px 0 0 0;
+    padding: 0;
+}
+
+.payout__number {
+    font-size: 13px;
+    color: var(--ink-2);
+    -unity-font-style: bold;
+    margin: 0;
+    padding: 4px 10px;
+    border-radius: 10px;
+    background-color: var(--chip);
+}
+
+.pline {
+    flex-direction: row;
+    align-items: center;
+    height: 52px;
+    margin-bottom: 6px;
+    padding: 0 14px 0 12px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.pline--won.pline--base,
+.pline--won.pline--speed { background-color: var(--money-wash); }
+.pline--won.pline--clean { background-color: var(--clean-wash); }
+.pline--won.pline--dry   { background-color: var(--dry-wash); }
+.pline--won.pline--combo { background-color: var(--combo-wash); }
+
+/* a light band that sweeps over a line the moment its amount lands */
+.pline__shine {
+    position: absolute;
+    top: -20px;
+    bottom: -20px;
+    left: 0;
+    width: 22%;
+    background-image: url("Textures/fx_glow.png");
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.95);
+    rotate: 18deg;
+    opacity: 0;
+}
+
+.pline__icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+}
+
+.pline__text { flex-grow: 1; }
+
+.pline__label {
+    font-size: 16px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.pline__detail {
+    font-size: 12px;
+    color: var(--ink-2);
+    margin: 1px 0 0 0;
+    padding: 0;
+}
+
+.pline__amount {
+    min-width: 110px;
+    font-size: 22px;
+    color: var(--money-deep);
+    -unity-font-style: bold;
+    -unity-text-align: middle-right;
+    margin: 0;
+    padding: 0;
+}
+
+.pline--clean .pline__amount { color: var(--clean-deep); }
+.pline--dry .pline__amount   { color: var(--dry-deep); }
+.pline--combo .pline__amount { color: var(--combo); }
+
+.pline--missed .pline__label  { color: var(--ink-2); }
+.pline--missed .pline__amount { color: var(--ink-3); font-size: 18px; }
+.pline--missed .pline__icon   { -unity-background-image-tint-color: rgba(26, 33, 43, 0.3); }
+
+.payout__divider {
+    height: 2px;
+    margin: 10px 6px 10px 6px;
+    background-color: var(--rim-strong);
+    transform-origin: 0% 50%;
+    scale: 0 1;
+}
+
+.payout__total-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px 0 12px;
+}
+
+.payout__total-caption { font-size: 13px; }
+
+.payout__total {
+    font-size: 40px;
+    color: var(--money-deep);
+    -unity-font-style: bold;
+    -unity-text-align: middle-right;
+    transform-origin: 100% 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.payout__hint {
+    font-size: 11px;
+    color: var(--ink-3);
+    -unity-text-align: middle-center;
+    margin: 6px 0 0 0;
+    padding: 0;
+}
+
+.payout__flash {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    opacity: 0;
+}
+
+/* the COMBO stamp slams onto the card's top-right corner, half over the edge */
+.payout__stamp {
+    position: absolute;
+    right: -30px;
+    top: -24px;
+    padding: 4px 16px 6px 16px;
+    border-width: 4px;
+    border-color: var(--combo);
+    border-radius: 14px;
+    background-color: rgba(255, 255, 255, 0.92);
+    opacity: 0;
+    display: none;
+}
+
+.payout__stamp-label {
+    font-size: 32px;
+    color: var(--combo);
+    -unity-font-style: bold;
+    letter-spacing: 3px;
+    margin: 0;
+    padding: 0;
+}
+
+/* ------------------------------------------------------------------ upgrade shop (modal) */
+.shop-layer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop__scrim {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--scrim);
+}
+
+.shop { width: 1360px; }
+
+.shop__body {
+    background-color: var(--surface-hover);
+    border-width: 1px;
+    border-color: var(--rim);
+    border-radius: 28px;
+    padding: 22px 24px 18px 24px;
+}
+
+.shop__head {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.shop__titles { flex-grow: 1; }
+
+.shop__title {
+    font-size: 26px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    margin: 2px 0 0 0;
+    padding: 0;
+}
+
+.kbd--wide { width: 36px; }
+
+.shop__legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.shop__legend-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+
+.shop__legend-text {
+    font-size: 13px;
+    color: var(--ink-2);
+    margin: 0 20px 0 0;
+    padding: 0;
+}
+
+.shop__legend-note {
+    flex-grow: 1;
+    font-size: 12px;
+    color: var(--ink-3);
+    -unity-text-align: middle-right;
+    margin: 0;
+    padding: 0;
+}
+
+.shop__columns { flex-direction: row; }
+
+.shop__col--floor { margin-left: 20px; }
+
+.shop__col-caption { margin: 0 0 8px 4px; }
+.shop__col-caption--gap { margin-top: 10px; }
+
+/* two cards per row: 2 x (410 + 8) = 836, plus slack so rounding never wraps a card onto its own row */
+.shop__grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 850px;
+}
+
+.shop__grid--single {
+    flex-direction: column;
+    width: 410px;
+}
+
+.ucard {
+    width: 410px;
+    margin: 0 8px 8px 0;
+    padding: 10px 12px 8px 12px;
+    border-radius: 18px;
+    background-color: var(--card-sunken);
+}
+
+.ucard__head {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.ucard__name {
+    font-size: 15px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+
+/* a tool without a hotkey has no chip (never a placeholder glyph): the name starts at the card edge */
+.ucard__head--plain .ucard__name { margin-left: 0; }
+
+.urow {
+    flex-direction: row;
+    align-items: center;
+    height: 36px;
+}
+
+.urow__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+
+/* ShopView sets every caption to the widest POWER / AREA of the current language, so the pips stay in one column */
+.urow__caption { min-width: 50px; margin-right: 6px; }
+
+.pips {
+    flex-direction: row;
+    align-items: center;
+}
+
+.pip {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    border-radius: 6px;
+    background-color: var(--rim-strong);
+}
+
+.pip.is-on { background-color: var(--money); }
+.urow--area .pip.is-on { background-color: var(--clean); }
+
+.urow__gain {
+    flex-grow: 1;
+    font-size: 12px;
+    color: var(--ink-2);
+    -unity-text-align: middle-left;
+    margin: 0 8px;
+    padding: 0;
+}
+
+/* A Button with a child Label (.ubuy__label): the Button lays its child out as a column from the top, so without the
+   centring the price sat at the top of the pill (store screenshot 08, clip 5). */
+.ubuy {
+    height: 30px;
+    min-width: 82px;
+    margin: 0;
+    padding: 0 12px;
+    justify-content: center;
+    align-items: center;
+    border-width: 0;
+    border-radius: 10px;
+    background-color: var(--money);
+    transition: background-color 0.12s ease-out;
+}
+
+.ubuy:hover { background-color: var(--money-lit); }
+.urow--area .ubuy { background-color: var(--clean); }
+.urow--area .ubuy:hover { background-color: rgb(78, 218, 190); }
+
+.ubuy__label {
+    font-size: 13px;
+    color: var(--on-accent);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
+.ubuy.is-poor,
+.urow--area .ubuy.is-poor { background-color: var(--sunken); }
+.ubuy.is-poor .ubuy__label { color: var(--ink-3); }
+
+.ubuy.is-max,
+.urow--area .ubuy.is-max {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-color: var(--rim-strong);
+}
+
+.ubuy.is-max .ubuy__label { color: var(--ink-3); }
+
+/* ------------------------------------------------------------------ one-time items (Docs/HIGHLIGHTS.md) */
+/* Same card as a tool, one row: icon, what it does (or its key once owned), a price button in the lamp's own colour. */
+.irow {
+    flex-direction: row;
+    align-items: center;
+    height: 36px;
+}
+
+.irow__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.icard--wet .irow__icon { -unity-background-image-tint-color: var(--hl-wet); }
+
+.irow__text {
+    flex-grow: 1;
+    font-size: 12px;
+    color: var(--ink-2);
+    -unity-text-align: middle-left;
+    margin: 0 8px 0 0;
+    padding: 0;
+}
+
+.icard--dirt .ibuy       { background-color: var(--hl-dirt); }
+.icard--dirt .ibuy:hover { background-color: var(--hl-dirt-lit); }
+.icard--wet .ibuy        { background-color: var(--hl-wet); }
+.icard--wet .ibuy:hover  { background-color: var(--hl-wet-lit); }
+
+.icard--dirt .ibuy.is-poor,
+.icard--wet .ibuy.is-poor { background-color: var(--sunken); }
+
+/* owned: an outline like MAX, and the card takes a wash of the lamp colour */
+.icard--dirt .ibuy.is-owned,
+.icard--wet .ibuy.is-owned {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 1px;
+    border-color: var(--rim-strong);
+}
+
+.ibuy.is-owned .ubuy__label { color: var(--ink-3); }
+.icard--dirt.is-owned { background-color: var(--hl-dirt-wash); }
+.icard--wet.is-owned  { background-color: var(--hl-wet-wash); }
+.icard.is-owned .irow__text { color: var(--ink); -unity-font-style: bold; }
+
+/* ------------------------------------------------------------------ UI particles (UiFx) */
+/* Absolutely placed at the layer origin and centred by negative margins, so C#'s translate
+   is the particle centre; rotate / scale pivot on the centre (default transform-origin). */
+.fx {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.fx--sparkle  { width: 32px; height: 32px; margin-left: -16px; margin-top: -16px; background-image: url("Textures/fx_sparkle.png"); }
+.fx--glow     { width: 64px; height: 64px; margin-left: -32px; margin-top: -32px; background-image: url("Textures/fx_glow.png"); }
+.fx--ring     { width: 64px; height: 64px; margin-left: -32px; margin-top: -32px; background-image: url("Textures/fx_ring.png"); }
+.fx--confetti { width: 16px; height: 9px;  margin-left: -8px;  margin-top: -5px;  background-image: url("Textures/fx_confetti.png"); }
+.fx--coin     { width: 30px; height: 30px; margin-left: -15px; margin-top: -15px; background-image: url("Textures/fx_coin.png"); }
+
+/* saturated tints: the particles fly over the white card as well as over the scene */
+.fx--gold   { -unity-background-image-tint-color: var(--fx-gold); }
+.fx--mint   { -unity-background-image-tint-color: var(--fx-mint); }
+.fx--amber  { -unity-background-image-tint-color: var(--fx-amber); }
+.fx--violet { -unity-background-image-tint-color: var(--fx-violet); }
+.fx--rose   { -unity-background-image-tint-color: var(--fx-rose); }
+.fx--sky    { -unity-background-image-tint-color: var(--fx-sky); }
+
+/* ------------------------------------------------------------------ pause menu (modal, PauseMenu / Docs/PAUSE_MENU.md)
+   The shop's card language at a phone-sized width: title, one emerald CTA (Resume), a volume row, ghost buttons. The
+   scrim reuses .shop__scrim. The stock runtime theme draws a dark slider and scroller, which do not belong on a white
+   card, so both are restyled below. */
+.menu-layer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu { width: 440px; }
+/* the credits page: long attribution lines with links read better on fewer wraps */
+.menu--wide { width: 640px; }
+
+.menu__body {
+    background-color: var(--surface-hover);
+    border-width: 1px;
+    border-color: var(--rim);
+    border-radius: 28px;
+    padding: 22px 24px 18px 24px;
+}
+
+.menu__title {
+    font-size: 26px;
+    color: var(--ink);
+    -unity-font-style: bold;
+    margin: 2px 0 16px 0;
+    padding: 0;
+}
+
+.menu__btn { margin-top: 8px; }
+.menu__btn.btn--cta { margin-top: 0; }
+
+/* on the white card a ghost button would vanish: sunken like the volume row, teal wash on hover */
+.menu__btn.btn--ghost {
+    height: 48px;
+    padding: 0 16px;
+    background-color: var(--chip);
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.menu__btn.btn--ghost:hover {
+    background-color: var(--accent-wash);
+    border-color: rgba(20, 174, 160, 0.45);
+}
+
+.menu__btn.btn--ghost .btn__label { margin-right: 0; }
+
+.menu__row {
+    flex-direction: row;
+    align-items: center;
+    height: 48px;
+    margin: 8px 0 0 0;
+    padding: 0 8px 0 4px;
+    border-radius: 14px;
+    background-color: var(--chip);
+}
+
+/* PauseMenu gives VOLUME and LANGUAGE the width of the wider one, so the slider and the drop-down start together */
+.menu__row-caption { min-width: 72px; margin-left: 8px; margin-right: 4px; }
+
+.menu__row-value {
+    width: 44px;
+    font-size: 13px;
+    color: var(--ink-2);
+    -unity-text-align: middle-right;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__note {
+    font-size: 12px;
+    color: var(--ink-3);
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin: 14px 0 0 0;
+    padding: 0;
+}
+
+.menu__head {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.menu__head-caption { flex-grow: 1; }
+
+.menu__page--credits { display: none; }
+
+/* volume slider: a sunken track, a teal thumb */
+.menu__slider {
+    flex-grow: 1;
+    height: 24px;
+    margin: 0 12px 0 4px;
+    padding: 0;
+}
+
+.menu__slider .unity-base-slider__input { margin: 0; }
+
+.menu__slider .unity-base-slider__drag-container { height: 24px; }
+
+.menu__slider .unity-base-slider__tracker {
+    height: 6px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 0;
+    border-radius: 3px;
+    background-color: var(--sunken);
+}
+
+.menu__slider .unity-base-slider__dragger {
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    margin-top: -9px;
+    border-width: 0;
+    border-radius: 9px;
+    background-color: var(--accent);
+}
+
+.menu__slider .unity-base-slider__dragger-border { display: none; }
+
+/* credits: headings in teal, lines in the secondary ink, wrapped */
+.credits {
+    height: 600px;
+    margin: 0 -8px 0 0;
+}
+
+.credits .unity-scroll-view__content-container { padding-right: 12px; }
+
+.credits .unity-scroller--vertical {
+    width: 6px;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.credits .unity-scroller__low-button,
+.credits .unity-scroller__high-button { display: none; }
+
+.credits .unity-base-slider__tracker {
+    border-width: 0;
+    border-radius: 3px;
+    background-color: var(--card-sunken);
+}
+
+.credits .unity-base-slider__dragger {
+    border-width: 0;
+    border-radius: 3px;
+    background-color: var(--rim-strong);
+}
+
+.credits__head {
+    color: var(--accent);
+    margin: 16px 0 6px 0;
+}
+
+/* USS has no :first-child: PauseMenu tags the first heading */
+.credits__head--first { margin-top: 0; }
+
+.credits__line {
+    font-size: 13px;
+    color: var(--ink-2);
+    white-space: normal;
+    margin: 0 0 4px 0;
+    padding: 0;
+}
+
+/* ------------------------------------------------------------------ language drop-down (LanguagePicker, Docs/LOCALIZATION.md 3)
+   The select sits in a menu row like the volume slider; the list is a white card of its own, opened under the select
+   (C# places it), one row per language, every name in its own script. #lang-catcher covers the screen while the list
+   is open, so a click beside it closes the list instead of the menu. */
+.lang-select {
+    flex-grow: 1;
+    flex-direction: row;
+    align-items: center;
+    height: 36px;
+    margin: 0 0 0 4px;
+    padding: 0 12px 0 14px;
+    border-width: 1px;
+    border-radius: 11px;
+    border-color: var(--rim);
+    background-color: var(--surface-hover);
+    transition: border-color 0.12s ease-out;
+}
+
+.lang-select:hover { border-color: rgba(20, 174, 160, 0.45); }
+.lang-select.is-open { border-color: var(--accent); }
+
+.lang-select__value {
+    flex-grow: 1;
+    font-size: 14px;
+    color: var(--ink);
+    -unity-text-align: middle-left;
+    margin: 0;
+    padding: 0;
+}
+
+/* a chevron from two borders of a turned square */
+.lang-select__chevron {
+    width: 7px;
+    height: 7px;
+    margin: -4px 2px 0 10px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-color: var(--ink-2);
+    rotate: 45deg;
+    flex-shrink: 0;
+}
+
+.lang-select.is-open .lang-select__chevron { rotate: -135deg; margin-top: 4px; }
+
+.lang-catcher {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.lang-popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.lang-popup__body {
+    background-color: var(--surface-hover);
+    border-width: 1px;
+    border-color: var(--rim);
+    border-radius: 14px;
+    padding: 6px 4px 6px 6px;
+    overflow: hidden;
+}
+
+.lang-popup__list { max-height: 348px; }
+
+.lang-popup__list .unity-scroll-view__content-container { padding-right: 6px; }
+
+.lang-popup__list .unity-scroller--vertical {
+    width: 6px;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.lang-popup__list .unity-scroller__low-button,
+.lang-popup__list .unity-scroller__high-button { display: none; }
+
+.lang-popup__list .unity-base-slider__tracker {
+    border-width: 0;
+    border-radius: 3px;
+    background-color: var(--card-sunken);
+}
+
+.lang-popup__list .unity-base-slider__dragger {
+    border-width: 0;
+    border-radius: 3px;
+    background-color: var(--rim-strong);
+}
+
+.lang-item {
+    flex-direction: row;
+    align-items: center;
+    height: 34px;
+    margin: 0 0 2px 0;
+    padding: 0 12px;
+    border-width: 0;
+    border-radius: 9px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.1s ease-out;
+}
+
+.lang-item:hover { background-color: var(--chip); }
+.lang-item.is-active { background-color: var(--accent-wash); }
+
+.lang-item__name {
+    flex-grow: 1;
+    font-size: 14px;
+    color: var(--ink);
+    -unity-text-align: middle-left;
+    margin: 0;
+    padding: 0;
+}
+
+.lang-item.is-active .lang-item__name { color: var(--clean-deep); -unity-font-style: bold; }
+
+.lang-item__tick {
+    width: 8px;
+    height: 8px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background-color: var(--accent);
+    flex-shrink: 0;
+    display: none;
+}
+
+.lang-item.is-active .lang-item__tick { display: flex; }
+
+/* ------------------------------------------------------------------ per-script adjustments (HudLocalizer sets the classes on .hud)
+   Letter-spacing pulls joined Arabic letters apart and lifts Thai marks off their consonants; CJK captions keep a hint. */
+.script-arabic .caption,
+.script-thai .caption,
+.script-arabic .payout__stamp-label,
+.script-thai .payout__stamp-label { letter-spacing: 0; }
+
+.script-cjk .caption { letter-spacing: 0.6px; }
+.script-cjk .payout__stamp-label { letter-spacing: 1px; }
+
+/* Noto Sans Arabic's line box is taller than Inter's: label + detail need 61 px, the row had 52 (the loc spill sweep,
+   LOCALIZATION.md 7), and .pline clips */
+.script-arabic .pline { height: 62px; }
+
+/* ------------------------------------------------------------------ right-to-left (Arabic, .lang-rtl): the rows that pair a text with a
+   chip or an icon read from the right; the screen layout (strips, cards) stays where it is. Numbers keep LTR in C#. */
+.lang-rtl .tool { flex-direction: row-reverse; padding: 0 8px 0 12px; }
+.lang-rtl .tool__name { margin: 0 10px 0 0; -unity-text-align: middle-right; }
+.lang-rtl .tool--plain { padding: 0 12px; }
+.lang-rtl .tool--plain .tool__name { margin: 0; -unity-text-align: middle-center; }
+.lang-rtl .strip__caption { -unity-text-align: middle-right; }
+
+.lang-rtl .meter__head { flex-direction: row-reverse; }
+.lang-rtl .meter__title { flex-direction: row-reverse; }
+.lang-rtl .lamp-chip { margin-left: 0; margin-right: 8px; }
+
+.lang-rtl .payout__head { flex-direction: row-reverse; }
+.lang-rtl .payout__caption,
+.lang-rtl .payout__title { -unity-text-align: upper-right; }
+.lang-rtl .pline { flex-direction: row-reverse; padding: 0 12px 0 14px; }
+.lang-rtl .pline__icon { margin-right: 0; margin-left: 12px; }
+.lang-rtl .pline__label,
+.lang-rtl .pline__detail { -unity-text-align: upper-right; }
+.lang-rtl .pline__amount { -unity-text-align: middle-left; }
+.lang-rtl .payout__total-row { flex-direction: row-reverse; padding: 0 12px 0 14px; }
+.lang-rtl .payout__total { transform-origin: 0% 50%; -unity-text-align: middle-left; }
+
+.lang-rtl .shop__head { flex-direction: row-reverse; }
+.lang-rtl .shop__titles > .caption,
+.lang-rtl .shop__title { -unity-text-align: upper-right; }
+.lang-rtl .wallet--shop { margin-right: 0; margin-left: 14px; }
+.lang-rtl .shop__legend { flex-direction: row-reverse; }
+.lang-rtl .shop__legend-icon { margin-right: 0; margin-left: 6px; }
+.lang-rtl .shop__legend-text { margin: 0 0 0 20px; }
+.lang-rtl .shop__legend-note { -unity-text-align: middle-left; }
+.lang-rtl .shop__col-caption { -unity-text-align: middle-right; }
+.lang-rtl .ucard__head { flex-direction: row-reverse; }
+.lang-rtl .ucard__name { margin: 0 10px 0 0; }
+.lang-rtl .ucard__head--plain .ucard__name { margin-right: 0; }
+.lang-rtl .urow { flex-direction: row-reverse; }
+.lang-rtl .urow__icon { margin-right: 0; margin-left: 6px; }
+.lang-rtl .urow__caption { margin-right: 0; margin-left: 6px; -unity-text-align: middle-right; }
+.lang-rtl .pips { flex-direction: row-reverse; }
+.lang-rtl .pip { margin-right: 0; margin-left: 5px; }
+.lang-rtl .urow__gain { -unity-text-align: middle-right; }
+.lang-rtl .irow { flex-direction: row-reverse; }
+.lang-rtl .irow__icon { margin-right: 0; margin-left: 8px; }
+.lang-rtl .irow__text { margin: 0 0 0 8px; -unity-text-align: middle-right; }
+
+.lang-rtl .menu__page > .caption,
+.lang-rtl .menu__title { -unity-text-align: upper-right; }
+.lang-rtl .menu__row { flex-direction: row-reverse; padding: 0 4px 0 8px; }
+.lang-rtl .menu__row-caption { margin-left: 4px; margin-right: 8px; -unity-text-align: middle-right; }
+.lang-rtl .menu__slider { margin: 0 4px 0 12px; }
+.lang-rtl .menu__row-value { -unity-text-align: middle-left; }
+.lang-rtl .lang-select { flex-direction: row-reverse; margin: 0 4px 0 0; padding: 0 14px 0 12px; }
+.lang-rtl .lang-select__value { -unity-text-align: middle-right; }
+.lang-rtl .lang-select__chevron { margin: -4px 10px 0 2px; }
+.lang-rtl .lang-select.is-open .lang-select__chevron { margin-top: 4px; }
+.lang-rtl .menu__head { flex-direction: row-reverse; }
+.lang-rtl .credits__head,
+.lang-rtl .credits__line { -unity-text-align: upper-right; }
+/* an attribution line stays English: left-aligned and laid out left to right (PauseMenu pins its direction) */
+.lang-rtl .credits__line--ltr { -unity-text-align: upper-left; }

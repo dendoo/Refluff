@@ -1,0 +1,43 @@
+{
+  "_lang": "pl",
+  "ACH_FIRST_CARPET": {
+    "name": "Pierwszy puszek",
+    "desc": "Oddaj klientowi swój pierwszy dywan."
+  },
+  "ACH_SPOTLESS": {
+    "name": "Bez skazy",
+    "desc": "Oddaj brudny dywan, gdy czystość sięgnie 100%."
+  },
+  "ACH_BONE_DRY": {
+    "name": "Suchy jak wiór",
+    "desc": "Porządnie namocz dywan, a potem oddaj go, gdy suchość sięgnie 100%."
+  },
+  "ACH_COMBO": {
+    "name": "Jak spod igły",
+    "desc": "Oddaj brudny dywan, gdy czystość i suchość sięgną 100%."
+  },
+  "ACH_FILTHY": {
+    "name": "Od brudu do puchu",
+    "desc": "Oddaj potwornie brudny dywan, gdy czystość sięgnie 100%."
+  },
+  "ACH_EXPRESS": {
+    "name": "Ekspresowe czyszczenie",
+    "desc": "Zgarnij pełną premię za szybkość przy mocno brudnym dywanie."
+  },
+  "ACH_REGULARS": {
+    "name": "Stali klienci",
+    "desc": "Oddaj 25 dywanów."
+  },
+  "ACH_FULL_KIT": {
+    "name": "Cały sprzęt z busa w akcji",
+    "desc": "Użyj wszystkich 10 narzędzi do dywanu i do podłogi."
+  },
+  "ACH_MAXED_OUT": {
+    "name": "Na maksa",
+    "desc": "Ulepsz MOC i ZASIĘG jednego narzędzia do poziomu MAKS."
+  },
+  "ACH_INSPECTOR": {
+    "name": "Inspektor",
+    "desc": "Kup Podświetlenie wilgoci i Podświetlenie brudu."
+  }
+}

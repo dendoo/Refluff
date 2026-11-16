@@ -1,0 +1,28 @@
+PUBLISHED 2026-10-25, Steam Store revision 8. Public image order verified against all 10 local SHA1 hashes.
+
+KEEP CURRENT SCREENSHOT 1: 20261025_current_paused.png
+Steam SHA1 444bbebfbfc5b40917c1e35ecb860fdd63a67a89
+Local SHA256 32f1c0879314d045e56a5d981c5af620a6b8dd2a6c984d5e4fb0ff146940a85a
+
+Published replacement order for slots 2-10:
+02 r02_anatolian_extract.jpg       MACRO  / Anatolian star, wet vacuum
+03 r03_dragon_brush.jpg            WIDE   / Cartoon dragon, rotary brush and foam
+04 r04_green_scraper.jpg           MACRO  / European green, scraper
+05 r05_fox_foam.jpg                WIDE   / Cartoon fox, foam sprayer
+06 r06_salor_hose.jpg              MACRO  / Salor Turkmen, hose
+07 r07_cat_squeegee.jpg            WIDE   / Cartoon cat, squeegee
+08 r08_rya_moisture.jpg            MACRO  / Finnish rya, drying pile (ordinary light)
+09 r09_axolotl_finish.jpg          WIDE   / Cartoon axolotl, final drying
+10 r10_transylvanian_vacuum.jpg    MACRO  / Transylvanian medallion, dry vacuum
+
+All 9 new files: 2560x1440, JPEG q95, 4:4:4; Gameplay; English; suitable for all ages.
+Use only r*.jpg in this directory. Do not upload review/contact_sheet.jpg.
+review/contact_sheet.jpg is a labeled proof of the complete intended order including preserved first.
+manifest.json contains each file's SHA256, size, source layers and distinct-image/dimension checks.
+
+Steamworks screenshot editing page:
+https://partner.steamgames.com/admin/game/edit/1337056?activetab=tab_graphicalassets&subtab=screenshots
+
+The owner manually uploaded and saved the nine replacement images in order. The agent verified exact local/Steam hashes, saved Gameplay categories for all nine and English accessibility descriptions, reviewed the store diff, and published revision 8. Public anonymous-page thumbnail order matches every file hash; original first image remains unchanged. Current trailer is unchanged.
+
+Evidence: review/publication.json, review/steam_diff.txt, review/steam_publish_success.jpg, review/steam_live_macro.jpg.

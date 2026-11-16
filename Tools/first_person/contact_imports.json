@@ -1,0 +1,85 @@
+{
+    "version": 1,
+    "items": [
+        {
+            "tool": 0,
+            "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Scraper.glb",
+            "sourceEuler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "socketLocalM": {
+                "x": -0.02510100044310093,
+                "y": 0.07417699694633484,
+                "z": 0.015297000296413898
+            },
+            "brushBristleTopM": -1.0,
+            "contactBandFraction": 0.15000000596046448
+        },
+        {
+            "tool": 4,
+            "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Brush.glb",
+            "sourceEuler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "socketLocalM": {
+                "x": 0,
+                "y": 0.0342,
+                "z": 0
+            },
+            "brushBristleTopM": 0.015200000256299973,
+            "contactBandFraction": 0.15000000596046448
+        },
+        {
+            "tool": 5,
+            "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Squeegee.glb",
+            "sourceEuler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "socketLocalM": {
+                "x": -0.013763999566435814,
+                "y": 0.11454900354146957,
+                "z": 0.016579000279307365
+            },
+            "brushBristleTopM": -1.0,
+            "contactBandFraction": 0.15000000596046448
+        },
+        {
+            "tool": 6,
+            "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_WetVacuum.glb",
+            "sourceEuler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "socketLocalM": {
+                "x": -0.05868599936366081,
+                "y": 0.09724300354719162,
+                "z": 0.016493000090122223
+            },
+            "brushBristleTopM": -1.0,
+            "contactBandFraction": 0.15000000596046448
+        },
+        {
+            "tool": 9,
+            "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Mop.glb",
+            "sourceEuler": {
+                "x": 0.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            "socketLocalM": {
+                "x": -0.04403600096702576,
+                "y": 0.11869800090789795,
+                "z": 0.018735000863671303
+            },
+            "brushBristleTopM": -1.0,
+            "contactBandFraction": 0.15000000596046448
+        }
+    ]
+}

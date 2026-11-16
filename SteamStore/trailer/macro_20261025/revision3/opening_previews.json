@@ -1,0 +1,40 @@
+[
+  {
+    "duration": 3.5,
+    "width": 1920,
+    "height": 1080,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "color": "tv, bt709, progressive",
+    "fps": 60.0,
+    "audio": true,
+    "streams": [
+      "video",
+      "audio"
+    ],
+    "frames": 210,
+    "file": "SteamStore\\trailer\\macro_20261025\\revision3\\refluff_macro_trailer_v3_first3_5s.mp4",
+    "bytes": 4685999,
+    "sha256": "3f8302bf5476f4b7bf27ba65a13aab65d94b38d8b6c84530be68e971bc4f6875",
+    "note": "Review video re-encoded from final master; AAC master audio stream copied unchanged."
+  },
+  {
+    "duration": 15.25,
+    "width": 1920,
+    "height": 1080,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "color": "tv, bt709, progressive",
+    "fps": 60.0,
+    "audio": true,
+    "streams": [
+      "video",
+      "audio"
+    ],
+    "frames": 915,
+    "file": "SteamStore\\trailer\\macro_20261025\\revision3\\refluff_macro_trailer_v3_opening.mp4",
+    "bytes": 32637587,
+    "sha256": "cdf9adacabc48c5dced1ab5b3d213670b98faadc02e8acb0bf4b666570eff768",
+    "note": "Review video re-encoded from final master; AAC master audio stream copied unchanged."
+  }
+]

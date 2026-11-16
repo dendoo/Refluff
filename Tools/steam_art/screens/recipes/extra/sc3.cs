@@ -1,0 +1,10 @@
+CarpetCleaning.CarpetDebugApi.Reset(36, 0.5f);
+float[] us = {0.32f,0.38f,0.44f,0.50f};
+foreach (var u in us) CarpetCleaning.CarpetDebugApi.StrokeNow(0, u,0.12f, u,0.46f, 40, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(0, 0.56f, 0.44f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 12; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.56f,0.12f, 0.56f,0.44f, 34, 1f);
+CarpetCleaning.StoreShotApi.RenderScene("test/sc3.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.StatsJson();

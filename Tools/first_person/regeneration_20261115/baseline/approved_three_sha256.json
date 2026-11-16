@@ -1,0 +1,8 @@
+{
+  "Assets/CarpetCleaning/Models/FirstPerson/Tool_DryVacuum.glb": "a29e980ec4e9f8d6c2ff51e7406ec8ab7d221a7775741d7d0eb644d03fe04933",
+  "Assets/CarpetCleaning/Prefabs/FirstPerson/FP_DryVacuum.prefab": "4324b9e23d9935c218a86985fb8ebf483573916ff1058e6ea39ba032f61da8ef",
+  "Assets/CarpetCleaning/Models/FirstPerson/Tool_FoamSprayer.glb": "7a41b92d3425773dca40049dcc0a25299e8b9b48ff5f2c2fc9795881d3883923",
+  "Assets/CarpetCleaning/Prefabs/FirstPerson/FP_FoamSprayer.prefab": "47e509f07be51d1fcaf9d98900ff0fcc393024f45e716b54c7cc97c87d86475a",
+  "Assets/CarpetCleaning/Models/FirstPerson/Tool_Dryer.glb": "a05610d8c3e195d90b2bbce429e2f85f0bc429fd32aab43a985ce0a8c879d95c",
+  "Assets/CarpetCleaning/Prefabs/FirstPerson/FP_Dryer.prefab": "c0effdc3797f60014d2c49ecb5b3232de1d0409891e447454983a73debab72d6"
+}

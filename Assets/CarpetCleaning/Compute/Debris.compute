@@ -1,0 +1,519 @@
+// Debris.compute — GPU debris particles (crust chunks, dust puffs, splash droplets). Docs/FLOOR_SYSTEM.md section 3.
+// Owner: DebrisSystem.cs (LateUpdate order 105). Consumes the carpet's DebrisEmit append buffer (K_Emit), simulates a
+// 16384-particle ring pool, deposits water / slurry / dust into the floor inject buffer (consumed by FloorSim K_FInject).
+// Units: mm and s. Particle pos = (CMM x, height mm, CMM y). Height 0 = carpet backing top, floor top = FLOOR_Y (-3 mm).
+#pragma kernel K_DebInit
+#pragma kernel K_DebSpawn
+#pragma kernel K_DebSim
+#pragma kernel K_DebClearEvents
+
+#include "DebrisCommon.hlsl"
+
+// ---------------------------------------------------------------- ToolStamp (48 bytes) — byte-identical copy of SimCommon.hlsl
+struct ToolStamp
+{
+    float2 uv;        // stamp centre in carpet UV
+    float2 dir;       // unit stroke direction in mm space
+    float  radiusMm;  // disc radius or blade half-thickness along the stroke
+    float  lengthMm;  // blade full length across the stroke (0 for discs)
+    float  pressure;  // 0..1
+    float  speed;     // stroke speed [mm/s]
+    float  dtS;       // seconds this stamp represents
+    int    tool;      // ToolId: 0 scraper, 1 dry vac, 2 hose, 3 foam, 4 brush, 5 squeegee, 6 wet vac, 7 dryer
+    float2 vStroke;   // stroke velocity [mm/s] in mm space
+};
+
+#define DEB_N        16384u
+#define DEB_EMIT_CAP 8192u
+#define MAX_STAMPS   32
+#define EPS          1e-6
+#define TWO_PI       6.28318530718
+
+// ---------------------------------------------------------------- resources
+// UAV budget per kernel (max 8): K_DebInit 2 (_Particles, _Head); K_DebSpawn 2 (_Particles, _Head);
+// K_DebSim 3 (_Particles, _FInject, _SuckEvents); K_DebClearEvents 1 (_SuckEvents).
+RWStructuredBuffer<DebrisParticle> _Particles;   // pool, DEB_N entries
+RWStructuredBuffer<uint>           _Head;        // [0] = ring head = total spawned since the last K_DebInit
+StructuredBuffer<DebrisEmit>       _EmitIn;      // carpet emit append buffer bound as an SRV
+StructuredBuffer<uint>             _EmitCount;   // [0] = append counter (ComputeBuffer.CopyCount)
+StructuredBuffer<ToolStamp>        _Stamps;      // carpet's stamp buffer (this frame)
+RWStructuredBuffer<uint>           _FInject;     // floor inject buffer: FW*FH*4 uints, fixed point x INJECT_SCALE
+// Suction events for the vacuum tube rattle (Docs/AUDIO.md 8). Written the instant a vacuum nozzle captures a chunk:
+// [0] events this step (cleared by K_DebClearEvents before every K_DebSim), [1] total since the last reset (never
+// cleared on the GPU), then SUCK_EV_MAX records of SUCK_EV_STRIDE uints:
+//   { particle index, asuint(size mm), asuint(seconds until it vanishes into the nozzle), tool }.
+// The arrival time is what makes the sound land on the visual: DebrisSystem reads this buffer back asynchronously
+// (1-3 frames late) and ToolAudio schedules the clack at capture + arrival, which is still in the future.
+RWStructuredBuffer<uint>           _SuckEvents;
+#define SUCK_EV_MAX    64u
+#define SUCK_EV_STRIDE 4u
+#define SUCK_EV_HEADER 2u
+Texture2D<float4> _FiberTex;     // carpet (bx, by, f, w)
+Texture2D<float4> _FluidTex;     // carpet (h, u, v, s)
+Texture2D<float4> _FFluidTex;    // floor  (h, u, v, s); 1x1 black when there is no floor
+SamplerState sampler_linear_clamp;
+
+// ---------------------------------------------------------------- uniforms
+int    _StampCount;
+int    _FloorValid;     // 1 when a FloorSimulation is bound (deposits allowed), 0 otherwise
+int    _KillInCarpet;   // one-shot: kill every particle inside the carpet rect (carpet handed over / new carpet laid down)
+float  _DtFrame, _Time;
+float4 _SimConsts;      // (W_CAP, PILE_H, F_MAX, H_MAX) from the carpet SimSettings
+// _D_* debris constants come from DebrisCommon.hlsl (FloorSettings.Apply)
+
+// ---------------------------------------------------------------- helpers (copies of SimCommon.hlsl, kept identical)
+float DecayAmount(float x, float k, float dt) { return x * (1.0 - exp(-max(k, 0.0) * dt)); }
+float PileTopMm(float f, float w) { return _SimConsts.y * (1.0 - 0.55 * f) * (1.0 - 0.25 * w); }
+
+float FootprintWeight(float2 p, ToolStamp st)
+{
+    if (st.lengthMm > 0.0)
+    {
+        float2 d = st.dir;
+        float dl = dot(d, d);
+        d = (dl > 1e-8) ? d * rsqrt(dl) : float2(1.0, 0.0);
+        float2 perp = float2(-d.y, d.x);
+        float along  = abs(dot(p, d))    - st.radiusMm;
+        float across = abs(dot(p, perp)) - st.lengthMm * 0.5;
+        return smoothstep(4.0, 0.0, along) * smoothstep(4.0, 0.0, across);
+    }
+    return smoothstep(1.0, 0.7, length(p) / max(st.radiusMm, 1e-3));
+}
+
+float Hash1(float2 p)
+{
+    p = frac(p * float2(0.1031, 0.1030));
+    p += dot(p, p.yx + 33.33);
+    return frac((p.x + p.y) * p.x);
+}
+float2 Hash2(float2 p)
+{
+    float3 p3 = frac(p.xyx * float3(0.1031, 0.1030, 0.0973));
+    p3 += dot(p3, p3.yzx + 33.33);
+    return frac((p3.xx + p3.yz) * p3.zy);
+}
+float3 Hash3(float2 p)
+{
+    float3 p3 = frac(p.xyx * float3(0.1031, 0.1030, 0.0973));
+    p3 += dot(p3, p3.yxz + 33.33);
+    return frac((p3.xxy + p3.yzz) * p3.zyx);
+}
+
+// Safe 2D normalise (zero vector -> zero, never NaN).
+float2 SafeNorm2(float2 v) { float l = length(v); return (l > 1e-5) ? v / l : float2(0.0, 0.0); }
+
+// ---------------------------------------------------------------- quaternions (x, y, z, w), world-frame angular velocity
+float4 QMul(float4 a, float4 b)
+{
+    return float4(a.w * b.xyz + b.w * a.xyz + cross(a.xyz, b.xyz), a.w * b.w - dot(a.xyz, b.xyz));
+}
+float4 QAxisAngle(float3 axis, float ang)
+{
+    float s = sin(0.5 * ang);
+    return float4(axis * s, cos(0.5 * ang));
+}
+float4 QSafe(float4 q)
+{
+    float l2 = dot(q, q);
+    return (l2 > 1e-8) ? q * rsqrt(l2) : float4(0.0, 0.0, 0.0, 1.0);
+}
+float4 QIntegrate(float4 q, float3 w, float dt)
+{
+    float4 dq = QMul(float4(w, 0.0), q) * (0.5 * dt);
+    return QSafe(q + dq);
+}
+
+// Random unit quaternion from three uniforms (Shoemake).
+float4 QRandom(float3 u)
+{
+    float a = sqrt(saturate(1.0 - u.x)), b = sqrt(saturate(u.x));
+    return float4(a * sin(TWO_PI * u.y), a * cos(TWO_PI * u.y), b * sin(TWO_PI * u.z), b * cos(TWO_PI * u.z));
+}
+
+// Resting orientation: flat side (local +Y) up, random yaw + a small tilt from the seed.
+float4 QRestPose(float seed)
+{
+    float2 h = Hash2(float2(seed * 131.7 + 3.1, seed * 47.3 + 9.2));
+    float yaw = seed * TWO_PI;
+    float tilt = (h.x - 0.5) * 0.35;
+    float2 ta = SafeNorm2(h * 2.0 - 1.0);
+    float3 tiltAxis = (dot(ta, ta) > 0.5) ? float3(ta.x, 0.0, ta.y) : float3(1.0, 0.0, 0.0);
+    return QSafe(QMul(QAxisAngle(float3(0.0, 1.0, 0.0), yaw), QAxisAngle(tiltAxis, tilt)));
+}
+
+// ---------------------------------------------------------------- ground / water queries
+// Ground height (mm) under horizontal position xz (CMM). On the carpet: pile top + free water; off it: floor top + floor water.
+float GroundAt(float2 xz, out float h, out float2 flow, out bool onCarpet)
+{
+    onCarpet = CarpetCoversCMM(xz);
+    float ground;
+    if (onCarpet)
+    {
+        float2 uv = xz / CARPET_MM;
+        float4 fb = _FiberTex.SampleLevel(sampler_linear_clamp, uv, 0);
+        float4 fl = _FluidTex.SampleLevel(sampler_linear_clamp, uv, 0);
+        h = max(fl.x, 0.0);
+        flow = fl.yz;
+        ground = PileTopMm(saturate(fb.z), saturate(fb.w)) + h;
+    }
+    else
+    {
+        float4 ff = (_FloorValid != 0) ? _FFluidTex.SampleLevel(sampler_linear_clamp, FloorUV(xz), 0) : float4(0.0, 0.0, 0.0, 0.0);
+        h = max(ff.x, 0.0);
+        flow = ff.yz;
+        ground = FLOOR_Y + h;
+    }
+    return ground;
+}
+
+// Fixed-point deposit into the floor inject buffer (ch0 water mm, ch1 slurry, ch2 foam, ch3 dust). Skipped without a floor.
+void Deposit(float2 xz, uint ch, float value)
+{
+    if (_FloorValid == 0 || !(value > 0.0)) return;
+    int2 c = FloorCell(xz);
+    if (!InsideFloor(c)) return;
+    uint v = (uint)(min(value, 1.0e5) * INJECT_SCALE + 0.5);
+    if (v == 0u) return;
+    InterlockedAdd(_FInject[FloorInjectIndex(c, ch)], v);
+}
+
+bool OutsideWorld(float3 p)
+{
+    float2 lo = FLOOR_MIN - 200.0, hi = FLOOR_MIN + FLOOR_SIZE + 200.0;
+    return p.x < lo.x || p.z < lo.y || p.x > hi.x || p.z > hi.y || p.y < -100.0 || p.y > 2000.0;
+}
+
+DebrisParticle DeadParticle()
+{
+    DebrisParticle p;
+    p.pos = float3(0.0, 0.0, 0.0); p.size = 0.0; p.vel = float3(0.0, 0.0, 0.0); p.life = 0.0;
+    p.rot = float4(0.0, 0.0, 0.0, 1.0); p.angVel = float3(0.0, 0.0, 0.0);
+    p.kindState = DebPack(DEB_KIND_CHUNK, DEB_ST_DEAD);
+    p.amount = 0.0; p.seed = 0.0; p.dirt = 0.0; p.pad = 0.0;
+    return p;
+}
+
+// ================================================================ K_DebInit: every particle dead, ring head 0
+[numthreads(64, 1, 1)]
+void K_DebInit(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= DEB_N) return;
+    _Particles[id.x] = DeadParticle();
+    if (id.x == 0u) _Head[0] = 0u;
+}
+
+// ================================================================ K_DebSpawn: consume this frame's DebrisEmit list into the ring
+[numthreads(64, 1, 1)]
+void K_DebSpawn(uint3 id : SV_DispatchThreadID)
+{
+    uint n = min(_EmitCount[0], DEB_EMIT_CAP);
+    uint i = id.x;
+    if (i >= n) return;
+    DebrisEmit e = _EmitIn[i];
+    uint slot;
+    InterlockedAdd(_Head[0], 1u, slot);
+    slot = slot % DEB_N;
+
+    uint kind = min(e.kind, DEB_KIND_DROP);
+    float seed = saturate(e.seed);
+    float3 r = Hash3(float2(seed * 257.0 + 0.7, (float)(i & 4095u) * 0.173 + _Time * 3.7));
+
+    DebrisParticle p = DeadParticle();
+    p.pos = e.pos;
+    p.size = clamp(e.size, 0.5, 40.0);
+    p.vel = clamp(e.vel, -6000.0, 6000.0);
+    p.seed = seed;
+    p.amount = max(e.amount, 0.0);
+    p.dirt = saturate(e.dirt);
+    p.kindState = DebPack(kind, DEB_ST_FLY);
+    if (kind == DEB_KIND_CHUNK)
+    {
+        p.rot = QRandom(r);
+        float spin = 8.0 + 0.03 * length(p.vel);                     // rad/s, faster chips tumble faster
+        p.angVel = (Hash3(float2(seed * 91.3 + 1.3, r.x * 53.1)) - 0.5) * 2.0 * spin;
+    }
+    else if (kind == DEB_KIND_DUST)
+    {
+        p.life = _D_DUST_LIFE * (0.7 + 0.6 * seed);
+        p.pad = p.life;                                                // lifeMax for the shader
+        p.dirt = e.pos.y - 10.0;                                       // ground under the puff (K_Emit puts it at pileTop + 10)
+    }
+    _Particles[slot] = p;
+}
+
+// ================================================================ K_DebSim: one thread per particle, once per frame (_DtFrame)
+[numthreads(64, 1, 1)]
+void K_DebSim(uint3 id : SV_DispatchThreadID)
+{
+    uint i = id.x;
+    if (i >= DEB_N) return;
+    DebrisParticle p = _Particles[i];
+    uint kind = DebKind(p.kindState);
+    uint state = DebState(p.kindState);
+    if (state == DEB_ST_DEAD) return;
+    // the carpet was carried off (or a new one was laid down): whatever sat on its rect goes with it, so nothing
+    // hangs in mid-air over the bare tile or ends up buried in the new pile
+    if (_KillInCarpet != 0 && InsideCarpetCMM(p.pos.xz)) { _Particles[i] = DeadParticle(); return; }
+    float dt = clamp(_DtFrame, 0.0, 0.1);
+    if (dt <= 0.0) return;
+
+    // NaN / runaway guard: a bad particle is simply recycled.
+    if (any(isnan(p.pos)) || any(isnan(p.vel)) || OutsideWorld(p.pos)) { _Particles[i] = DeadParticle(); return; }
+
+    float h = 0.0; float2 flow = float2(0.0, 0.0); bool onCarpet = false;
+    float ground = 0.0;
+
+    // ---------------------------------------------------------------- dust puff: light, dragged, buoyant; dies on contact or when its life ends
+    if (kind == DEB_KIND_DUST)
+    {
+        p.life -= dt;
+        p.vel.y -= _D_GRAV * 0.04 * dt;                                   // fine dust: nearly buoyant
+        p.vel *= exp(-2.5 * dt);
+        p.pos += (p.vel + float3(0.0, 20.0, 0.0)) * dt;
+        ground = GroundAt(p.pos.xz, h, flow, onCarpet);
+        if (p.pos.y <= ground + 0.25 * p.size) { p.pos.y = ground + 0.25 * p.size; p.vel.y = max(p.vel.y, 0.0); }   // hugs the ground, keeps drifting
+        // dust: the ground (mm) under the puff for DebrisDust's lift + soft fade, low-passed (~0.12 s) so a puff drifting over
+        // the carpet rim (pile top -> floor, ~23 mm in one frame) slides its fade band down instead of popping
+        p.dirt += (ground - p.dirt) * (1.0 - exp(-dt / 0.12));
+        if (p.life <= 0.0)                                                  // fades over its whole life, then settles as floor dust over the tile
+        {
+            if (!onCarpet) Deposit(p.pos.xz, 3u, p.amount);
+            _Particles[i] = DeadParticle();
+            return;
+        }
+        p.vel = clamp(p.vel, -3000.0, 3000.0);
+        _Particles[i] = p;
+        return;
+    }
+
+    // ---------------------------------------------------------------- droplet: ballistic; on contact it becomes floor water + slurry (nothing on the carpet)
+    if (kind == DEB_KIND_DROP)
+    {
+        p.vel.y -= _D_GRAV * dt;
+        p.pos += p.vel * dt;
+        ground = GroundAt(p.pos.xz, h, flow, onCarpet);
+        if (p.pos.y - 0.5 * p.size <= ground)
+        {
+            if (!onCarpet)
+            {
+                Deposit(p.pos.xz, 0u, p.amount / FLOOR_AREA);          // mm of water in that floor cell
+                Deposit(p.pos.xz, 1u, p.dirt * p.amount * 0.001);      // slurry carried by the droplet
+            }
+            _Particles[i] = DeadParticle();
+            return;
+        }
+        p.vel = clamp(p.vel, -6000.0, 6000.0);
+        _Particles[i] = p;
+        return;
+    }
+
+    // ---------------------------------------------------------------- chunk
+    if (state == DEB_ST_SUCKED)
+    {
+        float3 target = p.angVel;                                      // suction target stored in angVel
+        p.pos = lerp(p.pos, target, 1.0 - exp(-_D_SUCK_SPEED * dt));
+        p.size *= exp(-4.0 * dt);
+        p.life -= dt;
+        p.rot = QIntegrate(p.rot, float3(2.0, 14.0, 5.0), dt);
+        if (p.life <= 0.0 || distance(p.pos, target) < 8.0 || p.size < 0.3) { _Particles[i] = DeadParticle(); return; }
+        _Particles[i] = p;
+        return;
+    }
+
+    bool grounded = false;
+    bool landedNow = false;
+    if (state == DEB_ST_FLY)
+    {
+        // vel.y == 0 exactly marks "sliding on the ground" (set below); everything else is ballistic
+        bool sliding = (p.vel.y == 0.0);
+        float2 prevXZ = p.pos.xz;
+        bool wasOnCarpet = CarpetCoversCMM(prevXZ);
+        if (!sliding) p.vel.y -= _D_GRAV * dt;
+        p.pos += p.vel * dt;
+        p.rot = QIntegrate(p.rot, p.angVel, dt);
+        ground = GroundAt(p.pos.xz, h, flow, onCarpet);
+        float halfH = 0.25 * p.size;                                    // flattened shard rests on its flat side (mesh is 0.45 high)
+        float bottom = p.pos.y - (sliding ? halfH : 0.5 * p.size);
+        if (!wasOnCarpet && onCarpet && (ground - bottom) > 5.0)        // came from the floor into the carpet: the pile edge is a wall
+        {
+            float2 nrm = float2(prevXZ.x < 0.0 ? -1.0 : (prevXZ.x > CARPET_W_MM ? 1.0 : 0.0),
+                                prevXZ.y < 0.0 ? -1.0 : (prevXZ.y > CARPET_H_MM ? 1.0 : 0.0));
+            nrm = SafeNorm2(nrm);
+            float vn = dot(p.vel.xz, nrm);
+            if (vn < 0.0) p.vel.xz -= 1.3 * vn * nrm;                   // reflect the normal component (restitution 0.3), keep the tangential slide
+            p.pos.xz = prevXZ;
+            ground = GroundAt(p.pos.xz, h, flow, onCarpet);
+            bottom = p.pos.y - (sliding ? halfH : 0.5 * p.size);
+        }
+        if (sliding)
+        {
+            if (bottom > ground + 1.0) p.vel.y = -1e-3;               // slid off an edge (carpet -> floor): airborne again
+            else { p.pos.y = ground + halfH; grounded = true; }
+        }
+        else if (bottom <= ground)
+        {
+            float rest = onCarpet ? _D_REST_CARPET : _D_REST_FLOOR;
+            float vy = -p.vel.y * rest;
+            p.vel.xz *= 0.7;
+            p.angVel *= 0.6;
+            if (vy > 60.0) { p.pos.y = ground + 0.5 * p.size; p.vel.y = vy; }   // bounce
+            else
+            {
+                p.pos.y = ground + halfH;
+                p.vel.y = 0.0;                                          // settle: slide or rest
+                grounded = true;
+                landedNow = true;
+                if (length(p.vel.xz) < 60.0) p.vel.xz = float2(0.0, 0.0);
+            }
+        }
+    }
+    else
+    {
+        // resting (2 floor / 3 carpet / 5 dissolving): glued to the ground, which may move (water level, pile height)
+        ground = GroundAt(p.pos.xz, h, flow, onCarpet);
+        p.pos.y = ground + 0.25 * p.size;                               // flat side down
+        grounded = true;
+    }
+
+    if (grounded)
+    {
+        float2 xz = p.pos.xz;
+        if (state == DEB_ST_FLY)                                        // sliding friction
+        {
+            float fr = exp(-(onCarpet ? _D_FRICTION * 3.0 : _D_FRICTION) * dt);   // pile grips shards much harder than glazed tile
+            p.vel.xz *= fr;
+            p.angVel *= fr;
+        }
+
+        // ---- tools acting on a grounded chunk (p in CMM, same footprint as the carpet sim)
+        bool sucked = false;
+        int suckTool = -1;
+        float3 target = float3(0.0, 0.0, 0.0);
+        int n = min(_StampCount, MAX_STAMPS);
+        [loop]                                                          // contains a continue: never let FXC try to unroll it
+        for (int s = 0; s < n; s++)
+        {
+            ToolStamp st = _Stamps[s];
+            float2 c = st.uv * CARPET_MM;
+            float2 d = xz - c;
+            float m = FootprintWeight(d, st);
+            if (m <= 0.001) continue;
+            float2 radial = SafeNorm2(d);
+            if (st.tool == 1 || st.tool == 6)                           // dry / wet vacuum: suck
+            {
+                if (m > 0.15) { sucked = true; suckTool = st.tool; target = float3(c.x, ground + 30.0, c.y); }
+            }
+            else if (st.tool == 5)                                      // squeegee: pushed along with the blade
+            {
+                p.vel.xz = st.vStroke * 0.85; p.vel.y = 0.0; state = DEB_ST_FLY;
+            }
+            else if (st.tool == 4)                                      // brush: flicked
+            {
+                p.vel.xz += st.vStroke * 0.4 * m; p.vel.y = max(p.vel.y, 120.0 * m); state = DEB_ST_FLY;
+            }
+            else if (st.tool == 2)                                      // hose: radial jet
+            {
+                p.vel.xz += radial * 500.0 * m * dt;
+            }
+            else if (st.tool == 7)                                      // dryer: only light chips move
+            {
+                if (p.size < 6.0) p.vel.xz += radial * 900.0 * m * dt;
+            }
+            else if (st.tool == 9 && !onCarpet)                          // mop: crumbs are absorbed, bigger shards are swept along the head
+            {
+                if (p.size < _D_MOP_PICK_MM)
+                {
+                    if (m > 0.15) { sucked = true; suckTool = st.tool; target = float3(c.x, ground + 15.0, c.y); }
+                }
+                else { p.vel.xz = st.vStroke * 0.7; p.vel.y = 0.0; state = DEB_ST_FLY; }
+            }
+        }
+        if (sucked)
+        {
+            // Vacuums only (a mop absorbs crumbs into its cloth: no tube, no rattle). The SUCKED branch above moves
+            // the chunk as d *= exp(-k dt) from the NEXT frame on and kills it, after the update, at d < 8 mm, size
+            // < 0.3 mm (size *= exp(-4 dt)) or life <= 0 (0.4 s). Each condition first holds after m = floor(t/dt)+1
+            // frames (life: ceil(0.4/dt)), so the frame the chunk vanishes on is known now, exactly, at this frame's
+            // dt. The continuous t alone measured 0-16.6 ms early (mean 9.8), i.e. up to one frame.
+            if (suckTool == 1 || suckTool == 6)
+            {
+                float d0 = distance(p.pos, target);
+                float tDist = log(max(d0, 8.0) / 8.0) / max(_D_SUCK_SPEED, 0.01);
+                float tSize = log(max(p.size, 0.3) / 0.3) / 4.0;
+                float mDist = floor(tDist / dt) + 1.0;
+                float mSize = floor(tSize / dt) + 1.0;
+                float mLife = ceil(0.4 / dt - 1e-4);
+                float tArrive = min(min(mDist, mSize), mLife) * dt;
+                uint slot;
+                InterlockedAdd(_SuckEvents[0], 1u, slot);
+                InterlockedAdd(_SuckEvents[1], 1u);
+                if (slot < SUCK_EV_MAX)
+                {
+                    uint b = SUCK_EV_HEADER + slot * SUCK_EV_STRIDE;
+                    _SuckEvents[b] = i;
+                    _SuckEvents[b + 1u] = asuint(p.size);
+                    _SuckEvents[b + 2u] = asuint(tArrive);
+                    _SuckEvents[b + 3u] = (uint)suckTool;
+                }
+            }
+            p.kindState = DebPack(kind, DEB_ST_SUCKED);
+            p.angVel = target;
+            p.life = 0.4;
+            p.vel = float3(0.0, 0.0, 0.0);
+            _Particles[i] = p;
+            return;
+        }
+
+        // ---- water: carried by the flow, slowly dissolving
+        bool inWater = (h > 0.3);
+        if (inWater)
+        {
+            p.vel.xz += (flow - p.vel.xz) * (1.0 - exp(-3.0 * dt));
+            p.size -= _D_DISSOLVE * dt * saturate(h / 0.5);
+            if (p.size < 1.5)
+            {
+                if (!onCarpet) Deposit(xz, 1u, p.amount * 0.02);
+                _Particles[i] = DeadParticle();
+                return;
+            }
+        }
+
+        // ---- resolve: airborne hop / sliding / resting
+        float sp = length(p.vel.xz);
+        float goThr = (state == DEB_ST_FLY || inWater) ? 20.0 : 30.0;
+        if (p.vel.y > 0.0)
+        {
+            state = DEB_ST_FLY;                                         // brush hop: ballistic from here
+        }
+        else if (sp > goThr)
+        {
+            state = DEB_ST_FLY; p.vel.y = 0.0;                          // sliding
+        }
+        else
+        {
+            if (state == DEB_ST_FLY || landedNow) p.rot = QRestPose(p.seed);   // just came to rest: flat side down
+            // keep the (sub-threshold) horizontal push so hose / dryer / flow can accumulate over frames; it leaks away otherwise
+            p.vel.xz = landedNow ? float2(0.0, 0.0) : p.vel.xz * exp(-2.0 * dt);
+            p.vel.y = 0.0;
+            p.angVel = float3(0.0, 0.0, 0.0);
+            state = inWater ? DEB_ST_DISSOLVE : (onCarpet ? DEB_ST_REST_CPT : DEB_ST_REST_FLR);
+        }
+    }
+
+    // ---- clamp on write-back
+    p.pos.y = clamp(p.pos.y, -50.0, 1500.0);
+    p.vel = clamp(p.vel, -6000.0, 6000.0);
+    p.size = clamp(p.size, 0.0, 40.0);
+    p.angVel = clamp(p.angVel, -300.0, 300.0);
+    p.rot = QSafe(p.rot);
+    p.kindState = DebPack(kind, state);
+    _Particles[i] = p;
+}
+
+// ================================================================ K_DebClearEvents: one thread, before every K_DebSim
+// Only the per-step count is cleared; [1] keeps the running total so the CPU can prove it received every event.
+[numthreads(1, 1, 1)]
+void K_DebClearEvents(uint3 id : SV_DispatchThreadID)
+{
+    _SuckEvents[0] = 0u;
+}

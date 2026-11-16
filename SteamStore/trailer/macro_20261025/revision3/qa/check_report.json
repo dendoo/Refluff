@@ -1,0 +1,143 @@
+{
+ "video": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision3/refluff_macro_trailer_v3.mp4",
+ "edl": "C:\\UnityProjects\\CarpetCleaning\\Tools\\steam_art\\trailer\\macro_20261025\\revision3\\edl.json",
+ "ok": true,
+ "failed": [],
+ "checks": [
+  {
+   "check": "size",
+   "ok": true,
+   "value": "1920x1080",
+   "want": "1920x1080"
+  },
+  {
+   "check": "codec",
+   "ok": true,
+   "value": "h264 High",
+   "want": "h264 High"
+  },
+  {
+   "check": "pixel format",
+   "ok": true,
+   "value": "yuv420p",
+   "want": "yuv420p"
+  },
+  {
+   "check": "colour",
+   "ok": true,
+   "value": "tv, bt709, progressive",
+   "want": "tv, bt709"
+  },
+  {
+   "check": "fps",
+   "ok": true,
+   "value": 60.0,
+   "want": "60"
+  },
+  {
+   "check": "frame count",
+   "ok": true,
+   "value": 3465,
+   "want": "3465 (duration x 60)"
+  },
+  {
+   "check": "video bitrate",
+   "ok": true,
+   "value": "18079 kbit/s",
+   "want": ">= 5000 (Steam), ~20000"
+  },
+  {
+   "check": "audio codec",
+   "ok": true,
+   "value": "aac (LC) (mp4a / 0x6134706D)",
+   "want": "aac (LC)"
+  },
+  {
+   "check": "audio format",
+   "ok": true,
+   "value": "48000 Hz stereo",
+   "want": "48000 Hz stereo"
+  },
+  {
+   "check": "audio bitrate",
+   "ok": true,
+   "value": "155 kbit/s",
+   "want": "192 target (ABR: 96-208 accepted)"
+  },
+  {
+   "check": "duration",
+   "ok": true,
+   "value": "57.750 s",
+   "want": "57.75 s +- 0.25"
+  },
+  {
+   "check": "constant frame rate",
+   "ok": true,
+   "value": "VFR 0.000000 (0/3464)",
+   "want": "VFR 0 (CFR)"
+  },
+  {
+   "check": "no black frames",
+   "ok": true,
+   "value": "none",
+   "want": "none"
+  },
+  {
+   "check": "integrated loudness",
+   "ok": true,
+   "value": "-14.0 LUFS",
+   "want": "-14 +- 1"
+  },
+  {
+   "check": "true peak",
+   "ok": true,
+   "value": "-2.4 dBTP",
+   "want": "<= -1.0"
+  },
+  {
+   "check": "titles in 5 % safe area",
+   "ok": true,
+   "value": "0 captions + logo/end card OK",
+   "want": "inside [96, 54, 1824, 1026]"
+  },
+  {
+   "check": "reading time",
+   "ok": true,
+   "value": "all >= 1 s / 3 words",
+   "want": ">= 1 s per 3 words"
+  },
+  {
+   "check": "no CC BY-NC audio",
+   "ok": true,
+   "value": "clean (refluff_macro_trailer_v3_render.json)",
+   "want": "no Samsung dry vac (TRAILER.md 7)"
+  }
+ ],
+ "loudness": {
+  "I": -14.0,
+  "LRA": 16.0,
+  "TP": -2.4
+ },
+ "endcard_date": "",
+ "review_files": {
+  "t600.mp4": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision3/qa/t600.mp4",
+  "first5.mp4": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision3/qa/first5.mp4",
+  "festival_12_35.mp4": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision3/qa/festival_12_35.mp4",
+  "micro.mp4": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision3/qa/micro.mp4",
+  "micro_frames.jpg": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision3/qa/micro_frames.jpg"
+ },
+ "probe": {
+  "duration": 57.75,
+  "width": 1920,
+  "height": 1080,
+  "codec": "h264",
+  "profile": "High",
+  "pix_fmt": "yuv420p",
+  "color": "tv, bt709, progressive",
+  "fps": 60.0,
+  "frames": 3465,
+  "total_kbps": 18247,
+  "video_kbps": 18079,
+  "audio_line": "aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 155 kb/s (default)"
+ }
+}

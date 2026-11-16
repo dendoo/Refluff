@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"thai"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"พรมฟูผืนแรก"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"ส่งมอบพรมผืนแรก"
+		"NEW_ACHIEVEMENT_3_1_NAME"	"ไร้คราบ"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"ทำพรมสกปรกให้สะอาด 100% แล้วส่งมอบ"
+		"NEW_ACHIEVEMENT_3_2_NAME"	"แห้งสนิท"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"ทำพรมให้เปียกโชก แล้วส่งมอบเมื่อแห้ง 100%"
+		"NEW_ACHIEVEMENT_3_3_NAME"	"ใหม่เหมือนแกะกล่อง"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"ทำพรมสกปรกให้สะอาด 100% และแห้ง 100% แล้วส่งมอบ"
+		"NEW_ACHIEVEMENT_3_4_NAME"	"จากมอมแมมสู่ฟูนุ่ม"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"ทำพรมที่สกปรกสุดๆ ให้สะอาด 100% แล้วส่งมอบ"
+		"NEW_ACHIEVEMENT_3_5_NAME"	"บริการด่วนพิเศษ"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"รับโบนัสความเร็วเต็มจำนวนจากพรมที่สกปรกมาก"
+		"NEW_ACHIEVEMENT_3_6_NAME"	"ลูกค้าประจำ"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"ส่งมอบพรม 25 ผืน"
+		"NEW_ACHIEVEMENT_3_7_NAME"	"ขนมาใช้ครบทุกชิ้น"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"ใช้อุปกรณ์ให้ครบทั้ง 10 ชิ้น"
+		"NEW_ACHIEVEMENT_3_8_NAME"	"อัปเกรดเต็มหลอด"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"อัปเกรด “พลัง” และ “พื้นที่” ของอุปกรณ์ชิ้นเดียวกันให้ถึง “สูงสุด”"
+		"NEW_ACHIEVEMENT_3_9_NAME"	"ผู้ตรวจงาน"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"ซื้อไฟส่องความชื้นและไฟส่องคราบสกปรก"
+	}
+}

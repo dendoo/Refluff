@@ -1,0 +1,24 @@
+{
+  "take": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\_work\\clips\\between_fibers_20261023_v2_red",
+  "stats": {
+    "duration": 14.0,
+    "peak_dbfs": -11.302,
+    "rms_dbfs": -31.677,
+    "finite": true,
+    "clipped_samples": 0
+  },
+  "warnings": [
+    "1 ToolAudio one-shot(s) (power on / off, tool switch) logged vol 0: their OneShot source is at volume 0, so the game plays them silent too (oneshot_source_volume=1 plays them)"
+  ],
+  "voices": 4,
+  "credits": [
+    "Dragging_On_Carpet.aif by crcavol, https://freesound.org/s/154630/, CC0",
+    "Vacuum Cleaner, On Idle Off, Close, A.wav by InspectorJ, https://freesound.org/s/430632/, CC BY 4.0 (cut, levelled)"
+  ],
+  "clips": [
+    "dryvacuum_carpetdrag_contact",
+    "dryvacuum_dyson_loop",
+    "dryvacuum_dyson_start",
+    "dryvacuum_dyson_stop"
+  ]
+}

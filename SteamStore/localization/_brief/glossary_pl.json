@@ -1,0 +1,253 @@
+{
+ "language": "Polish",
+ "code": "pl",
+ "steam": "polish",
+ "_about": "The game's own UI text in this language (already shipped in the game). Reuse these terms whenever the store text names the same thing, so the store page matches what the player sees in the game. They also show how the game addresses the player (formal / informal).",
+ "terms": [
+  {
+   "en": "Scraper",
+   "yours": "Skrobak",
+   "where": "Tool name (carpet strip and shop). A hand scraper blade that scrapes dried crust and mud off the carpet."
+  },
+  {
+   "en": "Dry vacuum",
+   "yours": "Odkurzacz",
+   "where": "Tool name. A vacuum cleaner for dry dust and crumbs."
+  },
+  {
+   "en": "Hose",
+   "yours": "Wąż",
+   "where": "Tool name. A water hose with a spray nozzle: wets the carpet and rinses it."
+  },
+  {
+   "en": "Foam sprayer",
+   "yours": "Pianownica",
+   "where": "Tool name. Sprays cleaning foam (carpet shampoo / detergent foam)."
+  },
+  {
+   "en": "Brush",
+   "yours": "Szczotka",
+   "where": "Tool name. A rotary scrubbing brush (a floor-scrubber machine with a spinning brush head)."
+  },
+  {
+   "en": "Squeegee",
+   "yours": "Ściągaczka",
+   "where": "Tool name. A rubber squeegee that pushes water off the carpet."
+  },
+  {
+   "en": "Wet vacuum",
+   "yours": "Mokry odkurzacz",
+   "where": "Tool name. A wet vacuum / extractor that sucks up water and foam."
+  },
+  {
+   "en": "Dryer",
+   "yours": "Suszarka",
+   "where": "Tool name. A carpet dryer / air mover blowing warm air."
+  },
+  {
+   "en": "Detergent",
+   "yours": "Płyn myjący",
+   "where": "Floor tool name (right strip). Sprays floor detergent on the tiles."
+  },
+  {
+   "en": "Mop",
+   "yours": "Mop",
+   "where": "Floor tool name (right strip). A mop for the tiles."
+  },
+  {
+   "en": "Hand over",
+   "yours": "Oddaj dywan",
+   "where": "Big green button that appears when the carpet is clean: give the carpet back to its owner (the client) and get paid. Hotkey H."
+  },
+  {
+   "en": "Upgrades",
+   "yours": "Ulepszenia",
+   "where": "Top-right button that opens the upgrade shop (hotkey U, shown on a key chip next to it)."
+  },
+  {
+   "en": "UPGRADES",
+   "yours": "ULEPSZENIA",
+   "where": "Caption at the top of the upgrade shop."
+  },
+  {
+   "en": "Tune your kit",
+   "yours": "Podrasuj sprzęt",
+   "where": "Big title of the upgrade shop: improve your cleaning equipment."
+  },
+  {
+   "en": "POWER",
+   "yours": "MOC",
+   "where": "Upgrade stat name on every tool card: how strongly and fast the tool works."
+  },
+  {
+   "en": "AREA",
+   "yours": "ZASIĘG",
+   "where": "Upgrade stat name on every tool card: how wide an area the tool covers in one stroke."
+  },
+  {
+   "en": "POWER works faster",
+   "yours": "MOC – szybsza praca",
+   "where": "Legend under the shop title explaining the POWER stat."
+  },
+  {
+   "en": "AREA covers more per stroke",
+   "yours": "ZASIĘG – więcej jednym ruchem",
+   "where": "Legend explaining the AREA stat."
+  },
+  {
+   "en": "Speed bonus",
+   "yours": "Premia za szybkość",
+   "where": "Pay slip line: bonus for finishing fast."
+  },
+  {
+   "en": "Spotless",
+   "yours": "Bez skazy",
+   "where": "Pay slip line: bonus for a 100 % clean carpet."
+  },
+  {
+   "en": "Bone dry",
+   "yours": "Suchy jak wiór",
+   "where": "Pay slip line: bonus for a 100 % dry carpet."
+  },
+  {
+   "en": "Combo",
+   "yours": "Combo",
+   "where": "Pay slip line: bonus for spotless AND bone dry together."
+  },
+  {
+   "en": "COMBO!",
+   "yours": "COMBO!",
+   "where": "Big stamp slammed onto the corner of the pay slip for a combo."
+  },
+  {
+   "en": "Base pay",
+   "yours": "Stawka bazowa",
+   "where": "Pay slip line: the base payment for the job."
+  },
+  {
+   "en": "CARPET DELIVERED",
+   "yours": "DYWAN ODDANY",
+   "where": "Caption at the top of the pay slip card that appears after a hand-over."
+  },
+  {
+   "en": "INSPECTION",
+   "yours": "INSPEKCJA",
+   "where": "Shop caption above the two inspection-lamp items."
+  },
+  {
+   "en": "Moisture highlight",
+   "yours": "Podświetlenie wilgoci",
+   "where": "One-time shop item (key Z): a lamp mode that makes wet spots glow."
+  },
+  {
+   "en": "Wet pile and puddles glow blue",
+   "yours": "Mokre runo i kałuże świecą na niebiesko",
+   "where": "Description of 'Moisture highlight'. 'pile' = the carpet's fibres."
+  },
+  {
+   "en": "Dirt highlight",
+   "yours": "Podświetlenie brudu",
+   "where": "One-time shop item (key X): a lamp mode that makes remaining dirt glow."
+  },
+  {
+   "en": "Every trace of soil glows amber",
+   "yours": "Każdy ślad brudu świeci na bursztynowo",
+   "where": "Description of 'Dirt highlight'."
+  },
+  {
+   "en": "CARPET",
+   "yours": "DYWAN",
+   "where": "Caption above the left tool strip (the tools that work on the carpet)."
+  },
+  {
+   "en": "FLOOR",
+   "yours": "PODŁOGA",
+   "where": "Caption above the right tool strip (the tools for the tiled floor around the carpet)."
+  },
+  {
+   "en": "CLEAN",
+   "yours": "CZYSTOŚĆ",
+   "where": "Caption of the cleanliness meter (0-100 %), top-left card."
+  },
+  {
+   "en": "DRY",
+   "yours": "SUCHOŚĆ",
+   "where": "Caption of the dryness meter (100 % = completely dry), under CLEAN."
+  },
+  {
+   "en": "Filthy",
+   "yours": "Potwornie brudny",
+   "where": "Pay slip title: extremely dirty."
+  },
+  {
+   "en": "Heavy soil",
+   "yours": "Mocno brudny",
+   "where": "Pay slip title: heavily soiled."
+  },
+  {
+   "en": "Scrape the dry crust off",
+   "yours": "Zeskrob zaschniętą skorupę",
+   "where": "Hint pill at the top centre: the next step the game suggests. Tool: Scraper."
+  },
+  {
+   "en": "Wet it down",
+   "yours": "Polej dywan wodą",
+   "where": "Hint. Tool: Hose (soak the dried mud with water)."
+  },
+  {
+   "en": "Brush the mud loose",
+   "yours": "Wyszczotkuj rozmokłe błoto",
+   "where": "Hint. Tool: Brush (scrub the softened mud loose)."
+  },
+  {
+   "en": "Squeegee the dirty water off",
+   "yours": "Zgarnij brudną wodę ściągaczką",
+   "where": "Hint. Tool: Squeegee."
+  },
+  {
+   "en": "Wet-vac the water and foam out",
+   "yours": "Odessij wodę i pianę mokrym odkurzaczem",
+   "where": "Hint. Tool: Wet vacuum."
+  },
+  {
+   "en": "Dry it",
+   "yours": "Wysusz dywan",
+   "where": "Hint. Tool: Dryer."
+  },
+  {
+   "en": "Sparkling clean!",
+   "yours": "Lśni czystością!",
+   "where": "Hint when the carpet is perfectly clean and dry."
+  },
+  {
+   "en": "Handed over to the client!",
+   "yours": "Oddany klientowi!",
+   "where": "Hint while the finished carpet flies away to its owner."
+  },
+  {
+   "en": "Fresh carpet coming in...",
+   "yours": "Nowy dywan w drodze…",
+   "where": "Hint while the next dirty carpet drops in."
+  },
+  {
+   "en": "Owned: press {0} to switch it on and off",
+   "yours": "Kupione: klawisz {0} włącza i wyłącza",
+   "where": "Replaces the item description once the item is bought."
+  },
+  {
+   "en": "the job clock is paused while you shop",
+   "yours": "zegar zlecenia stoi, gdy robisz zakupy",
+   "where": "Small grey note at the right of the legend."
+  },
+  {
+   "en": "Money and upgrades are saved as you play.",
+   "yours": "Pieniądze i ulepszenia zapisują się na bieżąco.",
+   "where": "Small note at the bottom of the pause menu (wraps to two lines if needed)."
+  },
+  {
+   "en": "Thank you for playing.",
+   "yours": "Dziękujemy za grę.",
+   "where": "Credits page."
+  }
+ ]
+}

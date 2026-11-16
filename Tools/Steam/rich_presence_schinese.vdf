@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "schinese"
+	"Tokens"
+	{
+		"#Status_Cleaning" "正在清洁地毯：清洁度 %clean%"
+		"#Status_Spotless" "地毯一尘不染，准备交付"
+		"#Status_BetweenCarpets" "等待下一张地毯，正在打扫地面"
+	}
+}

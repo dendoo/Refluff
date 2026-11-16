@@ -1,0 +1,10 @@
+UnityEditor.EditorApplication.isPaused = true;
+var sim = CarpetCleaning.CarpetDebugApi.Sim;
+sim.RefreshStatsSync();
+for (int i=0;i<10;i++) UnityEditor.EditorApplication.Step();
+CarpetCleaning.CarpetDebugApi.SetHighlight(0, true, true);
+for (int i=0;i<5;i++) UnityEditor.EditorApplication.Step();
+var cr = UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.CarpetRenderer>();
+cr.SetCursor(new UnityEngine.Vector2(0.50f, 0.36f), new UnityEngine.Vector2(0f, -1f), 178f, 0f, (CarpetCleaning.ToolId)7, true);
+string r = CarpetCleaning.StoreShotApi.Shot("17_lamp_moisture");
+return r + " hint=" + sim.Hint + " clean=" + sim.Cleanliness + " wet=" + sim.Wetness + " " + CarpetCleaning.CarpetDebugApi.HighlightJson() + " " + CarpetCleaning.EconomyDebugApi.EconomyJson().Substring(0, 230);

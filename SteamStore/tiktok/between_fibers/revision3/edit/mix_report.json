@@ -1,0 +1,36 @@
+{
+  "target_lufs": -15,
+  "target_true_peak_db": -1.5,
+  "game_gain_db": -4.0,
+  "raw": {
+    "duration": 14.0,
+    "peak_dbfs": -1.853,
+    "rms_dbfs": -24.641,
+    "finite": true,
+    "clipped_samples": 0
+  },
+  "measurement": {
+    "input_i": "-20.18",
+    "input_tp": "-1.85",
+    "input_lra": "24.00",
+    "input_thresh": "-32.70",
+    "output_i": "-16.42",
+    "output_tp": "-1.50",
+    "output_lra": "10.60",
+    "output_thresh": "-27.60",
+    "normalization_type": "dynamic",
+    "target_offset": "1.42"
+  },
+  "normalization": {
+    "input_i": "-20.18",
+    "input_tp": "-1.85",
+    "input_lra": "24.00",
+    "input_thresh": "-32.70",
+    "output_i": "-15.29",
+    "output_tp": "-1.50",
+    "output_lra": "10.20",
+    "output_thresh": "-26.48",
+    "normalization_type": "dynamic",
+    "target_offset": "0.29"
+  }
+}

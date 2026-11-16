@@ -1,0 +1,65 @@
+[
+ {
+  "n": 1,
+  "name": "01_hero_reveal",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/01_hero_reveal.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/01_hero_reveal_2560.png",
+  "moment": "Before/after (no HUD, ACES re-stage): a wet-vac band cuts top-to-bottom through caked mud plates and loose crumbs on the Anatolian rug and shows vivid red/navy/cream medallions; the wet-vac wand sits on the band's near end with rubble still ahead. Hidden HUD: Clean 28%."
+ },
+ {
+  "n": 2,
+  "name": "04_scraper_crust",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/04_scraper_crust.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/04_scraper_crust_2560.png",
+  "moment": "The scraper breaking dried crust plates on the European green rug: two scraped lanes of broken crumbs next to intact plates, a fresh dust puff rising behind the head, crust chunks thrown onto the tiles. Hint 'Scrape the dry crust off' matches the tool."
+ },
+ {
+  "n": 3,
+  "name": "10_payslip",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/10_payslip.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/10_payslip_2560.png",
+  "moment": "Pay-slip card after the hand-over: Medium soil 3:08, base + speed bonus + spotless + bone dry + COMBO stamp = $120, rays behind, 'Take a new carpet' button"
+ },
+ {
+  "n": 4,
+  "name": "12_rya_half_clean",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/12_rya_half_clean.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/12_rya_half_clean_2560.png",
+  "moment": "Work in progress on the Finnish rya (no HUD, ACES re-stage): the left half extracted and dried to vivid gold/blue/green, a pink foam strip down the boundary, the rotary brush (blue bristles) beside it, the right strip still caked in mud plates. Floor mopped clean. Hidden HUD: Clean 66%."
+ },
+ {
+  "n": 5,
+  "name": "03_hose_spill",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/03_hose_spill.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/03_hose_spill_2560.png",
+  "moment": "The hose soaking the Salor Turkmen rug: the blue nozzle over a fresh sheet of water with a glossy rim, the wet pile gone dark rich red around it and muddy water lifting out of the grime on the left. Hint 'Wet it down' matches the tool."
+ },
+ {
+  "n": 6,
+  "name": "17_lamp_moisture",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/17_lamp_moisture.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/17_lamp_moisture_2560.png",
+  "moment": "The moisture inspection lamp (Z) late in drying: the scene is dimmed, the dried left part of the European green rug is dark with the dryer's scalloped edge, the still-damp right part glows blue, and the dryer ring sits on the border. HUD Dry 92% with the Z key lit, hint 'Dry it'."
+ },
+ {
+  "n": 7,
+  "name": "14_handover_flight",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/14_handover_flight.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/14_handover_flight_2560.png",
+  "moment": "The hand-over: the spotless Anatolian rug (the hero shot's rug, finished) has just lifted off, fully intact, under a burst of gold and white sparkles. HUD Clean 100% / Dry 100%, 3:12 par 3:32, hint 'Handed over to the client!'."
+ },
+ {
+  "n": 8,
+  "name": "11_upgrades_shop",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/11_upgrades_shop.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/11_upgrades_shop_2560.png",
+  "moment": "Upgrades shop 'Tune your kit': POWER/AREA pips for all 10 tools, prices, lamps (moisture owned, dirt highlight $400), wallet $1,960 over the dimmed carpet"
+ },
+ {
+  "n": 9,
+  "name": "08_spotless_handover",
+  "file": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/08_spotless_handover.png",
+  "file2560": "C:/UnityProjects/CarpetCleaning/SteamStore/_work/screens/08_spotless_handover_2560.png",
+  "moment": "Finished Transylvanian rug, 100% clean + 100% dry, 'Sparkling clean - hand it over!' and the pulsing Hand over button"
+ }
+]

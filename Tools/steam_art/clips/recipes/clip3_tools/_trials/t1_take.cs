@@ -1,0 +1,23 @@
+// clip3 TRIAL t1: the four-tool relay on the crust patch u 0.60-0.95, v 0.13-0.40 near the right rim (seed 154 @0.6).
+CarpetCleaning.StoreGifApi.SeqBegin("c3_t1", 3840, 2160, 1820, 1011, 1560, 878);
+CarpetCleaning.StoreGifApi.Tool(0);
+CarpetCleaning.StoreGifApi.Hover(0.66f, 0.44f, 0.30f);
+CarpetCleaning.StoreGifApi.Stroke(0.66f, 0.40f, 0.66f, 0.13f, 0.60f);
+CarpetCleaning.StoreGifApi.Move(0.66f, 0.13f, 0.78f, 0.40f, 0.35f, false);
+CarpetCleaning.StoreGifApi.Move(0.78f, 0.40f, 0.78f, 0.13f, 0.60f, true);
+CarpetCleaning.StoreGifApi.Move(0.78f, 0.13f, 0.90f, 0.40f, 0.35f, false);
+CarpetCleaning.StoreGifApi.Move(0.90f, 0.40f, 0.90f, 0.13f, 0.60f, true);
+CarpetCleaning.StoreGifApi.Tool(3);
+CarpetCleaning.StoreGifApi.Stroke(0.93f, 0.33f, 0.60f, 0.33f, 0.80f);
+CarpetCleaning.StoreGifApi.Move(0.60f, 0.33f, 0.60f, 0.21f, 0.20f, true);
+CarpetCleaning.StoreGifApi.Move(0.60f, 0.21f, 0.93f, 0.21f, 0.80f, true);
+CarpetCleaning.StoreGifApi.Tool(4);
+CarpetCleaning.StoreGifApi.Stroke(0.93f, 0.35f, 0.62f, 0.35f, 0.60f);
+CarpetCleaning.StoreGifApi.Move(0.62f, 0.35f, 0.62f, 0.27f, 0.15f, true);
+CarpetCleaning.StoreGifApi.Move(0.62f, 0.27f, 0.93f, 0.27f, 0.60f, true);
+CarpetCleaning.StoreGifApi.Move(0.93f, 0.27f, 0.93f, 0.19f, 0.15f, true);
+CarpetCleaning.StoreGifApi.Move(0.93f, 0.19f, 0.62f, 0.19f, 0.60f, true);
+CarpetCleaning.StoreGifApi.Tool(5);
+CarpetCleaning.StoreGifApi.Stroke(0.55f, 0.27f, 1.10f, 0.27f, 1.50f);
+CarpetCleaning.StoreGifApi.Up(0.60f);
+return CarpetCleaning.StoreGifApi.Run(3000);

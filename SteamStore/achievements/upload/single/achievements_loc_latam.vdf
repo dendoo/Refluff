@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"latam"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Un comienzo suavecito"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Entrega tu primera alfombra."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Impecable"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Entrega 100% limpia una alfombra que llegó sucia."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Sequísima"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Empapa una alfombra y luego entrégala 100% seca."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Digna de vitrina"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Entrega 100% limpia y 100% seca una alfombra que llegó sucia."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"De mugrienta a mullida"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Entrega 100% limpia una alfombra mugrienta."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Servicio exprés"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Consigue el bono por rapidez completo con una alfombra muy sucia."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Clientes frecuentes"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Entrega 25 alfombras."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Todo el arsenal"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Usa las 10 herramientas."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Al máximo"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Sube la POTENCIA y el ÁREA de una misma herramienta al MÁX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Ojo de lince"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Compra el Detector de humedad y el Detector de suciedad."
+	}
+}

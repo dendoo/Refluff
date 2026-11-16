@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-15",
+  "image_generator": "Built-in image_gen; references/prompts.json",
+  "model_generator": "Tripo Studio H3.1 Best Quality (HD Model)",
+  "retopology": "After HD visual review: foam and dryer Smart Mesh P1.0 target 10000 quads; dry vacuum accepted 40000-triangle simplification with Smart Mesh OFF after rejecting quad reconstruction.",
+  "export": "GLB, 4K base colour; embedded map sizes recorded per accepted model.",
+  "credits_used": 290,
+  "models": [
+    {
+      "tool": "DryVacuum",
+      "id": "50e2cf77-385a-461f-9885-45724d8a66b3",
+      "high_triangles": 1967448,
+      "file": "Assets/CarpetCleaning/Models/FirstPerson/Tool_DryVacuum.glb",
+      "accepted_triangles": 39999,
+      "sha256": "a29e980ec4e9f8d6c2ff51e7406ec8ab7d221a7775741d7d0eb644d03fe04933",
+      "file_bytes": 8878444,
+      "geometry_report": "reports/first_person/models/dry_vacuum_geometry.json",
+      "unity_preview": "reports/first_person/models/dry_vacuum_unity.png",
+      "geometry": {
+        "vertices": 48090,
+        "triangles": 39999,
+        "meshes": 1,
+        "materials": 1,
+        "non_finite_vertices": 0,
+        "invalid_indices": 0,
+        "degenerate_faces": 0,
+        "opposed_normal_faces": 286,
+        "zero_length_normals": 0,
+        "valid_geometry": true
+      },
+      "texture_maps": {
+        "base_color": [
+          4096,
+          4096
+        ],
+        "metallic_roughness": [
+          2048,
+          2048
+        ],
+        "normal": [
+          1024,
+          1024
+        ]
+      },
+      "visual_review": "Accepted in Unity PreviewRenderUtility after front, side and three-quarter inspection.",
+      "simplification": {
+        "topology": "triangles",
+        "target_triangles": 40000,
+        "smart_mesh": false,
+        "source": "original H3.1 HD model, restored through History"
+      },
+      "rejected_exports": [
+        {
+          "method": "Smart Mesh P1.0, target 10000 quads",
+          "retopo_faces": 10816,
+          "triangles": 19779,
+          "file": "Tools/first_person/rejected/Tool_DryVacuum_smart_quads.glb",
+          "sha256": "ba9cd99acf05967e85323eeee82470dd6b63516d6a27fa1b76d282f5dd933225",
+          "reason": "Visible torn and overlapping casing faces in Unity, also with a plain clay material. Correcting 392 face windings and removing zero-area fragments did not restore the shell. The source was preserved and replaced by triangle simplification of the original HD model.",
+          "preview": "reports/first_person/models/dry_vacuum_rejected.png",
+          "clay_preview": "reports/first_person/models/dry_vacuum_rejected_clay.png"
+        }
+      ]
+    },
+    {
+      "tool": "FoamSprayer",
+      "id": "620dd488-bf7e-4d5f-be16-225170bbf1c1",
+      "high_triangles": 1902180,
+      "retopo_faces": 9799,
+      "file": "Assets/CarpetCleaning/Models/FirstPerson/Tool_FoamSprayer.glb",
+      "accepted_triangles": 18527,
+      "sha256": "7a41b92d3425773dca40049dcc0a25299e8b9b48ff5f2c2fc9795881d3883923",
+      "file_bytes": 9166472,
+      "geometry_report": "reports/first_person/models/foam_sprayer_geometry.json",
+      "unity_preview": "reports/first_person/models/foam_sprayer_unity.png",
+      "geometry": {
+        "vertices": 18552,
+        "triangles": 18527,
+        "meshes": 1,
+        "materials": 1,
+        "non_finite_vertices": 0,
+        "invalid_indices": 0,
+        "degenerate_faces": 12,
+        "opposed_normal_faces": 57,
+        "zero_length_normals": 0,
+        "valid_geometry": true
+      },
+      "texture_maps": {
+        "base_color": [
+          4096,
+          4096
+        ],
+        "metallic_roughness": [
+          2048,
+          2048
+        ],
+        "normal": [
+          2048,
+          2048
+        ]
+      },
+      "visual_review": "Accepted in Unity PreviewRenderUtility after front, side and three-quarter inspection.",
+      "simplification": {
+        "topology": "quads",
+        "target_faces": 10000,
+        "smart_mesh": true,
+        "model": "P1.0"
+      }
+    },
+    {
+      "tool": "Dryer",
+      "id": "034ad917-b18d-4758-9ca3-5a40677da77a",
+      "high_triangles": 1984199,
+      "retopo_faces": 10309,
+      "file": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Dryer.glb",
+      "accepted_triangles": 19310,
+      "sha256": "a05610d8c3e195d90b2bbce429e2f85f0bc429fd32aab43a985ce0a8c879d95c",
+      "file_bytes": 10321192,
+      "geometry_report": "reports/first_person/models/dryer_geometry.json",
+      "unity_preview": "reports/first_person/models/dryer_unity.png",
+      "geometry": {
+        "vertices": 21048,
+        "triangles": 19310,
+        "meshes": 1,
+        "materials": 1,
+        "non_finite_vertices": 0,
+        "invalid_indices": 0,
+        "degenerate_faces": 7,
+        "opposed_normal_faces": 45,
+        "zero_length_normals": 0,
+        "valid_geometry": true
+      },
+      "texture_maps": {
+        "base_color": [
+          4096,
+          4096
+        ],
+        "metallic_roughness": [
+          2048,
+          2048
+        ],
+        "normal": [
+          2048,
+          2048
+        ]
+      },
+      "visual_review": "Accepted in Unity PreviewRenderUtility after front, side and three-quarter inspection.",
+      "simplification": {
+        "topology": "quads",
+        "target_faces": 10000,
+        "smart_mesh": true,
+        "model": "P1.0"
+      }
+    }
+  ],
+  "credits_note": "285 existing credits for initial generation/retopology plus 5 existing credits for the accepted dry-vacuum retry; no subscription or credit purchase.",
+  "reproducible_import": "Tools/first_person/import_generated.cs",
+  "geometry_check": "python Tools/first_person/inspect_glb.py <file> --json; numeric validation does not replace visual review."
+}

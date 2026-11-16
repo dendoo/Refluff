@@ -1,0 +1,121 @@
+// Capture-only staging for the scraper-upgrade TikTok (2026-10-17).
+// Keep outside Assets. The capture rig temporarily imports a copy, then deletes it.
+// Production CarpetSim.compute remains responsible for ALL crust removal and GPU debris.
+#pragma kernel K_Stage
+#pragma kernel K_CleanCrumbs
+#pragma kernel K_ClearSettledCrumbs
+
+// Exact interface: SetInts("_Size", 384, 480); SetInt("_Seed", seed);
+// Bind "_Dirt" to CarpetSimulation.Dirt for both kernels. No other resources.
+// One UAV per kernel; 8x8 thread groups (384x480 = Dispatch(48,60,1)).
+int2 _Size;
+int _Seed;
+RWTexture2D<float4> _Dirt;
+
+// Byte-exact copy of the production DebrisParticle (80 bytes).
+// Only K_ClearSettledCrumbs references these resources: one UAV + one SRV.
+struct DebrisParticle
+{
+    float3 pos; float size;
+    float3 vel; float life;
+    float4 rot;
+    float3 angVel; uint kindState;
+    float amount; float seed; float dirt; float pad;
+};
+RWStructuredBuffer<DebrisParticle> _Particles;
+Texture2D<float4> _FiberTex;
+SamplerState sampler_linear_clamp;
+int _ParticleCount;
+int _CarpetAway;
+float _PileHeightMm;
+
+float Hash1(float2 p)
+{
+    p = frac(p * float2(0.1031, 0.1030));
+    p += dot(p, p.yx + 33.33);
+    return frac((p.x + p.y) * p.x);
+}
+
+float Noise(float2 p)
+{
+    float2 i = floor(p);
+    float2 f = frac(p);
+    float2 u = f * f * (3.0 - 2.0 * f);
+    return lerp(lerp(Hash1(i), Hash1(i + float2(1.0, 0.0)), u.x),
+                lerp(Hash1(i + float2(0.0, 1.0)), Hash1(i + 1.0), u.x), u.y);
+}
+
+// Repeatable underlayer: moderate grime, a very faint stain, no loose dust.
+// The same function is used for initialization and the post-scrape mud ceiling.
+float4 StagedDirt(int2 cell)
+{
+    float2 uv = (float2(cell) + 0.5) / float2(_Size);
+    float s = (float)_Seed * 0.6180339 + 7.31;
+    float2 off = float2(s, s * 1.37);
+    float broad = Noise(uv * float2(5.2, 6.5) + off);
+    float detail = Noise(uv * float2(15.0, 18.75) + off * 0.43 + 11.7);
+    float crust = lerp(0.90, 1.00, saturate(0.7 * broad + 0.3 * detail));
+    float mud = lerp(0.13, 0.22, saturate(0.75 * broad + 0.25 * detail));
+    return float4(crust, mud, 0.04, 0.0);
+}
+
+[numthreads(8, 8, 1)]
+void K_Stage(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_Size.x || id.y >= (uint)_Size.y) return;
+    // Original K_Init has already created _Crust's irregular slabs/cracks and
+    // matted dry pile. This kernel never binds or rewrites those textures.
+    _Dirt[int2(id.xy)] = StagedDirt(int2(id.xy));
+}
+
+[numthreads(8, 8, 1)]
+void K_CleanCrumbs(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_Size.x || id.y >= (uint)_Size.y) return;
+    int2 cell = int2(id.xy);
+    float4 baseline = StagedDirt(cell);
+    float4 dirt = _Dirt[cell];
+
+    // This scene is dry and scraper-only. A crust decrease identifies the
+    // actual tool's swept cells without a second stamp simulation or mask.
+    // Keep the staged grime: remove only the mud increment produced by chips.
+    // Clamping rather than assigning also preserves any legitimate decrease.
+    dirt.y = min(saturate(dirt.y), baseline.y);
+    if (dirt.x < baseline.x - 1e-6) dirt.w = 0.0;
+
+    // Crust and stain stay exactly as the production simulation wrote them.
+    // No particle/debris resources are bound, so real chunks remain in flight.
+    _Dirt[cell] = dirt;
+}
+
+[numthreads(64, 1, 1)]
+void K_ClearSettledCrumbs(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)_ParticleCount || _CarpetAway != 0) return;
+    DebrisParticle p = _Particles[id.x];
+    uint kind = p.kindState & 0xFFu;
+    uint state = (p.kindState >> 8) & 0xFFu;
+
+    // State 3 rests on the carpet; state 1 with EXACT vertical velocity zero
+    // is the production sim's explicit "sliding on ground" marker. Exclude
+    // all other states, especially floor rest (2), sucked (4), and airborne.
+    bool groundedChunk = kind == 0u &&
+        (state == 3u || (state == 1u && p.vel.y == 0.0));
+    if (!groundedChunk) return;
+    if (p.pos.x < 0.0 || p.pos.x > 1200.0 || p.pos.z < 0.0 || p.pos.z > 1500.0) return;
+
+    float2 uv = p.pos.xz / float2(1200.0, 1500.0);
+    float4 fiber = _FiberTex.SampleLevel(sampler_linear_clamp, uv, 0);
+    float pileTop = max(_PileHeightMm, 0.0) *
+        (1.0 - 0.55 * saturate(fiber.z)) * (1.0 - 0.25 * saturate(fiber.w));
+    float shardBottom = p.pos.y - 0.25 * max(p.size, 0.0);
+    // A resting shard is flat-side-down at ground + 0.25*size. A small
+    // tolerance covers interpolation. The lower bound protects any floor
+    // slider under the carpet rect; airborne bounces are already excluded.
+    if (abs(shardBottom - pileTop) > 1.5) return;
+
+    p.kindState = 0u; // kind 0 / state DEAD; same bit contract as production.
+    p.amount = 0.0;
+    p.size = 0.0;
+    _Particles[id.x] = p;
+}

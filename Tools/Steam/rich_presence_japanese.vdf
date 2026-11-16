@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "japanese"
+	"Tokens"
+	{
+		"#Status_Cleaning" "カーペットを掃除中：清潔度 %clean%"
+		"#Status_Spotless" "カーペットはピカピカ、引き渡し待ち"
+		"#Status_BetweenCarpets" "カーペットの合間に床を片付け中"
+	}
+}

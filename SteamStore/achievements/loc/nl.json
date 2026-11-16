@@ -1,0 +1,13 @@
+{
+  "_lang": "nl",
+  "ACH_FIRST_CARPET": { "name": "Donzig debuut", "desc": "Lever je eerste tapijt af." },
+  "ACH_SPOTLESS": { "name": "Vlekkeloos", "desc": "Lever een vuil tapijt 100% schoon af." },
+  "ACH_BONE_DRY": { "name": "Kurkdroog", "desc": "Maak een tapijt kletsnat en lever het daarna 100% droog af." },
+  "ACH_COMBO": { "name": "In showroomstaat", "desc": "Lever een vuil tapijt 100% schoon en 100% droog af." },
+  "ACH_FILTHY": { "name": "Van smerig tot smetteloos", "desc": "Lever een smerig tapijt 100% schoon af." },
+  "ACH_EXPRESS": { "name": "Spoedservice", "desc": "Verdien de volle snelheidsbonus bij een zwaar vervuild tapijt." },
+  "ACH_REGULARS": { "name": "Vaste klanten", "desc": "Lever 25 tapijten af." },
+  "ACH_FULL_KIT": { "name": "Alles uit de kast", "desc": "Gebruik alle 10 gereedschappen." },
+  "ACH_MAXED_OUT": { "name": "Helemaal gemaxt", "desc": "Upgrade KRACHT en BEREIK van één gereedschap naar MAX." },
+  "ACH_INSPECTOR": { "name": "Inspecteur", "desc": "Koop de Vochtmarkering en de Vuilmarkering." }
+}

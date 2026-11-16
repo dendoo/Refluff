@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "romanian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Curăță un covor: %clean% curat"
+		"#Status_Spotless" "Covorul e curat lună, gata de predare"
+		"#Status_BetweenCarpets" "Între covoare, curăță podeaua"
+	}
+}

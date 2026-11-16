@@ -1,0 +1,123 @@
+{
+ "source": "mixkit_3215__spray_water_or_liquid.wav",
+ "credit": "Spray water or liquid, Mixkit sound effect 3215, https://mixkit.co/free-sound-effects/spray/, Mixkit Sound Effects Free License (cut, levelled)",
+ "rate": 48000,
+ "channels": 2,
+ "startFile": "floorcleaner_pumpspray_start.wav",
+ "loopFile": "floorcleaner_pumpspray_loop.wav",
+ "stopFile": "floorcleaner_pumpspray_stop.wav",
+ "cutStart": [
+  0.0,
+  0.2
+ ],
+ "cutLoop": [
+  0.2,
+  1.86077
+ ],
+ "cutStop": [
+  1.86,
+  2.5
+ ],
+ "lineHz": 0.0,
+ "lineProminenceDb": 0.0,
+ "speedFrom": "envelope",
+ "highPassHz": 60.0,
+ "duck": [],
+ "spliceXfadeS": 0.08,
+ "spliceLagMs": 10.77,
+ "spliceCorrelation": 0.069,
+ "wrapStepOverRms": 0.129,
+ "typicalStepOverRms": 0.566,
+ "wrapLevelsDb": [
+  -18.55,
+  -18.79,
+  -18.2,
+  -18.45
+ ],
+ "gainDb": 7.18,
+ "peakLimited": true,
+ "loopLufs": -12.04,
+ "referenceLufs": -6.35,
+ "clips": {
+  "start": {
+   "file": "floorcleaner_pumpspray_start.wav",
+   "seconds": 0.2,
+   "rmsDb": -21.2,
+   "peakDb": -3.92
+  },
+  "loop": {
+   "file": "floorcleaner_pumpspray_loop.wav",
+   "seconds": 1.6608,
+   "rmsDb": -17.96,
+   "peakDb": -1.0
+  },
+  "stop": {
+   "file": "floorcleaner_pumpspray_stop.wav",
+   "seconds": 0.64,
+   "rmsDb": -29.38,
+   "peakDb": -6.27
+  }
+ },
+ "startSpeedT": [
+  0.0,
+  0.05,
+  0.06,
+  0.07,
+  0.08,
+  0.09,
+  0.1,
+  0.11,
+  0.12,
+  0.13,
+  0.14,
+  0.15,
+  0.16,
+  0.2
+ ],
+ "startSpeedV": [
+  0.0016,
+  0.0053,
+  0.1072,
+  0.2407,
+  0.452,
+  0.5394,
+  0.6763,
+  0.7054,
+  0.8547,
+  0.8724,
+  0.9699,
+  0.9783,
+  0.9983,
+  1.0
+ ],
+ "stopSpeedT": [
+  0.0,
+  0.02,
+  0.04,
+  0.05,
+  0.06,
+  0.07,
+  0.08,
+  0.09,
+  0.1,
+  0.28,
+  0.31,
+  0.35,
+  0.64
+ ],
+ "stopSpeedV": [
+  0.884,
+  0.884,
+  0.7891,
+  0.719,
+  0.6171,
+  0.383,
+  0.1757,
+  0.074,
+  0.0379,
+  0.0333,
+  0.0136,
+  0.0078,
+  0.0002
+ ]
+}

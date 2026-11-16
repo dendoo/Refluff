@@ -1,0 +1,43 @@
+{
+  "_lang": "fr",
+  "ACH_FIRST_CARPET": {
+    "name": "Un début tout doux",
+    "desc": "Livrez votre premier tapis."
+  },
+  "ACH_SPOTLESS": {
+    "name": "Impeccable",
+    "desc": "Livrez propre à 100 % un tapis arrivé sale."
+  },
+  "ACH_BONE_DRY": {
+    "name": "Sec à cœur",
+    "desc": "Détrempez un tapis, puis livrez-le sec à 100 %."
+  },
+  "ACH_COMBO": {
+    "name": "Tout beau, tout neuf",
+    "desc": "Livrez 100 % propre et 100 % sec un tapis arrivé sale."
+  },
+  "ACH_FILTHY": {
+    "name": "De crasseux à moelleux",
+    "desc": "Livrez propre à 100 % un tapis crasseux."
+  },
+  "ACH_EXPRESS": {
+    "name": "Service express",
+    "desc": "Encaissez toute la prime de rapidité sur un tapis très sale."
+  },
+  "ACH_REGULARS": {
+    "name": "Les habitués",
+    "desc": "Livrez 25 tapis."
+  },
+  "ACH_FULL_KIT": {
+    "name": "Toute la panoplie",
+    "desc": "Utilisez les 10 outils."
+  },
+  "ACH_MAXED_OUT": {
+    "name": "Gonflé à bloc",
+    "desc": "Montez la PUISSANCE et la SURFACE d’un même outil au MAX."
+  },
+  "ACH_INSPECTOR": {
+    "name": "Œil de lynx",
+    "desc": "Achetez le Détecteur d’humidité et le Détecteur de saleté."
+  }
+}

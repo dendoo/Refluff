@@ -1,0 +1,321 @@
+{
+  "inspection": {
+    "platform": "tiktok",
+    "loggedIn": true,
+    "accountHandle": "vahovgames",
+    "nativeScheduling": false
+  },
+  "page": "https://www.tiktok.com/tiktokstudio/content",
+  "sensitiveForm": false,
+  "visibleText": "Upload\nMANAGE\nHome\nPosts\nAnalytics\nComments\nTOOLS\nInspiration\nMonetization\nCreator Academy\nRoyalty-free sounds\nOTHERS\nFeedback\nBack to TikTok\nPosts (Created on)\nPrivacy\nViews\nLikes\nComments\nActions\n00:14\nI got lost between the carpet fibers… in my own game 😳 Refluff: Carpet Cleaning ASMR — coming this November. Wishlist on Steam: https://store.steampowered.com/app/5304930/?utm_source=tiktok&utm_medium=social&utm_campaign=refluff-between-fibers&utm_content=en-v3 #Refluff #IndieGame #GameDev #ASMR #Satisfying Vacuum sound: “Vacuum Cleaner, On Idle Off, Close, A.wav” by InspectorJ (www.jshaw.co.uk), https://freesound.org/s/430632/, CC BY 4.0 https://creativecommons.org/licenses/by/4.0/. Recording shortened and mixed for this video.\nOct 23, 6:39 PM\nEveryone\n0\n0\n0\n00:24\nFour brushstrokes. One perfect fit. ✨ Piece and Quiet is coming to Steam this November. Wishlist now! #PieceAndQuiet #CozyGames #StainedGlass #Satisfying\nOct 23, 1:48 PM\nEveryone\n0\n0\n0\n01:05\n2,655 shards. Six stained-glass windows. And no need to rush ✨ Introducing Piece and Quiet — our cozy game about restoring stained glass. Brush away the dust, find where each piece belongs, and bring light back to an abandoned mountain chapel. A little magic will help along the way. Wishlist Piece and Quiet on Steam! #PieceAndQuiet #CozyGames #IndieGame #StainedGlass\nOct 22, 5:43 PM\nEveryone\n145\n1\n0\n01:00\nRefluff: Carpet Cleaning ASMR. Wishlist on Steam: https://store.steampowered.com/app/5304930?utm_source=tiktok Link is also in bio #asmr #satisfying #carpetcleaning\nOct 21, 5:15 PM\nEveryone\n88\n2\n0\n00:30\nRefluff: Carpet cleaning game Wishlist on steam 👇 store.steampowered.com/app/5304930?utm_source=tiktok #indiegame #asmr #carpetcleaning #satisfyingcleans\nOct 19, 2:49 PM\nEveryone\n274\n2\n0\n00:33\nRefluff: Carpet cleaning ASMR Wishlist on steam store.steampowered.com/app/5304930?utm_source=tiktok #indiegame #asmr #cleaning #carpetcleaning #satisfying\nOct 17, 7:01 PM\nEveryone\n266\n4\n0\n00:27\nI made a game where every single carpet fiber is simulated 🧽 Dirt, water, foam, and the pile lays down and fluffs back up. Refluff: Carpet Cleaning ASMR. Wishlist on Steam: store.steampowered.com/app/5304930?utm_source=tiktok Link is also in bio #indiegame #asmr #carpetcleaning #satisfying\nOct 16, 5:13 PM\nEveryone\n513\n12\n1",
+  "accessibility": "- button:\n  - img\n- button \"Upload\":\n  - img\n  - text: Upload\n  - img\n- text: Manage\n- button \"Home\":\n  - img\n  - text: Home\n- button \"Posts\":\n  - img\n  - text: Posts\n- button \"Analytics\":\n  - img\n  - text: Analytics\n- button \"Comments\":\n  - img\n  - text: Comments\n- text: Tools\n- button \"Inspiration\":\n  - img\n  - text: Inspiration\n- button \"Monetization\":\n  - img\n  - text: Monetization\n- button \"Creator Academy\":\n  - img\n  - text: Creator Academy\n- button \"Royalty-free sounds\":\n  - img\n  - text: Royalty-free sounds\n- text: Others\n- button \"Feedback\":\n  - img\n  - text: Feedback\n- link \"Back to TikTok\":\n  - /url: https://www.tiktok.com\n  - img\n  - text: Back to TikTok\n- region \"Notifications\"\n- button:\n  - img\n- button \"Posts (Created on)\"\n- text: Privacy\n- button \"Views\"\n- button \"Likes\"\n- button \"Comments\"\n- text: Actions\n- img\n- text: 00:14\n- img\n- 'link \"I got lost between the carpet fibers… in my own game 😳 Refluff: Carpet Cleaning ASMR — coming this November. Wishlist on Steam: https://store.steampowered.com/app/5304930/?utm_source=tiktok&utm_medium=social&utm_campaign=refluff-between-fibers&utm_content=en-v3 #Refluff #IndieGame #GameDev #ASMR #Satisfying Vacuum sound: “Vacuum Cleaner, On Idle Off, Close, A.wav” by InspectorJ (www.jshaw.co.uk), https://freesound.org/s/430632/, CC BY 4.0 https://creativecommons.org/licenses/by/4.0/. Recording shortened and mixed for this video.\"':\n  - /url: /@vahovgames/video/7699888209681059085\n- text: Oct 23, 6:39 PM\n- button \"Everyone\":\n  - img\n  - text: Everyone\n  - img\n- text: 0 0 0\n- img\n- img\n- img\n- button:\n  - img\n- img\n- text: 00:24\n- img\n- 'link \"Four brushstrokes. One perfect fit. ✨ Piece and Quiet is coming to Steam this November. Wishlist now! #PieceAndQuiet #CozyGames #StainedGlass #Satisfying\"':\n  - /url: /@vahovgames/video/7699813190099635469\n- text: Oct 23, 1:48 PM\n- button \"Everyone\":\n  - img\n  - text: Everyone\n  - img\n- text: 0 0 0\n- img\n- img\n- img\n- button:\n  - img\n- img\n- text: 01:05\n- img\n- 'link \"2,655 shards. Six stained-glass windows. And no need to rush ✨ Introducing Piece and Quiet — our cozy game about restoring stained glass. Brush away the dust, find where each piece belongs, and bring light back to an abandoned mountain chapel. A little magic will help along the way. Wishlist Piece and Quiet on Steam! #PieceAndQuiet #CozyGames #IndieGame #StainedGlass\"':\n  - /url: /@vahovgames/video/7699502924023532814\n- text: Oct 22, 5:43 PM\n- button \"Everyone\":\n  - img\n  - text: Everyone\n  - img\n- text: 145 1 0\n- img\n- img\n- img\n- button:\n  - img\n- img\n- text: 01:00\n- img\n- 'link \"Refluff: Carpet Cleaning ASMR. Wishlist on Steam: https://store.steampowered.com/app/5304930?utm_source=tiktok Link is also in bio #asmr #satisfying #carpetcleaning\"':\n  - /url: /@vahovgames/video/7699124390503435534\n- text: Oct 21, 5:15 PM\n- button \"Everyone\":\n  - img\n  - text: Everyone\n  - img\n- text: 88 2 0\n- img\n- img\n- img\n- button:\n  - img\n- img\n- text: 00:30\n- img\n- 'link \"Refluff: Carpet cleaning game Wishlist on steam 👇 store.steampowered.com/app/5304930?utm_source=tiktok #indiegame #asmr #carpetcleaning #satisfyingcleans\"':\n  - /url: /@vahovgames/video/7698344601454644494\n- text: Oct 19, 2:49 PM\n- button \"Everyone\":\n  - img\n  - text: Everyone\n  - img\n- text: 274 2 0\n- img\n- img\n- img\n- button:\n  - img\n- img\n- text: 00:33\n- img\n- 'link \"Refluff: Carpet cleaning ASMR Wishlist on steam store.steampowered.com/app/5304930?utm_source=tiktok #indiegame #asmr #cleaning #carpetcleaning #satisfying\"':\n  - /url: /@vahovgames/video/7697667391815175437\n- text: Oct 17, 7:01 PM\n- button \"Everyone\":\n  - img\n  - text: Everyone\n  - img\n- text: 266 4 0\n- img\n- img\n- img\n- button:\n  - img\n- img\n- text: 00:27\n- img\n- 'link \"I made a game where every single carpet fiber is simulated 🧽 Dirt, water, foam, and the pile lays down and fluffs back up. Refluff: Carpet Cleaning ASMR. Wishlist on Steam: store.steampowered.com/app/5304930?utm_source=tiktok Link is also in bio #indiegame #asmr #carpetcleaning #satisfying\"':\n  - /url: /@vahovgames/video/7697268410693995789\n- text: Oct 16, 5:13 PM\n- button \"Everyone\":\n  - img\n  - text: Everyone\n  - img\n- text: 513 12 1\n- img\n- img\n- img\n- button:\n  - img",
+  "controls": [
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Upload",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Home",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Posts",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Analytics",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Comments",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Inspiration",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Monetization",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Creator Academy",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Royalty-free sounds",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Feedback",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Back to TikTok",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Posts (Created on)",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Views",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Likes",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Comments",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "I got lost between the carpet fibers… in my own game 😳 Refluff: Carpet Cleaning ASMR — coming this November. Wishlist on Steam: https://sto",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/@vahovgames/video/7699888209681059085",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Everyone",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Four brushstrokes. One perfect fit. ✨ Piece and Quiet is coming to Steam this November. Wishlist now! #PieceAndQuiet #CozyGames #StainedGlas",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/@vahovgames/video/7699813190099635469",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Everyone",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "2,655 shards. Six stained-glass windows. And no need to rush ✨ Introducing Piece and Quiet — our cozy game about restoring stained glass. Br",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/@vahovgames/video/7699502924023532814",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Everyone",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Refluff: Carpet Cleaning ASMR. Wishlist on Steam: https://store.steampowered.com/app/5304930?utm_source=tiktok Link is also in bio #asmr #sa",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/@vahovgames/video/7699124390503435534",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Everyone",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Refluff: Carpet cleaning game Wishlist on steam 👇 store.steampowered.com/app/5304930?utm_source=tiktok #indiegame #asmr #carpetcleaning #sa",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/@vahovgames/video/7698344601454644494",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Everyone",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Refluff: Carpet cleaning ASMR Wishlist on steam store.steampowered.com/app/5304930?utm_source=tiktok #indiegame #asmr #cleaning #carpetclean",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/@vahovgames/video/7697667391815175437",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Everyone",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "I made a game where every single carpet fiber is simulated 🧽 Dirt, water, foam, and the pile lays down and fluffs back up. Refluff: Carpet ",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/@vahovgames/video/7697268410693995789",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Everyone",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    }
+  ],
+  "visibleDates": [],
+  "screenshotPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-53-50.366Z_tiktok_inspect_9a9bc9fe.png",
+  "diagnosticPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-53-50.366Z_tiktok_inspect_9a9bc9fe.json"
+}

@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"greek"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Αφράτο ξεκίνημα"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Παράδωσε το πρώτο σου χαλί στον πελάτη."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Πεντακάθαρο"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Παράδωσε ένα βρόμικο χαλί 100% καθαρό."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Κατάστεγνο"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Μούσκεψε καλά ένα χαλί και μετά παράδωσέ το 100% στεγνό."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Σαν από βιτρίνα"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Παράδωσε ένα βρόμικο χαλί 100% καθαρό και 100% στεγνό."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Από τη λάσπη στο πούπουλο"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Παράδωσε ένα κατάβρομο χαλί 100% καθαρό."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Εξπρές καθαρισμός"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Κέρδισε ολόκληρο το μπόνους ταχύτητας σε ένα πολύ βρόμικο χαλί."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Τακτικοί πελάτες"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Παράδωσε 25 χαλιά."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Όλος ο εξοπλισμός σε δράση"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Χρησιμοποίησε και τα 10 εργαλεία, χαλιού και πατώματος."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Στο φουλ"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Ανέβασε τις αναβαθμίσεις ΙΣΧΥΣ και ΕΥΡΟΣ ενός εργαλείου στο ΜΕΓ."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Επιθεωρητής"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Αγόρασε την «Ανίχνευση υγρασίας» και την «Ανίχνευση βρομιάς»."
+	}
+}

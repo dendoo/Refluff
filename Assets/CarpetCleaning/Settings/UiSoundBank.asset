@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09713226aae91c9458760ed2dcffae9e, type: 3}
+  m_Name: UiSoundBank
+  m_EditorClassIdentifier: Assembly-CSharp::CarpetCleaning.UiSoundBank
+  masterGain: 0.8
+  clips:
+  - {fileID: 8300000, guid: fc9c74cb695123641b53fad01c093bbf, type: 3}
+  - {fileID: 8300000, guid: 2fe90a85b0edc474185362df88b5e9f0, type: 3}
+  - {fileID: 8300000, guid: e78e24171afa609408ed82164d25742c, type: 3}
+  - {fileID: 8300000, guid: 7ee1a0244708d56459a3771e52008522, type: 3}
+  - {fileID: 8300000, guid: e3120de8ad1770e48988bf5a451ed85b, type: 3}
+  - {fileID: 8300000, guid: f8f8edc03fe744946b49dbbd2746233d, type: 3}
+  - {fileID: 8300000, guid: 094cc4826b3d07043989b6b050482563, type: 3}
+  - {fileID: 8300000, guid: 913f5454b1dae7941abaaf2d13e15681, type: 3}
+  - {fileID: 8300000, guid: ddab089bb96f38b449db5d5e4c028eb6, type: 3}
+  - {fileID: 8300000, guid: 79e97af64506b9047a57d7cc5872a0c3, type: 3}
+  - {fileID: 8300000, guid: 0f5939025e271714baa0a2bd4387d77c, type: 3}
+  gains:
+  - 0.35
+  - 0.7
+  - 0.35
+  - 0.6
+  - 0.9
+  - 0.85
+  - 0.45
+  - 0.75
+  - 0.6
+  - 0.35
+  - 0.3

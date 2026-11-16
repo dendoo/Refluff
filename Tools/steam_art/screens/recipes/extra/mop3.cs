@@ -1,0 +1,11 @@
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+CarpetCleaning.CarpetDebugApi.StrokeNow(8, -0.40f,0.85f, -0.40f,0.20f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(8, -0.28f,0.20f, -0.28f,0.85f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(8, -0.14f,0.85f, -0.14f,0.20f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, -0.30f,-0.05f, -0.30f,0.50f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(9, -0.30f, 0.50f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 12; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.StoreShotApi.RenderScene("test/mop3.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.FloorStatsJson();

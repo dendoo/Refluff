@@ -1,0 +1,95 @@
+{
+  "generated": "2026-10-18",
+  "files": [
+    {
+      "file": "01_START_HERE/refluff_captioned_25p7s_vertical.mp4",
+      "bytes": 63096978,
+      "sha256": "136e9e6986ac040eb927c0911dd0d8ee1934a8bc20b5615338809cf20f06be64"
+    },
+    {
+      "file": "01_START_HERE/refluff_clean_edit_20s_vertical.mp4",
+      "bytes": 64236236,
+      "sha256": "7d84643c3aa266a8056b62b8fa0d57eac1d81efec72e400e9ca5ca0d85cb0435"
+    },
+    {
+      "file": "01_START_HERE/refluff_trailer_60s_november_2026.mp4",
+      "bytes": 100542268,
+      "sha256": "a1dd9a751fb07aa27e4cd199395287acce45547618f1768624a174c6158e76e6"
+    },
+    {
+      "file": "02_GAMEPLAY_BROLL/01_dry_vacuum_3p5s_1920x1080.mp4",
+      "bytes": 1914791,
+      "sha256": "947db424a6125ef28fc09450bfbaf2058d096d3694a126c893912bee3a6dad68"
+    },
+    {
+      "file": "02_GAMEPLAY_BROLL/02_foam_3p5s_1920x1080.mp4",
+      "bytes": 1805970,
+      "sha256": "6414eb8210ff13e11ca28cde23a9aeb08e498020eb30607ddd12c5f453b6808c"
+    },
+    {
+      "file": "02_GAMEPLAY_BROLL/03_rotary_brush_3p5s_1920x1080.mp4",
+      "bytes": 2352787,
+      "sha256": "f797ae0c6b6ec84120b10d8ff539b1186f631f8eb5b727c93f19184d139558b1"
+    },
+    {
+      "file": "02_GAMEPLAY_BROLL/04_squeegee_4s_1920x1080.mp4",
+      "bytes": 2918220,
+      "sha256": "f8a2d992268ca040aa9d410de6c9f1ae2c99d770fc3a8feb5af6ba72f53ba1cd"
+    },
+    {
+      "file": "02_GAMEPLAY_BROLL/05_wet_vacuum_reveal_4p5s_1920x1080.mp4",
+      "bytes": 2174101,
+      "sha256": "d213e1548acb109de091376c9ed7f33f50b4b742a5e1b6b773721109bf037d5f"
+    },
+    {
+      "file": "03_SCREENSHOTS/01_hero_reveal.jpg",
+      "bytes": 2159269,
+      "sha256": "7d1114375c98bbdc00cfd3a34f3337d3bbf66feea6f8a0f6c39a5c6ed8cf8545"
+    },
+    {
+      "file": "03_SCREENSHOTS/02_scraper_crust.jpg",
+      "bytes": 1519031,
+      "sha256": "bcc741c46fa836ac1f1581b94741414767249896ef422aafcf32b84b11292804"
+    },
+    {
+      "file": "03_SCREENSHOTS/04_rya_half_clean.jpg",
+      "bytes": 2143421,
+      "sha256": "7c451e1dd3659766e863babe8a13180dfcd8fc5c353d286bd54a0df28dd1ef4c"
+    },
+    {
+      "file": "03_SCREENSHOTS/05_hose_spill.jpg",
+      "bytes": 1443959,
+      "sha256": "a60b35f104d83618c61a7e7e342db10ceca04fc223e9c9b30b1e7187d756d1c2"
+    },
+    {
+      "file": "04_LOGOS/refluff_logo.png",
+      "bytes": 3396961,
+      "sha256": "4aa3f543073db4abfd83a286e6df0eae3228b9b1b670ae36bae463772765914d"
+    },
+    {
+      "file": "04_LOGOS/refluff_mark_1024.png",
+      "bytes": 1089340,
+      "sha256": "445a98b66f87e523f47816e9e4f8a19ee0330fde1d4e6c7289464f2c9d286b04"
+    },
+    {
+      "file": "04_LOGOS/refluff_wordmark.png",
+      "bytes": 2840026,
+      "sha256": "4f6a2d59d5d5fd3b5528b1d153aa5700c7cb51883f8f17e5b485a4ff68384252"
+    },
+    {
+      "file": "AUDIO_CREDITS.txt",
+      "bytes": 1176,
+      "sha256": "bdcd2ddf34d8c5a2d88e030536e7c734598e98e08371e544fc868ae72e469c66"
+    },
+    {
+      "file": "FACTS_AND_COPY.txt",
+      "bytes": 1101,
+      "sha256": "ab223f605a5e3e839f245ab63275856a565d8e400c39d71d561d2e72a93dba6d"
+    },
+    {
+      "file": "START_HERE.md",
+      "bytes": 3205,
+      "sha256": "9db146007bd959d1c193a62e2190f0ff8b08c4eeaa7a084ce9ed3eb9139bc48e"
+    }
+  ]
+}

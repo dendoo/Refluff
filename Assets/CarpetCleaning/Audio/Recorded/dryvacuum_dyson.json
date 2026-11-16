@@ -1,0 +1,127 @@
+{
+ "source": "430632__inspectorj__vacuum_cleaner_on_idle_off_close_a.ogg",
+ "credit": "Vacuum Cleaner, On Idle Off, Close, A.wav by InspectorJ, https://freesound.org/s/430632/, CC BY 4.0 (cut, levelled)",
+ "rate": 48000,
+ "channels": 2,
+ "startFile": "dryvacuum_dyson_start.wav",
+ "loopFile": "dryvacuum_dyson_loop.wav",
+ "stopFile": "dryvacuum_dyson_stop.wav",
+ "cutStart": [
+  0.25,
+  3.0
+ ],
+ "cutLoop": [
+  3.0,
+  10.58863
+ ],
+ "cutStop": [
+  10.9,
+  19.5
+ ],
+ "lineHz": 671.5,
+ "lineProminenceDb": 30.2,
+ "speedFrom": "line",
+ "highPassHz": 30.0,
+ "duck": [],
+ "spliceXfadeS": 0.08,
+ "spliceLagMs": -11.38,
+ "spliceCorrelation": 0.329,
+ "wrapStepOverRms": 0.372,
+ "typicalStepOverRms": 0.478,
+ "wrapLevelsDb": [
+  -15.77,
+  -15.18,
+  -15.2,
+  -15.31
+ ],
+ "gainDb": 1.53,
+ "peakLimited": true,
+ "loopLufs": -12.01,
+ "referenceLufs": -11.63,
+ "clips": {
+  "start": {
+   "file": "dryvacuum_dyson_start.wav",
+   "seconds": 2.75,
+   "rmsDb": -17.0,
+   "peakDb": -2.67
+  },
+  "loop": {
+   "file": "dryvacuum_dyson_loop.wav",
+   "seconds": 7.5886,
+   "rmsDb": -15.5,
+   "peakDb": -1.0
+  },
+  "stop": {
+   "file": "dryvacuum_dyson_stop.wav",
+   "seconds": 8.6,
+   "rmsDb": -23.79,
+   "peakDb": -2.2
+  }
+ },
+ "startSpeedT": [
+  0.0,
+  0.39,
+  0.48,
+  0.55,
+  0.58,
+  0.65,
+  0.68,
+  0.75,
+  1.12,
+  1.73,
+  2.75
+ ],
+ "startSpeedV": [
+  0.0,
+  0.8362,
+  0.8808,
+  0.8986,
+  0.9131,
+  0.9205,
+  0.9316,
+  0.9428,
+  0.9813,
+  0.9966,
+  0.9996
+ ],
+ "stopSpeedT": [
+  0.0,
+  0.06,
+  0.14,
+  0.2,
+  0.47,
+  0.73,
+  1.05,
+  1.39,
+  1.77,
+  2.17,
+  2.6,
+  3.06,
+  3.55,
+  4.07,
+  4.64,
+  5.27,
+  6.73,
+  8.6
+ ],
+ "stopSpeedV": [
+  1.0,
+  0.9971,
+  0.9619,
+  0.9242,
+  0.8168,
+  0.7243,
+  0.6248,
+  0.5339,
+  0.448,
+  0.3724,
+  0.3053,
+  0.2468,
+  0.1968,
+  0.1548,
+  0.1189,
+  0.0889,
+  0.0453,
+  0.0191
+ ]
+}

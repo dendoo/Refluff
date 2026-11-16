@@ -1,0 +1,10 @@
+CarpetCleaning.CarpetDebugApi.StrokeNow(1, 0.26f,0.16f, 0.74f,0.16f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(1, 0.74f,0.24f, 0.26f,0.24f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(1, 0.26f,0.32f, 0.60f,0.32f, 45, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(1, 0.60f, 0.32f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 12; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.CarpetDebugApi.Hold(1, 0.60f, 0.32f, 0.2f);
+var r = CarpetCleaning.StoreShotApi.Shot("06_dryvac_crumbs");
+return r + CarpetCleaning.CarpetDebugApi.StatsJson() + CarpetCleaning.CarpetDebugApi.DebrisAliveJson();

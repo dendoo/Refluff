@@ -1,0 +1,70 @@
+{
+  "generated_on": "2026-10-19",
+  "tool": "built-in image_gen",
+  "use_case": "illustration-story",
+  "purpose": "Five original cute cartoon carpet designs explicitly requested by the user for Refluff",
+  "references": [],
+  "rights_note": "Original generated artwork; not represented as museum open-access, public-domain or CC0 material.",
+  "integration": "Textures/Resources/CarpetPictures; merged with the serialized CarpetHandover.pictures list at runtime.",
+  "requested_size": [
+    1024,
+    1280
+  ],
+  "delivered_size": [
+    1122,
+    1402
+  ],
+  "processing": "Copied unchanged from the built-in tool output. Native dimensions retained; PictureFit covers the carpet with negligible aspect crop.",
+  "assets": [
+    {
+      "slug": "fox",
+      "path": "Assets/CarpetCleaning/Textures/Resources/CarpetPictures/rug_cartoon_fox.png",
+      "prompt": "Use case: illustration-story.\nAsset type: finished opaque color print texture for a rectangular carpet in a cozy cleaning game, exactly 1024 x 1280 pixels, portrait 4:5.\nPrimary request: a bright, adorable original cartoon character illustration, readable when viewed on a carpet at an angle.\nStyle/medium: polished playful 2D cartoon art, bold clean curving outlines, broad saturated color shapes, gentle simple shading, charming expressive face, high quality children's illustration.\nComposition/framing: one large full-body main character occupying about 65% of the canvas, a simple decorative environment filling the entire rectangle edge to edge. Keep ears, face, feet and tail comfortably inside the image with about 8% safe margin. The image itself is the design to print, not a picture of a carpet.\nConstraints: genuinely original character design; no known franchise characters, no logos, no writing, no letters, no watermark, no product mockup, no photographed rug, no textile fibers or baked carpet texture, no fringe, no physical frame or empty white margins, no transparent areas. Use joyful saturated colors with clear separation between character and background.\nSubject: a cheerful round orange baby fox with oversized fluffy cream-tipped tail and tiny paws, happily sitting among large stylized daisies. Backdrop: saturated aqua and turquoise meadow with a few warm yellow flowers, rounded leaves, simple sunny shapes. Warm orange fox contrasts strongly with the cool background; friendly open eyes and delighted smile.",
+      "sha256": "99b832287e814eb67b45d59f11b62f1c514c359a059b4db21b3e8502bc544248",
+      "mode": "RGB",
+      "width": 1122,
+      "height": 1402,
+      "source_file": "exec-de71321e-557e-4b1e-b94e-74c643503cc6.png"
+    },
+    {
+      "slug": "axolotl",
+      "path": "Assets/CarpetCleaning/Textures/Resources/CarpetPictures/rug_cartoon_axolotl.png",
+      "prompt": "Use case: illustration-story.\nAsset type: finished opaque color print texture for a rectangular carpet in a cozy cleaning game, exactly 1024 x 1280 pixels, portrait 4:5.\nPrimary request: a bright, adorable original cartoon character illustration, readable when viewed on a carpet at an angle.\nStyle/medium: polished playful 2D cartoon art, bold clean curving outlines, broad saturated color shapes, gentle simple shading, charming expressive face, high quality children's illustration.\nComposition/framing: one large full-body main character occupying about 65% of the canvas, a simple decorative environment filling the entire rectangle edge to edge. Keep ears, face, feet and tail comfortably inside the image with about 8% safe margin. The image itself is the design to print, not a picture of a carpet.\nConstraints: genuinely original character design; no known franchise characters, no logos, no writing, no letters, no watermark, no product mockup, no photographed rug, no textile fibers or baked carpet texture, no fringe, no physical frame or empty white margins, no transparent areas. Use joyful saturated colors with clear separation between character and background.\nSubject: an adorable chubby pink axolotl with six fluffy coral-red external gill fronds, tiny rounded feet, long curved tail and a happy friendly face, floating underwater. Backdrop: vivid cobalt and turquoise water with large simple bubbles, smooth coral shapes, golden water plants and a few coral-pink pebbles. Gentle whimsical underwater illustration, light enough to feel cheerful.",
+      "sha256": "639974f777080cd211bd989260167d00529f3ac48bf58e7d23f954f1d8cdbfce",
+      "mode": "RGB",
+      "width": 1122,
+      "height": 1402,
+      "source_file": "exec-538263cb-744f-4f9e-9421-0b97c90633db.png"
+    },
+    {
+      "slug": "dragon",
+      "path": "Assets/CarpetCleaning/Textures/Resources/CarpetPictures/rug_cartoon_dragon.png",
+      "prompt": "Use case: illustration-story.\nAsset type: finished opaque color print texture for a rectangular carpet in a cozy cleaning game, exactly 1024 x 1280 pixels, portrait 4:5.\nPrimary request: a bright, adorable original cartoon character illustration, readable when viewed on a carpet at an angle.\nStyle/medium: polished playful 2D cartoon art, bold clean curving outlines, broad saturated color shapes, gentle simple shading, charming expressive face, high quality children's illustration.\nComposition/framing: one large full-body main character occupying about 65% of the canvas, a simple decorative environment filling the entire rectangle edge to edge. Keep ears, face, feet and tail comfortably inside the image with about 8% safe margin. The image itself is the design to print, not a picture of a carpet.\nConstraints: genuinely original character design; no known franchise characters, no logos, no writing, no letters, no watermark, no product mockup, no photographed rug, no textile fibers or baked carpet texture, no fringe, no physical frame or empty white margins, no transparent areas. Use joyful saturated colors with clear separation between character and background.\nSubject: a tiny mint-green baby dragon with small rounded lavender horns, peach belly, little lilac wings, chubby body and a curled tail, happily cuddling a glowing gold star. Backdrop: saturated violet and indigo sky with a few big golden stars, curved peach clouds and soft lavender moons. A cute gentle friendly dragon, no fierce teeth or spikes. Clean broad shapes and vivid green against purple contrast.",
+      "sha256": "7bc431503a339287fbb5ea7f158d4c9cf00ef8d7e72a230732fe98087a9aad6c",
+      "mode": "RGB",
+      "width": 1122,
+      "height": 1402,
+      "source_file": "exec-0e17145e-6be4-41fc-bef1-afd9a385beab.png"
+    },
+    {
+      "slug": "capybara",
+      "path": "Assets/CarpetCleaning/Textures/Resources/CarpetPictures/rug_cartoon_capybara.png",
+      "prompt": "Use case: illustration-story.\nAsset type: finished opaque color print texture for a rectangular carpet in a cozy cleaning game, exactly 1024 x 1280 pixels, portrait 4:5.\nPrimary request: a bright, adorable original cartoon character illustration, readable when viewed on a carpet at an angle.\nStyle/medium: polished playful 2D cartoon art, bold clean curving outlines, broad saturated color shapes, gentle simple shading, charming expressive face, high quality children's illustration.\nComposition/framing: one large full-body main character occupying about 65% of the canvas, a simple decorative environment filling the entire rectangle edge to edge. Keep ears, face, feet and tail comfortably inside the image with about 8% safe margin. The image itself is the design to print, not a picture of a carpet.\nConstraints: genuinely original character design; no known franchise characters, no logos, no writing, no letters, no watermark, no product mockup, no photographed rug, no textile fibers or baked carpet texture, no fringe, no physical frame or empty white margins, no transparent areas. Use joyful saturated colors with clear separation between character and background.\nSubject: an adorable plump golden-brown capybara with tiny round ears and a peaceful happy face, sitting comfortably with a small orange balanced on its head and forepaws tucked forward. Backdrop: vivid coral-orange and peach tropical garden with large contrasting emerald and teal monstera leaves, a few yellow flowers and rounded ripples at its feet. Charmingly relaxed expression, a large clear readable silhouette.",
+      "sha256": "0573e41542e956bf481c69ce8b358ca64421ddcc735b090a929ce6b1f4208e30",
+      "mode": "RGB",
+      "width": 1122,
+      "height": 1402,
+      "source_file": "exec-3268329c-65d3-43bb-a7ab-d81ea3853251.png"
+    },
+    {
+      "slug": "cat",
+      "path": "Assets/CarpetCleaning/Textures/Resources/CarpetPictures/rug_cartoon_cat.png",
+      "prompt": "Use case: illustration-story.\nAsset type: finished opaque color print texture for a rectangular carpet in a cozy cleaning game, exactly 1024 x 1280 pixels, portrait 4:5.\nPrimary request: a bright, adorable original cartoon character illustration, readable when viewed on a carpet at an angle.\nStyle/medium: polished playful 2D cartoon art, bold clean curving outlines, broad saturated color shapes, gentle simple shading, charming expressive face, high quality children's illustration.\nComposition/framing: one large full-body main character occupying about 65% of the canvas, a simple decorative environment filling the entire rectangle edge to edge. Keep ears, face, feet and tail comfortably inside the image with about 8% safe margin. The image itself is the design to print, not a picture of a carpet.\nConstraints: genuinely original character design; no known franchise characters, no logos, no writing, no letters, no watermark, no product mockup, no photographed rug, no textile fibers or baked carpet texture, no fringe, no physical frame or empty white margins, no transparent areas. Use joyful saturated colors with clear separation between character and background.\nSubject: a sweet chubby lavender-blue kitten with big warm amber eyes, little cream muzzle, short fluffy legs and a long curling tail, playfully hugging a large bright golden ball of yarn. Backdrop: vivid rose-pink and raspberry with cream daisies, mint leaves and a few golden playful sparkles. A charming original kitten character with simple distinctive rounded shapes and a cheerful face.",
+      "sha256": "742b4eec2061c4f35b9bde06634aab81a13f4417461ec9f39188df2fbbea87cb",
+      "mode": "RGB",
+      "width": 1122,
+      "height": 1402,
+      "source_file": "exec-33d24ae7-4555-4586-9571-822f3556a894.png"
+    }
+  ]
+}

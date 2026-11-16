@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "german"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Reinigt einen Teppich: %clean% sauber"
+		"#Status_Spotless" "Der Teppich ist makellos und bereit zur Abgabe"
+		"#Status_BetweenCarpets" "Putzt zwischen zwei Teppichen den Boden"
+	}
+}

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c8ae38360b11047a1ba54f2e36dd34, type: 3}
+  m_Name: FloorSettings
+  m_EditorClassIdentifier: Assembly-CSharp::CarpetCleaning.FloorSettings
+  F_H_MAX: 12
+  F_U_MAX: 600
+  F_H_REST: 1.2
+  F_DRAG_LO: 1.5
+  F_DRAG_HI: 25
+  F_G: 9810
+  F_E_SURF: 0.008
+  F_DRYER_BOOST: 1200
+  F_TAU_WET: 16
+  F_REDEP: 1
+  F_EDGE_DROP: 20
+  F_DRIP_W: 10
+  F_K_DUST_DIS: 6
+  F_K_RES_DIS: 0.05
+  F_K_RES_AGIT: 2
+  F_C_SAT: 2
+  F_K_GEN: 40
+  F_F_MAX: 12
+  F_GAMMA_SOAP: 0.01
+  F_K_DRAIN: 0.03
+  F_K_DIL: 1.2
+  F_K_DRYPOP: 0.5
+  F_K_FD: 0.05
+  F_D_FOAM: 20
+  F_FOAM_SLIP: 0.9
+  F_SOAP_C_REF: 0.3
+  F_GROUT_DEPTH: 1
+  F_GROUT_W: 6
+  F_TILE: 300
+  F_SPEED_REF: 50
+  F_AGIT_SPEED: 300
+  D_GRAV: 9810
+  D_CHIP_FLY: 0.45
+  D_DUST_FRAC: 0.5
+  D_CHIPS_PER_UNIT: 0.12
+  D_DUST_PER_UNIT: 0.06
+  D_DROPS_PER_MM: 0.004
+  D_CHIP_UP: 1.5
+  D_CHIP_SIZE_MIN: 4
+  D_CHIP_SIZE_MAX: 12
+  D_REST_CARPET: 0.2
+  D_REST_FLOOR: 0.35
+  D_FRICTION: 4
+  D_DISSOLVE: 0.15
+  D_DROP_SPEED: 1500
+  D_DROP_WATER: 3.5
+  D_DUST_LIFE: 1.6
+  D_DUST_AMOUNT: 0.02
+  D_SUCK_SPEED: 12
+  D_MOP_PICK_MM: 13
+  F_DET_MAX: 1
+  F_DET_REF: 0.16
+  F_DET_RATE: 7
+  F_DET_WATER: 0.35
+  F_DET_SOAP: 0.15
+  F_DET_DRY: 0.015
+  F_DET_WASH: 0.5
+  F_DET_TO_RES: 0.1
+  F_DET_K_RES: 0.6
+  F_MOP_K: 260
+  F_MOP_K_DRY: 8
+  F_MOP_EAT: 45
+  F_MOP_SOAK: 320
+  F_MOP_FILM: 0.008
+  F_MOP_FOAM: 120
+  F_MOP_WET: 0.22

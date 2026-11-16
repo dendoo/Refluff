@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"bulgarian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Пухкаво начало"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Предай на клиента първия си килим."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Нито петънце"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Изчисти мръсен килим и го предай на клиента със 100% чистота."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Нито капка"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Намокри добре един килим, после го предай на клиента със 100% сухота."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Като от витрина"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Изчисти мръсен килим и го предай на клиента със 100% чистота и 100% сухота."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"От прах до пух"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Изчисти килим „Мръсен до немай-къде“ и го предай на клиента със 100% чистота."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Експресно почистване"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Вземи пълния бонус за скорост при килим със силно замърсяване."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Редовни клиенти"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Предай на клиентите 25 килима."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Целият арсенал в действие"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Използвай всички 10 инструмента — за килима и за пода."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"До дупка"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Надгради СИЛА и ПЛОЩ на един инструмент до ниво МАКС."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Инспектор"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Купи „Подсветка на влагата“ и „Подсветка на мръсотията“."
+	}
+}

@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"norwegian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"En myk start"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Lever ditt første teppe."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Flekkfritt"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Lever et skittent teppe 100 % rent."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Knusktørt"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Gjør et teppe klissvått, og lever det deretter 100 % tørt."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Rett fra butikken"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Lever et skittent teppe 100 % rent og 100 % tørt."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Fra møkkete til mykt"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Lever et møkkete teppe 100 % rent."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Lynrask service"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Få hele fartsbonusen for et svært skittent teppe."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Stamkunder"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Lever 25 tepper."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Hele sulamitten"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Bruk alle 10 verktøyene."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Skrudd til maks"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Oppgrader KRAFT og AREAL på ett verktøy til MAKS."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspektør"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Kjøp både Fuktmarkering og Smussmarkering."
+	}
+}

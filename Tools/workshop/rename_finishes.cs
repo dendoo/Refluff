@@ -1,0 +1,1 @@
+foreach(var n in new[]{"Limewash","Enamel"}) {string p="Assets/CarpetCleaning/Materials/Workshop/"+n+".asset"; if(UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>(p)!=null)UnityEditor.AssetDatabase.RenameAsset(p,n+"_v2");} UnityEditor.AssetDatabase.SaveAssets();return "renamed";

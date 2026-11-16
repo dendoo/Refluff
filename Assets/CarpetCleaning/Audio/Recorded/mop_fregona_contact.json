@@ -1,0 +1,39 @@
+{
+ "slot": "contact",
+ "file": "mop_fregona_contact.wav",
+ "source": "444946__byronabadia__26_fregona_agua.ogg",
+ "credit": "26_Fregona_Agua.mp3 by byronabadia, https://freesound.org/s/444946/, CC BY 4.0 (three takes joined into a loop, levelled)",
+ "rate": 48000,
+ "channels": 2,
+ "seconds": 6.37,
+ "rmsDb": -20.94,
+ "peakDb": -1.0,
+ "lufs": -16.51,
+ "spans": [
+  [
+   1.55,
+   4.15
+  ],
+  [
+   5.25,
+   7.05
+  ],
+  [
+   8.6,
+   10.75
+  ]
+ ],
+ "highPassHz": 80.0,
+ "duck": [],
+ "method": "spans",
+ "limitDb": 3.0,
+ "limitReleaseS": 0.08,
+ "gainDb": 8.39,
+ "peakLimited": true,
+ "referenceLufs": -12.34,
+ "xfadeS": 0.06,
+ "wrapStepOverRms": 0.074,
+ "typicalStepOverRms": 0.22,
+ "wrapHighBandDb": -7.31,
+ "loudestNearbyDb": 16.36
+}

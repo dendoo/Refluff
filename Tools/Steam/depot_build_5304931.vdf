@@ -1,0 +1,18 @@
+"DepotBuild"
+{
+	"DepotID" "5304931" // Windows content depot; SteamConfig.DepotId
+
+	// Builds/Steam/content/windows/* -> install folder root (Refluff.exe sits at the top)
+	"FileMapping"
+	{
+		"LocalPath" "windows\*"
+		"DepotPath" "."
+		"Recursive" "1"
+	}
+
+	// second line of defence: SteamBuild.BuildRelease already strips these
+	"FileExclusion" "*.pdb"
+	"FileExclusion" "steam_appid.txt"
+	"FileExclusion" "*_BurstDebugInformation_DoNotShip*"
+	"FileExclusion" "*_BackUpThisFolder_ButDontShipItWithYourGame*"
+}

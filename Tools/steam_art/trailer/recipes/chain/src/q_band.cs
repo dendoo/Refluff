@@ -1,0 +1,1 @@
+return "band " + CarpetCleaning.CarpetDebugApi.SurfaceProbeJson(0.12f, 0.28f, 0.89f, 0.45f) + " | far " + CarpetCleaning.CarpetDebugApi.SurfaceProbeJson(0.12f, 0.39f, 0.89f, 0.45f) + " | spill " + CarpetCleaning.CarpetDebugApi.PlowSpillJson();

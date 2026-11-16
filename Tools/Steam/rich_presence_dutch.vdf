@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "dutch"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Reinigt een tapijt: %clean% schoon"
+		"#Status_Spotless" "Het tapijt is vlekkeloos, klaar om af te leveren"
+		"#Status_BetweenCarpets" "Maakt tussen twee tapijten de vloer schoon"
+	}
+}

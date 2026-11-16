@@ -1,0 +1,409 @@
+{
+  "inspection": {
+    "platform": "instagram",
+    "loggedIn": true,
+    "accountHandle": "vahov_games",
+    "nativeScheduling": false
+  },
+  "page": "https://www.instagram.com/vahov_games/reels/",
+  "sensitiveForm": false,
+  "visibleText": "Note...\nvahov_games\nVahov Games\n6 posts\n1 follower\n0 following\nMaking games for you!\nstore.steampowered.com/app/5304930?utm_source=inst and 2 more\nEdit profile\nView archive\nNew\n0\n116\n33\n120\n1,422\n143\nMeta\nAbout\nBlog\nJobs\nHelp\nAPI\nPrivacy\nTerms\nLocations\nPopular\nInstagram Lite\nMeta AI\nMuse\nThreads\nContact Uploading & Non-Users\nMeta Verified\nEnglish\nAfrikaans\nالعربية\nČeština\nDansk\nDeutsch\nΕλληνικά\nEnglish\nEnglish (UK)\nEspañol (España)\nEspañol\nفارسی\nSuomi\nFrançais\nעברית\nBahasa Indonesia\nItaliano\n日本語\n한국어\nBahasa Melayu\nNorsk\nNederlands\nPolski\nPortuguês (Brasil)\nPortuguês (Portugal)\nРусский\nSvenska\nภาษาไทย\nFilipino\nTürkçe\n中文(简体)\n中文(台灣)\nবাংলা\nગુજરાતી\nहिन्दी\nHrvatski\nMagyar\nಕನ್ನಡ\nമലയാളം\nमराठी\nनेपाली\nਪੰਜਾਬੀ\nසිංහල\nSlovenčina\nதமிழ்\nతెలుగు\nاردو\nTiếng Việt\n中文(香港)\nБългарски\nFrançais (Canada)\nRomână\nСрпски\nУкраїнська\n© 2026 Instagram from Meta\nMessages",
+  "accessibility": "- link \"Instagram\":\n  - /url: /\n  - img \"Instagram\"\n- link \"Home\":\n  - /url: /\n  - img \"Home\"\n- link \"Reels\":\n  - /url: /reels/\n  - img \"Reels\"\n- link \"Messages\":\n  - /url: /direct/inbox/\n  - img \"Messages\"\n- link \"Search\":\n  - /url: /explore/\n  - img \"Search\"\n- link \"Notifications\":\n  - /url: \"#\"\n  - img \"Notifications\"\n- link \"New post\":\n  - /url: \"#\"\n  - img \"New post\"\n- link \"Professional dashboard\":\n  - /url: \"#\"\n  - img \"Professional dashboard\"\n- link \"vahov_games's profile picture\":\n  - /url: /vahov_games/\n  - link \"vahov_games's profile picture\":\n    - img \"vahov_games's profile picture\"\n- link \"Settings\":\n  - /url: \"#\"\n  - img \"Settings\"\n- link \"Also from Meta\":\n  - /url: \"#\"\n  - img \"Also from Meta\"\n- main:\n  - button \"Note...\"\n  - button \"Change profile photo\":\n    - img \"Change profile photo\"\n  - link \"vahov_games\":\n    - /url: \"#\"\n    - heading \"vahov_games\" [level=2]\n  - button \"Options\":\n    - img \"Options\"\n  - text: Vahov Games 6 posts\n  - link \"1 follower\":\n    - /url: \"#\"\n  - link \"0 following\":\n    - /url: \"#\"\n  - button \"Making games for you!\"\n  - button \"Link icon store.steampowered.com/app/5304930?utm_source=inst and 2 more\":\n    - img \"Link icon\"\n    - text: store.steampowered.com/app/5304930?utm_source=inst and 2 more\n  - link \"Edit profile\":\n    - /url: /accounts/edit/\n  - link \"View archive\":\n    - /url: /archive/stories/\n  - menu:\n    - list:\n      - listitem\n      - listitem\n      - listitem:\n        - button \"Plus icon New\":\n          - img \"Plus icon\"\n          - text: New\n  - tablist:\n    - link \"Posts\":\n      - /url: /vahov_games/\n      - img \"Posts\"\n    - link \"Reels\":\n      - /url: /vahov_games/reels/\n      - img \"Reels\"\n    - link \"Saved\":\n      - /url: /vahov_games/saved/\n      - img \"Saved\"\n    - link \"Tagged\":\n      - /url: /vahov_games/tagged/\n      - img \"Tagged\"\n  - tabpanel\n  - link \"View Count Icon 0\":\n    - /url: /vahov_games/reel/De13otSPv6j/\n    - img \"View Count Icon\"\n    - text: \"0\"\n  - link \"View Count Icon 116\":\n    - /url: /vahov_games/reel/De1X2F0v25p/\n    - img \"View Count Icon\"\n    - text: \"116\"\n  - link \"View Count Icon 33\":\n    - /url: /vahov_games/reel/DezOys9zQZ4/\n    - img \"View Count Icon\"\n    - text: \"33\"\n  - link \"View Count Icon 120\":\n    - /url: /vahov_games/reel/DewmfagTKhK/\n    - img \"View Count Icon\"\n    - text: \"120\"\n  - link \"View Count Icon 1,422\":\n    - /url: /vahov_games/reel/DerMneKPpzL/\n    - img \"View Count Icon\"\n    - text: 1,422\n  - link \"View Count Icon 143\":\n    - /url: /vahov_games/reel/DeohwIWPXtl/\n    - img \"View Count Icon\"\n    - text: \"143\"\n- contentinfo:\n  - link \"Meta\":\n    - /url: https://about.meta.com/\n  - link \"About\":\n    - /url: https://about.instagram.com/\n  - link \"Blog\":\n    - /url: https://about.instagram.com/blog/\n  - link \"Jobs\":\n    - /url: https://about.instagram.com/about-us/careers\n  - link \"Help\":\n    - /url: https://help.instagram.com/\n  - link \"API\":\n    - /url: https://developers.facebook.com/docs/instagram\n  - link \"Privacy\":\n    - /url: /legal/privacy/\n  - link \"Terms\":\n    - /url: /legal/terms/\n  - link \"Locations\":\n    - /url: /explore/locations/\n  - link \"Popular\":\n    - /url: /popular/\n  - link \"Instagram Lite\":\n    - /url: /web/lite/\n  - link \"Meta AI\":\n    - /url: https://www.meta.ai/?utm_source=foa_web_footer\n  - link \"Muse\":\n    - /url: https://muse.ai/\n  - link \"Threads\":\n    - /url: https://www.threads.com/\n  - link \"Contact Uploading & Non-Users\":\n    - /url: https://www.facebook.com/help/instagram/261704639352628\n  - link \"Meta Verified\":\n    - /url: /accounts/meta_verified/?entrypoint=web_footer\n  - text: English\n  - img \"Down chevron icon\"\n  - combobox \"Switch Display Language\":\n    - option \"Afrikaans\"\n    - option \"العربية\"\n    - option \"Čeština\"\n    - option \"Dansk\"\n    - option \"Deutsch\"\n    - option \"Ελληνικά\"\n    - option \"English\" [selected]\n    - option \"English (UK)\"\n    - option \"Español (España)\"\n    - option \"Español\"\n    - option \"فارسی\"\n    - option \"Suomi\"\n    - option \"Français\"\n    - option \"עברית\"\n    - option \"Bahasa Indonesia\"\n    - option \"Italiano\"\n    - option \"日本語\"\n    - option \"한국어\"\n    - option \"Bahasa Melayu\"\n    - option \"Norsk\"\n    - option \"Nederlands\"\n    - option \"Polski\"\n    - option \"Português (Brasil)\"\n    - option \"Português (Portugal)\"\n    - option \"Русский\"\n    - option \"Svenska\"\n    - option \"ภาษาไทย\"\n    - option \"Filipino\"\n    - option \"Türkçe\"\n    - option \"中文(简体)\"\n    - option \"中文(台灣)\"\n    - option \"বাংলা\"\n    - option \"ગુજરાતી\"\n    - option \"हिन्दी\"\n    - option \"Hrvatski\"\n    - option \"Magyar\"\n    - option \"ಕನ್ನಡ\"\n    - option \"മലയാളം\"\n    - option \"मराठी\"\n    - option \"नेपाली\"\n    - option \"ਪੰਜਾਬੀ\"\n    - option \"සිංහල\"\n    - option \"Slovenčina\"\n    - option \"தமிழ்\"\n    - option \"తెలుగు\"\n    - option \"اردو\"\n    - option \"Tiếng Việt\"\n    - option \"中文(香港)\"\n    - option \"Български\"\n    - option \"Français (Canada)\"\n    - option \"Română\"\n    - option \"Српски\"\n    - option \"Українська\"\n  - text: © 2026 Instagram from Meta\n- button \"Messages\":\n  - img \"Messages\"\n  - text: Messages",
+  "controls": [
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/direct/inbox/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "Note...",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": "Change profile photo",
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "vahov_games",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "1 follower",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "0 following",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "Making games for you!",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "store.steampowered.com/app/5304930?utm_source=inst and 2 more",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Edit profile",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/accounts/edit/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "View archive",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/archive/stories/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "New",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/saved/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/tagged/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "0",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "116",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De1X2F0v25p/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "33",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DezOys9zQZ4/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "120",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DewmfagTKhK/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "1,422",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DerMneKPpzL/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "143",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DeohwIWPXtl/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Meta",
+      "label": null,
+      "title": null,
+      "href": "https://about.meta.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "label": null,
+      "title": null,
+      "href": "https://about.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "label": null,
+      "title": null,
+      "href": "https://about.instagram.com/blog/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Jobs",
+      "label": null,
+      "title": null,
+      "href": "https://about.instagram.com/about-us/careers",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Help",
+      "label": null,
+      "title": null,
+      "href": "https://help.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "API",
+      "label": null,
+      "title": null,
+      "href": "https://developers.facebook.com/docs/instagram",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Privacy",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/legal/privacy/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Terms",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/legal/terms/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Locations",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/locations/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Popular",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/popular/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Instagram Lite",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/web/lite/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Meta AI",
+      "label": null,
+      "title": null,
+      "href": "https://www.meta.ai/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Muse",
+      "label": null,
+      "title": null,
+      "href": "https://muse.ai/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Threads",
+      "label": null,
+      "title": null,
+      "href": "https://www.threads.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Contact Uploading & Non-Users",
+      "label": null,
+      "title": null,
+      "href": "https://www.facebook.com/help/instagram/261704639352628",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Meta Verified",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/accounts/meta_verified/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "Messages",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    }
+  ],
+  "visibleDates": [],
+  "screenshotPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-23-36.324Z_instagram_inspect_417ebbf3.png",
+  "diagnosticPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-23-36.324Z_instagram_inspect_417ebbf3.json"
+}

@@ -1,0 +1,167 @@
+{
+ "out": "SteamStore/tiktok/scraper_upgrades/human_cut/refluff_tiktok_scraper_upgrades_human.mp4",
+ "seconds": 33.7,
+ "fps": 60.0,
+ "frames": 2022,
+ "size": [
+  1080,
+  1920
+ ],
+ "codec": "h264",
+ "pix_fmt": "yuv420p",
+ "color": "tv, bt709, progressive",
+ "audio": true,
+ "mb": 64.46,
+ "mbps": 15.3,
+ "planned": {
+  "frames": 2022,
+  "seconds": 33.7,
+  "shots": [
+   "01",
+   "02",
+   "03",
+   "04",
+   "05"
+  ],
+  "size": [
+   1080,
+   1920
+  ],
+  "preset": "slow",
+  "crf": null
+ },
+ "timing": {
+  "render_s": 260.5,
+  "out_fps": 7.76,
+  "ms_per_frame_wall": 128.8,
+  "ms_per_frame_thread": 2052.8,
+  "jobs": 16,
+  "decode_cache": [
+   0,
+   2383
+  ],
+  "bg_cache": [
+   0,
+   2023
+  ]
+ },
+ "audio_master": {
+  "target": {
+   "I": -14.0,
+   "TP": -2.0,
+   "I_eff": -14.0
+  },
+  "pass1": {
+   "input_i": -16.86,
+   "input_tp": -1.13,
+   "input_lra": 2.9,
+   "input_thresh": -27.82
+  },
+  "limiter": [
+   {
+    "ceiling_dbfs": -5.46,
+    "max_gr_db": 4.33,
+    "input_i": -17.12,
+    "input_tp": -5.07
+   },
+   {
+    "ceiling_dbfs": -5.81,
+    "max_gr_db": 4.68,
+    "input_i": -17.21,
+    "input_tp": -5.42
+   },
+   {
+    "ceiling_dbfs": -5.91,
+    "max_gr_db": 4.78,
+    "input_i": -17.23,
+    "input_tp": -5.52
+   },
+   {
+    "ceiling_dbfs": -6.01,
+    "max_gr_db": 4.88,
+    "input_i": -17.26,
+    "input_tp": -5.62
+   }
+  ],
+  "pass2": {
+   "output_i": -14.05,
+   "output_tp": -2.75,
+   "output_lra": 3.4,
+   "normalization_type": "linear"
+  },
+  "ebur128": {
+   "I": -14.1,
+   "TP": -2.4
+  },
+  "sec": 15.8
+ },
+ "audio_notes": [],
+ "cover": "SteamStore/tiktok/scraper_upgrades/human_cut/refluff_tiktok_scraper_upgrades_human_cover.png",
+ "sheet": "SteamStore/tiktok/scraper_upgrades/human_cut/refluff_tiktok_scraper_upgrades_human_sheet.jpg",
+ "stems": "SteamStore/tiktok/scraper_upgrades/human_cut/refluff_tiktok_scraper_upgrades_human_stems",
+ "warnings": [],
+ "sec": 279.1,
+ "edl": "Tools/steam_art/tiktok/scraper_upgrades/retake_human/edl.json",
+ "audio_sources": [
+  {
+   "shot": "01",
+   "take": "SteamStore/_work/clips/scu_arrival",
+   "t0": 0.0167,
+   "t1": 5.0167,
+   "files": [
+    "ui_whoosh"
+   ]
+  },
+  {
+   "shot": "01",
+   "file": "Tools/steam_art/trailer/audio/roomtone_580534.wav"
+  },
+  {
+   "shot": "02",
+   "take": "SteamStore/_work/clips/scu_weak_human",
+   "t0": 0.0167,
+   "t1": 7.3667,
+   "files": [
+    "scraper_berberscratch_contact"
+   ]
+  },
+  {
+   "shot": "03",
+   "take": "SteamStore/_work/clips/scu_shop_human",
+   "t0": 0.0167,
+   "t1": 6.0167,
+   "files": [
+    "scraper_berberscratch_contact",
+    "ui_buy",
+    "ui_open"
+   ]
+  },
+  {
+   "shot": "04",
+   "take": "SteamStore/_work/clips/scu_power_human",
+   "t0": 0.0167,
+   "t1": 8.5167,
+   "files": [
+    "scraper_berberscratch_contact"
+   ]
+  },
+  {
+   "shot": "05",
+   "take": "SteamStore/_work/clips/scu_reveal_human",
+   "t0": 0.0167,
+   "t1": 7.1167,
+   "files": []
+  },
+  {
+   "shot": "05",
+   "file": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav"
+  },
+  {
+   "shot": "05",
+   "file": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav"
+  },
+  {
+   "voice": "SteamStore/tiktok/scraper_upgrades/human_cut/vo_aligned.wav"
+  }
+ ]
+}

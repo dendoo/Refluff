@@ -1,0 +1,113 @@
+{
+  "inspection": {
+    "platform": "tiktok",
+    "loggedIn": true,
+    "accountHandle": "vahovgames",
+    "nativeScheduling": false
+  },
+  "page": "https://www.tiktok.com/tiktokstudio/content",
+  "sensitiveForm": false,
+  "visibleText": "Upload\nMANAGE\nHome\nPosts\nAnalytics\nComments\nTOOLS\nInspiration\nCreator Academy\nUnlimited Sounds\nOTHERS\nFeedback\nBack to TikTok",
+  "accessibility": "- button:\n  - img\n- button \"Upload\":\n  - img\n  - text: Upload\n  - img\n- text: Manage\n- button \"Home\":\n  - img\n  - text: Home\n- button \"Posts\":\n  - img\n  - text: Posts\n- button \"Analytics\":\n  - img\n  - text: Analytics\n- button \"Comments\":\n  - img\n  - text: Comments\n- text: Tools\n- button \"Inspiration\":\n  - img\n  - text: Inspiration\n- button \"Creator Academy\":\n  - img\n  - text: Creator Academy\n- button \"Unlimited Sounds\":\n  - img\n  - text: Unlimited Sounds\n- text: Others\n- button \"Feedback\":\n  - img\n  - text: Feedback\n- link \"Back to TikTok\":\n  - /url: https://www.tiktok.com\n  - img\n  - text: Back to TikTok\n- region \"Notifications\"\n- button:\n  - img\n- img",
+  "controls": [
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Upload",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Home",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Posts",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Analytics",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Comments",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Inspiration",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Creator Academy",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Unlimited Sounds",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "Feedback",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Back to TikTok",
+      "label": null,
+      "title": null,
+      "href": "https://www.tiktok.com/",
+      "testId": null
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    }
+  ],
+  "visibleDates": [],
+  "screenshotPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-48-17.844Z_tiktok_inspect_8f88325a.png",
+  "diagnosticPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-48-17.844Z_tiktok_inspect_8f88325a.json"
+}

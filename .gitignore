@@ -1,0 +1,58 @@
+# Unity-generated state and builds
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/MemoryCaptures/
+/Recordings/
+/Assets/_Recovery/
+/Assets/_Recovery.meta
+
+# IDE and agent-local state
+/.vs/
+/.idea/
+/.codex/
+/.claude/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+.DS_Store
+Thumbs.db
+
+# Reproducible captures, previews and render intermediates
+/Assets/Screenshots/
+/Assets/Screenshots.meta
+/Screenshots/
+/reports/
+/SteamStore/_work/
+/SteamStore/_preview/
+/*.mp4
+
+# Local tool dependencies and caches
+__pycache__/
+*.py[cod]
+.deps/
+.asr_models/
+.venv/
+node_modules/
+
+# Steam login cache, upload output, private keys and correspondence
+/Tools/Steam/steamcmd/
+/Tools/Steam/output/
+PRIVATE_DO_NOT_UPLOAD/
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx

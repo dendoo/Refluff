@@ -1,0 +1,177 @@
+{
+  "version": 4,
+  "status": "Revision 4: first 2 s forward glide travels9mm rather than3mm (3x camera speed), with all later timing, takes and audio preserved.",
+  "fps": 60,
+  "size": [
+    1920,
+    1080
+  ],
+  "cover": {
+    "t": 50.25
+  },
+  "date": "",
+  "music": null,
+  "audio": {
+    "sr": 48000,
+    "lufs": -14.0,
+    "tp": -2.0,
+    "cut_fade_ms": 8,
+    "tail_silence": 0.1,
+    "tail_fade": 0.6,
+    "max_limit_db": 12,
+    "limiter_release_db_s": 120.0
+  },
+  "motor_prelap": {
+    "from_shot": "02",
+    "lead": 0.5,
+    "source_in": 0.3,
+    "crossfade_start": 0.3,
+    "crossfade_duration": 0.5,
+    "fade_in": 0.08,
+    "note": "Only mf02's genuine machine/motor layer anticipates its picture cut. Contact and rattle retain source timing."
+  },
+  "dryer_carry": {
+    "from_shot": "07",
+    "ramp_before_cut": 0.6,
+    "gain_at_cut_db": -10,
+    "gain_before_final_fade_db": -24,
+    "note": "Phase-continuous genuine mf07 dryer loop carried quietly offscreen across reveal/end; no new sound source."
+  },
+  "shots": [
+    {
+      "id": "01",
+      "start": 0,
+      "dur": 10.75,
+      "take": "mf01d_intro",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true
+      },
+      "note": "Forward glide between clean fibers0-2s,9mm total displacement (3x v3 speed) at fixed height/angle/FOV. Pullout reaches full rug at5.05s; hold to5.75s; return5.75-10.45s; hold to10.75s. Dirt smooth ramp5.95-10.25s, ending at exact mf02 camera and dirty state."
+    },
+    {
+      "id": "02",
+      "start": 10.75,
+      "dur": 6,
+      "take": "mf02_vacuum",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true
+      },
+      "note": "Dusty pile bends toward the vacuum; hold long enough after the head passes to see the combed track and recovery."
+    },
+    {
+      "id": "03",
+      "start": 16.75,
+      "dur": 6,
+      "take": "mf03_hose",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true,
+        "gain_db": -4
+      },
+      "note": "Low side view of the water front laying fibers into a fan; dry and wet pile share the frame."
+    },
+    {
+      "id": "04",
+      "start": 22.75,
+      "dur": 6,
+      "take": "mf04b_brush",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true,
+        "gain_db": -4
+      },
+      "note": "Thin-foam retake after exact 02+03 simulation replay: 0.15 s foam sweep + 0.85 s hold, 4.5 s rotary brush + 0.5 s hold. Follow the foam edge so exposed wet fibers and brush motion remain visible."
+    },
+    {
+      "id": "05",
+      "start": 28.75,
+      "dur": 6,
+      "take": "mf05_squeegee",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true
+      },
+      "note": "Low view of the dirty water/foam roll, laid fibers behind it, and spill over the carpet edge."
+    },
+    {
+      "id": "06",
+      "start": 34.75,
+      "dur": 5,
+      "take": "mf06_extract",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true
+      },
+      "note": "Wet vacuum lifts the remaining water film; the direction and silhouette of moist fibers emerge."
+    },
+    {
+      "id": "07",
+      "start": 39.75,
+      "dur": 9,
+      "take": "mf07_dryer",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true
+      },
+      "note": "Hero transformation: drying restores brightness and fiber height. Keep both damp laid pile and dry upright pile in view, then hold."
+    },
+    {
+      "id": "08",
+      "start": 48.75,
+      "dur": 5,
+      "take": "mf08_reveal",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true
+      },
+      "note": "Slow clean-pile glide and slight retreat to the red ornament from the opening."
+    },
+    {
+      "id": "09",
+      "start": 53.75,
+      "dur": 4,
+      "take": "mf09_end",
+      "in": 0,
+      "speed": 1,
+      "hud": false,
+      "audio": {
+        "take_audio": true
+      },
+      "fx": [
+        {
+          "type": "endcard",
+          "cta": "Wishlist on Steam",
+          "date": "",
+          "studio": "",
+          "width": 0.48,
+          "cy": 0.41,
+          "cta_y": 0.67,
+          "logo_in": 0,
+          "cta_in": 0.4,
+          "darken": 0.25,
+          "blur": 1.5,
+          "ramp": 0.6
+        }
+      ],
+      "note": "Actual approved Refluff logo + exact CTA only over a moving clean carpet. Keep final image visible; audio fades softly. No release date."
+    }
+  ]
+}

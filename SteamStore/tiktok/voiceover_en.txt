@@ -1,0 +1,54 @@
+REFLUFF - TikTok "Every fiber is simulated" - voiceover (English)
+Video: refluff_tiktok_fibers.mp4, 25.7 s, 1080x1920, 60 fps. Edit: Tools/steam_art/tiktok/edl_tiktok.json, Docs/TIKTOK.md.
+
+DELIVERY
+- One take, calm and close to the mic, warm, a little amused; ASMR-adjacent, not an announcer. No music under it.
+- About 2.5 words per second while speaking. Each line must END before its window closes (the next cut). Leave silence between lines:
+  the machine sounds are half of the clip.
+- Export: one WAV, 48 kHz, mono or stereo, starting at 0.00 with the first word at about 0.25 s
+  (or send separate line WAVs named vo_01.wav .. vo_07.wav; I place them at the times below).
+- Pronunciation: "Refluff" = ree-FLUFF (stress on FLUFF).
+
+TIMED LINES  (window = when it may be spoken; target = where the first word should land)
+
+01  0.00 - 3.80   target 0.15   On screen: "Every fiber is simulated"
+    Look, I made a game where every fiber... is simulated.
+    [TTS: quick, conversational "Look,"; may run ~0.8 s into the vacuum shot, land on "simulated"]
+
+02  3.80 - 6.50   target 3.90   On screen: "Vacuum lays the pile"
+    Vacuum it, and the pile lays down.
+    [TTS: a touch brisker - 2.6 s window]
+
+03  6.50 - 9.90   target 6.75   On screen: "Water lifts the dirt"
+    Water lifts the dirt... and turns brown.
+
+04  9.90 - 12.90  target 10.20  On screen: "Foam. Scrub."
+    Foam. [0.4 s pause] Scrub.
+    [TTS: two short words, let the brush be heard after]
+
+05  12.90 - 16.50 target 13.15  On screen: "Squeeze the mud off"
+    Then squeeze the mud right off the carpet.
+
+06  16.50 - 20.50 target 16.80  On screen: "Dry it. It fluffs up."
+    Dry it, and every fiber springs back up.
+
+07  20.50 - 25.20 target 23.45  On screen: logo at 23.50, "Wishlist on Steam" at 23.95
+    Refluff. [0.3 s pause] Wishlist it on Steam.
+    [TTS: start on the logo, finish by 25.2 s - the last 0.4 s of the clip is silent]
+
+Total: 47 words (~2.5 words/s inside the windows; lines 01-02 are the tight ones).
+
+PLAIN TEXT FOR A TTS BOX (pauses as punctuation)
+Look, I made a game where every fiber... is simulated.
+Vacuum it, and the pile lays down.
+Water lifts the dirt... and turns brown.
+Foam. ... Scrub.
+Then squeeze the mud right off the carpet.
+Dry it, and every fiber springs back up.
+Refluff. Wishlist it on Steam.
+
+AFTER THE WAV ARRIVES
+Put it in SteamStore/tiktok/voice/ and set the EDL's top-level "voice":
+  {"wav": "SteamStore/tiktok/voice/vo_en.wav", "start": 0.0, "gain_db": 0, "duck_db": -8, "threshold_db": -42}
+then: python Tools/steam_art/trailer/make_trailer.py --edl Tools/steam_art/tiktok/edl_tiktok.json
+        --out SteamStore/tiktok/refluff_tiktok_fibers_vo.mp4  (copy refluff_tiktok_fibers.mp4 there first, add --audio-only)

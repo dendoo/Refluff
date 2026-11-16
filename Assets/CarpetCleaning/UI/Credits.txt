@@ -1,0 +1,36 @@
+# Refluff: Carpet Cleaning ASMR
+A game by Vahov Games.
+Thank you for playing.
+
+# Sound effects
+Sound effects from Freesound.org, cut and levelled for this game:
+"bissell_carpet_cleaner_vacuum_01.wav" by joedeshon (https://freesound.org/s/79236/), licensed under CC BY 4.0
+"loud metal fan turned on and off a few times (machine starting up)" by busabx (https://freesound.org/s/726634/), licensed under CC BY 4.0
+"Floor Buffer Sound" by prometheus888 (https://freesound.org/s/864976/), licensed under CC BY 4.0
+"shovelling scraping water" by adda_records (https://freesound.org/s/519974/), licensed under CC BY 4.0
+"26_Fregona_Agua.mp3" by byronabadia (https://freesound.org/s/444946/), licensed under CC BY 4.0
+"Whipped Cream Spray Can" by kev_durr (https://freesound.org/s/321055/), licensed under CC BY 4.0
+"BerberCarpetScratching.wav" by akent (https://freesound.org/s/178499/), licensed under CC BY 3.0
+"Vacuum Cleaner, On Idle Off, Close, A.wav" by InspectorJ (www.jshaw.co.uk, https://freesound.org/s/430632/), licensed under CC BY 4.0
+Licences: https://creativecommons.org/licenses/by/4.0/ and https://creativecommons.org/licenses/by/3.0/
+Additional sounds: Mixkit (mixkit.co) and Freesound users kyles, richwise, RossJuterbock, crcavol, yehdawgo (CC0).
+
+# Carpet designs
+The five rugs are photographs of historic carpets from museum open-access collections (public domain, CC0).
+The Metropolitan Museum of Art: Carpet, Turkey (1974.149.29); 'Transylvanian' Carpet, Turkey (22.100.91); Carpet, European (10.152.14); Salor Main Carpet, Turkmenistan (1974.149.46).
+The Art Institute of Chicago: Carpet ("Ryijy" / "Rya"), Central Finland (1924.458).
+
+# 3D models
+The tool head models were generated with Tripo AI (tripo3d.ai).
+
+# Fonts
+Noto Sans Arabic and Noto Sans Thai, Copyright 2022 The Noto Project Authors, SIL Open Font License 1.1.
+Noto Sans JP, KR, SC and TC, Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source', SIL Open Font License 1.1.
+
+# Software
+Made with Unity.
+Steamworks.NET, Copyright (c) 2013-2022 Riley Labrecque, MIT License.
+Unity glTFast, Copyright (c) 2023 Unity Technologies and the Unity glTFast authors, Apache License 2.0.
+Json.NET (Newtonsoft.Json), Copyright (c) 2007 James Newton-King, MIT License.
+MCP for Unity, Copyright (c) 2025 CoplayDev, MIT License.
+The full licence texts are in THIRD_PARTY_NOTICES.txt in the game folder.

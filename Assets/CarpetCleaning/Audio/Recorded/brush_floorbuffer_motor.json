@@ -1,0 +1,31 @@
+{
+ "slot": "motor",
+ "file": "brush_floorbuffer_motor.wav",
+ "source": "864976__prometheus888__floor_buffer_sound.ogg",
+ "credit": "Floor Buffer Sound by prometheus888, https://freesound.org/s/864976/, CC BY 4.0 (cut to 30 pad turns, levelled)",
+ "rate": 48000,
+ "channels": 2,
+ "seconds": 9.5925,
+ "rmsDb": -14.49,
+ "peakDb": -1.0,
+ "lufs": -12.14,
+ "spans": [
+  [
+   0.6,
+   10.2725
+  ]
+ ],
+ "highPassHz": 30.0,
+ "duck": [],
+ "method": "spans",
+ "limitDb": 0.0,
+ "limitReleaseS": 0.08,
+ "gainDb": 5.06,
+ "peakLimited": true,
+ "referenceLufs": -10.14,
+ "xfadeS": 0.08,
+ "wrapStepOverRms": 0.053,
+ "typicalStepOverRms": 0.119,
+ "wrapHighBandDb": -2.51,
+ "loudestNearbyDb": 7.65
+}

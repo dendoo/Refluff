@@ -1,0 +1,34 @@
+{
+  "logo": "SteamStore/logo/refluff_logo.png",
+  "cta": "Wishlist on Steam",
+  "date": null,
+  "studio": null,
+  "boxes": {
+    "logo": [
+      499.20000000000005,
+      307.2346268656716,
+      1420.8,
+      578.3653731343284
+    ],
+    "cta": [
+      678.0,
+      723.6,
+      1242.0,
+      816.6
+    ],
+    "date": [
+      960.0,
+      849.45,
+      960.0,
+      915.75
+    ],
+    "studio": [
+      960.0,
+      976.5,
+      960.0,
+      1015.5
+    ]
+  },
+  "safe": true,
+  "note": "Layout slate only; final background is mf09_end gameplay."
+}

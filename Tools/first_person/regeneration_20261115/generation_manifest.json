@@ -1,0 +1,452 @@
+{
+  "date": "2026-11-15",
+  "pipeline": "Original image -> Tripo H3.1 HD Best Quality -> multi-angle review -> Triangle remesh with Smart Mesh OFF, 40000 target -> GLB 4k -> Unity review/import",
+  "credits": {
+    "start": 2910,
+    "afterGenerationAndRemesh": 2490,
+    "spent": 420
+  },
+  "models": [
+    {
+      "tool": "Scraper",
+      "id": 0,
+      "tripoId": "316d5560-7953-4e1c-a2b9-38ed568f354c",
+      "reference": "references/scraper.png",
+      "hdTriangles": 1915466,
+      "triangles": 39999,
+      "download": "downloads/Tool_Scraper.glb",
+      "sha256": "dba029cfcca1ccf41443c83307a74de96d17416cc9307162559c12e1538c4688",
+      "unitySource": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Scraper.glb",
+      "sourceEuler": [
+        0,
+        90,
+        0
+      ],
+      "unityPreviewAccepted": true,
+      "geometry": {
+        "vertices": 46168,
+        "triangles": 39999,
+        "degenerate_faces": 0,
+        "invalid_indices": 0,
+        "non_finite_vertices": 0,
+        "opposed_normal_faces": 21,
+        "zero_length_normals": 0,
+        "valid_geometry": true,
+        "textures": [
+          {
+            "size": [
+              4096,
+              4096
+            ],
+            "mode": "RGB",
+            "bytes": 1236732
+          },
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mode": "RGB",
+            "bytes": 3900975
+          },
+          {
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "bytes": 175944
+          }
+        ]
+      },
+      "normalizedPrefab": "Assets/CarpetCleaning/Prefabs/Tools/Tool_Scraper.prefab",
+      "factorySpanM": 0.12,
+      "handleSocketM": [
+        -0.025101,
+        0.074177,
+        0.015297
+      ]
+    },
+    {
+      "tool": "Hose",
+      "id": 2,
+      "tripoId": "f34991d6-4e26-460c-90e0-438083983ec1",
+      "reference": "references/hose.png",
+      "hdTriangles": 1982210,
+      "triangles": 40000,
+      "download": "downloads/Tool_Hose.glb",
+      "sha256": "54c10933a7d5dc6c247499b4deb342f46bcaf5951a65b6e79cca4472d43c2adc",
+      "unitySource": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Hose.glb",
+      "sourceEuler": [
+        0,
+        -90,
+        0
+      ],
+      "unityPreviewAccepted": true,
+      "geometry": {
+        "vertices": 37433,
+        "triangles": 40000,
+        "degenerate_faces": 0,
+        "invalid_indices": 0,
+        "non_finite_vertices": 0,
+        "opposed_normal_faces": 37,
+        "zero_length_normals": 0,
+        "valid_geometry": true,
+        "textures": [
+          {
+            "size": [
+              4096,
+              4096
+            ],
+            "mode": "RGB",
+            "bytes": 1104045
+          },
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mode": "RGB",
+            "bytes": 3866207
+          },
+          {
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "bytes": 273487
+          }
+        ]
+      },
+      "normalizedPrefab": "Assets/CarpetCleaning/Prefabs/FirstPerson/FP_Hose.prefab",
+      "longestSizeM": 0.3,
+      "hoseSocketM": [
+        -0.007962,
+        -0.116374,
+        -0.120958
+      ],
+      "nozzleM": [
+        0.0001,
+        0.068,
+        0.152
+      ]
+    },
+    {
+      "tool": "Brush",
+      "id": 4,
+      "tripoId": "fa2175c8-6175-47ac-8b4e-8de6777c25af",
+      "reference": "references/brush.png",
+      "hdTriangles": 1918645,
+      "triangles": 40000,
+      "download": "downloads/Tool_Brush.glb",
+      "sha256": "0e4ce639427870eadf0aba1a8614d0aba29b9876d5aa343c2ed7add31cafa592",
+      "unitySource": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Brush.glb",
+      "sourceEuler": [
+        0,
+        90,
+        0
+      ],
+      "unityPreviewAccepted": true,
+      "geometry": {
+        "vertices": 43114,
+        "triangles": 40000,
+        "degenerate_faces": 0,
+        "invalid_indices": 0,
+        "non_finite_vertices": 0,
+        "opposed_normal_faces": 79,
+        "zero_length_normals": 0,
+        "valid_geometry": true,
+        "textures": [
+          {
+            "size": [
+              4096,
+              4096
+            ],
+            "mode": "RGB",
+            "bytes": 1240609
+          },
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mode": "RGB",
+            "bytes": 4226311
+          },
+          {
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "bytes": 247663
+          }
+        ]
+      },
+      "normalizedPrefab": "Assets/CarpetCleaning/Prefabs/Tools/Tool_Brush.prefab",
+      "factorySpanM": 0.09,
+      "handleSocketM": [
+        0,
+        0.0342,
+        0
+      ],
+      "brushSplit": {
+        "sourceTriangles": 40000,
+        "derivedTriangles": 40820,
+        "staticHousingTriangles": 14323,
+        "rotatingSkirtTriangles": 26497,
+        "seamM": 0.0152,
+        "rpm": 350,
+        "pileSinkM": 0.008,
+        "idleAnd30DegreePreviewAccepted": true
+      },
+      "attachment": "Centre silver hub on static housing, directly above the Spin axis; revised at user request."
+    },
+    {
+      "tool": "Squeegee",
+      "id": 5,
+      "tripoId": "55a9b333-eb40-4b10-82db-51a466d328d2",
+      "reference": "references/squeegee.png",
+      "hdTriangles": 1953457,
+      "triangles": 39998,
+      "download": "downloads/Tool_Squeegee.glb",
+      "sha256": "7ef00ad7885a3091cbc237df0ee2da334e54326de9ec653a90ef4d555e25b57a",
+      "unitySource": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Squeegee.glb",
+      "sourceEuler": [
+        0,
+        90,
+        0
+      ],
+      "unityPreviewAccepted": true,
+      "geometry": {
+        "vertices": 46658,
+        "triangles": 39998,
+        "degenerate_faces": 0,
+        "invalid_indices": 0,
+        "non_finite_vertices": 0,
+        "opposed_normal_faces": 15,
+        "zero_length_normals": 0,
+        "valid_geometry": true,
+        "textures": [
+          {
+            "size": [
+              4096,
+              4096
+            ],
+            "mode": "RGB",
+            "bytes": 890512
+          },
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mode": "RGB",
+            "bytes": 3382163
+          },
+          {
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "bytes": 192011
+          }
+        ]
+      },
+      "normalizedPrefab": "Assets/CarpetCleaning/Prefabs/Tools/Tool_Squeegee.prefab",
+      "factorySpanM": 0.22,
+      "handleSocketM": [
+        -0.013764,
+        0.114549,
+        0.016579
+      ]
+    },
+    {
+      "tool": "WetVacuum",
+      "id": 6,
+      "tripoId": "43ba340e-571c-4fab-a1f7-84d3cd2b1263",
+      "reference": "references/wet_vacuum.png",
+      "hdTriangles": 1980476,
+      "triangles": 39990,
+      "download": "downloads/Tool_WetVacuum.glb",
+      "sha256": "7788463559956f219f91e970a6098dcfb3654f6c794b5d62c75fca21ed0b7137",
+      "unitySource": "Assets/CarpetCleaning/Models/FirstPerson/Tool_WetVacuum.glb",
+      "sourceEuler": [
+        0,
+        90,
+        0
+      ],
+      "unityPreviewAccepted": true,
+      "geometry": {
+        "vertices": 40110,
+        "triangles": 39990,
+        "degenerate_faces": 0,
+        "invalid_indices": 0,
+        "non_finite_vertices": 0,
+        "opposed_normal_faces": 63,
+        "zero_length_normals": 0,
+        "valid_geometry": true,
+        "textures": [
+          {
+            "size": [
+              4096,
+              4096
+            ],
+            "mode": "RGB",
+            "bytes": 1008557
+          },
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mode": "RGB",
+            "bytes": 3301358
+          },
+          {
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "bytes": 242365
+          }
+        ]
+      },
+      "normalizedPrefab": "Assets/CarpetCleaning/Prefabs/Tools/Tool_WetVacuum.prefab",
+      "factorySpanM": 0.16,
+      "handleSocketM": [
+        -0.058686,
+        0.097243,
+        0.016493
+      ]
+    },
+    {
+      "tool": "FloorCleaner",
+      "id": 8,
+      "tripoId": "8f7095ce-8bc3-4059-b7b2-bf2aaa6d39e1",
+      "reference": "references/floor_cleaner.png",
+      "hdTriangles": 1917846,
+      "triangles": 40000,
+      "download": "downloads/Tool_FloorCleaner.glb",
+      "sha256": "6af0408f50b2e714c3a0f064f5f085e2a419b23179b498f3514ca333dfdfaa60",
+      "unitySource": "Assets/CarpetCleaning/Models/FirstPerson/Tool_FloorCleaner.glb",
+      "sourceEuler": [
+        0,
+        -90,
+        0
+      ],
+      "unityPreviewAccepted": true,
+      "geometry": {
+        "vertices": 40227,
+        "triangles": 40000,
+        "degenerate_faces": 0,
+        "invalid_indices": 0,
+        "non_finite_vertices": 0,
+        "opposed_normal_faces": 109,
+        "zero_length_normals": 0,
+        "valid_geometry": true,
+        "textures": [
+          {
+            "size": [
+              4096,
+              4096
+            ],
+            "mode": "RGB",
+            "bytes": 1252707
+          },
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mode": "RGB",
+            "bytes": 4398339
+          },
+          {
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "bytes": 357125
+          }
+        ]
+      },
+      "normalizedPrefab": "Assets/CarpetCleaning/Prefabs/FirstPerson/FP_FloorCleaner.prefab",
+      "longestSizeM": 0.4,
+      "hoseSocketM": [
+        -0.0,
+        -0.126448,
+        -0.170685
+      ],
+      "nozzleM": [
+        0,
+        0.0767,
+        0.202
+      ]
+    },
+    {
+      "tool": "Mop",
+      "id": 9,
+      "tripoId": "140b8a20-2248-4e9b-a313-8abdd22daaa7",
+      "reference": "references/mop.png",
+      "hdTriangles": 1945598,
+      "triangles": 40000,
+      "download": "downloads/Tool_Mop.glb",
+      "sha256": "2becdf36bfae768d93567abb7c3ee375edee87b79711cbf0739fe9aa5b942907",
+      "unitySource": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Mop.glb",
+      "sourceEuler": [
+        0,
+        90,
+        0
+      ],
+      "unityPreviewAccepted": true,
+      "geometry": {
+        "vertices": 29112,
+        "triangles": 40000,
+        "degenerate_faces": 0,
+        "invalid_indices": 0,
+        "non_finite_vertices": 0,
+        "opposed_normal_faces": 38,
+        "zero_length_normals": 0,
+        "valid_geometry": true,
+        "textures": [
+          {
+            "size": [
+              4096,
+              4096
+            ],
+            "mode": "RGB",
+            "bytes": 1982049
+          },
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mode": "RGB",
+            "bytes": 4148667
+          },
+          {
+            "size": [
+              1024,
+              1024
+            ],
+            "mode": "RGB",
+            "bytes": 393395
+          }
+        ]
+      },
+      "normalizedPrefab": "Assets/CarpetCleaning/Prefabs/Tools/Tool_Mop.prefab",
+      "factorySpanM": 0.32,
+      "handleSocketM": [
+        -0.044036,
+        0.118698,
+        0.018735
+      ]
+    }
+  ]
+}

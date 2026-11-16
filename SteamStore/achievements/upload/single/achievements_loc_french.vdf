@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"french"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Un début tout doux"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Livrez votre premier tapis."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Impeccable"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Livrez propre à 100 % un tapis arrivé sale."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Sec à cœur"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Détrempez un tapis, puis livrez-le sec à 100 %."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Tout beau, tout neuf"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Livrez 100 % propre et 100 % sec un tapis arrivé sale."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"De crasseux à moelleux"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Livrez propre à 100 % un tapis crasseux."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Service express"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Encaissez toute la prime de rapidité sur un tapis très sale."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Les habitués"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Livrez 25 tapis."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Toute la panoplie"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Utilisez les 10 outils."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Gonflé à bloc"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Montez la PUISSANCE et la SURFACE d’un même outil au MAX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Œil de lynx"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Achetez le Détecteur d’humidité et le Détecteur de saleté."
+	}
+}

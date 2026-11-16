@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "brazilian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Limpando um tapete: %clean% limpo"
+		"#Status_Spotless" "O tapete está impecável, pronto para entregar"
+		"#Status_BetweenCarpets" "Entre tapetes, limpando o piso"
+	}
+}

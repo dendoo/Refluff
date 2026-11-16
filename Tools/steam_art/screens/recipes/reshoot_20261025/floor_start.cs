@@ -1,0 +1,1 @@
+UnityEditor.EditorApplication.isPaused=true; CarpetCleaning.EconomyDebugApi.ShopOpen(false); CarpetCleaning.CarpetDebugApi.Reset(233,.95f); return CarpetCleaning.CarpetDebugApi.DirtJson();

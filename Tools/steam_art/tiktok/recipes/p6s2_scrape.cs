@@ -1,0 +1,11 @@
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.040f, 0.275f, 0.960f, 0.275f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.960f, 0.303f, 0.040f, 0.303f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.040f, 0.331f, 0.960f, 0.331f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.960f, 0.359f, 0.040f, 0.359f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.040f, 0.388f, 0.960f, 0.388f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.960f, 0.416f, 0.040f, 0.416f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.040f, 0.444f, 0.960f, 0.444f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.960f, 0.472f, 0.040f, 0.472f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.040f, 0.500f, 0.960f, 0.500f, 92, 1.00f);
+CarpetCleaning.CarpetDebugApi.RunFrames(60);
+return CarpetCleaning.CarpetDebugApi.SurfaceProbeJson(0.25f, 0.32f, 0.75f, 0.40f) + " " + CarpetCleaning.CarpetDebugApi.StatsJson();

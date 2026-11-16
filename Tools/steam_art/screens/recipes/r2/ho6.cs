@@ -1,0 +1,12 @@
+for (int i = 0; i < 6 && !CarpetCleaning.CarpetDebugApi.HandoverJson().Contains("rug_anatolian"); i++) CarpetCleaning.CarpetDebugApi.NewCarpetNow();
+CarpetCleaning.CarpetDebugApi.Reset(14, 0f);
+CarpetCleaning.CarpetDebugApi.SetTool(7);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 15; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+var ok = CarpetCleaning.CarpetDebugApi.HandoverNow(false);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 3; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+var r = CarpetCleaning.StoreShotApi.Shot("test_fly");
+return ok + CarpetCleaning.CarpetDebugApi.HandoverJson();

@@ -1,0 +1,13 @@
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+for (int i = 0; i < 6 && !CarpetCleaning.CarpetDebugApi.HandoverJson().Contains("rug_finnish"); i++) CarpetCleaning.CarpetDebugApi.NewCarpetNow();
+CarpetCleaning.CarpetDebugApi.Reset(14, 0.5f);
+CarpetCleaning.CarpetDebugApi.Zigzag(2, 0.50f,0.35f, 0.95f,0.65f, 5, 35, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(2, 0.95f,0.65f, 0.72f,0.50f, 30, 1f);
+CarpetCleaning.CarpetDebugApi.Hold(2, 0.72f, 0.50f, 0.8f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(2, 0.72f, 0.50f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 12; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.CarpetDebugApi.Hold(2, 0.72f, 0.50f, 0.3f);
+CarpetCleaning.StoreShotApi.RenderScene("test/ho2.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.HandoverJson() + CarpetCleaning.CarpetDebugApi.StatsJson() + CarpetCleaning.CarpetDebugApi.DebrisAliveJson();

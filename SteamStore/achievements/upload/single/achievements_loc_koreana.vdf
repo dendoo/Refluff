@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"koreana"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"폭신폭신 첫걸음"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"첫 카펫을 전달하세요."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"반짝반짝"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"더러운 카펫을 청결도 100%로 전달하세요."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"뽀송뽀송"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"카펫을 흠뻑 적신 다음, 건조도 100%로 전달하세요."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"새것 같은 마무리"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"더러운 카펫을 청결도와 건조도 모두 100%로 전달하세요."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"꼬질꼬질 대변신"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"‘극심한 오염’ 카펫을 청결도 100%로 전달하세요."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"특급 서비스"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"오염이 심한 카펫에서 속도 보너스를 전액 받으세요."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"단골손님"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"카펫 25장을 전달하세요."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"도구 총출동"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"카펫 도구와 바닥 도구 10가지를 모두 사용하세요."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"만렙 도구"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"도구 하나의 파워와 범위를 모두 MAX까지 업그레이드하세요."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"깐깐한 검사관"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"습기 하이라이트와 오염 하이라이트를 구매하세요."
+	}
+}

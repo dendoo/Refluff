@@ -1,0 +1,26 @@
+{
+ "slot": "off",
+ "file": "brush_breaker_off.wav",
+ "source": "451933__kyles__switch_big_breaker_metal_click_on_off.ogg",
+ "credit": "switch big breaker metal click on, off.flac by kyles, https://freesound.org/s/451933/, CC0",
+ "rate": 48000,
+ "channels": 1,
+ "seconds": 0.535,
+ "rmsDb": -25.17,
+ "peakDb": -1.0,
+ "lufs": -20.06,
+ "spans": [
+  [
+   1.615,
+   2.15
+  ]
+ ],
+ "highPassHz": 0.0,
+ "duck": [],
+ "method": "oneshot",
+ "gainDb": -0.57,
+ "peakLimited": true,
+ "referenceLufs": -18.49,
+ "fadeInS": 0.002,
+ "fadeOutS": 0.2
+}

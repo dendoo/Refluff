@@ -1,0 +1,86 @@
+{
+  "asr": "faster-whisper base int8, ru",
+  "language": "ru",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.78,
+      "text": " Где это я?",
+      "words": [
+        {
+          "start": 0.0,
+          "end": 1.26,
+          "word": " Где",
+          "probability": 0.1948569416999817
+        },
+        {
+          "start": 1.26,
+          "end": 1.58,
+          "word": " это",
+          "probability": 0.6626670360565186
+        },
+        {
+          "start": 1.58,
+          "end": 1.78,
+          "word": " я?",
+          "probability": 0.8832033276557922
+        }
+      ]
+    },
+    {
+      "start": 2.32,
+      "end": 4.88,
+      "text": " Дрья же между Варсина Каврав в своей игре!",
+      "words": [
+        {
+          "start": 2.32,
+          "end": 2.7,
+          "word": " Дрья",
+          "probability": 0.5343150397141775
+        },
+        {
+          "start": 2.7,
+          "end": 2.82,
+          "word": " же",
+          "probability": 0.25727546215057373
+        },
+        {
+          "start": 2.82,
+          "end": 3.1,
+          "word": " между",
+          "probability": 0.948469877243042
+        },
+        {
+          "start": 3.1,
+          "end": 3.52,
+          "word": " Варсина",
+          "probability": 0.7204238772392273
+        },
+        {
+          "start": 3.52,
+          "end": 4.02,
+          "word": " Каврав",
+          "probability": 0.6346330642700195
+        },
+        {
+          "start": 4.02,
+          "end": 4.2,
+          "word": " в",
+          "probability": 0.31419962644577026
+        },
+        {
+          "start": 4.2,
+          "end": 4.34,
+          "word": " своей",
+          "probability": 0.930816113948822
+        },
+        {
+          "start": 4.34,
+          "end": 4.88,
+          "word": " игре!",
+          "probability": 0.960226446390152
+        }
+      ]
+    }
+  ]
+}

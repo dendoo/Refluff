@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"italian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Soffice debutto"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Consegna il tuo primo tappeto."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Immacolato"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Consegna pulito al 100% un tappeto arrivato sporco."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Asciuttissimo"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Inzuppa un tappeto, poi consegnalo asciutto al 100%."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Nuovo di zecca"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Consegna pulito e asciutto al 100% un tappeto arrivato sporco."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Da lurido a morbido"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Consegna pulito al 100% un tappeto lurido."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Servizio espresso"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Ottieni tutto il bonus velocità su un tappeto molto sporco."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Clienti affezionati"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Consegna 25 tappeti."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Tutto l’arsenale"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Usa tutti e 10 gli attrezzi."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Tutto al massimo"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Porta POTENZA e AREA di uno stesso attrezzo al MAX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Occhio di lince"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Compra il Rilevatore di umidità e il Rilevatore di sporco."
+	}
+}

@@ -1,0 +1,13 @@
+CarpetCleaning.EconomyDebugApi.ShopOpen(false);
+CarpetCleaning.EconomyDebugApi.LiveTuning(true);
+CarpetCleaning.ToolTuning.Set(CarpetCleaning.ToolId.Scraper,20f,5f);
+var s=CarpetCleaning.StoreGifApi.SeqBegin("scu_probe_power",1080,1920,0,0,0,0,false,1,true,1080,1920,60,true);
+CarpetCleaning.StoreGifApi.Tool(0);
+CarpetCleaning.StoreGifApi.Hover(-.04f,.17f,.20f);
+CarpetCleaning.StoreGifApi.Stroke(-.06f,.17f,1.06f,.17f,.80f);
+CarpetCleaning.StoreGifApi.Move(1.06f,.17f,1.06f,.50f,.10f,false);
+CarpetCleaning.StoreGifApi.Move(1.06f,.50f,-.06f,.50f,.80f,true);
+CarpetCleaning.StoreGifApi.Move(-.06f,.50f,-.06f,.83f,.10f,false);
+CarpetCleaning.StoreGifApi.Move(-.06f,.83f,1.06f,.83f,.80f,true);
+CarpetCleaning.StoreGifApi.Hover(1.06f,.83f,.20f);CarpetCleaning.StoreGifApi.Away(.20f);
+return s;

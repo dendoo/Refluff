@@ -1,0 +1,1 @@
+return new { playing=UnityEditor.EditorApplication.isPlaying, building=UnityEditor.BuildPipeline.isBuildingPlayer, compiling=UnityEditor.EditorApplication.isCompiling, failed=UnityEditor.EditorUtility.scriptCompilationFailed, pipeline=UnityEngine.Rendering.RenderPipelineManager.currentPipeline != null };

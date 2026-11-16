@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"russian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Первый пушистик"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Отдай клиенту свой первый ковёр."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Ни пятнышка"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Отдай клиенту грязный ковёр чистым на 100%."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Ни капли"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Как следует промочи ковёр, а потом отдай его клиенту сухим на 100%."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Хоть на витрину"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Отдай клиенту грязный ковёр чистым и сухим на 100%."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Из грязи в пух"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Отдай клиенту ковёр «Грязнее некуда» чистым на 100%."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Экспресс-чистка"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Заработай полный бонус за скорость на ковре с сильным загрязнением."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Постоянные клиенты"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Отдай клиентам 25 ковров."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Весь инструмент в деле"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Используй все 10 инструментов — для ковра и для пола."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Прокачано до упора"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Доведи улучшения СИЛА и ОХВАТ одного инструмента до уровня МАКС."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Инспектор"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Купи «Подсветку влаги» и «Подсветку грязи»."
+	}
+}

@@ -1,0 +1,15 @@
+{
+  "stage": "submitting",
+  "publicationId": "post_fc3e4c08-fd2e-4e4b-bcfb-c95973023c68",
+  "platform": "tiktok",
+  "accountHandle": "vahovgames",
+  "approvedHash": "be46a6583ece4864e8523020c8e5f55fa01f542c39443a335dccd6cd2a329db1",
+  "clipId": "clip_f7413026-58a6-45d0-b677-4e35ee17ddce",
+  "videoSha256": "86f0066bef312868e4ca0c43442634c480d2ab4f05de90c77ef65c40f5b9edb6",
+  "url": null,
+  "remoteId": null,
+  "evidence": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\tiktok_pre_submit.jpg",
+  "evidenceSha256": "59b469384fd7cc54a715cee3abc722243e04d888c19e538c160d843b5aa496d4",
+  "at": "2026-10-25T08:28:49.644Z",
+  "verification": "CUA final submit is prepared; no retry is permitted after an uncertain click"
+}

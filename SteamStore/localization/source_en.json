@@ -1,0 +1,223 @@
+{
+  "_about": "Source of the Steam store page text for Refluff: Carpet Cleaning ASMR (App 5304930), one entry per translatable piece. Tools/steam_art/store_loc.py assembles the About This Game BBCode, the short description, the system-requirement lines, the alt texts and the legal lines from these fields, so a translation file only holds plain text (no BBCode, no image tags). Docs: Assets/CarpetCleaning/Docs/STORE_LOCALIZATION.md.",
+  "game": "Refluff is a calm, satisfying carpet-cleaning game for PC (Steam, $3.99). One dirty rug lies on a tiled floor seen from above. The player cleans it with ten tools in a sensible order: a hand scraper breaks dried mud crust, a dry vacuum picks up dust and crumbs, a hose soaks the pile, a foam sprayer puts pink cleaning foam on, a rotary floor-scrubber brush works it in, a rubber squeegee pushes the dirty foam water off the rug onto the tiles, a wet vacuum (carpet extractor) sucks the rest out, a dryer blows it dry; a detergent sprayer and a mop clean the tiles. The dirt is a real fluid simulation (water soaks in and spreads through the fibres, dust turns to mud when wet, foam heaps up and settles), not a picture that gets rubbed away like in many cleaning games. When the rug is clean and dry the player hands it over to its owner, it flies away and the next dirty rug flies in. A pay slip prints the money earned (base pay, speed bonus, spotless, bone dry, combo); the money buys POWER / AREA upgrades per tool and two inspection lamps (moisture and dirt highlight). The rug patterns are photographs of real historic carpets from museum collections. All machine sounds are recordings of real machines; the game is marketed as ASMR, so headphones are recommended. No enemies, no fail state, no timer that ends the game. Mouse and keyboard, single player, interface in 31 languages.",
+  "fields": [
+    {
+      "id": "short_description",
+      "en": "Refluff is a carpet cleaning ASMR sim built on a real fluid simulation. Scrape off dried crust, soak the pile, foam it, brush it, squeegee the slurry out and dry the fibers until the rug is spotless. Hand it over, get paid, upgrade your kit, take the next one.",
+      "where": "Short description: the text next to the capsule at the top of the store page, also shown in search results and wishlists. The most important sentence of the page.",
+      "note": "Keep the name Refluff and the word ASMR. Steam's recommended length is 200-300 characters; hard maximum 300 characters for every language. CJK: about 90-150 characters is natural. A punchy rhythm of short verb phrases (scrape, soak, foam, brush, squeegee, dry) is the point of the second sentence; keep that rhythm if your language allows it, but it must read naturally, not like a list of machine-translated verbs.",
+      "max": 300
+    },
+    {
+      "id": "tools_lead",
+      "en": "Ten tools, one right order.",
+      "where": "About This Game, first paragraph, printed in bold as a lead-in directly before tools_body (same paragraph). It sits under the first clip: scraper -> foam -> rotary brush -> squeegee on one spot of a rug.",
+      "note": "Short and punchy. Meaning: there are ten tools and there is a sensible order to use them in.",
+      "max": 48
+    },
+    {
+      "id": "tools_body",
+      "en": "Chip the dried crust with the scraper, foam the grime, scrub it in with the rotary brush, then plow the slurry off the rug with the squeegee.",
+      "where": "About This Game, continues the bold lead-in in the same paragraph.",
+      "note": "'plow the slurry off the rug' = the squeegee pushes the dirty foam water off the edge of the rug onto the floor tiles like a snow plough. Use the game's tool names (glossary) where you name a tool; 'rotary brush' = the game's 'Brush', a spinning floor-scrubber brush.",
+      "max": 190
+    },
+    {
+      "id": "hdr_reveal",
+      "en": "Watch the pattern come back",
+      "where": "Header IMAGE above the second clip (the wet vacuum pulls the murky slurry out and the rug's pattern appears). Rendered as big rounded letters on a transparent strip; the same text is the image's alt text.",
+      "note": "Sentence case, no final full stop. HARD LIMIT: 28 characters for Latin / Cyrillic / Greek scripts, 13 characters for Chinese / Japanese / Korean, 24 characters for Thai. A shorter natural phrase beats a literal one.",
+      "max": 28
+    },
+    {
+      "id": "reveal_body",
+      "en": "The wet vacuum pulls the murky slurry out of the pile and the pattern comes back, one satisfying pass at a time.",
+      "where": "About This Game, text under the second clip.",
+      "note": "'pile' = the carpet's fibres (the textile term). 'pass' = one stroke of the vacuum nozzle across the rug.",
+      "max": 150
+    },
+    {
+      "id": "hdr_water",
+      "en": "Real water, real mud",
+      "where": "Header IMAGE above the third clip (a hose wets a dry dusty rug, the dust turns to mud, pink foam is sprayed on and settles).",
+      "note": "Same limits as hdr_reveal (28 / 13 CJK / 24 Thai characters). Sentence case, no full stop.",
+      "max": 28
+    },
+    {
+      "id": "water_body",
+      "en": "Water soaks in and wicks through the pile, dry dust turns to mud the moment it gets wet, and foam heaps up and slowly settles. Nothing is a mask being erased: a fluid simulation runs under every fibre.",
+      "where": "About This Game, text under the third clip.",
+      "note": "'wicks through the pile' = spreads sideways through the fibres by capillary action. 'Nothing is a mask being erased' is aimed at players who know other cleaning games, where the dirt is just a picture layered over the object and the tool rubs that picture away; here the dirt and water are simulated. Say that idea in words your players understand (e.g. 'the dirt is not a picture that you simply wipe away'); do not translate 'mask' literally if it would be read as a face mask.",
+      "max": 260
+    },
+    {
+      "id": "hdr_rugs",
+      "en": "A new rug every job",
+      "where": "Header IMAGE above the fourth clip (a clean rug flies away, a new dirty one flies in).",
+      "note": "Same limits as hdr_reveal. Meaning: every order brings a different rug.",
+      "max": 28
+    },
+    {
+      "id": "rugs_body",
+      "en": "Hand the clean rug over and the next one flies in. Every job rolls its own mix of dust, grime, crust and spills over a real museum carpet.",
+      "where": "About This Game, text under the fourth clip.",
+      "note": "'Hand over' = the game's 'Hand over' button (give the rug back to its owner). 'rolls its own mix' = each job gets a randomly generated mix of dirt types. 'a real museum carpet' = every rug pattern is a photograph of a real historic carpet from a museum collection.",
+      "max": 190
+    },
+    {
+      "id": "hdr_paid",
+      "en": "Get paid, upgrade your kit",
+      "where": "Header IMAGE above the fifth clip (the pay slip prints, coins fly, the upgrade shop opens, two upgrades are bought).",
+      "note": "Same limits as hdr_reveal. 'kit' = the player's cleaning equipment.",
+      "max": 28
+    },
+    {
+      "id": "paid_body",
+      "en": "The pay slip prints line by line: speed bonus, spotless, bone dry, combo. Spend it on POWER and AREA upgrades for any tool, or on inspection lamps that show the moisture and dirt your eyes miss.",
+      "where": "About This Game, text under the fifth clip.",
+      "note": "'speed bonus, spotless, bone dry, combo' are the pay-slip lines of the game: use the game's own words for them (glossary: Speed bonus, Spotless, Bone dry, Combo), in running-text case. POWER and AREA are the upgrade stat names exactly as the game shows them (glossary), keep them in capitals. 'inspection lamps' = the two shop items (glossary: Moisture highlight, Dirt highlight) that make remaining moisture / dirt glow.",
+      "max": 250
+    },
+    {
+      "id": "headphones_h2",
+      "en": "Headphones on",
+      "where": "About This Game: a text heading (Steam h2 style) above the sound paragraph.",
+      "note": "Short heading, an invitation to put headphones on (ASMR). Max 30 characters (CJK 12).",
+      "max": 30
+    },
+    {
+      "id": "headphones_body",
+      "en": "Every machine is a recording of a real one: motors spool up and wind down, the vacuum tube rattles the moment it swallows a crumb, water hisses, foam fizzes, bristles drag.",
+      "where": "About This Game, the sound paragraph.",
+      "note": "Sensory ASMR copy. Every machine sound in the game is a recording of a real machine. 'spool up and wind down' = motors speed up when switched on and slow down when switched off. 'the vacuum tube rattles the moment it swallows a crumb' = you hear a crumb rattle through the hose exactly when it is sucked up. Keep the chain of short sound images; pick natural onomatopoeic verbs in your language.",
+      "max": 230
+    },
+    {
+      "id": "bullet_sim",
+      "en": "A real-time fluid simulation of water, foam, mud and dried crust",
+      "where": "Feature list item 1 (end of About This Game).",
+      "note": "List item, no final full stop.",
+      "max": 90
+    },
+    {
+      "id": "bullet_tools",
+      "en": "10 tools: eight for the carpet, plus a detergent sprayer and a mop for the floor",
+      "where": "Feature list item 2.",
+      "note": "The floor = the tiles around the rug. Use the game's tool names (Detergent, Mop) where natural.",
+      "max": 110
+    },
+    {
+      "id": "bullet_nofail",
+      "en": "No enemies, no fail state, no timer running out: the speed bonus only ever adds",
+      "where": "Feature list item 3.",
+      "note": "Meaning: you cannot lose; there is a speed bonus for finishing fast but it can only add money, never take it away.",
+      "max": 110
+    },
+    {
+      "id": "bullet_input",
+      "en": "Single player, mouse and keyboard, interface in 31 languages",
+      "where": "Feature list item 4.",
+      "note": "31 = the number of interface languages of the game (including yours).",
+      "max": 90
+    },
+    {
+      "id": "bullet_dx12",
+      "en": "Requires a DirectX 12 graphics card",
+      "where": "Feature list item 5.",
+      "note": "",
+      "max": 60
+    },
+    {
+      "id": "alt_clip3_tools",
+      "en": "A scraper breaks dried mud crust on a red rug and chunks fly onto the tiles, then pink foam is sprayed on, a rotary brush scrubs it in and a squeegee pushes the slurry off the rug.",
+      "where": "Alt text (screen readers; never visible) of the first clip.",
+      "note": "One plain descriptive sentence.",
+      "max": 250
+    },
+    {
+      "id": "alt_clip1_reveal",
+      "en": "A wet vacuum nozzle glides across a rug covered in murky brown slurry, and the bright red and cream pattern appears behind it.",
+      "where": "Alt text of the second clip.",
+      "note": "One plain descriptive sentence.",
+      "max": 250
+    },
+    {
+      "id": "alt_clip2_water",
+      "en": "A hose sprays a dry, dusty rug; the water spreads and turns the dust into dark mud, then a pink foam mound is sprayed on and slowly settles.",
+      "where": "Alt text of the third clip.",
+      "note": "One plain descriptive sentence.",
+      "max": 250
+    },
+    {
+      "id": "alt_clip4_rugs",
+      "en": "A spotless rug lifts off in a burst of sparkles and flies away, then a new dirty rug flies in and lands on the tiles.",
+      "where": "Alt text of the fourth clip.",
+      "note": "One plain descriptive sentence.",
+      "max": 250
+    },
+    {
+      "id": "alt_clip5_paid",
+      "en": "After a clean rug is handed over, the pay slip prints line by line with a combo stamp and a $120 total, then the upgrade shop opens and two upgrades are bought.",
+      "where": "Alt text of the fifth clip.",
+      "note": "One plain descriptive sentence. Keep $120 as written.",
+      "max": 250
+    },
+    {
+      "id": "sysreq_min_osversion",
+      "en": "Windows 10 64-bit (version 1909 or later)",
+      "where": "System requirements, minimum, OS line.",
+      "note": "Keep 'Windows 10' and '1909'. Translate '64-bit' and '(version ... or later)' the way Steam pages in your language usually write it.",
+      "max": 60
+    },
+    {
+      "id": "sysreq_min_graphics",
+      "en": "DirectX 12 graphics card with compute shader support, 4 GB VRAM (NVIDIA GeForce GTX 1060 6 GB / AMD Radeon RX 580 8 GB)",
+      "where": "System requirements, minimum, graphics line.",
+      "note": "Keep product names, 'DirectX 12', 'VRAM' and the numbers. 'compute shader' is a technical term: keep it in English if that is what gamers in your language say, or use the established local term. Use your language's unit style for GB (e.g. ГБ, Go, GB).",
+      "max": 170
+    },
+    {
+      "id": "sysreq_min_soundcard",
+      "en": "Any DirectX compatible sound device. Headphones recommended.",
+      "where": "System requirements, minimum, sound line.",
+      "note": "",
+      "max": 90
+    },
+    {
+      "id": "sysreq_rec_osversion",
+      "en": "Windows 11 64-bit",
+      "where": "System requirements, recommended, OS line.",
+      "note": "Same style as sysreq_min_osversion.",
+      "max": 40
+    },
+    {
+      "id": "sysreq_rec_graphics",
+      "en": "NVIDIA GeForce RTX 3060 / AMD Radeon RX 6600 XT or better",
+      "where": "System requirements, recommended, graphics line.",
+      "note": "Translate only 'or better'.",
+      "max": 80
+    },
+    {
+      "id": "sysreq_rec_soundcard",
+      "en": "Any DirectX compatible sound device. Headphones strongly recommended.",
+      "where": "System requirements, recommended, sound line.",
+      "note": "",
+      "max": 100
+    },
+    {
+      "id": "sysreq_rec_notes",
+      "en": "1440p at 60+ fps.",
+      "where": "System requirements, recommended, additional notes: the game runs at 2560x1440 with more than 60 frames per second on the recommended hardware.",
+      "note": "Keep 1440p and fps unless your language customarily writes them differently (e.g. 'к/с' is NOT customary in Russian gaming; keep fps).",
+      "max": 40
+    },
+    {
+      "id": "legal_licences",
+      "en": "Licences:",
+      "where": "Legal lines at the bottom of the store page: the label before the two Creative Commons licence URLs (the list of sound credits above it stays in English, as the licence requires the original titles).",
+      "note": "One word plus colon.",
+      "max": 20
+    }
+  ]
+}

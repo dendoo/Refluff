@@ -1,0 +1,158 @@
+{
+  "source": "SteamStore/tiktok/scraper_upgrades/voice_source.mp3",
+  "source_sha256": "4a4df441c0f9f9eadee53a12bfc0c583033f711a89eb735a1c19de183f078873",
+  "source_seconds": 19.28,
+  "duration": 26.8,
+  "sample_rate": 48000,
+  "speech_retime": 1.0,
+  "scrape_without_speech": [
+    16.49,
+    19.8
+  ],
+  "shots": [
+    {
+      "take": "scu_arrival",
+      "start": 0.0,
+      "dur": 5.0
+    },
+    {
+      "take": "scu_weak",
+      "start": 5.0,
+      "dur": 5.5
+    },
+    {
+      "take": "scu_shop",
+      "start": 10.5,
+      "dur": 6.0
+    },
+    {
+      "take": "scu_power",
+      "start": 16.5,
+      "dur": 3.2
+    },
+    {
+      "take": "scu_reveal",
+      "start": 19.7,
+      "dur": 7.1
+    }
+  ],
+  "phrases": [
+    {
+      "text": "Oh, come on. Is there even a carpet under all that?",
+      "source": [
+        0.07,
+        2.84
+      ],
+      "start": 0.35,
+      "end": 3.12,
+      "padded_destination": [
+        0.29,
+        3.26
+      ]
+    },
+    {
+      "text": "At this rate, I'll be scraping all week.",
+      "source": [
+        3.49,
+        5.5
+      ],
+      "start": 5.5,
+      "end": 7.51,
+      "padded_destination": [
+        5.44,
+        7.65
+      ]
+    },
+    {
+      "text": "Wait...",
+      "source": [
+        6.68,
+        7.35
+      ],
+      "start": 10.7,
+      "end": 11.37,
+      "padded_destination": [
+        10.64,
+        11.51
+      ]
+    },
+    {
+      "text": "I can upgrade my scraper.",
+      "source": [
+        7.81,
+        9.24
+      ],
+      "start": 11.8,
+      "end": 13.23,
+      "padded_destination": [
+        11.74,
+        13.37
+      ]
+    },
+    {
+      "text": "Max power.",
+      "source": [
+        10.2,
+        11.23
+      ],
+      "start": 14.0,
+      "end": 15.03,
+      "padded_destination": [
+        13.94,
+        15.17
+      ]
+    },
+    {
+      "text": "Max size.",
+      "source": [
+        11.82,
+        12.89
+      ],
+      "start": 15.42,
+      "end": 16.49,
+      "padded_destination": [
+        15.36,
+        16.63
+      ]
+    },
+    {
+      "text": "Okay... that might be overkill.",
+      "source": [
+        13.69,
+        16.31
+      ],
+      "start": 19.8,
+      "end": 22.42,
+      "padded_destination": [
+        19.74,
+        22.56
+      ]
+    },
+    {
+      "text": "Refluff.",
+      "source": [
+        17.0,
+        17.73
+      ],
+      "start": 23.0,
+      "end": 23.73,
+      "padded_destination": [
+        22.94,
+        23.87
+      ]
+    },
+    {
+      "text": "Wishlist it on Steam.",
+      "source": [
+        17.99,
+        19.28
+      ],
+      "start": 24.0,
+      "end": 25.29,
+      "padded_destination": [
+        23.94,
+        25.29
+      ]
+    }
+  ]
+}

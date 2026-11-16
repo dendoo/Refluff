@@ -1,0 +1,11 @@
+{
+ "hdr_water": 0,
+ "hdr_rugs": 1,
+ "hdr_paid": 2,
+ "hdr_reveal": 3,
+ "refluff_clip2_water": 4,
+ "refluff_clip4_rugs": 5,
+ "refluff_clip1_reveal": 6,
+ "refluff_clip3_tools": 7,
+ "refluff_clip5_paid": 8
+}

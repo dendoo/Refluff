@@ -1,0 +1,98 @@
+{
+  "asr": "faster-whisper base.en int8, en",
+  "source": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\tiktok\\between_fibers\\revision3\\voice\\syntx_en_original.mp3",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.74,
+      "text": " Hmm, where am I? Wait, I'm between the carpet fibers in my own game!",
+      "words": [
+        {
+          "start": 0.0,
+          "end": 0.4,
+          "word": " Hmm,",
+          "probability": 0.7884027361869812
+        },
+        {
+          "start": 0.88,
+          "end": 1.18,
+          "word": " where",
+          "probability": 0.9564679265022278
+        },
+        {
+          "start": 1.18,
+          "end": 1.42,
+          "word": " am",
+          "probability": 0.9868471026420593
+        },
+        {
+          "start": 1.42,
+          "end": 1.72,
+          "word": " I?",
+          "probability": 0.990770697593689
+        },
+        {
+          "start": 2.18,
+          "end": 2.48,
+          "word": " Wait,",
+          "probability": 0.9856993556022644
+        },
+        {
+          "start": 2.82,
+          "end": 3.22,
+          "word": " I'm",
+          "probability": 0.9809310734272003
+        },
+        {
+          "start": 3.22,
+          "end": 3.48,
+          "word": " between",
+          "probability": 0.9860458970069885
+        },
+        {
+          "start": 3.48,
+          "end": 3.66,
+          "word": " the",
+          "probability": 0.9892411828041077
+        },
+        {
+          "start": 3.66,
+          "end": 3.96,
+          "word": " carpet",
+          "probability": 0.955847442150116
+        },
+        {
+          "start": 3.96,
+          "end": 4.34,
+          "word": " fibers",
+          "probability": 0.9056645035743713
+        },
+        {
+          "start": 4.34,
+          "end": 5.06,
+          "word": " in",
+          "probability": 0.6844696998596191
+        },
+        {
+          "start": 5.06,
+          "end": 5.2,
+          "word": " my",
+          "probability": 0.9980058073997498
+        },
+        {
+          "start": 5.2,
+          "end": 5.44,
+          "word": " own",
+          "probability": 0.9983966946601868
+        },
+        {
+          "start": 5.44,
+          "end": 5.74,
+          "word": " game!",
+          "probability": 0.9925605654716492
+        }
+      ]
+    }
+  ]
+}

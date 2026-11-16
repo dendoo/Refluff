@@ -1,0 +1,11 @@
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.78f,0.52f, 0.78f,0.16f, 40, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.50f,0.52f, 0.50f,0.16f, 40, 1f);
+CarpetCleaning.CarpetDebugApi.RunFrames(90);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.64f,0.54f, 0.64f,0.20f, 30, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(0, 0.64f, 0.20f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i=0;i<4;i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.StoreShotApi.RenderScene("test/sc1.png",1280,720);
+var sim = CarpetCleaning.CarpetDebugApi.Sim;
+return sim.Hint + " " + CarpetCleaning.CarpetDebugApi.DebrisAliveJson();

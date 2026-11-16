@@ -1,0 +1,74 @@
+{
+  "status": "published",
+  "revision": 8,
+  "date": "2026-10-25",
+  "verifiedUtc": "2026-10-25T08:49:07.407Z",
+  "storeUrl": "https://store.steampowered.com/app/5304930/Refluff_Carpet_Cleaning_ASMR/",
+  "successUrl": "https://partner.steamgames.com/admin/game/publish/1337056?pubresult=success",
+  "firstPreserved": true,
+  "publicOrder": [
+    {
+      "sha1": "444bbebfbfc5b40917c1e35ecb860fdd63a67a89",
+      "slot": 1,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/444bbebfbfc5b40917c1e35ecb860fdd63a67a89/ss_444bbebfbfc5b40917c1e35ecb860fdd63a67a89.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "09592f125c76c17515490fca81c5b1cffe6d7ac3",
+      "slot": 2,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/09592f125c76c17515490fca81c5b1cffe6d7ac3/ss_09592f125c76c17515490fca81c5b1cffe6d7ac3.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "d26203800f0b21b5ec3b20f0cd22c57ca1b68d8a",
+      "slot": 3,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/d26203800f0b21b5ec3b20f0cd22c57ca1b68d8a/ss_d26203800f0b21b5ec3b20f0cd22c57ca1b68d8a.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "0a7c249f0a10d44992c24073b7d262be32f775a2",
+      "slot": 4,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/0a7c249f0a10d44992c24073b7d262be32f775a2/ss_0a7c249f0a10d44992c24073b7d262be32f775a2.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "f78f035c736d7de1ebb8598cdc4d1b4b819a6430",
+      "slot": 5,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/f78f035c736d7de1ebb8598cdc4d1b4b819a6430/ss_f78f035c736d7de1ebb8598cdc4d1b4b819a6430.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "5434e3291d81ecf25f4bfe291eb65c4a56590f1c",
+      "slot": 6,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/5434e3291d81ecf25f4bfe291eb65c4a56590f1c/ss_5434e3291d81ecf25f4bfe291eb65c4a56590f1c.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "947172dc6c8af7be3bf178a2d556f73554c12dfd",
+      "slot": 7,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/947172dc6c8af7be3bf178a2d556f73554c12dfd/ss_947172dc6c8af7be3bf178a2d556f73554c12dfd.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "f262010a1ac7da09b921e219f625d12695ef10cc",
+      "slot": 8,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/f262010a1ac7da09b921e219f625d12695ef10cc/ss_f262010a1ac7da09b921e219f625d12695ef10cc.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "d9d05f003f25ce662a0612cf8364476a50fad8f7",
+      "slot": 9,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/d9d05f003f25ce662a0612cf8364476a50fad8f7/ss_d9d05f003f25ce662a0612cf8364476a50fad8f7.116x65.jpg?t=1792918049"
+    },
+    {
+      "sha1": "d6d1ecd6b1be7135069c26428b5e9bc59859b6d1",
+      "slot": 10,
+      "src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/d6d1ecd6b1be7135069c26428b5e9bc59859b6d1/ss_d6d1ecd6b1be7135069c26428b5e9bc59859b6d1.116x65.jpg?t=1792918049"
+    }
+  ],
+  "allAges": true,
+  "categories": "Gameplay",
+  "newEnglishAltText": [
+    "Close-up of wet vacuuming an Anatolian-pattern rug, with individual fibers, mud crust and dirty water visible.",
+    "A rotary brush works through purple foam on a colorful cartoon dragon rug on a wet tiled floor.",
+    "Close-up of a scraper loosening dried mud from a green patterned rug, revealing dense carpet fibers.",
+    "Purple cleaning foam is sprayed over a cartoon fox rug, with muddy water beside the carpet.",
+    "Close-up of rinsing a traditional Salor-pattern rug, showing rippled water over its pile.",
+    "A squeegee pushes water across a cartoon cat rug surrounded by puddles on the tiled floor.",
+    "Close-up of drying a Finnish rya rug, with upright golden fibers beside a darker damp patch.",
+    "A clean cartoon axolotl rug dries on the tiled cleaning floor.",
+    "Close-up of vacuuming a red traditional rug, showing dense fibers and remaining cracked dirt."
+  ]
+}

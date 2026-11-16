@@ -1,0 +1,78 @@
+{
+  "source": {
+    "path": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\refluff_macro_trailer_v4.mp4",
+    "bytes": 131705711,
+    "sha256": "86f0066bef312868e4ca0c43442634c480d2ab4f05de90c77ef65c40f5b9edb6"
+  },
+  "derivative": {
+    "path": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\refluff_macro_trailer_v4_shorts_9x16.mp4",
+    "bytes": 73390903,
+    "sha256": "62dd2410b52b342b8451d7301d2f66f77dc18b7d1691f79e91d35d58fa0c7bca",
+    "width": 1080,
+    "height": 1920,
+    "frames": 3465,
+    "fps": "60/1",
+    "duration_seconds": 57.75
+  },
+  "transform": {
+    "scale": {
+      "width": 1080,
+      "height": 608,
+      "filter": "lanczos"
+    },
+    "canvas": {
+      "width": 1080,
+      "height": 1920
+    },
+    "offset": {
+      "x": 0,
+      "y": 656
+    },
+    "padding": "black",
+    "crop": false,
+    "added_text": false,
+    "timing_changed": false,
+    "note": "The whole 1920x1080 frame is scaled to 1080x608; nearest even output height rounds ideal 607.5 pixels by 0.5 px."
+  },
+  "checks": {
+    "source_is_approved_v4": true,
+    "frame_count_matches": true,
+    "frame_rate_matches": true,
+    "duration_matches": true,
+    "aac_packet_data_identical": true,
+    "decoded_pcm_s16le_identical": true,
+    "decode_errors": "",
+    "h264_high": true,
+    "yuv420p": true,
+    "bt709": true
+  },
+  "audio": {
+    "source_aac_sha256": "SHA256=010bb05596faed62a37f7286c6ae726ddea8c2eacf9de6fcdaeee82406bac887",
+    "derivative_aac_sha256": "SHA256=010bb05596faed62a37f7286c6ae726ddea8c2eacf9de6fcdaeee82406bac887",
+    "source_pcm_sha256": "SHA256=888bcd35cc0355798b151b06a7b97835aed8ebfe5b14f8b2bf8125b1fb50188a",
+    "derivative_pcm_sha256": "SHA256=888bcd35cc0355798b151b06a7b97835aed8ebfe5b14f8b2bf8125b1fb50188a"
+  },
+  "samples": [
+    {
+      "at_seconds": 1,
+      "source_frame": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\source_1s.png",
+      "derived_frame": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\shorts_1s.png",
+      "scaled_whole_frame_ssim": 0.989372,
+      "black_padding_rgb_zero": false,
+      "padding_max_rgb": 1,
+      "padding_nonzero_channels": 68,
+      "padding_excluding_2px_boundary_max_rgb": 0
+    },
+    {
+      "at_seconds": 22.5,
+      "source_frame": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\source_22_5s.png",
+      "derived_frame": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\shorts_22_5s.png",
+      "scaled_whole_frame_ssim": 0.984382,
+      "black_padding_rgb_zero": true,
+      "padding_max_rgb": 0,
+      "padding_nonzero_channels": 0,
+      "padding_excluding_2px_boundary_max_rgb": 0
+    }
+  ],
+  "visual_inspection": "Passed at 1.0 and 22.5 seconds: whole landscape frame intact, centered with black top/bottom padding; no added text or visible crop. Pixel-level deviations at picture boundary may occur from normal H.264 chroma compression."
+}

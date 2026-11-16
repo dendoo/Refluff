@@ -1,0 +1,18 @@
+"AppBuild"
+{
+	"AppID" "5304930" // CarpetCleaning; same id as Assets/CarpetCleaning/Scripts/Steam/SteamConfig.cs
+	"Desc" "CarpetCleaning build" // shown in Steamworks > SteamPipe > Builds; upload.ps1 -Desc overrides it
+	"Preview" "0" // 1 = dry run: builds the manifests and logs, uploads nothing (upload.ps1 -Preview)
+
+	// paths are relative to this file
+	"ContentRoot" "..\..\Builds\Steam\content\"
+	"BuildOutput" "output\"
+
+	// never set a branch live from a script: pick the build in Steamworks > SteamPipe > Builds
+	"SetLive" ""
+
+	"Depots"
+	{
+		"5304931" "depot_build_5304931.vdf"
+	}
+}

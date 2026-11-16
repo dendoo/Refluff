@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-25",
+  "fps": 60,
+  "size": [
+    1920,
+    1080
+  ],
+  "shells": {
+    "intro": 384,
+    "actions": 96,
+    "gameplay": 48
+  },
+  "takes": [
+    {
+      "n": "mf01_intro",
+      "keys": [
+        [
+          0,
+          0.03,
+          0.019,
+          -0.235,
+          0.03,
+          0.004,
+          -0.21,
+          50
+        ],
+        [
+          0.25,
+          0.03,
+          0.019,
+          -0.235,
+          0.03,
+          0.004,
+          -0.21,
+          50
+        ],
+        [
+          3,
+          0.06,
+          0.1,
+          -0.43,
+          0,
+          0.01,
+          -0.21,
+          43
+        ]
+      ],
+      "pre": "CarpetCleaning.CarpetDebugApi.Reset(394,0);",
+      "q": "CarpetCleaning.StoreGifApi.Away(3);"
+    },
+    {
+      "n": "mf02_vacuum",
+      "keys": [
+        [
+          0,
+          0.06,
+          0.1,
+          -0.43,
+          0,
+          0.01,
+          -0.21,
+          43
+        ],
+        [
+          6,
+          0.06,
+          0.1,
+          -0.43,
+          0,
+          0.01,
+          -0.21,
+          43
+        ]
+      ],
+      "pre": "CarpetCleaning.CarpetDebugApi.ResetWithProfile(394,.70f,0,.40f,.85f,.12f);",
+      "q": "CarpetCleaning.StoreGifApi.Tool(1);CarpetCleaning.StoreGifApi.Call(()=>CarpetCleaning.CarpetDebugApi.Tools.SnapHeadingOnNextMove());CarpetCleaning.StoreGifApi.Move(.70f,.36f,.66f,.36f,.3f,false);CarpetCleaning.StoreGifApi.Move(.66f,.36f,.34f,.36f,3.7f,true);CarpetCleaning.StoreGifApi.Move(.34f,.36f,.24f,.36f,.4f,false);CarpetCleaning.StoreGifApi.Away(1.6f);"
+    },
+    {
+      "n": "mf03_hose",
+      "keys": [
+        [
+          0,
+          -0.08,
+          0.115,
+          -0.43,
+          -0.06,
+          0.008,
+          -0.21,
+          43
+        ],
+        [
+          6,
+          0.05,
+          0.105,
+          -0.43,
+          0.05,
+          0.008,
+          -0.21,
+          43
+        ]
+      ],
+      "q": "CarpetCleaning.StoreGifApi.Tool(2);CarpetCleaning.StoreGifApi.Hover(.43f,.36f,.3f);CarpetCleaning.StoreGifApi.Move(.43f,.36f,.43f,.36f,.35f,true,true);CarpetCleaning.StoreGifApi.Away(1.05f);CarpetCleaning.StoreGifApi.Move(.50f,.36f,.50f,.36f,.35f,true,true);CarpetCleaning.StoreGifApi.Away(1.05f);CarpetCleaning.StoreGifApi.Move(.57f,.36f,.57f,.36f,.35f,true,true);CarpetCleaning.StoreGifApi.Away(2.55f);"
+    },
+    {
+      "n": "mf04_brush",
+      "keys": [
+        [
+          0,
+          -0.025,
+          0.145,
+          -0.44,
+          0,
+          0.008,
+          -0.21,
+          43
+        ],
+        [
+          6,
+          0.045,
+          0.125,
+          -0.43,
+          0.01,
+          0.008,
+          -0.21,
+          43
+        ]
+      ],
+      "q": "CarpetCleaning.StoreGifApi.Tool(3);CarpetCleaning.StoreGifApi.Move(.34f,.36f,.66f,.36f,.7f,true,true);CarpetCleaning.StoreGifApi.Away(.3f);CarpetCleaning.StoreGifApi.Tool(4);CarpetCleaning.StoreGifApi.Call(()=>CarpetCleaning.CarpetDebugApi.Tools.SnapHeadingOnNextMove());CarpetCleaning.StoreGifApi.Move(.66f,.36f,.34f,.36f,1.5f,true);CarpetCleaning.StoreGifApi.Move(.34f,.36f,.66f,.375f,1.5f,true);CarpetCleaning.StoreGifApi.Move(.66f,.375f,.34f,.35f,1.5f,true);CarpetCleaning.StoreGifApi.Away(.5f);",
+      "selected_take": "mf04b_brush",
+      "selected_recipe": "mf04b_brush.cs",
+      "note": "Original retained; final foam .15s at v=.40, .85s hold; brush4.5s, hold.5s."
+    },
+    {
+      "n": "mf05_squeegee",
+      "keys": [
+        [
+          0,
+          -0.13,
+          0.12,
+          -0.48,
+          -0.12,
+          0.008,
+          -0.21,
+          46
+        ],
+        [
+          4.8,
+          0.58,
+          0.12,
+          -0.48,
+          0.54,
+          0.008,
+          -0.21,
+          46
+        ],
+        [
+          6,
+          0.62,
+          0.12,
+          -0.48,
+          0.58,
+          0.008,
+          -0.21,
+          46
+        ]
+      ],
+      "q": "CarpetCleaning.StoreGifApi.Tool(5);CarpetCleaning.StoreGifApi.Call(()=>CarpetCleaning.CarpetDebugApi.Tools.SnapHeadingOnNextMove());CarpetCleaning.StoreGifApi.Move(.26f,.36f,.28f,.36f,.2f,false);CarpetCleaning.StoreGifApi.Move(.28f,.36f,1.08f,.36f,4.8f,true);CarpetCleaning.StoreGifApi.Move(1.08f,.36f,1.24f,.36f,.4f,false);CarpetCleaning.StoreGifApi.Away(.6f);"
+    },
+    {
+      "n": "mf06_extract",
+      "keys": [
+        [
+          0,
+          -0.025,
+          0.12,
+          -0.46,
+          0,
+          0.008,
+          -0.21,
+          43
+        ],
+        [
+          5,
+          0.025,
+          0.11,
+          -0.44,
+          0,
+          0.008,
+          -0.21,
+          43
+        ]
+      ],
+      "q": "CarpetCleaning.StoreGifApi.Tool(6);CarpetCleaning.StoreGifApi.Call(()=>CarpetCleaning.CarpetDebugApi.Tools.SnapHeadingOnNextMove());CarpetCleaning.StoreGifApi.Move(.25f,.36f,.28f,.36f,.2f,false);CarpetCleaning.StoreGifApi.Move(.28f,.36f,.72f,.36f,3.6f,true);CarpetCleaning.StoreGifApi.Move(.72f,.36f,.82f,.36f,.3f,false);CarpetCleaning.StoreGifApi.Away(.9f);"
+    },
+    {
+      "n": "mf07_dryer",
+      "keys": [
+        [
+          0,
+          0.045,
+          0.075,
+          -0.4,
+          0,
+          0.008,
+          -0.21,
+          43
+        ],
+        [
+          9,
+          0.045,
+          0.075,
+          -0.4,
+          0,
+          0.008,
+          -0.21,
+          43
+        ]
+      ],
+      "q": "CarpetCleaning.StoreGifApi.Tool(7);CarpetCleaning.StoreGifApi.Move(.23f,.36f,.25f,.36f,.2f,false);CarpetCleaning.StoreGifApi.Move(.25f,.36f,.75f,.36f,4.8f,true);CarpetCleaning.StoreGifApi.Move(.75f,.36f,.86f,.36f,.3f,false);CarpetCleaning.StoreGifApi.Away(3.7f);"
+    },
+    {
+      "n": "mf08_reveal",
+      "keys": [
+        [
+          0,
+          0.045,
+          0.075,
+          -0.4,
+          0,
+          0.008,
+          -0.21,
+          43
+        ],
+        [
+          2,
+          0.02,
+          0.14,
+          -0.45,
+          0,
+          0.008,
+          -0.21,
+          43
+        ],
+        [
+          5,
+          0.03,
+          0.43,
+          -0.84,
+          0,
+          0.008,
+          -0.08,
+          43
+        ]
+      ],
+      "q": "CarpetCleaning.StoreGifApi.Away(5);"
+    },
+    {
+      "n": "mf09_end",
+      "keys": [
+        [
+          0,
+          0.03,
+          0.43,
+          -0.84,
+          0,
+          0.008,
+          -0.08,
+          43
+        ],
+        [
+          4,
+          0.03,
+          0.48,
+          -0.91,
+          0,
+          0.008,
+          -0.06,
+          43
+        ]
+      ],
+      "q": "CarpetCleaning.StoreGifApi.Away(4);"
+    }
+  ]
+}

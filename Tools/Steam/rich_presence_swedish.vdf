@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "swedish"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Rengör en matta: %clean% ren"
+		"#Status_Spotless" "Mattan är fläckfri, redo att lämnas över"
+		"#Status_BetweenCarpets" "Städar golvet mellan två mattor"
+	}
+}

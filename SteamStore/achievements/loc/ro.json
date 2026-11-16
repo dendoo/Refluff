@@ -1,0 +1,43 @@
+{
+  "_lang": "ro",
+  "ACH_FIRST_CARPET": {
+    "name": "Un început pufos",
+    "desc": "Predă primul tău covor."
+  },
+  "ACH_SPOTLESS": {
+    "name": "Curat lună",
+    "desc": "Predă 100% curat un covor care a venit murdar."
+  },
+  "ACH_BONE_DRY": {
+    "name": "Uscat bocnă",
+    "desc": "Udă leoarcă un covor, apoi predă-l 100% uscat."
+  },
+  "ACH_COMBO": {
+    "name": "Ca nou-nouț",
+    "desc": "Predă 100% curat și 100% uscat un covor care a venit murdar."
+  },
+  "ACH_FILTHY": {
+    "name": "De la jegos la pufos",
+    "desc": "Predă 100% curat un covor extrem de murdar."
+  },
+  "ACH_EXPRESS": {
+    "name": "Serviciu expres",
+    "desc": "Obține tot bonusul de viteză la un covor cu murdărie puternică."
+  },
+  "ACH_REGULARS": {
+    "name": "Clienți de-ai casei",
+    "desc": "Predă 25 de covoare."
+  },
+  "ACH_FULL_KIT": {
+    "name": "Toate uneltele din dubiță",
+    "desc": "Folosește toate cele 10 unelte."
+  },
+  "ACH_MAXED_OUT": {
+    "name": "Dat la maxim",
+    "desc": "Du o unealtă la MAX atât la PUTERE, cât și la ARIE."
+  },
+  "ACH_INSPECTOR": {
+    "name": "Ochi de vultur",
+    "desc": "Cumpără Evidențierea umezelii și Evidențierea murdăriei."
+  }
+}

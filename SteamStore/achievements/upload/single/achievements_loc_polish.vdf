@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"polish"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Pierwszy puszek"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Oddaj klientowi swój pierwszy dywan."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Bez skazy"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Oddaj brudny dywan, gdy czystość sięgnie 100%."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Suchy jak wiór"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Porządnie namocz dywan, a potem oddaj go, gdy suchość sięgnie 100%."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Jak spod igły"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Oddaj brudny dywan, gdy czystość i suchość sięgną 100%."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Od brudu do puchu"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Oddaj potwornie brudny dywan, gdy czystość sięgnie 100%."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Ekspresowe czyszczenie"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Zgarnij pełną premię za szybkość przy mocno brudnym dywanie."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Stali klienci"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Oddaj 25 dywanów."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Cały sprzęt z busa w akcji"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Użyj wszystkich 10 narzędzi do dywanu i do podłogi."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Na maksa"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Ulepsz MOC i ZASIĘG jednego narzędzia do poziomu MAKS."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspektor"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Kup Podświetlenie wilgoci i Podświetlenie brudu."
+	}
+}

@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"schinese"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"蓬松初体验"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"交付第一张地毯。"
+		"NEW_ACHIEVEMENT_3_1_NAME"	"一尘不染"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"把脏地毯洗到清洁度 100% 再交付。"
+		"NEW_ACHIEVEMENT_3_2_NAME"	"完全干透"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"先把地毯彻底打湿，等干燥度达到 100% 再交付。"
+		"NEW_ACHIEVEMENT_3_3_NAME"	"宛如新品"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"让脏地毯的清洁度和干燥度都达到 100% 再交付。"
+		"NEW_ACHIEVEMENT_3_4_NAME"	"化脏污为蓬松"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"把“极度脏污”的地毯洗到清洁度 100% 再交付。"
+		"NEW_ACHIEVEMENT_3_5_NAME"	"极速服务"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"清洗重度以上脏污的地毯时拿满速度奖励。"
+		"NEW_ACHIEVEMENT_3_6_NAME"	"回头客"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"交付25张地毯。"
+		"NEW_ACHIEVEMENT_3_7_NAME"	"全套工具齐上阵"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"地毯工具和地面工具，10种全部用一遍。"
+		"NEW_ACHIEVEMENT_3_8_NAME"	"满级神器"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"把同一个工具的功率和范围都升到满级。"
+		"NEW_ACHIEVEMENT_3_9_NAME"	"质检员"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"购买“水分高亮”和“污渍高亮”。"
+	}
+}

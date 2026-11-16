@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "french"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Nettoie un tapis : propre à %clean%"
+		"#Status_Spotless" "Le tapis est impeccable, prêt à être livré"
+		"#Status_BetweenCarpets" "Entre deux tapis, nettoie le sol"
+	}
+}

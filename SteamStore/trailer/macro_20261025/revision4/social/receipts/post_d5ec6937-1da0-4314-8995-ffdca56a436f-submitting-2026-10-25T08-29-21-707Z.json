@@ -1,0 +1,15 @@
+{
+  "stage": "submitting",
+  "publicationId": "post_d5ec6937-1da0-4314-8995-ffdca56a436f",
+  "platform": "instagram",
+  "accountHandle": "vahov_games",
+  "approvedHash": "15f7ee10f572344cd7bd7af5256e0ceb2f4aef643dd4e62ec98d57699bfdcf24",
+  "clipId": "clip_f7413026-58a6-45d0-b677-4e35ee17ddce",
+  "videoSha256": "86f0066bef312868e4ca0c43442634c480d2ab4f05de90c77ef65c40f5b9edb6",
+  "url": null,
+  "remoteId": null,
+  "evidence": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\instagram_pre_submit.jpg",
+  "evidenceSha256": "e2f04b7746466dd7d61918ff79a417474bc03878e7c1ffc747cae79949d84ff7",
+  "at": "2026-10-25T08:29:21.707Z",
+  "verification": "CUA final submit is prepared; no retry is permitted after an uncertain click"
+}

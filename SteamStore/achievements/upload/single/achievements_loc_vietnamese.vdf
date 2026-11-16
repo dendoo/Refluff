@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"vietnamese"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Khởi đầu êm ái"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Giao tấm thảm đầu tiên cho khách."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Không tì vết"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Giặt sạch 100% một tấm thảm bẩn rồi giao cho khách."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Khô cong"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Làm ướt sũng một tấm thảm rồi giao khi đã khô 100%."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Mới như bóc tem"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Giặt sạch 100% và sấy khô 100% một tấm thảm bẩn rồi giao cho khách."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Từ cực bẩn đến cực êm"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Giặt sạch 100% một tấm thảm cực bẩn rồi giao cho khách."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Dịch vụ hỏa tốc"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Nhận trọn thưởng tốc độ khi giao một tấm thảm bẩn nặng."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Khách quen"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Giao 25 tấm thảm."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Dốc hết đồ nghề"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Dùng đủ cả 10 dụng cụ."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Kịch khung"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Nâng SỨC MẠNH và PHẠM VI của cùng một dụng cụ lên TỐI ĐA."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Thanh tra"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Mua Đèn soi độ ẩm và Đèn soi vết bẩn."
+	}
+}

@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"malay"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Permulaan yang Gebu"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Serahkan permaidani pertama anda."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Tanpa Cela"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Serahkan permaidani kotor dalam keadaan 100% bersih."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Kering Kontang"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Basahkan permaidani hingga lencun, lalu serahkan dalam keadaan 100% kering."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Sedia Dipamerkan"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Serahkan permaidani kotor dalam keadaan 100% bersih dan 100% kering."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Dari Comot ke Gebu"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Serahkan permaidani teramat kotor dalam keadaan 100% bersih."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Servis Ekspres"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Dapatkan bonus kelajuan sepenuhnya bagi permaidani sangat kotor."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Pelanggan Tetap"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Serahkan 25 permaidani."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Semua Alat Dikerahkan"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Gunakan kesemua 10 alat."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Sampai ke Puncak"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Naik taraf KUASA dan LIPUTAN satu alat hingga MAKS."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Pemeriksa"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Beli Serlahan lembapan dan Serlahan kotoran."
+	}
+}

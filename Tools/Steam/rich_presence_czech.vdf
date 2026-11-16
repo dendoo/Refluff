@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "czech"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Čistí koberec: čistota %clean%"
+		"#Status_Spotless" "Koberec je čisťoučký, připravený k předání"
+		"#Status_BetweenCarpets" "Mezi koberci, uklízí podlahu"
+	}
+}

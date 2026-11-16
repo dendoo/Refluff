@@ -1,0 +1,44 @@
+{
+  "authorization": "Owner explicitly requested inventing captions and immediate publication of the accepted trailer to these three platforms; subsequently chose a padded 9:16 full-frame derivative for YouTube Shorts.",
+  "plans": [
+    {
+      "platform": "tiktok",
+      "account": "@vahovgames",
+      "title": "From dirty to fluffy | Refluff: Carpet Cleaning ASMR",
+      "visibility": "public",
+      "publication": "immediate",
+      "timezone": "Europe/Moscow",
+      "utmUrl": "https://store.steampowered.com/app/5304930/?utm_source=tiktok&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4",
+      "caption": "Tiny fibers. Deeply satisfying cleaning. 🧼\nTurn the sound up and watch this rug come back to life.\n\nWishlist Refluff: Carpet Cleaning ASMR on Steam:\nhttps://store.steampowered.com/app/5304930/?utm_source=tiktok&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4\n\n#Refluff #CarpetCleaning #ASMR #Satisfying #IndieGame\n\nSound credits (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/; recordings edited, cut/looped and levelled):\n\"Floor Buffer Sound\" - prometheus888, https://freesound.org/s/864976/\n\"Vacuum Cleaner, On Idle Off, Close, A.wav\" - InspectorJ, https://freesound.org/s/430632/\n\"Whipped Cream Spray Can\" - kev_durr, https://freesound.org/s/321055/\n\"bissell_carpet_cleaner_vacuum_01.wav\" - joedeshon, https://freesound.org/s/79236/\n\"loud metal fan turned on and off a few times (machine starting up)\" - busabx, https://freesound.org/s/726634/\n\"shovelling scraping water\" - adda_records, https://freesound.org/s/519974/\n",
+      "captionFile": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision4/social/captions/tiktok.txt",
+      "video": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision4/refluff_macro_trailer_v4.mp4",
+      "format": "original 16:9, unchanged V4"
+    },
+    {
+      "platform": "youtube",
+      "account": "@vahovgames",
+      "title": "From dirty to fluffy 🧼 | Refluff: Carpet Cleaning ASMR #Shorts",
+      "visibility": "public",
+      "publication": "immediate",
+      "timezone": "Europe/Moscow",
+      "utmUrl": "https://store.steampowered.com/app/5304930/?utm_source=youtube&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4",
+      "caption": "Tiny fibers. Deeply satisfying cleaning. 🧼\nTurn the sound up and watch this rug come back to life.\n\nWishlist Refluff: Carpet Cleaning ASMR on Steam:\nhttps://store.steampowered.com/app/5304930/?utm_source=youtube&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4\n\n#Refluff #CarpetCleaning #ASMR #Satisfying #IndieGame #Shorts\n\nSound credits (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/; recordings edited, cut/looped and levelled):\n\"Floor Buffer Sound\" - prometheus888, https://freesound.org/s/864976/\n\"Vacuum Cleaner, On Idle Off, Close, A.wav\" - InspectorJ, https://freesound.org/s/430632/\n\"Whipped Cream Spray Can\" - kev_durr, https://freesound.org/s/321055/\n\"bissell_carpet_cleaner_vacuum_01.wav\" - joedeshon, https://freesound.org/s/79236/\n\"loud metal fan turned on and off a few times (machine starting up)\" - busabx, https://freesound.org/s/726634/\n\"shovelling scraping water\" - adda_records, https://freesound.org/s/519974/\n",
+      "captionFile": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision4/social/captions/youtube.txt",
+      "video": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision4/social/refluff_macro_trailer_v4_shorts_9x16.mp4",
+      "format": "9:16, complete 16:9 picture with black padding above and below"
+    },
+    {
+      "platform": "instagram",
+      "account": "@vahov_games",
+      "title": "From dirty to fluffy | Refluff: Carpet Cleaning ASMR",
+      "visibility": "public",
+      "publication": "immediate",
+      "timezone": "Europe/Moscow",
+      "utmUrl": "https://store.steampowered.com/app/5304930/?utm_source=instagram&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4",
+      "caption": "Tiny fibers. Deeply satisfying cleaning. 🧼\nTurn the sound up and watch this rug come back to life.\n\nWishlist Refluff: Carpet Cleaning ASMR on Steam:\nhttps://store.steampowered.com/app/5304930/?utm_source=instagram&utm_medium=social&utm_campaign=macro_trailer_20261025&utm_content=v4\n\n#Refluff #CarpetCleaning #ASMR #Satisfying #IndieGame\n\nSound credits (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/; recordings edited, cut/looped and levelled):\n\"Floor Buffer Sound\" - prometheus888, https://freesound.org/s/864976/\n\"Vacuum Cleaner, On Idle Off, Close, A.wav\" - InspectorJ, https://freesound.org/s/430632/\n\"Whipped Cream Spray Can\" - kev_durr, https://freesound.org/s/321055/\n\"bissell_carpet_cleaner_vacuum_01.wav\" - joedeshon, https://freesound.org/s/79236/\n\"loud metal fan turned on and off a few times (machine starting up)\" - busabx, https://freesound.org/s/726634/\n\"shovelling scraping water\" - adda_records, https://freesound.org/s/519974/\n",
+      "captionFile": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision4/social/captions/instagram.txt",
+      "video": "C:/UnityProjects/CarpetCleaning/SteamStore/trailer/macro_20261025/revision4/refluff_macro_trailer_v4.mp4",
+      "format": "original 16:9, unchanged V4"
+    }
+  ]
+}

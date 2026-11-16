@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"danish"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"En blød start"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Aflever dit første tæppe."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Pletfrit"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Aflever et beskidt tæppe 100 % rent."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Knastørt"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Gennemvæd et tæppe, og aflever det bagefter 100 % tørt."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Som nyt fra butikken"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Aflever et beskidt tæppe 100 % rent og 100 % tørt."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Fra skidt til skønt"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Aflever et møgbeskidt tæppe 100 % rent."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Lynservice"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Få den fulde fartbonus for et stærkt snavset tæppe."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Stamkunder"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Aflever 25 tæpper."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Hele molevitten"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Brug alle 10 værktøjer."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Skruet helt op"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Opgrader KRAFT og AREAL på ét værktøj til MAKS."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspektør"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Køb både Fugtmarkering og Snavsmarkering."
+	}
+}

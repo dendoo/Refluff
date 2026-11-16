@@ -1,0 +1,43 @@
+{
+  "_lang": "es",
+  "ACH_FIRST_CARPET": {
+    "name": "Un estreno mullido",
+    "desc": "Entrega tu primera alfombra."
+  },
+  "ACH_SPOTLESS": {
+    "name": "Impecable",
+    "desc": "Entrega 100% limpia una alfombra que llegó sucia."
+  },
+  "ACH_BONE_DRY": {
+    "name": "Sequísima",
+    "desc": "Empapa una alfombra y luego entrégala 100% seca."
+  },
+  "ACH_COMBO": {
+    "name": "De escaparate",
+    "desc": "Entrega 100% limpia y 100% seca una alfombra que llegó sucia."
+  },
+  "ACH_FILTHY": {
+    "name": "De mugrienta a mullida",
+    "desc": "Entrega 100% limpia una alfombra mugrienta."
+  },
+  "ACH_EXPRESS": {
+    "name": "Servicio exprés",
+    "desc": "Llévate el bonus por rapidez completo con una alfombra muy sucia."
+  },
+  "ACH_REGULARS": {
+    "name": "Clientela fiel",
+    "desc": "Entrega 25 alfombras."
+  },
+  "ACH_FULL_KIT": {
+    "name": "Nada se queda en la furgoneta",
+    "desc": "Usa las 10 herramientas."
+  },
+  "ACH_MAXED_OUT": {
+    "name": "A tope",
+    "desc": "Sube la POTENCIA y el ÁREA de una misma herramienta al MÁX."
+  },
+  "ACH_INSPECTOR": {
+    "name": "Ojo de lince",
+    "desc": "Compra el Detector de humedad y el Detector de suciedad."
+  }
+}

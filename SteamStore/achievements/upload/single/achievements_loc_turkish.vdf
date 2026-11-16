@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"turkish"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Pofuduk Bir Başlangıç"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"İlk halını teslim et."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Tertemiz"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Kirli bir halıyı %100 temiz teslim et."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Kupkuru"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Bir halıyı iyice ıslat, sonra %100 kuru teslim et."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Vitrinlik"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Kirli bir halıyı %100 temiz ve %100 kuru teslim et."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Pislikten Pofuduğa"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Pislik içinde bir halıyı %100 temiz teslim et."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Ekspres Servis"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Çok kirli bir halıda hız bonusunun tamamını kazan."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Sadık Müşteriler"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"25 halı teslim et."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Takım Taklavat"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"10 aletin hepsini kullan."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Sonuna Kadar"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Bir aletin hem GÜÇ hem de ALAN seviyesini MAKS'a çıkar."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Müfettiş"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Nem tespitini ve Kir tespitini satın al."
+	}
+}

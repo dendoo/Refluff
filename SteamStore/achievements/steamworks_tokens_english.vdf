@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"english"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"First Fluff"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Hand over your first carpet."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Spotless"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Hand over a dirty carpet 100% clean."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Bone Dry"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Soak a carpet, then hand it over 100% dry."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Showroom Finish"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Hand over a dirty carpet 100% clean and 100% dry."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Filthy to Fluffy"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Hand over a Filthy carpet 100% clean."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Express Service"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Earn the full speed bonus on a heavily soiled carpet."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Regular Customers"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Hand over 25 carpets."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Every Tool in the Van"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Use all 10 tools."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Maxed Out"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Upgrade one tool's POWER and AREA to MAX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspector"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Buy the Moisture highlight and the Dirt highlight."
+	}
+}

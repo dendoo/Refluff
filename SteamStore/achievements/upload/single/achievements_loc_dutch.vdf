@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"dutch"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Donzig debuut"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Lever je eerste tapijt af."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Vlekkeloos"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Lever een vuil tapijt 100% schoon af."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Kurkdroog"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Maak een tapijt kletsnat en lever het daarna 100% droog af."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"In showroomstaat"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Lever een vuil tapijt 100% schoon en 100% droog af."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Van smerig tot smetteloos"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Lever een smerig tapijt 100% schoon af."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Spoedservice"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Verdien de volle snelheidsbonus bij een zwaar vervuild tapijt."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Vaste klanten"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Lever 25 tapijten af."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Alles uit de kast"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Gebruik alle 10 gereedschappen."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Helemaal gemaxt"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Upgrade KRACHT en BEREIK van één gereedschap naar MAX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspecteur"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Koop de Vochtmarkering en de Vuilmarkering."
+	}
+}

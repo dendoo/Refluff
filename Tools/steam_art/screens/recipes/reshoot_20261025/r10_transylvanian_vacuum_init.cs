@@ -1,0 +1,18 @@
+UnityEditor.EditorApplication.isPaused=true;
+CarpetCleaning.EconomyDebugApi.ShopOpen(false);
+CarpetCleaning.CarpetDebugApi.SetHighlight(0,false);
+CarpetCleaning.CarpetDebugApi.SetHighlight(1,false);
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+var d=CarpetCleaning.CarpetSimulation.RollDirt(1294,0.43000f);
+d.level=0.43000f;d.crust=0.28000f;d.mud=0.55000f;d.dust=0.50000f;d.spill=0.12000f;
+CarpetCleaning.ToolTuning.EnterScriptedRun();
+CarpetCleaning.CarpetDebugApi.Sim.ResetCarpet(1294,false,d);
+CarpetCleaning.CarpetDebugApi.HandoverSnap();
+typeof(CarpetCleaning.Economy).GetMethod("StartClock",System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic).Invoke(CarpetCleaning.EconomyDebugApi.Eco,null);
+var cr=UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.CarpetRenderer>();
+var mat=cr.ShellsRenderer.sharedMaterial;
+var tex=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>("Assets/CarpetCleaning/Textures/rug_transylvanian_medallion.jpg");
+UnityEngine.Vector4 off,scale;CarpetCleaning.CarpetHandover.PictureFit(tex,out off,out scale);
+mat.SetTexture("_PictureTex",tex);mat.SetVector("_PicOffset",off);mat.SetVector("_PicScale",scale);
+var t=CarpetCleaning.CarpetDebugApi.Tools;t.ScriptedPointer=true;t.ScriptedUv=new UnityEngine.Vector2(-5,-5);t.ScriptedDown=false;
+return CarpetCleaning.CarpetDebugApi.DirtJson();

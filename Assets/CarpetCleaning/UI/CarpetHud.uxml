@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Structure only. Every colour/size is in CarpetHud.uss, every value in CleaningHUD.cs.
+     The two tool lists are filled from ToolTable at runtime (their order is the enum order).
+     "ui-blocking" marks the widgets that are allowed to swallow a click; everything else is
+     picking-mode="Ignore" so a crumb lying under the HUD stays reachable (Docs/HUD.md). -->
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/CarpetCleaning/UI/CarpetHud.uss" />
+
+    <ui:VisualElement name="hud" class="hud" picking-mode="Ignore">
+
+        <!-- ============================================ Chrome: fades out while a tool works -->
+        <ui:VisualElement name="chrome" class="layer" picking-mode="Ignore">
+
+            <ui:VisualElement name="carpet-strip" class="strip strip--left" picking-mode="Ignore">
+                <ui:VisualElement class="shadow" picking-mode="Ignore" />
+                <ui:VisualElement class="strip__body ui-blocking">
+                    <ui:Label text="CARPET" class="caption strip__caption" picking-mode="Ignore" />
+                    <ui:VisualElement name="carpet-tools" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="floor-strip" class="strip strip--right" picking-mode="Ignore">
+                <ui:VisualElement class="shadow" picking-mode="Ignore" />
+                <ui:VisualElement class="strip__body ui-blocking">
+                    <ui:Label text="FLOOR" class="caption strip__caption" picking-mode="Ignore" />
+                    <ui:VisualElement name="floor-tools" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="hint" class="hint" picking-mode="Ignore">
+                <ui:VisualElement class="shadow shadow--sm" picking-mode="Ignore" />
+                <ui:Label name="hint-label" text="" class="hint__label" picking-mode="Ignore" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="top-right" class="top-right" picking-mode="Ignore">
+                <ui:VisualElement class="top-right__row" picking-mode="Ignore">
+                    <!-- Legacy overhead shop shortcut; first-person play enters through the physical workbench. -->
+                    <ui:VisualElement name="shop-shortcut" class="raised" picking-mode="Ignore">
+                        <ui:VisualElement class="shadow shadow--sm" picking-mode="Ignore" />
+                        <ui:Button name="shop-button" class="btn btn--ghost btn--shop ui-blocking">
+                            <ui:VisualElement class="icon icon--coin btn__icon" picking-mode="Ignore" />
+                            <ui:Label text="Upgrades" class="btn__label" picking-mode="Ignore" />
+                            <ui:Label text="U" class="kbd" picking-mode="Ignore" />
+                            <ui:VisualElement name="shop-badge" class="badge" picking-mode="Ignore" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="reset-wrap" class="raised" picking-mode="Ignore">
+                        <ui:VisualElement class="shadow shadow--sm" picking-mode="Ignore" />
+                        <ui:Button name="reset-button" class="btn btn--ghost ui-blocking">
+                            <ui:Label text="Reset" class="btn__label" picking-mode="Ignore" />
+                            <ui:Label text="R" class="kbd" picking-mode="Ignore" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                    <!-- the pause menu (PauseMenu, Docs/PAUSE_MENU.md): Resume, volume, Credits, Quit -->
+                    <ui:VisualElement class="raised" picking-mode="Ignore">
+                        <ui:VisualElement class="shadow shadow--sm" picking-mode="Ignore" />
+                        <ui:Button name="menu-button" class="btn btn--ghost ui-blocking">
+                            <ui:Label text="Menu" class="btn__label" picking-mode="Ignore" />
+                            <ui:Label text="Esc" class="kbd kbd--wide" picking-mode="Ignore" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label name="fps-label" text="60 fps" class="fps" picking-mode="Ignore" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="actions" class="actions" picking-mode="Ignore">
+                <ui:VisualElement name="hand-over" class="raised" picking-mode="Ignore">
+                    <ui:VisualElement class="shadow shadow--sm shadow--cta" picking-mode="Ignore" />
+                    <ui:Button name="hand-over-button" class="btn btn--cta btn--go ui-blocking">
+                        <ui:Label text="Hand over" class="btn__label" picking-mode="Ignore" />
+                        <ui:Label text="H" class="kbd kbd--on-accent" picking-mode="Ignore" />
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="take-new" class="raised" picking-mode="Ignore">
+                    <ui:VisualElement class="shadow shadow--sm shadow--cta" picking-mode="Ignore" />
+                    <ui:Button name="take-new-button" class="btn btn--cta btn--new ui-blocking">
+                        <ui:Label text="Take a new carpet" class="btn__label" picking-mode="Ignore" />
+                        <ui:Label text="N" class="kbd kbd--on-accent" picking-mode="Ignore" />
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+        <!-- ============================================ Bars: never blocks, only dims -->
+        <ui:VisualElement name="bars" class="layer" picking-mode="Ignore">
+            <ui:VisualElement class="stats" picking-mode="Ignore">
+                <ui:VisualElement class="shadow" picking-mode="Ignore" />
+                <ui:VisualElement class="stats__body" picking-mode="Ignore">
+                    <ui:VisualElement class="meter" picking-mode="Ignore">
+                        <ui:VisualElement class="meter__head" picking-mode="Ignore">
+                            <!-- the inspection lamp's key (Docs/HIGHLIGHTS.md): hidden until bought, lit while on -->
+                            <ui:VisualElement class="meter__title" picking-mode="Ignore">
+                                <ui:Label text="CLEAN" class="caption" picking-mode="Ignore" />
+                                <ui:Label name="hl-dirt-chip" text="X" class="kbd lamp-chip lamp-chip--dirt" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:Label name="clean-value" text="0%" class="meter__value" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="track" picking-mode="Ignore">
+                            <ui:VisualElement name="clean-fill" class="track__fill track__fill--clean" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="meter meter--second" picking-mode="Ignore">
+                        <ui:VisualElement class="meter__head" picking-mode="Ignore">
+                            <ui:VisualElement class="meter__title" picking-mode="Ignore">
+                                <ui:Label text="DRY" class="caption" picking-mode="Ignore" />
+                                <ui:Label name="hl-wet-chip" text="Z" class="kbd lamp-chip lamp-chip--wet" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:Label name="dry-value" text="100%" class="meter__value" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="track" picking-mode="Ignore">
+                            <ui:VisualElement name="dry-fill" class="track__fill track__fill--dry" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <!-- the job clock (speed bonus par) and the wallet the payout coins fly into (Docs/ECONOMY.md 4-5) -->
+                    <ui:VisualElement class="ledger" picking-mode="Ignore">
+                        <ui:VisualElement class="ledger__clock" picking-mode="Ignore">
+                            <ui:VisualElement class="icon icon--clock ledger__icon" picking-mode="Ignore" />
+                            <ui:Label name="clock-value" text="0:00" class="ledger__time" picking-mode="Ignore" />
+                            <ui:Label name="clock-par" text="" class="ledger__par" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="wallet" class="wallet" picking-mode="Ignore">
+                            <ui:VisualElement name="wallet-coin" class="icon icon--coin wallet__coin" picking-mode="Ignore" />
+                            <ui:Label name="wallet-value" text="$0" class="wallet__value" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ============================================ First person: only the world reticle can sit over the work area. -->
+        <ui:VisualElement name="fp-overlay" class="layer fp-overlay" picking-mode="Ignore">
+            <ui:VisualElement name="fp-reticle" class="fp-reticle" picking-mode="Ignore" />
+            <ui:VisualElement name="fp-workbench" class="fp-workbench" picking-mode="Ignore">
+                <ui:Label name="fp-interact-key" text="E" class="kbd" picking-mode="Ignore" />
+                <ui:Label text="Upgrades" class="fp-workbench__label" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement class="fp-controls" picking-mode="Ignore">
+                <ui:VisualElement class="fp-control" picking-mode="Ignore">
+                    <ui:Label name="fp-move-keys" text="WASD" class="kbd fp-control__key" picking-mode="Ignore" />
+                    <ui:Label text="Move" class="fp-control__label" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="fp-control" picking-mode="Ignore">
+                    <ui:VisualElement class="fp-control__icon" picking-mode="Ignore"><ui:VisualElement class="fp-mouse" picking-mode="Ignore"><ui:VisualElement class="fp-mouse__wheel" picking-mode="Ignore" /></ui:VisualElement></ui:VisualElement>
+                    <ui:Label text="Look" class="fp-control__label" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="fp-control" picking-mode="Ignore">
+                    <ui:VisualElement class="fp-control__icon" picking-mode="Ignore"><ui:VisualElement class="fp-mouse" picking-mode="Ignore"><ui:VisualElement class="fp-mouse__left" picking-mode="Ignore" /></ui:VisualElement></ui:VisualElement>
+                    <ui:Label text="Clean" class="fp-control__label" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="fp-control" picking-mode="Ignore">
+                    <ui:Label name="fp-tool-keys" text="1–0" class="kbd fp-control__key" picking-mode="Ignore" />
+                    <ui:Label text="Switch tools" class="fp-control__label" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="fp-belt" class="fp-belt" picking-mode="Ignore">
+                <ui:VisualElement class="fp-held" picking-mode="Ignore">
+                    <ui:Label name="fp-tool-key" text="1" class="kbd fp-held__key" picking-mode="Ignore" />
+                    <ui:Label name="fp-tool-name" text="" class="fp-held__name" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement name="fp-slots" class="fp-slots" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ============================================ Payout: the pay slip of a handed-over carpet (EconomyHud / PayoutView).
+             display:none when idle. Every line, the stamp and the total are animated from C# on a seekable timeline;
+             clicking the card (or Space) skips ahead. -->
+        <ui:VisualElement name="payout" class="layer payout-layer" picking-mode="Ignore">
+            <ui:VisualElement name="payout-card" class="payout" picking-mode="Ignore">
+                <ui:VisualElement name="payout-rays" class="payout__rays" picking-mode="Ignore" />
+                <ui:VisualElement class="shadow" picking-mode="Ignore" />
+                <ui:VisualElement name="payout-body" class="payout__body ui-blocking">
+                    <ui:VisualElement class="payout__head" picking-mode="Ignore">
+                        <ui:VisualElement class="payout__heading" picking-mode="Ignore">
+                            <ui:Label text="CARPET DELIVERED" class="caption payout__caption" picking-mode="Ignore" />
+                            <ui:Label name="payout-title" text="" class="payout__title" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:Label name="payout-number" text="#1" class="payout__number" picking-mode="Ignore" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="payout__lines" picking-mode="Ignore">
+                        <ui:VisualElement name="line-base" class="pline pline--base" picking-mode="Ignore">
+                            <ui:VisualElement class="pline__shine" picking-mode="Ignore" />
+                            <ui:VisualElement class="icon icon--coin pline__icon" picking-mode="Ignore" />
+                            <ui:VisualElement class="pline__text" picking-mode="Ignore">
+                                <ui:Label text="Base pay" class="pline__label" picking-mode="Ignore" />
+                                <ui:Label text="" class="pline__detail" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:Label text="" class="pline__amount" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="line-speed" class="pline pline--speed" picking-mode="Ignore">
+                            <ui:VisualElement class="pline__shine" picking-mode="Ignore" />
+                            <ui:VisualElement class="icon icon--clock pline__icon" picking-mode="Ignore" />
+                            <ui:VisualElement class="pline__text" picking-mode="Ignore">
+                                <ui:Label text="Speed bonus" class="pline__label" picking-mode="Ignore" />
+                                <ui:Label text="" class="pline__detail" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:Label text="" class="pline__amount" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="line-clean" class="pline pline--clean" picking-mode="Ignore">
+                            <ui:VisualElement class="pline__shine" picking-mode="Ignore" />
+                            <ui:VisualElement class="icon icon--sparkle pline__icon" picking-mode="Ignore" />
+                            <ui:VisualElement class="pline__text" picking-mode="Ignore">
+                                <ui:Label text="Spotless" class="pline__label" picking-mode="Ignore" />
+                                <ui:Label text="" class="pline__detail" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:Label text="" class="pline__amount" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="line-dry" class="pline pline--dry" picking-mode="Ignore">
+                            <ui:VisualElement class="pline__shine" picking-mode="Ignore" />
+                            <ui:VisualElement class="icon icon--drop pline__icon" picking-mode="Ignore" />
+                            <ui:VisualElement class="pline__text" picking-mode="Ignore">
+                                <ui:Label text="Bone dry" class="pline__label" picking-mode="Ignore" />
+                                <ui:Label text="" class="pline__detail" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:Label text="" class="pline__amount" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="line-combo" class="pline pline--combo" picking-mode="Ignore">
+                            <ui:VisualElement class="pline__shine" picking-mode="Ignore" />
+                            <ui:VisualElement class="icon icon--star pline__icon" picking-mode="Ignore" />
+                            <ui:VisualElement class="pline__text" picking-mode="Ignore">
+                                <ui:Label text="Combo" class="pline__label" picking-mode="Ignore" />
+                                <ui:Label text="" class="pline__detail" picking-mode="Ignore" />
+                            </ui:VisualElement>
+                            <ui:Label text="" class="pline__amount" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="payout-divider" class="payout__divider" picking-mode="Ignore" />
+                    <ui:VisualElement class="payout__total-row" picking-mode="Ignore">
+                        <ui:Label text="TOTAL" class="caption payout__total-caption" picking-mode="Ignore" />
+                        <ui:Label name="payout-total" text="$0" class="payout__total" picking-mode="Ignore" />
+                    </ui:VisualElement>
+                    <ui:Label text="click or Space to skip" class="payout__hint" picking-mode="Ignore" />
+                    <ui:VisualElement name="payout-flash" class="payout__flash" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <!-- outside the body (which clips): the stamp lands over the card's corner -->
+                <ui:VisualElement name="payout-stamp" class="payout__stamp" picking-mode="Ignore">
+                    <ui:Label text="COMBO!" class="payout__stamp-label" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ============================================ Shop: modal, pauses the simulation while open (EconomyHud / ShopView).
+             The scrim is ui-blocking so nothing behind it takes a click; the cards are built from ToolTable. -->
+        <ui:VisualElement name="shop" class="layer shop-layer" picking-mode="Ignore">
+            <ui:VisualElement name="shop-scrim" class="shop__scrim ui-blocking" />
+            <ui:VisualElement name="shop-panel" class="shop" picking-mode="Ignore">
+                <ui:VisualElement class="shadow" picking-mode="Ignore" />
+                <ui:VisualElement class="shop__body ui-blocking">
+                    <ui:VisualElement class="shop__head" picking-mode="Ignore">
+                        <ui:VisualElement class="shop__titles" picking-mode="Ignore">
+                            <ui:Label text="UPGRADES" class="caption" picking-mode="Ignore" />
+                            <ui:Label text="Tune your kit" class="shop__title" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="shop-wallet" class="wallet wallet--shop" picking-mode="Ignore">
+                            <ui:VisualElement class="icon icon--coin wallet__coin" picking-mode="Ignore" />
+                            <ui:Label name="shop-wallet-value" text="$0" class="wallet__value" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:Button name="shop-close" class="btn btn--ghost ui-blocking">
+                            <ui:Label text="Close" class="btn__label" picking-mode="Ignore" />
+                            <ui:Label text="Esc" class="kbd kbd--wide" picking-mode="Ignore" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="shop__legend" picking-mode="Ignore">
+                        <ui:VisualElement class="icon icon--bolt shop__legend-icon" picking-mode="Ignore" />
+                        <ui:Label text="POWER works faster" class="shop__legend-text" picking-mode="Ignore" />
+                        <ui:VisualElement class="icon icon--expand shop__legend-icon" picking-mode="Ignore" />
+                        <ui:Label text="AREA covers more per stroke" class="shop__legend-text" picking-mode="Ignore" />
+                        <ui:Label text="the job clock is paused while you shop" class="shop__legend-note" picking-mode="Ignore" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="shop__columns" picking-mode="Ignore">
+                        <ui:VisualElement class="shop__col" picking-mode="Ignore">
+                            <ui:Label text="CARPET TOOLS" class="caption shop__col-caption" picking-mode="Ignore" />
+                            <ui:VisualElement name="shop-carpet-tools" class="shop__grid" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="shop__col shop__col--floor" picking-mode="Ignore">
+                            <ui:Label text="FLOOR TOOLS" class="caption shop__col-caption" picking-mode="Ignore" />
+                            <ui:VisualElement name="shop-floor-tools" class="shop__grid shop__grid--single" picking-mode="Ignore" />
+                            <!-- one-time items (Docs/HIGHLIGHTS.md): two fixed cards, so they live here and ShopView only binds them -->
+                            <ui:Label text="INSPECTION" class="caption shop__col-caption shop__col-caption--gap" picking-mode="Ignore" />
+                            <ui:VisualElement name="shop-items" class="shop__grid shop__grid--single" picking-mode="Ignore">
+                                <ui:VisualElement name="item-moisture" class="ucard icard icard--wet" picking-mode="Ignore">
+                                    <ui:VisualElement class="ucard__head" picking-mode="Ignore">
+                                        <ui:Label text="Z" class="kbd" picking-mode="Ignore" />
+                                        <ui:Label text="Moisture highlight" class="ucard__name" picking-mode="Ignore" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement class="irow" picking-mode="Ignore">
+                                        <ui:VisualElement class="icon icon--drop irow__icon" picking-mode="Ignore" />
+                                        <ui:Label name="item-moisture-text" text="Wet pile and puddles glow blue" class="irow__text" picking-mode="Ignore" />
+                                        <ui:Button name="item-moisture-buy" class="ubuy ibuy ui-blocking">
+                                            <ui:Label name="item-moisture-price" text="$0" class="ubuy__label" picking-mode="Ignore" />
+                                        </ui:Button>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement name="item-dirt" class="ucard icard icard--dirt" picking-mode="Ignore">
+                                    <ui:VisualElement class="ucard__head" picking-mode="Ignore">
+                                        <ui:Label text="X" class="kbd" picking-mode="Ignore" />
+                                        <ui:Label text="Dirt highlight" class="ucard__name" picking-mode="Ignore" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement class="irow" picking-mode="Ignore">
+                                        <ui:VisualElement class="icon icon--eye irow__icon" picking-mode="Ignore" />
+                                        <ui:Label name="item-dirt-text" text="Every trace of soil glows amber" class="irow__text" picking-mode="Ignore" />
+                                        <ui:Button name="item-dirt-buy" class="ubuy ibuy ui-blocking">
+                                            <ui:Label name="item-dirt-price" text="$0" class="ubuy__label" picking-mode="Ignore" />
+                                        </ui:Button>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ============================================ Menu: Esc or the Menu button (PauseMenu, Docs/PAUSE_MENU.md). Modal like the shop:
+             pauses the simulation while open; the scrim is ui-blocking. Two pages: main, and credits (filled from UI/Credits.txt).
+             Texts are the English keys of Resources/Loc (HudLocalizer translates every unnamed label, Docs/LOCALIZATION.md). -->
+        <ui:VisualElement name="menu" class="layer menu-layer" picking-mode="Ignore">
+            <ui:VisualElement name="menu-scrim" class="shop__scrim ui-blocking" />
+            <ui:VisualElement name="menu-panel" class="menu" picking-mode="Ignore">
+                <ui:VisualElement class="shadow" picking-mode="Ignore" />
+                <ui:VisualElement class="menu__body ui-blocking">
+                    <ui:VisualElement name="menu-main" class="menu__page" picking-mode="Ignore">
+                        <ui:Label text="PAUSED" class="caption" picking-mode="Ignore" />
+                        <ui:Label text="Refluff" class="menu__title" picking-mode="Ignore" />
+                        <ui:Button name="menu-resume" class="btn btn--cta btn--go menu__btn ui-blocking">
+                            <ui:Label text="Resume" class="btn__label" picking-mode="Ignore" />
+                            <ui:Label text="Esc" class="kbd kbd--wide kbd--on-accent" picking-mode="Ignore" />
+                        </ui:Button>
+                        <ui:VisualElement class="menu__row" picking-mode="Ignore">
+                            <ui:Label text="VOLUME" class="caption menu__row-caption" picking-mode="Ignore" />
+                            <ui:Slider name="menu-volume" low-value="0" high-value="1" value="1" class="menu__slider ui-blocking" />
+                            <ui:Label name="menu-volume-value" text="100%" class="menu__row-value" picking-mode="Ignore" />
+                        </ui:VisualElement>
+                        <!-- the language drop-down (LanguagePicker, Docs/LOCALIZATION.md 3): the list opens in #lang-popup below -->
+                        <ui:VisualElement class="menu__row" picking-mode="Ignore">
+                            <ui:Label text="LANGUAGE" class="caption menu__row-caption" picking-mode="Ignore" />
+                            <ui:Button name="menu-lang" class="lang-select ui-blocking">
+                                <ui:Label name="menu-lang-value" text="English" class="lang-select__value" picking-mode="Ignore" />
+                                <ui:VisualElement class="lang-select__chevron" picking-mode="Ignore" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:Button name="menu-credits" class="btn btn--ghost menu__btn ui-blocking">
+                            <ui:Label text="Credits" class="btn__label" picking-mode="Ignore" />
+                        </ui:Button>
+                        <ui:Button name="menu-quit" class="btn btn--ghost menu__btn ui-blocking">
+                            <ui:Label text="Quit to desktop" class="btn__label" picking-mode="Ignore" />
+                        </ui:Button>
+                        <ui:Label text="Money and upgrades are saved as you play." class="menu__note" picking-mode="Ignore" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="menu-credits-page" class="menu__page menu__page--credits" picking-mode="Ignore">
+                        <ui:VisualElement class="menu__head" picking-mode="Ignore">
+                            <ui:Label text="CREDITS" class="caption menu__head-caption" picking-mode="Ignore" />
+                            <ui:Button name="menu-back" class="btn btn--ghost ui-blocking">
+                                <ui:Label text="Back" class="btn__label" picking-mode="Ignore" />
+                                <ui:Label text="Esc" class="kbd kbd--wide" picking-mode="Ignore" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:ScrollView name="credits-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" class="credits ui-blocking">
+                            <ui:VisualElement name="credits-body" class="credits__body" picking-mode="Ignore" />
+                        </ui:ScrollView>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <!-- over the card while the language list is open: a click anywhere else closes the list, not the menu -->
+            <ui:VisualElement name="lang-catcher" class="lang-catcher ui-blocking" />
+            <ui:VisualElement name="lang-popup" class="lang-popup" picking-mode="Ignore">
+                <ui:VisualElement class="shadow shadow--sm" picking-mode="Ignore" />
+                <ui:VisualElement class="lang-popup__body ui-blocking">
+                    <ui:ScrollView name="lang-list" mode="Vertical" horizontal-scroller-visibility="Hidden" class="lang-popup__list" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- ============================================ FX: UI particles (sparkles, confetti, coins) above everything -->
+        <ui:VisualElement name="fx" class="layer fx-layer" picking-mode="Ignore" />
+
+    </ui:VisualElement>
+</ui:UXML>

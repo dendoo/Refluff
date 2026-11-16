@@ -1,0 +1,11 @@
+UnityEditor.EditorApplication.isPaused = true;
+var sb = new System.Text.StringBuilder();
+CarpetCleaning.CarpetDebugApi.Reset(242, 0.9f);
+CarpetCleaning.CarpetDebugApi.RunFrames(3);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.5f, 0.9f, 0.5f, 0.3f, 120, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(0, 0.5f, 0.3f, 0.5f, 0.9f, 120, 1f);
+CarpetCleaning.CarpetDebugApi.RunFrames(120);
+sb.Append(CarpetCleaning.CarpetDebugApi.DebrisAliveJson()).Append(" ");
+sb.Append(CarpetCleaning.StoreShotApi.RenderScene("test/aces_probe_01_242_chunks.png", 1920, 1080)).Append(" ");
+sb.Append(CarpetCleaning.StoreShotApi.RenderScene("test/aces_probe_01_242_chunks_4k.png", 3840, 2160));
+return sb.ToString();

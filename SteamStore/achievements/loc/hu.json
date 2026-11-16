@@ -1,0 +1,13 @@
+{
+  "_lang": "hu",
+  "ACH_FIRST_CARPET": { "name": "Pihe-puha kezdet", "desc": "Add át az első szőnyegedet." },
+  "ACH_SPOTLESS": { "name": "Makulátlan", "desc": "Adj át egy koszos szőnyeget 100%-ban tisztán." },
+  "ACH_BONE_DRY": { "name": "Csontszáraz", "desc": "Áztass be egy szőnyeget, majd add át 100%-ban szárazon." },
+  "ACH_COMBO": { "name": "Kirakatba illő", "desc": "Adj át egy koszos szőnyeget 100%-ban tisztán és szárazon." },
+  "ACH_FILTHY": { "name": "Mocskosból mesés", "desc": "Adj át egy mocskos szőnyeget 100%-ban tisztán." },
+  "ACH_EXPRESS": { "name": "Villámtisztítás", "desc": "Szerezd meg a teljes gyorsasági bónuszt egy nagyon koszos szőnyegnél." },
+  "ACH_REGULARS": { "name": "Törzsügyfelek", "desc": "Adj át 25 szőnyeget." },
+  "ACH_FULL_KIT": { "name": "Minden eszköz bevetve", "desc": "Használd mind a 10 eszközt." },
+  "ACH_MAXED_OUT": { "name": "Csúcsra járatva", "desc": "Fejleszd egy eszköz ERŐ- és TERÜLET-szintjét egyaránt MAX-ra." },
+  "ACH_INSPECTOR": { "name": "Ellenőr", "desc": "Vedd meg a Nedvességjelzőt és a Koszjelzőt." }
+}

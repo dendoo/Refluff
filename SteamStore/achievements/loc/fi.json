@@ -1,0 +1,13 @@
+{
+  "_lang": "fi",
+  "ACH_FIRST_CARPET": { "name": "Pörröinen alku", "desc": "Luovuta ensimmäinen mattosi." },
+  "ACH_SPOTLESS": { "name": "Tahraton", "desc": "Puhdista likainen matto ja luovuta se, kun puhtaus on 100 %." },
+  "ACH_BONE_DRY": { "name": "Rutikuiva", "desc": "Kastele matto läpimäräksi ja luovuta se, kun kuivuus on 100 %." },
+  "ACH_COMBO": { "name": "Kuin suoraan kaupasta", "desc": "Puhdista likainen matto ja luovuta se, kun puhtaus ja kuivuus ovat 100 %." },
+  "ACH_FILTHY": { "name": "Törkyisestä pörröiseksi", "desc": "Puhdista törkyinen matto ja luovuta se, kun puhtaus on 100 %." },
+  "ACH_EXPRESS": { "name": "Pikapesu", "desc": "Ansaitse täysi nopeusbonus hyvin likaisesta matosta." },
+  "ACH_REGULARS": { "name": "Kanta-asiakkaat", "desc": "Luovuta 25 mattoa." },
+  "ACH_FULL_KIT": { "name": "Koko kalusto käytössä", "desc": "Käytä kaikkia 10 työkalua." },
+  "ACH_MAXED_OUT": { "name": "Tapissa", "desc": "Päivitä yhden työkalun sekä TEHO että ALUE tasolle MAKS." },
+  "ACH_INSPECTOR": { "name": "Tarkastaja", "desc": "Osta Kosteuskorostus ja Likakorostus." }
+}

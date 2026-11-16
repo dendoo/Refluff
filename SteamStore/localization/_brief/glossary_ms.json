@@ -1,0 +1,253 @@
+{
+ "language": "Malay",
+ "code": "ms",
+ "steam": "malay",
+ "_about": "The game's own UI text in this language (already shipped in the game). Reuse these terms whenever the store text names the same thing, so the store page matches what the player sees in the game. They also show how the game addresses the player (formal / informal).",
+ "terms": [
+  {
+   "en": "Scraper",
+   "yours": "Pengikis",
+   "where": "Tool name (carpet strip and shop). A hand scraper blade that scrapes dried crust and mud off the carpet."
+  },
+  {
+   "en": "Dry vacuum",
+   "yours": "Penyedut habuk",
+   "where": "Tool name. A vacuum cleaner for dry dust and crumbs."
+  },
+  {
+   "en": "Hose",
+   "yours": "Hos",
+   "where": "Tool name. A water hose with a spray nozzle: wets the carpet and rinses it."
+  },
+  {
+   "en": "Foam sprayer",
+   "yours": "Penyembur buih",
+   "where": "Tool name. Sprays cleaning foam (carpet shampoo / detergent foam)."
+  },
+  {
+   "en": "Brush",
+   "yours": "Berus",
+   "where": "Tool name. A rotary scrubbing brush (a floor-scrubber machine with a spinning brush head)."
+  },
+  {
+   "en": "Squeegee",
+   "yours": "Penyapu air",
+   "where": "Tool name. A rubber squeegee that pushes water off the carpet."
+  },
+  {
+   "en": "Wet vacuum",
+   "yours": "Penyedut air",
+   "where": "Tool name. A wet vacuum / extractor that sucks up water and foam."
+  },
+  {
+   "en": "Dryer",
+   "yours": "Pengering",
+   "where": "Tool name. A carpet dryer / air mover blowing warm air."
+  },
+  {
+   "en": "Detergent",
+   "yours": "Detergen",
+   "where": "Floor tool name (right strip). Sprays floor detergent on the tiles."
+  },
+  {
+   "en": "Mop",
+   "yours": "Mop",
+   "where": "Floor tool name (right strip). A mop for the tiles."
+  },
+  {
+   "en": "Hand over",
+   "yours": "Serahkan",
+   "where": "Big green button that appears when the carpet is clean: give the carpet back to its owner (the client) and get paid. Hotkey H."
+  },
+  {
+   "en": "Upgrades",
+   "yours": "Naik Taraf",
+   "where": "Top-right button that opens the upgrade shop (hotkey U, shown on a key chip next to it)."
+  },
+  {
+   "en": "UPGRADES",
+   "yours": "NAIK TARAF",
+   "where": "Caption at the top of the upgrade shop."
+  },
+  {
+   "en": "Tune your kit",
+   "yours": "Perkemas peralatan anda",
+   "where": "Big title of the upgrade shop: improve your cleaning equipment."
+  },
+  {
+   "en": "POWER",
+   "yours": "KUASA",
+   "where": "Upgrade stat name on every tool card: how strongly and fast the tool works."
+  },
+  {
+   "en": "AREA",
+   "yours": "LIPUTAN",
+   "where": "Upgrade stat name on every tool card: how wide an area the tool covers in one stroke."
+  },
+  {
+   "en": "POWER works faster",
+   "yours": "KUASA: bekerja lebih pantas",
+   "where": "Legend under the shop title explaining the POWER stat."
+  },
+  {
+   "en": "AREA covers more per stroke",
+   "yours": "LIPUTAN: lebih luas setiap sapuan",
+   "where": "Legend explaining the AREA stat."
+  },
+  {
+   "en": "Speed bonus",
+   "yours": "Bonus kelajuan",
+   "where": "Pay slip line: bonus for finishing fast."
+  },
+  {
+   "en": "Spotless",
+   "yours": "Tanpa cela",
+   "where": "Pay slip line: bonus for a 100 % clean carpet."
+  },
+  {
+   "en": "Bone dry",
+   "yours": "Kering kontang",
+   "where": "Pay slip line: bonus for a 100 % dry carpet."
+  },
+  {
+   "en": "Combo",
+   "yours": "Kombo",
+   "where": "Pay slip line: bonus for spotless AND bone dry together."
+  },
+  {
+   "en": "COMBO!",
+   "yours": "KOMBO!",
+   "where": "Big stamp slammed onto the corner of the pay slip for a combo."
+  },
+  {
+   "en": "Base pay",
+   "yours": "Upah asas",
+   "where": "Pay slip line: the base payment for the job."
+  },
+  {
+   "en": "CARPET DELIVERED",
+   "yours": "PERMAIDANI DIHANTAR",
+   "where": "Caption at the top of the pay slip card that appears after a hand-over."
+  },
+  {
+   "en": "INSPECTION",
+   "yours": "PEMERIKSAAN",
+   "where": "Shop caption above the two inspection-lamp items."
+  },
+  {
+   "en": "Moisture highlight",
+   "yours": "Serlahan lembapan",
+   "where": "One-time shop item (key Z): a lamp mode that makes wet spots glow."
+  },
+  {
+   "en": "Wet pile and puddles glow blue",
+   "yours": "Gentian basah dan lopak bercahaya biru",
+   "where": "Description of 'Moisture highlight'. 'pile' = the carpet's fibres."
+  },
+  {
+   "en": "Dirt highlight",
+   "yours": "Serlahan kotoran",
+   "where": "One-time shop item (key X): a lamp mode that makes remaining dirt glow."
+  },
+  {
+   "en": "Every trace of soil glows amber",
+   "yours": "Setiap kesan kotoran bercahaya jingga",
+   "where": "Description of 'Dirt highlight'."
+  },
+  {
+   "en": "CARPET",
+   "yours": "PERMAIDANI",
+   "where": "Caption above the left tool strip (the tools that work on the carpet)."
+  },
+  {
+   "en": "FLOOR",
+   "yours": "LANTAI",
+   "where": "Caption above the right tool strip (the tools for the tiled floor around the carpet)."
+  },
+  {
+   "en": "CLEAN",
+   "yours": "BERSIH",
+   "where": "Caption of the cleanliness meter (0-100 %), top-left card."
+  },
+  {
+   "en": "DRY",
+   "yours": "KERING",
+   "where": "Caption of the dryness meter (100 % = completely dry), under CLEAN."
+  },
+  {
+   "en": "Filthy",
+   "yours": "Teramat kotor",
+   "where": "Pay slip title: extremely dirty."
+  },
+  {
+   "en": "Heavy soil",
+   "yours": "Sangat kotor",
+   "where": "Pay slip title: heavily soiled."
+  },
+  {
+   "en": "Scrape the dry crust off",
+   "yours": "Kikis kerak yang kering",
+   "where": "Hint pill at the top centre: the next step the game suggests. Tool: Scraper."
+  },
+  {
+   "en": "Wet it down",
+   "yours": "Basahkan permaidani",
+   "where": "Hint. Tool: Hose (soak the dried mud with water)."
+  },
+  {
+   "en": "Brush the mud loose",
+   "yours": "Berus lumpur sehingga tertanggal",
+   "where": "Hint. Tool: Brush (scrub the softened mud loose)."
+  },
+  {
+   "en": "Squeegee the dirty water off",
+   "yours": "Sapu keluar air kotor",
+   "where": "Hint. Tool: Squeegee."
+  },
+  {
+   "en": "Wet-vac the water and foam out",
+   "yours": "Sedut keluar air dan buih",
+   "where": "Hint. Tool: Wet vacuum."
+  },
+  {
+   "en": "Dry it",
+   "yours": "Keringkan permaidani",
+   "where": "Hint. Tool: Dryer."
+  },
+  {
+   "en": "Sparkling clean!",
+   "yours": "Bersih berkilat!",
+   "where": "Hint when the carpet is perfectly clean and dry."
+  },
+  {
+   "en": "Handed over to the client!",
+   "yours": "Diserahkan kepada pelanggan!",
+   "where": "Hint while the finished carpet flies away to its owner."
+  },
+  {
+   "en": "Fresh carpet coming in...",
+   "yours": "Permaidani baharu tiba...",
+   "where": "Hint while the next dirty carpet drops in."
+  },
+  {
+   "en": "Owned: press {0} to switch it on and off",
+   "yours": "Dimiliki: tekan {0} untuk hidupkan/matikan",
+   "where": "Replaces the item description once the item is bought."
+  },
+  {
+   "en": "the job clock is paused while you shop",
+   "yours": "pemasa kerja dijeda semasa anda membeli-belah",
+   "where": "Small grey note at the right of the legend."
+  },
+  {
+   "en": "Money and upgrades are saved as you play.",
+   "yours": "Wang dan naik taraf disimpan secara automatik semasa anda bermain.",
+   "where": "Small note at the bottom of the pause menu (wraps to two lines if needed)."
+  },
+  {
+   "en": "Thank you for playing.",
+   "yours": "Terima kasih kerana bermain.",
+   "where": "Credits page."
+  }
+ ]
+}

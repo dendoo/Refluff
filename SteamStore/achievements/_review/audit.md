@@ -1,0 +1,9 @@
+# Achievement meaning audit: decisions
+
+- uk ACH_SPOTLESS desc: APPLIED "Очисти брудний килим і віддай його клієнту із чистотою 100%." The old "брудний килим із чистотою 100%" read as a dirty carpet that is 100% clean. The new order is clean first, then hand over, as in BONE_DRY ("..., а потім віддай його клієнту із сухістю 100%") and the fi fix. It keeps the game's "чистота {0}%".
+- uk ACH_COMBO desc: APPLIED "Очисти брудний килим і віддай його клієнту із чистотою й сухістю 100%." Same fix. It keeps the game's "чистота й сухість 100%".
+- uk ACH_FILTHY desc: APPLIED "Очисти килим «Брудніше нікуди» й віддай його клієнту із чистотою 100%." This makes it consistent with SPOTLESS/COMBO. "й" follows a vowel ("нікуди»"), and "із" before "ч" follows the 2019 правопис.
+- id ACH_EXPRESS desc: APPLIED "Raih bonus kecepatan secara penuh pada karpet kotor berat." "secara penuh" is the usual form for money paid in full ("menerima gaji secara penuh") and breaks up the set phrase "kecepatan penuh". It keeps the game's "Bonus kecepatan" and "Kotor berat".
+- ms ACH_EXPRESS desc: APPLIED "Dapatkan bonus kelajuan sepenuhnya bagi permaidani sangat kotor." "sepenuhnya" = in full, and it cannot fuse with "kelajuan" into "kelajuan penuh". It keeps the game's "Bonus kelajuan" and "Sangat kotor".
+- Note (not in this audit, NOT changed): bg "мръсен килим със 100% чистота" and cs "špinavý koberec s čistotou 100 %" (SPOTLESS/COMBO/FILTHY) have the same attributive reading as uk. ru ("чистым на 100%", a predicative) and pl ("gdy czystość sięgnie 100%") are fine.
+- 2026-09-30 orchestrator: bg + cs ACH_SPOTLESS / ACH_COMBO / ACH_FILTHY rewritten the same way as uk ("clean the dirty carpet and hand it over with 100% ..."), so the 100% no longer reads as an attribute of the dirty carpet; game terms kept (bg "чистота", "сухота", „Мръсен до немай-къде“; cs "čistota", "suchost", "příšerně špinavý").

@@ -1,0 +1,10 @@
+CarpetCleaning.CarpetDebugApi.StrokeNow(7, 0.53f,0.97f, 0.53f,0.36f, 80, 1f);
+CarpetCleaning.CarpetDebugApi.SetTool(7);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i=0;i<20;i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+var cr = UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.CarpetRenderer>();
+cr.SetCursor(new UnityEngine.Vector2(0.53f, 0.36f), new UnityEngine.Vector2(0f, -1f), 178f, 0f, (CarpetCleaning.ToolId)7, true);
+CarpetCleaning.StoreShotApi.RenderScene("test/st6.png",1920,1080);
+var sim = CarpetCleaning.CarpetDebugApi.Sim;
+return sim.Hint + " wet " + sim.Wetness + " " + CarpetCleaning.CarpetDebugApi.ToolHeadJson();

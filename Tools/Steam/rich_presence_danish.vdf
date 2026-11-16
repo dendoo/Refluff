@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "danish"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Renser et tæppe: %clean% rent"
+		"#Status_Spotless" "Tæppet er pletfrit og kan afleveres"
+		"#Status_BetweenCarpets" "Gør gulvet rent mellem to tæpper"
+	}
+}

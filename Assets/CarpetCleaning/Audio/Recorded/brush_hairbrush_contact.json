@@ -1,0 +1,39 @@
+{
+ "slot": "contact",
+ "file": "brush_hairbrush_contact.wav",
+ "source": "543471__rossjuterbock__hair_brush_on_carpet_msh-6.ogg",
+ "credit": "200088_RossJuterbock_Hair brush on carpet MSH-6.wav by RossJuterbock, https://freesound.org/s/543471/, CC0",
+ "rate": 48000,
+ "channels": 2,
+ "seconds": 10.26,
+ "rmsDb": -19.59,
+ "peakDb": -1.0,
+ "lufs": -16.97,
+ "spans": [
+  [
+   1.9,
+   5.8
+  ],
+  [
+   10.6,
+   14.6
+  ],
+  [
+   18.6,
+   21.2
+  ]
+ ],
+ "highPassHz": 120.0,
+ "duck": [],
+ "method": "spans",
+ "limitDb": 6.0,
+ "limitReleaseS": 0.02,
+ "gainDb": 19.72,
+ "peakLimited": true,
+ "referenceLufs": -8.31,
+ "xfadeS": 0.08,
+ "wrapStepOverRms": 0.053,
+ "typicalStepOverRms": 0.032,
+ "wrapHighBandDb": 12.58,
+ "loudestNearbyDb": 28.3
+}

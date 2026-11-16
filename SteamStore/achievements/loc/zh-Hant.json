@@ -1,0 +1,13 @@
+{
+  "_lang": "zh-Hant",
+  "ACH_FIRST_CARPET": { "name": "蓬鬆初體驗", "desc": "交付第一張地毯。" },
+  "ACH_SPOTLESS": { "name": "一塵不染", "desc": "把髒地毯洗到清潔度 100% 再交付。" },
+  "ACH_BONE_DRY": { "name": "完全乾透", "desc": "先把地毯徹底弄濕，等乾燥度達到 100% 再交付。" },
+  "ACH_COMBO": { "name": "宛如新品", "desc": "讓髒地毯的清潔度和乾燥度都達到 100% 再交付。" },
+  "ACH_FILTHY": { "name": "化髒污為蓬鬆", "desc": "把「極度髒污」的地毯洗到清潔度 100% 再交付。" },
+  "ACH_EXPRESS": { "name": "極速服務", "desc": "清洗重度以上髒污的地毯時拿滿速度獎勵。" },
+  "ACH_REGULARS": { "name": "老主顧", "desc": "交付25張地毯。" },
+  "ACH_FULL_KIT": { "name": "全套工具齊上陣", "desc": "地毯工具和地板工具，10種全部用一遍。" },
+  "ACH_MAXED_OUT": { "name": "滿級神器", "desc": "把同一個工具的功率和範圍都升到滿級。" },
+  "ACH_INSPECTOR": { "name": "品管達人", "desc": "購買「水分偵測」和「污漬偵測」。" }
+}

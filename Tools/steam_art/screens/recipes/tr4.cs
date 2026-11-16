@@ -1,0 +1,11 @@
+CarpetCleaning.CarpetDebugApi.StrokeNow(4, 0.50f,0.52f, 0.50f,0.88f, 50, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.40f,0.70f, 0.60f,0.70f, 30, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.60f,0.80f, 0.40f,0.80f, 30, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.40f,0.60f, 0.60f,0.60f, 30, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.40f,0.88f, 0.52f,0.88f, 20, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(6, 0.52f, 0.88f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 10; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.StoreShotApi.RenderScene("test/tr4.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.FiberProbeJson(0.46f,0.6f,0.54f,0.8f);

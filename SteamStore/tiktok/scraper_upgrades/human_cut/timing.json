@@ -1,0 +1,198 @@
+{
+  "source": "SteamStore/tiktok/scraper_upgrades/voice_source.mp3",
+  "source_sha256": "4a4df441c0f9f9eadee53a12bfc0c583033f711a89eb735a1c19de183f078873",
+  "source_seconds": 19.28,
+  "duration": 33.7,
+  "frames": 2022,
+  "fps": 60,
+  "sample_rate": 48000,
+  "speech_retime": 1.0,
+  "human_replay_speed": 1.0,
+  "scrape_without_speech": [
+    18.24,
+    26.7
+  ],
+  "scrape_absolute_silence": [
+    18.38,
+    26.64
+  ],
+  "human_recordings": {
+    "weak": {
+      "file": "SteamStore/_work/tiktok_scraper/human/weak.json",
+      "sha256": "f13fcc52534113cbc9b33fbfd40b3c592686ec932299d91f9b399d26033bfe24",
+      "duration": 7.003366000566984,
+      "samples": 680,
+      "end_reason": "duration",
+      "playback_speed": 1.0
+    },
+    "strong": {
+      "file": "SteamStore/_work/tiktok_scraper/human/strong.json",
+      "sha256": "453398abf7ae28d088df1c580eb7c6743ed662a6bb4f1c9b605e227f8e4dd917",
+      "duration": 8.031676899092986,
+      "samples": 755,
+      "end_reason": "duration",
+      "playback_speed": 1.0
+    }
+  },
+  "shots": [
+    {
+      "take": "scu_arrival",
+      "start": 0.0,
+      "dur": 5.0,
+      "first_frame": 0,
+      "frames": 300,
+      "speed": 1.0
+    },
+    {
+      "take": "scu_weak_human",
+      "start": 5.0,
+      "dur": 7.25,
+      "first_frame": 300,
+      "frames": 435,
+      "speed": 1.0
+    },
+    {
+      "take": "scu_shop_human",
+      "start": 12.25,
+      "dur": 6.0,
+      "first_frame": 735,
+      "frames": 360,
+      "speed": 1.0
+    },
+    {
+      "take": "scu_power_human",
+      "start": 18.25,
+      "dur": 8.35,
+      "first_frame": 1095,
+      "frames": 501,
+      "speed": 1.0
+    },
+    {
+      "take": "scu_reveal_human",
+      "start": 26.6,
+      "dur": 7.1,
+      "first_frame": 1596,
+      "frames": 426,
+      "speed": 1.0
+    }
+  ],
+  "phrases": [
+    {
+      "text": "Oh, come on. Is there even a carpet under all that?",
+      "source": [
+        0.07,
+        2.84
+      ],
+      "start": 0.35,
+      "end": 3.12,
+      "padded_destination": [
+        0.29,
+        3.26
+      ]
+    },
+    {
+      "text": "At this rate, I'll be scraping all week.",
+      "source": [
+        3.49,
+        5.5
+      ],
+      "start": 5.5,
+      "end": 7.51,
+      "padded_destination": [
+        5.44,
+        7.65
+      ]
+    },
+    {
+      "text": "Wait...",
+      "source": [
+        6.68,
+        7.35
+      ],
+      "start": 12.45,
+      "end": 13.12,
+      "padded_destination": [
+        12.39,
+        13.26
+      ]
+    },
+    {
+      "text": "I can upgrade my scraper.",
+      "source": [
+        7.81,
+        9.24
+      ],
+      "start": 13.55,
+      "end": 14.98,
+      "padded_destination": [
+        13.49,
+        15.12
+      ]
+    },
+    {
+      "text": "Max power.",
+      "source": [
+        10.2,
+        11.23
+      ],
+      "start": 15.75,
+      "end": 16.78,
+      "padded_destination": [
+        15.69,
+        16.92
+      ]
+    },
+    {
+      "text": "Max size.",
+      "source": [
+        11.82,
+        12.89
+      ],
+      "start": 17.17,
+      "end": 18.24,
+      "padded_destination": [
+        17.11,
+        18.38
+      ]
+    },
+    {
+      "text": "Okay... that might be overkill.",
+      "source": [
+        13.69,
+        16.31
+      ],
+      "start": 26.7,
+      "end": 29.32,
+      "padded_destination": [
+        26.64,
+        29.46
+      ]
+    },
+    {
+      "text": "Refluff.",
+      "source": [
+        17.0,
+        17.73
+      ],
+      "start": 29.9,
+      "end": 30.63,
+      "padded_destination": [
+        29.84,
+        30.77
+      ]
+    },
+    {
+      "text": "Wishlist it on Steam.",
+      "source": [
+        17.99,
+        19.28
+      ],
+      "start": 30.9,
+      "end": 32.19,
+      "padded_destination": [
+        30.84,
+        32.19
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-16",
+  "service": "Tripo Studio (internal browser)",
+  "asset": "Vintage carpet cleaning extractor, static workshop prop",
+  "conceptGenerator": "Nano Banana Pro",
+  "conceptVariants": 2,
+  "selectedConcept": "extractor_concept.webp",
+  "modelGenerator": "H3.1 Best Quality / Geometry & Texture",
+  "sourceTaskId": "740c9fde-0b15-469e-9196-a497ac20b0bb",
+  "sourceUrl": "https://studio.tripo3d.ai/workspace/generate/740c9fde-0b15-469e-9196-a497ac20b0bb",
+  "generationCredits": 55,
+  "intendedHeightMetres": 1.05,
+  "workflow": "Tripo image generation -> visual acceptance -> HD model -> visual acceptance -> Tripo Retopo -> optimized GLB",
+  "state": "optimized GLB exported and inspected",
+  "retopology": "Smart Mesh P1.0 Triangle",
+  "targetTriangles": 18000,
+  "actualTriangles": 16977,
+  "retopologyCredits": 35,
+  "totalCredits": 90,
+  "optimizedFile": "refluff_workshop_extractor_17k.glb",
+  "qaReport": "extractor_qa.json"
+}

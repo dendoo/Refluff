@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"arabic"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"بداية ناعمة"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"سلّم سجادتك الأولى."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"نظافة تامة"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"سلّم سجادة متسخة وهي نظيفة بنسبة 100%."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"جفاف تام"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"اغمر سجادة بالماء، ثم سلّمها جافة بنسبة 100%."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"كأنها من المعرض"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"سلّم سجادة متسخة بنظافة 100% وجفاف 100%."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"من القذارة إلى النضارة"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"سلّم سجادة قذرة للغاية وهي نظيفة بنسبة 100%."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"خدمة فائقة السرعة"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"احصل على مكافأة السرعة كاملةً عن سجادة شديدة الاتساخ."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"عملاء دائمون"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"سلّم 25 سجادة."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"العدّة كاملة"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"استخدم الأدوات الـ10 كلها."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"إلى الحد الأقصى"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"طوّر «القوة» و«المساحة» لأداة واحدة إلى «الأقصى»."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"المفتّش"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"اشترِ كاشف الرطوبة وكاشف الأوساخ."
+	}
+}

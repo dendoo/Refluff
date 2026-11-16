@@ -1,0 +1,478 @@
+{
+  "inspection": {
+    "platform": "instagram",
+    "loggedIn": true,
+    "accountHandle": "vahov_games",
+    "nativeScheduling": false
+  },
+  "page": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+  "sensitiveForm": false,
+  "visibleText": "vahov_games\nOriginal audio\nvahov_games\n \n1m\nI got lost between the carpet fibers… in my own game 😳\nRefluff: Carpet Cleaning ASMR — coming this November.\nWishlist on Steam: https://store.steampowered.com/app/5304930/?utm_source=instagram&utm_medium=social&utm_campaign=refluff-between-fibers&utm_content=en-v3\n#Refluff #IndieGame #GameDev #ASMR #Satisfying\n\nVacuum sound: “Vacuum Cleaner, On Idle Off, Close, A.wav” by InspectorJ (www.jshaw.co.uk), https://freesound.org/s/430632/, CC BY 4.0 https://creativecommons.org/licenses/by/4.0/. Recording shortened and mixed for this video.\nNo comments yet.\nStart the conversation.\nView insights\nBoost reel\n1 minute ago\nMore posts from vahov_games\nMeta\nAbout\nBlog\nJobs\nHelp\nAPI\nPrivacy\nTerms\nLocations\nPopular\nInstagram Lite\nMeta AI\nMuse\nThreads\nContact Uploading & Non-Users\nMeta Verified\nEnglish\nAfrikaans\nالعربية\nČeština\nDansk\nDeutsch\nΕλληνικά\nEnglish\nEnglish (UK)\nEspañol (España)\nEspañol\nفارسی\nSuomi\nFrançais\nעברית\nBahasa Indonesia\nItaliano\n日本語\n한국어\nBahasa Melayu\nNorsk\nNederlands\nPolski\nPortuguês (Brasil)\nPortuguês (Portugal)\nРусский\nSvenska\nภาษาไทย\nFilipino\nTürkçe\n中文(简体)\n中文(台灣)\nবাংলা\nગુજરાતી\nहिन्दी\nHrvatski\nMagyar\nಕನ್ನಡ\nമലയാളം\nमराठी\nनेपाली\nਪੰਜਾਬੀ\nසිංහල\nSlovenčina\nதமிழ்\nతెలుగు\nاردو\nTiếng Việt\n中文(香港)\nБългарски\nFrançais (Canada)\nRomână\nСрпски\nУкраїнська\n© 2026 Instagram from Meta\nMessages",
+  "accessibility": "- link \"Instagram\":\n  - /url: /\n  - img \"Instagram\"\n- link \"Home\":\n  - /url: /\n  - img \"Home\"\n- link \"Reels\":\n  - /url: /reels/\n  - img \"Reels\"\n- link \"Messages\":\n  - /url: /direct/inbox/\n  - img \"Messages\"\n- link \"Search\":\n  - /url: /explore/\n  - img \"Search\"\n- link \"Notifications\":\n  - /url: \"#\"\n  - img \"Notifications\"\n- link \"New post\":\n  - /url: \"#\"\n  - img \"New post\"\n- link \"Professional dashboard\":\n  - /url: \"#\"\n  - img \"Professional dashboard\"\n- link \"vahov_games's profile picture\":\n  - /url: /vahov_games/\n  - link \"vahov_games's profile picture\":\n    - img \"vahov_games's profile picture\"\n- link \"Settings\":\n  - /url: \"#\"\n  - img \"Settings\"\n- link \"Also from Meta\":\n  - /url: \"#\"\n  - img \"Also from Meta\"\n- main:\n  - group \"Video player\":\n    - slider \"Adjust volume\":\n      - button \"Audio is muted\":\n        - img \"Audio is muted\"\n  - button \"vahov_games's profile picture\" [disabled]:\n    - link \"vahov_games's profile picture\" [disabled]:\n      - img \"vahov_games's profile picture\"\n  - link \"vahov_games\":\n    - /url: /vahov_games/\n  - link \"Original audio\":\n    - /url: /reels/audio/28927456856907170/\n  - button \"More options\":\n    - img \"More options\"\n  - separator\n  - link \"vahov_games's profile picture\":\n    - /url: /vahov_games/\n    - img \"vahov_games's profile picture\"\n  - link \"vahov_games\":\n    - /url: /vahov_games/\n  - time: 1m\n  - text: \"I got lost between the carpet fibers… in my own game 😳 Refluff: Carpet Cleaning ASMR — coming this November. Wishlist on Steam: https://store.steampowered.com/app/5304930/?utm_source=instagram&utm_medium=social&utm_campaign=refluff-between-fibers&utm_content=en-v3\"\n  - link \"#Refluff\":\n    - /url: /explore/tags/refluff/\n  - link \"#IndieGame\":\n    - /url: /explore/tags/indiegame/\n  - link \"#GameDev\":\n    - /url: /explore/tags/gamedev/\n  - link \"#ASMR\":\n    - /url: /explore/tags/asmr/\n  - link \"#Satisfying\":\n    - /url: /explore/tags/satisfying/\n  - text: \"Vacuum sound: “Vacuum Cleaner, On Idle Off, Close, A.wav” by InspectorJ (www.jshaw.co.uk), https://freesound.org/s/430632/, CC BY 4.0 https://creativecommons.org/licenses/by/4.0/. Recording shortened and mixed for this video.\"\n  - heading \"No comments yet.\" [level=2]\n  - text: Start the conversation.\n  - button \"View insights\"\n  - button \"Boost reel\"\n  - button \"Like\":\n    - img \"Like\"\n  - button \"Comment\":\n    - img \"Comment\"\n  - button \"Repost\":\n    - img \"Repost\"\n  - button \"Share\":\n    - img \"Share\"\n  - button \"Save\":\n    - button \"Save\":\n      - img \"Save\"\n  - link \"1 minute ago\":\n    - /url: /vahov_games/reel/De13otSPv6j/\n    - time: 1 minute ago\n  - link\n  - button \"Emoji\":\n    - img \"Emoji\"\n  - textbox \"Add a comment…\"\n  - separator\n  - text: More posts from\n  - link \"vahov_games\":\n    - /url: /vahov_games/\n  - 'link \"Brush away the dust. Uncover the colour. Let a little light back in. ✨ Restore stained glass at your own pace in Piece and Quiet: A Stained Glass Restoration. Coming to Steam this November. Wishlist now. #PieceAndQuiet #CozyGames #IndieGame #StainedGlass Clip\"':\n    - /url: /vahov_games/reel/De1X2F0v25p/\n    - 'img \"Brush away the dust. Uncover the colour. Let a little light back in. ✨ Restore stained glass at your own pace in Piece and Quiet: A Stained Glass Restoration. Coming to Steam this November. Wishlist now. #PieceAndQuiet #CozyGames #IndieGame #StainedGlass\"'\n    - img \"Clip\"\n  - 'link \"Every piece brings the picture closer. Every restored window brings the chapel back to life. Discover Piece and Quiet: A Stained Glass Restoration, a cozy first-person restoration game set in an abandoned mountain chapel. Brush away years of dust, match fragments by shape and colour, and rebuild six stained-glass windows from 2,655 scattered shards. Unlock magical upgrades to help with your work, from revealing a shard’s place to summoning invisible fairies. As light returns to the chapel, uncover a quiet story told through stained glass and handwritten notes. Watch the announcement trailer and wishlist Piece and Quiet on Steam. ✨ #PieceAndQuiet #CozyGames #tidyup #StainedGlass #RestorationGame Clip\"':\n    - /url: /vahov_games/reel/DezOys9zQZ4/\n    - 'img \"Every piece brings the picture closer. Every restored window brings the chapel back to life. Discover Piece and Quiet: A Stained Glass Restoration, a cozy first-person restoration game set in an abandoned mountain chapel. Brush away years of dust, match fragments by shape and colour, and rebuild six stained-glass windows from 2,655 scattered shards. Unlock magical upgrades to help with your work, from revealing a shard’s place to summoning invisible fairies. As light returns to the chapel, uncover a quiet story told through stained glass and handwritten notes. Watch the announcement trailer and wishlist Piece and Quiet on Steam. ✨ #PieceAndQuiet #CozyGames #tidyup #StainedGlass #RestorationGame\"'\n    - img \"Clip\"\n  - 'link \"Refluff: Carpet Cleaning ASMR. Wishlist on Steam. Link in my profile. #asmr #satisfyingcleans Clip\"':\n    - /url: /vahov_games/reel/DewmfagTKhK/\n    - 'img \"Refluff: Carpet Cleaning ASMR. Wishlist on Steam. Link in my profile. #asmr #satisfyingcleans\"'\n    - img \"Clip\"\n  - link \"Clip\":\n    - /url: /vahov_games/reel/DerMneKPpzL/\n    - img \"Clip\"\n  - link \"Clip\":\n    - /url: /vahov_games/reel/DeohwIWPXtl/\n    - img \"Clip\"\n- contentinfo:\n  - link \"Meta\":\n    - /url: https://about.meta.com/\n  - link \"About\":\n    - /url: https://about.instagram.com/\n  - link \"Blog\":\n    - /url: https://about.instagram.com/blog/\n  - link \"Jobs\":\n    - /url: https://about.instagram.com/about-us/careers\n  - link \"Help\":\n    - /url: https://help.instagram.com/\n  - link \"API\":\n    - /url: https://developers.facebook.com/docs/instagram\n  - link \"Privacy\":\n    - /url: /legal/privacy/\n  - link \"Terms\":\n    - /url: /legal/terms/\n  - link \"Locations\":\n    - /url: /explore/locations/\n  - link \"Popular\":\n    - /url: /popular/\n  - link \"Instagram Lite\":\n    - /url: /web/lite/\n  - link \"Meta AI\":\n    - /url: https://www.meta.ai/?utm_source=foa_web_footer\n  - link \"Muse\":\n    - /url: https://muse.ai/\n  - link \"Threads\":\n    - /url: https://www.threads.com/\n  - link \"Contact Uploading & Non-Users\":\n    - /url: https://www.facebook.com/help/instagram/261704639352628\n  - link \"Meta Verified\":\n    - /url: /accounts/meta_verified/?entrypoint=web_footer\n  - text: English\n  - img \"Down chevron icon\"\n  - combobox \"Switch Display Language\":\n    - option \"Afrikaans\"\n    - option \"العربية\"\n    - option \"Čeština\"\n    - option \"Dansk\"\n    - option \"Deutsch\"\n    - option \"Ελληνικά\"\n    - option \"English\" [selected]\n    - option \"English (UK)\"\n    - option \"Español (España)\"\n    - option \"Español\"\n    - option \"فارسی\"\n    - option \"Suomi\"\n    - option \"Français\"\n    - option \"עברית\"\n    - option \"Bahasa Indonesia\"\n    - option \"Italiano\"\n    - option \"日本語\"\n    - option \"한국어\"\n    - option \"Bahasa Melayu\"\n    - option \"Norsk\"\n    - option \"Nederlands\"\n    - option \"Polski\"\n    - option \"Português (Brasil)\"\n    - option \"Português (Portugal)\"\n    - option \"Русский\"\n    - option \"Svenska\"\n    - option \"ภาษาไทย\"\n    - option \"Filipino\"\n    - option \"Türkçe\"\n    - option \"中文(简体)\"\n    - option \"中文(台灣)\"\n    - option \"বাংলা\"\n    - option \"ગુજરાતી\"\n    - option \"हिन्दी\"\n    - option \"Hrvatski\"\n    - option \"Magyar\"\n    - option \"ಕನ್ನಡ\"\n    - option \"മലയാളം\"\n    - option \"मराठी\"\n    - option \"नेपाली\"\n    - option \"ਪੰਜਾਬੀ\"\n    - option \"සිංහල\"\n    - option \"Slovenčina\"\n    - option \"தமிழ்\"\n    - option \"తెలుగు\"\n    - option \"اردو\"\n    - option \"Tiếng Việt\"\n    - option \"中文(香港)\"\n    - option \"Български\"\n    - option \"Français (Canada)\"\n    - option \"Română\"\n    - option \"Српски\"\n    - option \"Українська\"\n  - text: © 2026 Instagram from Meta\n- button \"Messages\":\n  - img \"Messages\"\n  - text: Messages",
+  "controls": [
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/reels/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/direct/inbox/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "vahov_games",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Original audio",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/reels/audio/28927456856907170/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "vahov_games",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "#Refluff",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/tags/refluff/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "#IndieGame",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/tags/indiegame/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "#GameDev",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/tags/gamedev/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "#ASMR",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/tags/asmr/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "#Satisfying",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/tags/satisfying/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "View insights",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "Boost reel",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "1 minute ago",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De13otSPv6j/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "vahov_games",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/De1X2F0v25p/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DezOys9zQZ4/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DewmfagTKhK/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DerMneKPpzL/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/vahov_games/reel/DeohwIWPXtl/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Meta",
+      "label": null,
+      "title": null,
+      "href": "https://about.meta.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "About",
+      "label": null,
+      "title": null,
+      "href": "https://about.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Blog",
+      "label": null,
+      "title": null,
+      "href": "https://about.instagram.com/blog/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Jobs",
+      "label": null,
+      "title": null,
+      "href": "https://about.instagram.com/about-us/careers",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Help",
+      "label": null,
+      "title": null,
+      "href": "https://help.instagram.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "API",
+      "label": null,
+      "title": null,
+      "href": "https://developers.facebook.com/docs/instagram",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Privacy",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/legal/privacy/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Terms",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/legal/terms/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Locations",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/explore/locations/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Popular",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/popular/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Instagram Lite",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/web/lite/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Meta AI",
+      "label": null,
+      "title": null,
+      "href": "https://www.meta.ai/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Muse",
+      "label": null,
+      "title": null,
+      "href": "https://muse.ai/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Threads",
+      "label": null,
+      "title": null,
+      "href": "https://www.threads.com/",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Contact Uploading & Non-Users",
+      "label": null,
+      "title": null,
+      "href": "https://www.facebook.com/help/instagram/261704639352628",
+      "testId": null
+    },
+    {
+      "tag": "a",
+      "text": "Meta Verified",
+      "label": null,
+      "title": null,
+      "href": "https://www.instagram.com/accounts/meta_verified/",
+      "testId": null
+    },
+    {
+      "tag": "div",
+      "text": "Messages",
+      "label": null,
+      "title": null,
+      "href": null,
+      "testId": null
+    }
+  ],
+  "visibleDates": [
+    {
+      "text": "1m",
+      "dateTime": "2026-10-23T15:22:44.000Z",
+      "title": "Oct 23, 2026",
+      "parentLink": null
+    },
+    {
+      "text": "1 minute ago",
+      "dateTime": "2026-10-23T15:22:48.000Z",
+      "title": "Oct 23, 2026",
+      "parentLink": "/vahov_games/reel/De13otSPv6j/"
+    }
+  ],
+  "screenshotPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-23-57.959Z_instagram_inspect_a6cfcbb1.png",
+  "diagnosticPath": "C:\\Users\\denis\\AppData\\Local\\GameSocialStudio\\diagnostics\\2026-10-23T15-23-57.959Z_instagram_inspect_a6cfcbb1.json"
+}

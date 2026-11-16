@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"indonesian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Awal yang Empuk"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Serahkan karpet pertamamu."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Tanpa Noda"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Serahkan karpet kotor dalam keadaan 100% bersih."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Kering Kerontang"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Basahi karpet sampai kuyup, lalu serahkan dalam keadaan 100% kering."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Siap Dipajang"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Serahkan karpet kotor dalam keadaan 100% bersih dan 100% kering."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Dari Kumal Jadi Kinclong"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Serahkan karpet sangat jorok dalam keadaan 100% bersih."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Layanan Kilat"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Raih bonus kecepatan secara penuh pada karpet kotor berat."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Pelanggan Setia"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Serahkan 25 karpet."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Semua Alat Dikerahkan"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Gunakan seluruh 10 alat."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Sampai Mentok"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Tingkatkan DAYA dan CAKUPAN satu alat sampai MAKS."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspektur"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Beli Sorotan kelembapan dan Sorotan kotoran."
+	}
+}

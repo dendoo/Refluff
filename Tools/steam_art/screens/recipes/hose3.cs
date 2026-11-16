@@ -1,0 +1,13 @@
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+CarpetCleaning.CarpetDebugApi.Reset(14, 0.3f);
+CarpetCleaning.CarpetDebugApi.Zigzag(2, 0.55f,0.30f, 0.97f,0.62f, 5, 35, 1f);
+CarpetCleaning.CarpetDebugApi.Hold(2, 0.93f, 0.45f, 1.5f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(2, 0.93f,0.45f, 0.78f,0.42f, 25, 1f);
+CarpetCleaning.CarpetDebugApi.Hold(2, 0.78f, 0.42f, 0.5f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(2, 0.78f, 0.42f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 12; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.CarpetDebugApi.Hold(2, 0.78f, 0.42f, 0.3f);
+CarpetCleaning.StoreShotApi.RenderScene("test/ho3.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.StatsJson() + CarpetCleaning.CarpetDebugApi.FloorStatsJson();

@@ -1,0 +1,12 @@
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, 0.15f,1.10f, 0.90f,1.10f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(9, 0.90f,1.06f, 0.15f,1.06f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.365f,0.97f, 0.365f,0.28f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.635f,0.97f, 0.635f,0.28f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.StrokeNow(6, 0.50f,0.97f, 0.50f,0.28f, 60, 1f);
+CarpetCleaning.CarpetDebugApi.PinToolHead(6, 0.50f, 0.28f, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 30; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+CarpetCleaning.StoreShotApi.RenderScene("test/band3.png",1280,720);
+var sim = CarpetCleaning.CarpetDebugApi.Sim;
+return sim.Hint + " " + sim.Cleanliness + " " + CarpetCleaning.CarpetDebugApi.ToolHeadJson();

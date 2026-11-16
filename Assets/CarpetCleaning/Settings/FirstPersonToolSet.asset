@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2eb73b528c20104a90a66e9093ef37e, type: 3}
+  m_Name: FirstPersonToolSet
+  m_EditorClassIdentifier: Assembly-CSharp::CarpetCleaning.FirstPersonToolSet
+  entries:
+  - id: 3
+    prefab: {fileID: 8612564803292539234, guid: 97a09ef72fb31b243ae3cc0e81fd925a, type: 3}
+    cameraPosition: {x: 0.23, y: -0.26, z: 0.48}
+    eulerOffset: {x: 0, y: 0, z: 0}
+    scale: 1
+    nozzlePosition: {x: -0.000000030733645, y: 0.107436374, z: 0.227}
+  - id: 7
+    prefab: {fileID: 8976191021413302447, guid: 4b2bf0369ca4f7e4280bc787015b10be, type: 3}
+    cameraPosition: {x: 0.23, y: -0.26, z: 0.48}
+    eulerOffset: {x: 0, y: 0, z: 0}
+    scale: 1
+    nozzlePosition: {x: -0.00000009685755, y: 0.072328754, z: 0.22200002}
+  - id: 1
+    prefab: {fileID: 3948461839571845861, guid: a42dba1a1c81e484b9629dd2fc655f68, type: 3}
+    cameraPosition: {x: 0.23, y: -0.26, z: 0.48}
+    eulerOffset: {x: 0, y: 0, z: 0}
+    scale: 1
+    nozzlePosition: {x: -0.000012628734, y: 0.03659644, z: 0.23200005}
+  - id: 8
+    prefab: {fileID: 7005798005873049461, guid: 23afd47f0bc015d4391a222d706b185b, type: 3}
+    cameraPosition: {x: 0.23, y: -0.26, z: 0.48}
+    eulerOffset: {x: 0, y: 0, z: 0}
+    scale: 1
+    nozzlePosition: {x: -0.000015616417, y: 0.07674691, z: 0.20200002}
+  - id: 2
+    prefab: {fileID: 3930331351871109716, guid: 9373841f0bfd3aa4390ea72d46e76a2b, type: 3}
+    cameraPosition: {x: 0.23, y: -0.26, z: 0.48}
+    eulerOffset: {x: 0, y: 0, z: 0}
+    scale: 1
+    nozzlePosition: {x: 0.00014187954, y: 0.067967705, z: 0.15200001}
+  sprayMaterial: {fileID: 2100000, guid: dbf2558d764d2ab45adf057cb719dc0f, type: 2}

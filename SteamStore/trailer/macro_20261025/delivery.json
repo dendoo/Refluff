@@ -1,0 +1,12 @@
+{
+  "file": "SteamStore\\trailer\\macro_20261025\\refluff_macro_trailer_v1.mp4",
+  "bytes": 113711946,
+  "sha256": "ec69e9bf749aad350a7284132a2675a5368219197985c6ee467c6c2d2908457f",
+  "decoded_audio": {
+    "samples_per_channel": 2400256,
+    "finite": true,
+    "clipped_samples": 0,
+    "sample_peak_dbfs": -2.413,
+    "tail_last_0_08s_peak_dbfs": -240.0
+  }
+}

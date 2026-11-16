@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"finnish"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Pörröinen alku"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Luovuta ensimmäinen mattosi."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Tahraton"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Puhdista likainen matto ja luovuta se, kun puhtaus on 100 %."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Rutikuiva"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Kastele matto läpimäräksi ja luovuta se, kun kuivuus on 100 %."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Kuin suoraan kaupasta"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Puhdista likainen matto ja luovuta se, kun puhtaus ja kuivuus ovat 100 %."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Törkyisestä pörröiseksi"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Puhdista törkyinen matto ja luovuta se, kun puhtaus on 100 %."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Pikapesu"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Ansaitse täysi nopeusbonus hyvin likaisesta matosta."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Kanta-asiakkaat"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Luovuta 25 mattoa."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Koko kalusto käytössä"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Käytä kaikkia 10 työkalua."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Tapissa"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Päivitä yhden työkalun sekä TEHO että ALUE tasolle MAKS."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Tarkastaja"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Osta Kosteuskorostus ja Likakorostus."
+	}
+}

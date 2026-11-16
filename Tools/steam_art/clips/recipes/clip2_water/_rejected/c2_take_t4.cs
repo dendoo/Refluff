@@ -1,0 +1,25 @@
+// clip2 trial take t4: hose as a slow S-curve drag (no hold) for an organic puddle, nozzle leaves right, foam heap, settle.
+string w = CarpetCleaning.StoreGifApi.SeqBegin("c2_warm", 1280, 720, 0, 0, 0, 0, false, 100000);
+CarpetCleaning.StoreGifApi.Tool(2);
+CarpetCleaning.StoreGifApi.Hover(0.41f, 0.325f, 0.3f);
+string wr = CarpetCleaning.StoreGifApi.Run(3000);
+string we = CarpetCleaning.StoreGifApi.SeqEnd(2000);
+string r = CarpetCleaning.StoreGifApi.SeqBegin("c2_t4", 3840, 2160, 960, 890, 1920, 800);
+CarpetCleaning.StoreGifApi.Hold(0.41f, 0.325f, 0.2f);
+CarpetCleaning.StoreGifApi.Move(0.41f, 0.325f, 0.46f, 0.350f, 0.45f, true);
+CarpetCleaning.StoreGifApi.Move(0.46f, 0.350f, 0.52f, 0.335f, 0.45f, true);
+CarpetCleaning.StoreGifApi.Move(0.52f, 0.335f, 0.575f, 0.352f, 0.45f, true);
+CarpetCleaning.StoreGifApi.Up(0.2f);
+CarpetCleaning.StoreGifApi.Move(0.575f, 0.352f, 0.80f, 0.37f, 0.30f, false);
+CarpetCleaning.StoreGifApi.Move(0.80f, 0.37f, 1.12f, 0.39f, 0.25f, false);
+CarpetCleaning.StoreGifApi.Away(0.1f);
+CarpetCleaning.StoreGifApi.Tool(3);
+CarpetCleaning.StoreGifApi.Move(1.12f, 0.40f, 0.75f, 0.36f, 0.35f, false);
+CarpetCleaning.StoreGifApi.Move(0.75f, 0.36f, 0.47f, 0.34f, 0.35f, false);
+CarpetCleaning.StoreGifApi.Hold(0.47f, 0.34f, 0.6f);
+CarpetCleaning.StoreGifApi.Move(0.47f, 0.34f, 0.53f, 0.345f, 0.7f, true);
+CarpetCleaning.StoreGifApi.Hold(0.53f, 0.345f, 0.25f);
+CarpetCleaning.StoreGifApi.Move(0.53f, 0.345f, 0.80f, 0.40f, 0.35f, false);
+CarpetCleaning.StoreGifApi.Move(0.80f, 0.40f, 1.15f, 0.43f, 0.25f, false);
+CarpetCleaning.StoreGifApi.Away(2.6f);
+return wr + " | " + we + " | " + r + " | " + CarpetCleaning.StoreGifApi.Run(2500);

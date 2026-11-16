@@ -1,0 +1,43 @@
+{
+  "_lang": "it",
+  "ACH_FIRST_CARPET": {
+    "name": "Soffice debutto",
+    "desc": "Consegna il tuo primo tappeto."
+  },
+  "ACH_SPOTLESS": {
+    "name": "Immacolato",
+    "desc": "Consegna pulito al 100% un tappeto arrivato sporco."
+  },
+  "ACH_BONE_DRY": {
+    "name": "Asciuttissimo",
+    "desc": "Inzuppa un tappeto, poi consegnalo asciutto al 100%."
+  },
+  "ACH_COMBO": {
+    "name": "Nuovo di zecca",
+    "desc": "Consegna pulito e asciutto al 100% un tappeto arrivato sporco."
+  },
+  "ACH_FILTHY": {
+    "name": "Da lurido a morbido",
+    "desc": "Consegna pulito al 100% un tappeto lurido."
+  },
+  "ACH_EXPRESS": {
+    "name": "Servizio espresso",
+    "desc": "Ottieni tutto il bonus velocità su un tappeto molto sporco."
+  },
+  "ACH_REGULARS": {
+    "name": "Clienti affezionati",
+    "desc": "Consegna 25 tappeti."
+  },
+  "ACH_FULL_KIT": {
+    "name": "Tutto l’arsenale",
+    "desc": "Usa tutti e 10 gli attrezzi."
+  },
+  "ACH_MAXED_OUT": {
+    "name": "Tutto al massimo",
+    "desc": "Porta POTENZA e AREA di uno stesso attrezzo al MAX."
+  },
+  "ACH_INSPECTOR": {
+    "name": "Occhio di lince",
+    "desc": "Compra il Rilevatore di umidità e il Rilevatore di sporco."
+  }
+}

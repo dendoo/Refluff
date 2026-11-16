@@ -1,0 +1,13 @@
+{
+  "_lang": "sv",
+  "ACH_FIRST_CARPET": { "name": "En fluffig start", "desc": "Lämna över din första matta." },
+  "ACH_SPOTLESS": { "name": "Fläckfri", "desc": "Lämna över en smutsig matta 100 % ren." },
+  "ACH_BONE_DRY": { "name": "Snustorr", "desc": "Blöt ner en matta ordentligt och lämna sedan över den 100 % torr." },
+  "ACH_COMBO": { "name": "Som nyköpt", "desc": "Lämna över en smutsig matta 100 % ren och 100 % torr." },
+  "ACH_FILTHY": { "name": "Från smutsig till fluffig", "desc": "Lämna över en extremt smutsig matta 100 % ren." },
+  "ACH_EXPRESS": { "name": "Snabbservice", "desc": "Få hela fartbonusen för en mycket smutsig matta." },
+  "ACH_REGULARS": { "name": "Stamkunder", "desc": "Lämna över 25 mattor." },
+  "ACH_FULL_KIT": { "name": "Hela baletten", "desc": "Använd alla 10 verktyg." },
+  "ACH_MAXED_OUT": { "name": "Helt maxad", "desc": "Uppgradera KRAFT och YTA på samma verktyg till MAX." },
+  "ACH_INSPECTOR": { "name": "Inspektör", "desc": "Köp både Fuktmarkering och Smutsmarkering." }
+}

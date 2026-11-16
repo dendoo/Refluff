@@ -1,0 +1,15 @@
+{
+  "stage": "published",
+  "publicationId": "post_cc5bc424-9576-4079-abaf-9d3f77dcf277",
+  "platform": "youtube",
+  "accountHandle": "vahovgames",
+  "approvedHash": "32e94f7e7656732432d4a952ee392d18700b18a83832f148826d1790ae44902c",
+  "clipId": "clip_81731e34-3d28-4813-bce8-5d131d40f349",
+  "videoSha256": "62dd2410b52b342b8451d7301d2f66f77dc18b7d1691f79e91d35d58fa0c7bca",
+  "url": "https://www.youtube.com/shorts/ds8PbL4DVsA",
+  "remoteId": "ds8PbL4DVsA",
+  "evidence": "C:\\UnityProjects\\CarpetCleaning\\SteamStore\\trailer\\macro_20261025\\revision4\\social\\youtube_published.jpg",
+  "evidenceSha256": "400b1a036cff5850a80a9d4b204200a4f07c1aa40b51fb2a5f0aa88f052607a3",
+  "at": "2026-10-25T08:33:18.061Z",
+  "verification": "Operator verified exact remote URL, account, video and caption in CUA before recording this receipt"
+}

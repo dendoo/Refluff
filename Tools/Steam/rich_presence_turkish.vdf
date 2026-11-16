@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "turkish"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Halı temizliyor: %clean% temiz"
+		"#Status_Spotless" "Halı tertemiz, teslime hazır"
+		"#Status_BetweenCarpets" "Halılar arasında, zemini topluyor"
+	}
+}

@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"japanese"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"はじめてのふかふか"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"はじめてカーペットを引き渡す。"
+		"NEW_ACHIEVEMENT_3_1_NAME"	"ピカピカ"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"汚れたカーペットを清潔度 100%で引き渡す。"
+		"NEW_ACHIEVEMENT_3_2_NAME"	"カラカラ"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"カーペットをびしょ濡れにしてから、乾燥度 100%で引き渡す。"
+		"NEW_ACHIEVEMENT_3_3_NAME"	"まるで新品"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"汚れたカーペットを清潔度・乾燥度ともに100%で引き渡す。"
+		"NEW_ACHIEVEMENT_3_4_NAME"	"ドロドロからふかふかへ"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"「汚れまみれ」のカーペットを清潔度 100%で引き渡す。"
+		"NEW_ACHIEVEMENT_3_5_NAME"	"特急仕上げ"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"ひどく汚れたカーペットで、スピードボーナスを満額もらう。"
+		"NEW_ACHIEVEMENT_3_6_NAME"	"常連さん"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"カーペットを25枚引き渡す。"
+		"NEW_ACHIEVEMENT_3_7_NAME"	"商売道具を総動員"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"カーペット用と床用、10種類の道具をすべて使う。"
+		"NEW_ACHIEVEMENT_3_8_NAME"	"強化MAX"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"ひとつの道具のパワーと範囲を、両方MAXまで強化する。"
+		"NEW_ACHIEVEMENT_3_9_NAME"	"点検のプロ"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"水分ハイライトと汚れハイライトを購入する。"
+	}
+}

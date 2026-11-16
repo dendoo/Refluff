@@ -1,0 +1,10 @@
+var E = CarpetCleaning.EconomyDebugApi.Eco;
+CarpetCleaning.EconomyDebugApi.Grant(2040 - E.Data.money);
+for (int i = 0; i < 6 && !CarpetCleaning.CarpetDebugApi.HandoverJson().Contains("rug_anatolian"); i++) CarpetCleaning.CarpetDebugApi.NewCarpetNow();
+CarpetCleaning.CarpetDebugApi.HandoverSnap();
+CarpetCleaning.CarpetDebugApi.Reset(14, 0f);
+CarpetCleaning.CarpetDebugApi.SetTool(7);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 10; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+return CarpetCleaning.CarpetDebugApi.HandoverJson() + " money=" + E.Data.money + " carpets=" + E.Data.carpetsDelivered;

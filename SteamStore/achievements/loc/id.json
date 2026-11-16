@@ -1,0 +1,13 @@
+{
+  "_lang": "id",
+  "ACH_FIRST_CARPET": { "name": "Awal yang Empuk", "desc": "Serahkan karpet pertamamu." },
+  "ACH_SPOTLESS": { "name": "Tanpa Noda", "desc": "Serahkan karpet kotor dalam keadaan 100% bersih." },
+  "ACH_BONE_DRY": { "name": "Kering Kerontang", "desc": "Basahi karpet sampai kuyup, lalu serahkan dalam keadaan 100% kering." },
+  "ACH_COMBO": { "name": "Siap Dipajang", "desc": "Serahkan karpet kotor dalam keadaan 100% bersih dan 100% kering." },
+  "ACH_FILTHY": { "name": "Dari Kumal Jadi Kinclong", "desc": "Serahkan karpet sangat jorok dalam keadaan 100% bersih." },
+  "ACH_EXPRESS": { "name": "Layanan Kilat", "desc": "Raih bonus kecepatan secara penuh pada karpet kotor berat." },
+  "ACH_REGULARS": { "name": "Pelanggan Setia", "desc": "Serahkan 25 karpet." },
+  "ACH_FULL_KIT": { "name": "Semua Alat Dikerahkan", "desc": "Gunakan seluruh 10 alat." },
+  "ACH_MAXED_OUT": { "name": "Sampai Mentok", "desc": "Tingkatkan DAYA dan CAKUPAN satu alat sampai MAKS." },
+  "ACH_INSPECTOR": { "name": "Inspektur", "desc": "Beli Sorotan kelembapan dan Sorotan kotoran." }
+}

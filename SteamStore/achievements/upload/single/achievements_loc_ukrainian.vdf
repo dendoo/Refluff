@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"ukrainian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Перший пухнастик"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Віддай клієнту свій перший килим."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Ні плямки"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Очисти брудний килим і віддай його клієнту із чистотою 100%."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Ні краплі"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Добре промочи килим, а потім віддай його клієнту із сухістю 100%."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Хоч на вітрину"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Очисти брудний килим і віддай його клієнту із чистотою й сухістю 100%."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"З грязі в пух"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Очисти килим «Брудніше нікуди» й віддай його клієнту із чистотою 100%."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Експрес-чистка"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Зароби повний бонус за швидкість на килимі із сильним забрудненням."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Постійні клієнти"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Віддай клієнтам 25 килимів."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Увесь інструмент у справі"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Використай усі 10 інструментів — для килима й для підлоги."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Прокачано на максимум"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Доведи покращення СИЛА й ЗОНА одного інструмента до рівня МАКС."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Інспектор"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Купи «Підсвітку вологи» й «Підсвітку бруду»."
+	}
+}

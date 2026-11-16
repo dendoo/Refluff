@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "arabic"
+	"Tokens"
+	{
+		"#Status_Cleaning" "ينظف سجادة: نظيفة بنسبة %clean%"
+		"#Status_Spotless" "السجادة في غاية النظافة وجاهزة للتسليم"
+		"#Status_BetweenCarpets" "بين سجادة وأخرى، ينظف الأرضية"
+	}
+}

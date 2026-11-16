@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-15",
+  "note": "All seven raw simplified exports passed Unity solid front/back/side review. Explicit orientations and measured rim markers are replayed below; normalized and FPS fitting reports are saved separately. Existing approved DryVacuum, FoamSprayer and Dryer are deliberately absent.",
+  "models": [
+    {
+      "tool": "Scraper",
+      "id": 0,
+      "kind": "contact",
+      "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Scraper.glb",
+      "reviewed": true,
+      "source_euler": [
+        0,
+        90,
+        0
+      ],
+      "factory_span_m": 0.12,
+      "contact_band_fraction": 0.15,
+      "socket_local_m": [
+        -0.025101,
+        0.074177,
+        0.015297
+      ]
+    },
+    {
+      "tool": "Hose",
+      "id": 2,
+      "kind": "held",
+      "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Hose.glb",
+      "reviewed": true,
+      "source_euler": [
+        0,
+        -90,
+        0
+      ],
+      "longest_size_m": 0.3,
+      "camera_position_m": [
+        0.23,
+        -0.26,
+        0.48
+      ],
+      "nozzle_slice_m": 0.004,
+      "hose_socket_m": [
+        -0.007962,
+        -0.116374,
+        -0.120958
+      ]
+    },
+    {
+      "tool": "Brush",
+      "id": 4,
+      "kind": "contact",
+      "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Brush.glb",
+      "reviewed": true,
+      "source_euler": [
+        0,
+        90,
+        0
+      ],
+      "factory_span_m": 0.09,
+      "contact_band_fraction": 0.15,
+      "socket_local_m": [
+        0,
+        0.0342,
+        0
+      ],
+      "bristle_seam_m": 0.0152
+    },
+    {
+      "tool": "Squeegee",
+      "id": 5,
+      "kind": "contact",
+      "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Squeegee.glb",
+      "reviewed": true,
+      "source_euler": [
+        0,
+        90,
+        0
+      ],
+      "factory_span_m": 0.22,
+      "contact_band_fraction": 0.15,
+      "socket_local_m": [
+        -0.013764,
+        0.114549,
+        0.016579
+      ]
+    },
+    {
+      "tool": "WetVacuum",
+      "id": 6,
+      "kind": "contact",
+      "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_WetVacuum.glb",
+      "reviewed": true,
+      "source_euler": [
+        0,
+        90,
+        0
+      ],
+      "factory_span_m": 0.16,
+      "contact_band_fraction": 0.15,
+      "socket_local_m": [
+        -0.058686,
+        0.097243,
+        0.016493
+      ]
+    },
+    {
+      "tool": "FloorCleaner",
+      "id": 8,
+      "kind": "held",
+      "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_FloorCleaner.glb",
+      "reviewed": true,
+      "source_euler": [
+        0,
+        -90,
+        0
+      ],
+      "longest_size_m": 0.4,
+      "camera_position_m": [
+        0.23,
+        -0.26,
+        0.48
+      ],
+      "nozzle_slice_m": 0.004,
+      "hose_socket_m": [
+        -0.0,
+        -0.126448,
+        -0.170685
+      ]
+    },
+    {
+      "tool": "Mop",
+      "id": 9,
+      "kind": "contact",
+      "source": "Assets/CarpetCleaning/Models/FirstPerson/Tool_Mop.glb",
+      "reviewed": true,
+      "source_euler": [
+        0,
+        90,
+        0
+      ],
+      "factory_span_m": 0.32,
+      "contact_band_fraction": 0.15,
+      "socket_local_m": [
+        -0.044036,
+        0.118698,
+        0.018735
+      ]
+    }
+  ]
+}

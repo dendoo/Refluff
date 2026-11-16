@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "koreana"
+	"Tokens"
+	{
+		"#Status_Cleaning" "카펫 청소 중: 청결도 %clean%"
+		"#Status_Spotless" "카펫이 반짝반짝, 전달 준비 완료"
+		"#Status_BetweenCarpets" "다음 카펫을 기다리며 바닥 정리 중"
+	}
+}

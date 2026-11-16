@@ -1,0 +1,12 @@
+var L = UnityEngine.GameObject.Find("Directional Light").GetComponent<UnityEngine.Light>();
+L.transform.rotation = UnityEngine.Quaternion.Euler(32f, 300f, 0f);
+L.intensity = 3.4f; L.colorTemperature = 4600f; L.shadows = UnityEngine.LightShadows.Soft;
+CarpetCleaning.StoreShotApi.RenderView("keyart/test/vA.png", 960, 500, 0.20f, 0.45f, -0.45f, 42f, -3f, 0f, 34f);
+CarpetCleaning.StoreShotApi.RenderView("keyart/test/vB.png", 960, 500, -0.45f, 0.42f, 0.15f, 31f, 98.6f, 0f, 34f);
+CarpetCleaning.StoreShotApi.RenderView("keyart/test/vC.png", 960, 500, 0.24f, 0.20f, -0.45f, 20f, 0f, 0f, 30f);
+CarpetCleaning.StoreShotApi.RenderView("keyart/test/vD.png", 960, 500, 0.75f, 0.40f, -0.35f, 31.8f, -52f, 0f, 34f);
+var L0 = UnityEngine.GameObject.Find("Directional Light").GetComponent<UnityEngine.Light>();
+L0.transform.rotation = UnityEngine.Quaternion.Euler(50f, 330f, 0f);
+L0.intensity = 3f; L0.colorTemperature = 5000f; L0.shadows = UnityEngine.LightShadows.None;
+UnityEngine.RenderSettings.ambientSkyColor = new UnityEngine.Color(0.55f, 0.58f, 0.66f);
+return "ok";

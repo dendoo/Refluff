@@ -1,0 +1,220 @@
+{
+ "version": 1,
+ "status": "TikTok cut 1.1 + voiceover (2026-10-04): the user's TTS read (SteamStore/tiktok/voice.mp3) laid per phrase by align_voice.py; shots 01/02 start at take 0 (+0.3 s each), cuts 03-07 0.6 s later, end card held 6.0 s. Docs/TIKTOK.md 5.",
+ "fps": 60,
+ "size": [
+  1080,
+  1920
+ ],
+ "cover": {
+  "t": 19.0
+ },
+ "date": "",
+ "audio": {
+  "sr": 48000,
+  "lufs": -14.0,
+  "tp": -2.0,
+  "cut_fade_ms": 8,
+  "tail_silence": 0.3,
+  "tail_fade": 0.3,
+  "max_limit_db": 12,
+  "limiter_release_db_s": 120.0
+ },
+ "music": null,
+ "voice": {
+  "wav": "SteamStore/tiktok/voice/vo_aligned.wav",
+  "start": 0.0,
+  "gain_db": 0.0,
+  "duck_db": -4.0,
+  "threshold_db": -42.0,
+  "hold_s": 0.6,
+  "attack": 0.06,
+  "release": 0.35
+ },
+ "shots": [
+  {
+   "id": "01",
+   "start": 0.0,
+   "dur": 3.3,
+   "take": "tt1_hook",
+   "in": 0.0,
+   "note": "HOOK: forward dolly low over the dusty upper star; carries the room-tone bed for the whole clip",
+   "title": {
+    "text": "Every fiber is simulated",
+    "style": "line",
+    "scale": 1.15,
+    "pos": {
+     "x": 0.45,
+     "y": 0.66
+    },
+    "at": 0.15
+   },
+   "audio": {
+    "extra": [
+     {
+      "wav": "Tools/steam_art/trailer/audio/roomtone_580534.wav",
+      "at": 0.0,
+      "gain_db": -6,
+      "bus": "foley"
+     }
+    ]
+   }
+  },
+  {
+   "id": "02",
+   "start": 3.3,
+   "dur": 3.8,
+   "take": "tt2_vacuum",
+   "in": 0.0,
+   "note": "dry vac R->L: the pile lays toward the ring, a combed cleaner lane stays behind",
+   "title": {
+    "text": "Vacuum lays the pile",
+    "style": "line",
+    "scale": 1.15,
+    "pos": {
+     "x": 0.45,
+     "y": 0.66
+    },
+    "at": 0.1
+   },
+   "audio": {
+    "carry": 0.15
+   }
+  },
+  {
+   "id": "03",
+   "start": 7.1,
+   "dur": 3.4,
+   "take": "tt3_hose",
+   "in": 0.2,
+   "note": "three half-pressure hose spots: water rings spread through the pile and turn brown with its dirt",
+   "title": {
+    "text": "Water lifts the dirt",
+    "style": "line",
+    "scale": 1.15,
+    "pos": {
+     "x": 0.45,
+     "y": 0.66
+    },
+    "at": 0.1
+   },
+   "audio": {
+    "carry": 0.15,
+    "gain_db": -4
+   }
+  },
+  {
+   "id": "04",
+   "start": 10.5,
+   "dur": 3.0,
+   "take": "tt4_brush",
+   "in": 0.55,
+   "note": "rotary brush (AREA 6) through the foam band",
+   "title": {
+    "text": "Foam. Scrub.",
+    "style": "line",
+    "scale": 1.15,
+    "pos": {
+     "x": 0.45,
+     "y": 0.66
+    },
+    "at": 0.1
+   },
+   "audio": {
+    "carry": 0.15,
+    "gain_db": -4
+   }
+  },
+  {
+   "id": "05",
+   "start": 13.5,
+   "dur": 3.6,
+   "take": "tt5_squeegee",
+   "in": 0.45,
+   "fx": [
+    "hold_last"
+   ],
+   "note": "squeegee: the foam and slurry wave goes off the right rim onto the tile",
+   "title": {
+    "text": "Squeeze the mud off",
+    "style": "line",
+    "scale": 1.15,
+    "pos": {
+     "x": 0.45,
+     "y": 0.66
+    },
+    "at": 0.1
+   },
+   "audio": {
+    "carry": 0.15
+   }
+  },
+  {
+   "id": "06",
+   "start": 17.1,
+   "dur": 4.0,
+   "take": "tt6_dryer",
+   "in": 0.3,
+   "note": "dryer POWER 6: the air whips the damp pile into a swirl, the dried band comes up bright",
+   "title": {
+    "text": "Dry it. It fluffs up.",
+    "style": "line",
+    "scale": 1.15,
+    "pos": {
+     "x": 0.45,
+     "y": 0.66
+    },
+    "at": 0.1
+   },
+   "audio": {
+    "carry": 0.2
+   }
+  },
+  {
+   "id": "07",
+   "start": 21.1,
+   "dur": 6.0,
+   "take": "tt7_reveal",
+   "in": 0.0,
+   "note": "pull-back from the fibres on the clean / dirty edge to the whole rug from above (near half cleaned for real)",
+   "fx": [
+    "hold_last",
+    {
+     "type": "endcard",
+     "cta": "Wishlist on Steam",
+     "date": "",
+     "studio": "",
+     "width": 0.66,
+     "cx": 0.5,
+     "cy": 0.175,
+     "cta_y": 0.7,
+     "cta_scale": 1.25,
+     "logo_in": 3.0,
+     "cta_in": 3.45,
+     "darken": 0.0,
+     "blur": 0.0,
+     "ramp": 0.1
+    }
+   ],
+   "audio": {
+    "extra": [
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_whoosh.wav",
+      "at": 0.6,
+      "gain_db": -14
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_sparkle.wav",
+      "at": 3.05,
+      "gain_db": -8
+     },
+     {
+      "wav": "Assets/CarpetCleaning/Audio/Generated/ui_clink.wav",
+      "at": 3.5,
+      "gain_db": -9
+     }
+    ]
+   }
+  }
+ ]
+}

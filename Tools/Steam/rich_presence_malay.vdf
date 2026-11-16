@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "malay"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Membersihkan permaidani: %clean% bersih"
+		"#Status_Spotless" "Permaidani bersih tanpa cela, sedia untuk diserahkan"
+		"#Status_BetweenCarpets" "Menunggu permaidani seterusnya, mengemas lantai"
+	}
+}

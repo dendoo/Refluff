@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"hungarian"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"Pihe-puha kezdet"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Add át az első szőnyegedet."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Makulátlan"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Adj át egy koszos szőnyeget 100%-ban tisztán."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Csontszáraz"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Áztass be egy szőnyeget, majd add át 100%-ban szárazon."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Kirakatba illő"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Adj át egy koszos szőnyeget 100%-ban tisztán és szárazon."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Mocskosból mesés"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Adj át egy mocskos szőnyeget 100%-ban tisztán."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Villámtisztítás"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Szerezd meg a teljes gyorsasági bónuszt egy nagyon koszos szőnyegnél."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Törzsügyfelek"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Adj át 25 szőnyeget."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Minden eszköz bevetve"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Használd mind a 10 eszközt."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Csúcsra járatva"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Fejleszd egy eszköz ERŐ- és TERÜLET-szintjét egyaránt MAX-ra."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Ellenőr"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Vedd meg a Nedvességjelzőt és a Koszjelzőt."
+	}
+}

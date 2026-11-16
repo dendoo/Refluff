@@ -1,0 +1,106 @@
+{
+  "titles": [
+    {
+      "text": "Oh, come on.",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "Is there even a carpet",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "under all that?",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "LEVEL 1",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "At this rate, I'll be",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "scraping all week.",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "Wait...",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "I can upgrade",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "my scraper.",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "Max power.",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "Max size.",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "MAXED OUT",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "Okay...",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "That might be overkill.",
+      "center_x": 0.5,
+      "safe": true
+    }
+  ],
+  "cards": [
+    {
+      "text": "logo",
+      "center_x": 0.5,
+      "safe": true
+    },
+    {
+      "text": "cta",
+      "center_x": 0.5,
+      "safe": true
+    }
+  ],
+  "human_recordings": {
+    "weak": {
+      "samples": 680,
+      "seconds": 7.003366000566984,
+      "sha256_unchanged": true
+    },
+    "strong": {
+      "samples": 755,
+      "seconds": 8.031676899092986,
+      "sha256_unchanged": true
+    }
+  },
+  "frames": 2022,
+  "seconds": 33.7,
+  "voice_frames": 1617600,
+  "silent_vo": [
+    18.38,
+    26.64
+  ],
+  "passed": true
+}

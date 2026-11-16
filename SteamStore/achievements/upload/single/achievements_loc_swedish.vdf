@@ -1,0 +1,27 @@
+"lang"
+{
+	"Language"	"swedish"
+	"Tokens"
+	{
+		"NEW_ACHIEVEMENT_3_0_NAME"	"En fluffig start"
+		"NEW_ACHIEVEMENT_3_0_DESC"	"Lämna över din första matta."
+		"NEW_ACHIEVEMENT_3_1_NAME"	"Fläckfri"
+		"NEW_ACHIEVEMENT_3_1_DESC"	"Lämna över en smutsig matta 100 % ren."
+		"NEW_ACHIEVEMENT_3_2_NAME"	"Snustorr"
+		"NEW_ACHIEVEMENT_3_2_DESC"	"Blöt ner en matta ordentligt och lämna sedan över den 100 % torr."
+		"NEW_ACHIEVEMENT_3_3_NAME"	"Som nyköpt"
+		"NEW_ACHIEVEMENT_3_3_DESC"	"Lämna över en smutsig matta 100 % ren och 100 % torr."
+		"NEW_ACHIEVEMENT_3_4_NAME"	"Från smutsig till fluffig"
+		"NEW_ACHIEVEMENT_3_4_DESC"	"Lämna över en extremt smutsig matta 100 % ren."
+		"NEW_ACHIEVEMENT_3_5_NAME"	"Snabbservice"
+		"NEW_ACHIEVEMENT_3_5_DESC"	"Få hela fartbonusen för en mycket smutsig matta."
+		"NEW_ACHIEVEMENT_3_6_NAME"	"Stamkunder"
+		"NEW_ACHIEVEMENT_3_6_DESC"	"Lämna över 25 mattor."
+		"NEW_ACHIEVEMENT_3_7_NAME"	"Hela baletten"
+		"NEW_ACHIEVEMENT_3_7_DESC"	"Använd alla 10 verktyg."
+		"NEW_ACHIEVEMENT_3_8_NAME"	"Helt maxad"
+		"NEW_ACHIEVEMENT_3_8_DESC"	"Uppgradera KRAFT och YTA på samma verktyg till MAX."
+		"NEW_ACHIEVEMENT_3_9_NAME"	"Inspektör"
+		"NEW_ACHIEVEMENT_3_9_DESC"	"Köp både Fuktmarkering och Smutsmarkering."
+	}
+}

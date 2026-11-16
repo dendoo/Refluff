@@ -1,0 +1,20 @@
+// Restore the runtime configuration captured at entry. The simulation itself has advanced during photography.
+UnityEditor.EditorApplication.isPaused=true;
+var ad=System.AppDomain.CurrentDomain;
+var a=ad.GetData("screens2510Original") as object[];
+if(a==null)throw new System.Exception("Capture snapshot missing");
+CarpetCleaning.EconomyDebugApi.ShopOpen(false);
+CarpetCleaning.CarpetDebugApi.SetHighlight(0,false);
+CarpetCleaning.CarpetDebugApi.SetHighlight(1,false);
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+var cam=UnityEngine.Camera.main;cam.transform.SetPositionAndRotation((UnityEngine.Vector3)a[0],(UnityEngine.Quaternion)a[1]);cam.fieldOfView=(float)a[2];cam.nearClipPlane=(float)a[3];
+var t=CarpetCleaning.CarpetDebugApi.Tools;t.ScriptedPointer=(bool)a[4];t.ScriptedUv=(UnityEngine.Vector2)a[5];t.ScriptedDown=(bool)a[6];t.ScriptedRight=(bool)a[7];t.InputEnabled=(bool)a[8];
+var cr=UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.CarpetRenderer>();var mat=cr.ShellsRenderer.sharedMaterial;
+mat.SetTexture("_PictureTex",(UnityEngine.Texture)a[9]);mat.SetVector("_PicOffset",(UnityEngine.Vector4)a[10]);mat.SetVector("_PicScale",(UnityEngine.Vector4)a[11]);
+CarpetCleaning.ToolTuning.SetNeutral((bool)a[12]);
+var ach=UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.SteamAchievements>();if(ach!=null)ach.enabled=(bool)a[13];
+var sim=CarpetCleaning.CarpetDebugApi.Sim;sim.Paused=(bool)a[14];sim.UiPaused=(bool)a[15];
+CarpetCleaning.StoreShotApi.MarketingHud((bool)a[16]);
+ad.SetData("screens2510Path",null);ad.SetData("screens2510Original",null);
+UnityEditor.EditorApplication.isPaused=false;
+return "Camera/material/input/achievement enablement/HUD restored; simulation advanced. Ready to stop Play and restore save files.";

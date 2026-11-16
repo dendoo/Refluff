@@ -1,0 +1,13 @@
+UnityEditor.EditorApplication.isPaused=true;
+CarpetCleaning.EconomyDebugApi.ShopOpen(false);
+CarpetCleaning.CarpetDebugApi.SetHighlight(0,false);
+CarpetCleaning.CarpetDebugApi.SetHighlight(1,false);
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+CarpetCleaning.CarpetDebugApi.ResetWithProfile(924,0.33000f,0.05500f,0.69000f,0.35000f,0.13000f);
+var cr=UnityEngine.Object.FindFirstObjectByType<CarpetCleaning.CarpetRenderer>();
+var mat=cr.ShellsRenderer.sharedMaterial;
+var tex=UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Texture2D>("Assets/CarpetCleaning/Textures/Resources/CarpetPictures/rug_cartoon_cat.png");
+UnityEngine.Vector4 off,scale;CarpetCleaning.CarpetHandover.PictureFit(tex,out off,out scale);
+mat.SetTexture("_PictureTex",tex);mat.SetVector("_PicOffset",off);mat.SetVector("_PicScale",scale);
+var t=CarpetCleaning.CarpetDebugApi.Tools;t.ScriptedPointer=true;t.ScriptedUv=new UnityEngine.Vector2(-5,-5);t.ScriptedDown=false;
+return CarpetCleaning.CarpetDebugApi.DirtJson();

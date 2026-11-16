@@ -1,0 +1,31 @@
+{
+ "slot": "contact",
+ "file": "wetvacuum_slurp_contact.wav",
+ "source": "720073__yehdawgo__slurping_water.ogg",
+ "credit": "Slurping Water by yehdawgo, https://freesound.org/s/720073/, CC0",
+ "rate": 48000,
+ "channels": 2,
+ "seconds": 11.44,
+ "rmsDb": -21.29,
+ "peakDb": -1.0,
+ "lufs": -17.43,
+ "spans": [
+  [
+   1.4,
+   12.9
+  ]
+ ],
+ "highPassHz": 80.0,
+ "duck": [],
+ "method": "spans",
+ "limitDb": 6.0,
+ "limitReleaseS": 0.02,
+ "gainDb": 15.62,
+ "peakLimited": true,
+ "referenceLufs": -13.08,
+ "xfadeS": 0.06,
+ "wrapStepOverRms": 0.141,
+ "typicalStepOverRms": 0.28,
+ "wrapHighBandDb": -5.85,
+ "loudestNearbyDb": 10.33
+}

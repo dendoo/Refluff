@@ -1,0 +1,13 @@
+{
+  "_lang": "da",
+  "ACH_FIRST_CARPET": { "name": "En blød start", "desc": "Aflever dit første tæppe." },
+  "ACH_SPOTLESS": { "name": "Pletfrit", "desc": "Aflever et beskidt tæppe 100 % rent." },
+  "ACH_BONE_DRY": { "name": "Knastørt", "desc": "Gennemvæd et tæppe, og aflever det bagefter 100 % tørt." },
+  "ACH_COMBO": { "name": "Som nyt fra butikken", "desc": "Aflever et beskidt tæppe 100 % rent og 100 % tørt." },
+  "ACH_FILTHY": { "name": "Fra skidt til skønt", "desc": "Aflever et møgbeskidt tæppe 100 % rent." },
+  "ACH_EXPRESS": { "name": "Lynservice", "desc": "Få den fulde fartbonus for et stærkt snavset tæppe." },
+  "ACH_REGULARS": { "name": "Stamkunder", "desc": "Aflever 25 tæpper." },
+  "ACH_FULL_KIT": { "name": "Hele molevitten", "desc": "Brug alle 10 værktøjer." },
+  "ACH_MAXED_OUT": { "name": "Skruet helt op", "desc": "Opgrader KRAFT og AREAL på ét værktøj til MAKS." },
+  "ACH_INSPECTOR": { "name": "Inspektør", "desc": "Køb både Fugtmarkering og Snavsmarkering." }
+}

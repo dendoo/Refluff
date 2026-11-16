@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "finnish"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Puhdistaa mattoa: puhtaus %clean%"
+		"#Status_Spotless" "Matto on tahraton ja valmis luovutettavaksi"
+		"#Status_BetweenCarpets" "Mattojen välissä, siivoaa lattiaa"
+	}
+}

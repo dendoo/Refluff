@@ -1,0 +1,253 @@
+{
+ "language": "Dutch",
+ "code": "nl",
+ "steam": "dutch",
+ "_about": "The game's own UI text in this language (already shipped in the game). Reuse these terms whenever the store text names the same thing, so the store page matches what the player sees in the game. They also show how the game addresses the player (formal / informal).",
+ "terms": [
+  {
+   "en": "Scraper",
+   "yours": "Schraper",
+   "where": "Tool name (carpet strip and shop). A hand scraper blade that scrapes dried crust and mud off the carpet."
+  },
+  {
+   "en": "Dry vacuum",
+   "yours": "Stofzuiger",
+   "where": "Tool name. A vacuum cleaner for dry dust and crumbs."
+  },
+  {
+   "en": "Hose",
+   "yours": "Slang",
+   "where": "Tool name. A water hose with a spray nozzle: wets the carpet and rinses it."
+  },
+  {
+   "en": "Foam sprayer",
+   "yours": "Schuimspuit",
+   "where": "Tool name. Sprays cleaning foam (carpet shampoo / detergent foam)."
+  },
+  {
+   "en": "Brush",
+   "yours": "Borstel",
+   "where": "Tool name. A rotary scrubbing brush (a floor-scrubber machine with a spinning brush head)."
+  },
+  {
+   "en": "Squeegee",
+   "yours": "Trekker",
+   "where": "Tool name. A rubber squeegee that pushes water off the carpet."
+  },
+  {
+   "en": "Wet vacuum",
+   "yours": "Natzuiger",
+   "where": "Tool name. A wet vacuum / extractor that sucks up water and foam."
+  },
+  {
+   "en": "Dryer",
+   "yours": "Droger",
+   "where": "Tool name. A carpet dryer / air mover blowing warm air."
+  },
+  {
+   "en": "Detergent",
+   "yours": "Reiniger",
+   "where": "Floor tool name (right strip). Sprays floor detergent on the tiles."
+  },
+  {
+   "en": "Mop",
+   "yours": "Dweil",
+   "where": "Floor tool name (right strip). A mop for the tiles."
+  },
+  {
+   "en": "Hand over",
+   "yours": "Afleveren",
+   "where": "Big green button that appears when the carpet is clean: give the carpet back to its owner (the client) and get paid. Hotkey H."
+  },
+  {
+   "en": "Upgrades",
+   "yours": "Upgrades",
+   "where": "Top-right button that opens the upgrade shop (hotkey U, shown on a key chip next to it)."
+  },
+  {
+   "en": "UPGRADES",
+   "yours": "UPGRADES",
+   "where": "Caption at the top of the upgrade shop."
+  },
+  {
+   "en": "Tune your kit",
+   "yours": "Pimp je gereedschap",
+   "where": "Big title of the upgrade shop: improve your cleaning equipment."
+  },
+  {
+   "en": "POWER",
+   "yours": "KRACHT",
+   "where": "Upgrade stat name on every tool card: how strongly and fast the tool works."
+  },
+  {
+   "en": "AREA",
+   "yours": "BEREIK",
+   "where": "Upgrade stat name on every tool card: how wide an area the tool covers in one stroke."
+  },
+  {
+   "en": "POWER works faster",
+   "yours": "KRACHT: werkt sneller",
+   "where": "Legend under the shop title explaining the POWER stat."
+  },
+  {
+   "en": "AREA covers more per stroke",
+   "yours": "BEREIK: meer oppervlak per haal",
+   "where": "Legend explaining the AREA stat."
+  },
+  {
+   "en": "Speed bonus",
+   "yours": "Snelheidsbonus",
+   "where": "Pay slip line: bonus for finishing fast."
+  },
+  {
+   "en": "Spotless",
+   "yours": "Vlekkeloos",
+   "where": "Pay slip line: bonus for a 100 % clean carpet."
+  },
+  {
+   "en": "Bone dry",
+   "yours": "Kurkdroog",
+   "where": "Pay slip line: bonus for a 100 % dry carpet."
+  },
+  {
+   "en": "Combo",
+   "yours": "Combo",
+   "where": "Pay slip line: bonus for spotless AND bone dry together."
+  },
+  {
+   "en": "COMBO!",
+   "yours": "COMBO!",
+   "where": "Big stamp slammed onto the corner of the pay slip for a combo."
+  },
+  {
+   "en": "Base pay",
+   "yours": "Basisloon",
+   "where": "Pay slip line: the base payment for the job."
+  },
+  {
+   "en": "CARPET DELIVERED",
+   "yours": "TAPIJT AFGELEVERD",
+   "where": "Caption at the top of the pay slip card that appears after a hand-over."
+  },
+  {
+   "en": "INSPECTION",
+   "yours": "INSPECTIE",
+   "where": "Shop caption above the two inspection-lamp items."
+  },
+  {
+   "en": "Moisture highlight",
+   "yours": "Vochtmarkering",
+   "where": "One-time shop item (key Z): a lamp mode that makes wet spots glow."
+  },
+  {
+   "en": "Wet pile and puddles glow blue",
+   "yours": "Natte vezels en plassen lichten blauw op",
+   "where": "Description of 'Moisture highlight'. 'pile' = the carpet's fibres."
+  },
+  {
+   "en": "Dirt highlight",
+   "yours": "Vuilmarkering",
+   "where": "One-time shop item (key X): a lamp mode that makes remaining dirt glow."
+  },
+  {
+   "en": "Every trace of soil glows amber",
+   "yours": "Elk spoortje vuil licht amber op",
+   "where": "Description of 'Dirt highlight'."
+  },
+  {
+   "en": "CARPET",
+   "yours": "TAPIJT",
+   "where": "Caption above the left tool strip (the tools that work on the carpet)."
+  },
+  {
+   "en": "FLOOR",
+   "yours": "VLOER",
+   "where": "Caption above the right tool strip (the tools for the tiled floor around the carpet)."
+  },
+  {
+   "en": "CLEAN",
+   "yours": "SCHOON",
+   "where": "Caption of the cleanliness meter (0-100 %), top-left card."
+  },
+  {
+   "en": "DRY",
+   "yours": "DROOG",
+   "where": "Caption of the dryness meter (100 % = completely dry), under CLEAN."
+  },
+  {
+   "en": "Filthy",
+   "yours": "Smerig",
+   "where": "Pay slip title: extremely dirty."
+  },
+  {
+   "en": "Heavy soil",
+   "yours": "Zwaar vervuild",
+   "where": "Pay slip title: heavily soiled."
+  },
+  {
+   "en": "Scrape the dry crust off",
+   "yours": "Schraap de droge korst eraf",
+   "where": "Hint pill at the top centre: the next step the game suggests. Tool: Scraper."
+  },
+  {
+   "en": "Wet it down",
+   "yours": "Maak het tapijt nat",
+   "where": "Hint. Tool: Hose (soak the dried mud with water)."
+  },
+  {
+   "en": "Brush the mud loose",
+   "yours": "Borstel de modder los",
+   "where": "Hint. Tool: Brush (scrub the softened mud loose)."
+  },
+  {
+   "en": "Squeegee the dirty water off",
+   "yours": "Trek het vuile water weg",
+   "where": "Hint. Tool: Squeegee."
+  },
+  {
+   "en": "Wet-vac the water and foam out",
+   "yours": "Zuig water en schuim op met de natzuiger",
+   "where": "Hint. Tool: Wet vacuum."
+  },
+  {
+   "en": "Dry it",
+   "yours": "Droog het tapijt",
+   "where": "Hint. Tool: Dryer."
+  },
+  {
+   "en": "Sparkling clean!",
+   "yours": "Brandschoon!",
+   "where": "Hint when the carpet is perfectly clean and dry."
+  },
+  {
+   "en": "Handed over to the client!",
+   "yours": "Afgeleverd bij de klant!",
+   "where": "Hint while the finished carpet flies away to its owner."
+  },
+  {
+   "en": "Fresh carpet coming in...",
+   "yours": "Nieuw tapijt komt eraan…",
+   "where": "Hint while the next dirty carpet drops in."
+  },
+  {
+   "en": "Owned: press {0} to switch it on and off",
+   "yours": "Gekocht: druk op {0} om aan/uit te zetten",
+   "where": "Replaces the item description once the item is bought."
+  },
+  {
+   "en": "the job clock is paused while you shop",
+   "yours": "de klok staat stil terwijl je winkelt",
+   "where": "Small grey note at the right of the legend."
+  },
+  {
+   "en": "Money and upgrades are saved as you play.",
+   "yours": "Geld en upgrades worden tijdens het spelen opgeslagen.",
+   "where": "Small note at the bottom of the pause menu (wraps to two lines if needed)."
+  },
+  {
+   "en": "Thank you for playing.",
+   "yours": "Bedankt voor het spelen.",
+   "where": "Credits page."
+  }
+ ]
+}

@@ -1,0 +1,87 @@
+{
+  "asr": "faster-whisper base int8, ru",
+  "source": "SteamStore/tiktok/between_fibers/assembled_v1.mp4",
+  "language": "ru",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.9,
+      "text": " Ммм, где это я?",
+      "words": [
+        {
+          "start": 0.0,
+          "end": 0.84,
+          "word": " Ммм,",
+          "probability": 0.49140577266613644
+        },
+        {
+          "start": 1.16,
+          "end": 1.44,
+          "word": " где",
+          "probability": 0.964687168598175
+        },
+        {
+          "start": 1.44,
+          "end": 1.72,
+          "word": " это",
+          "probability": 0.938588559627533
+        },
+        {
+          "start": 1.72,
+          "end": 1.9,
+          "word": " я?",
+          "probability": 0.9889394640922546
+        }
+      ]
+    },
+    {
+      "start": 2.68,
+      "end": 5.3,
+      "text": " Дрья же между Варсина коврав своей игре!",
+      "words": [
+        {
+          "start": 2.68,
+          "end": 3.12,
+          "word": " Дрья",
+          "probability": 0.6076338340838751
+        },
+        {
+          "start": 3.12,
+          "end": 3.24,
+          "word": " же",
+          "probability": 0.5230506658554077
+        },
+        {
+          "start": 3.24,
+          "end": 3.54,
+          "word": " между",
+          "probability": 0.9499253034591675
+        },
+        {
+          "start": 3.54,
+          "end": 3.94,
+          "word": " Варсина",
+          "probability": 0.7165738344192505
+        },
+        {
+          "start": 3.94,
+          "end": 4.46,
+          "word": " коврав",
+          "probability": 0.5709448754787445
+        },
+        {
+          "start": 4.46,
+          "end": 4.82,
+          "word": " своей",
+          "probability": 0.5526410937309265
+        },
+        {
+          "start": 4.82,
+          "end": 5.3,
+          "word": " игре!",
+          "probability": 0.9713223874568939
+        }
+      ]
+    }
+  ]
+}

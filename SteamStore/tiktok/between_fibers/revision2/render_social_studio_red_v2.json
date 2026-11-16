@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "output": "refluff_between_fibers_red_v2.mp4",
+  "width": 1080,
+  "height": 1920,
+  "fps": 60,
+  "fit": "contain",
+  "mute": false,
+  "clips": [
+    {
+      "file": "assembled_red_v2.mp4",
+      "start": 0,
+      "duration": 12
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "status": "published_and_verified",
+  "app_id": 5304930,
+  "store_admin_id": 1337056,
+  "store_url": "https://store.steampowered.com/app/5304930/Refluff_Carpet_Cleaning_ASMR/",
+  "store_publish_revision": 7,
+  "publish_ui_time": "25 Oct @ 12:58am",
+  "verification_recorded_at_utc": "2026-10-25T08:01:54Z",
+  "authorization": "Owner accepted V4 and explicitly requested Steam upload/publication, then requested the exact paused Play frame as the first screenshot and publication together.",
+  "trailer": {
+    "file": "SteamStore/trailer/macro_20261025/revision4/refluff_macro_trailer_v4.mp4",
+    "bytes": 131705711,
+    "sha256": "86f0066bef312868e4ca0c43442634c480d2ab4f05de90c77ef65c40f5b9edb6",
+    "duration_seconds": 57.75,
+    "size": [1920, 1080],
+    "fps": 60,
+    "movie_item_id": 1357534,
+    "previous_trailer_id": 178391048,
+    "trailer_id": 1618490617,
+    "display_name": "Refluff - Gameplay trailer ",
+    "category": "gameplay",
+    "language": "english",
+    "visible_on_store": true,
+    "before_screenshots": true,
+    "all_ages": true,
+    "country_restrictions": [],
+    "conversion": "completed_before_store_publish",
+    "thumbnail": {
+      "source": "Steam automatically generated thumbnail for the new V4",
+      "asset_hash": "5b16076fb22b85a0dae854bded05ddebfd432fc9",
+      "local_custom_cover_uploaded": false
+    },
+    "public_verification": {
+      "anonymous_storefront": true,
+      "new_macro_footage_visually_verified": true,
+      "playback_observed": true,
+      "duration_display": "0:57",
+      "seek_slider_maximum": 58
+    }
+  },
+  "first_screenshot": {
+    "file": "SteamStore/screenshots/20261025_current_paused.png",
+    "bytes": 4139083,
+    "size": [2560, 1440],
+    "sha256": "32f1c0879314d045e56a5d981c5af620a6b8dd2a6c984d5e4fb0ff146940a85a",
+    "sha1": "444bbebfbfc5b40917c1e35ecb860fdd63a67a89",
+    "category": "gameplay",
+    "language": "english",
+    "all_ages": true,
+    "public_image_index": 0,
+    "public_image_src": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/5304930/444bbebfbfc5b40917c1e35ecb860fdd63a67a89/ss_444bbebfbfc5b40917c1e35ecb860fdd63a67a89.1920x1080.jpg?t=1792915168",
+    "full_image_and_first_thumbnail_visually_verified": true,
+    "unity_capture_before_and_after": {
+      "playing": true,
+      "paused": true,
+      "frame": 2219,
+      "time": 35.87123,
+      "camera_position": [0, 1.5, -1.12],
+      "camera_euler": [55, 0, 0],
+      "camera_fov": 45,
+      "step_or_unpause": false
+    }
+  },
+  "screenshot_order": [
+    {"position": 1, "sha1": "444bbebfbfc5b40917c1e35ecb860fdd63a67a89", "description": "Current paused capybara rug and HUD"},
+    {"position": 2, "sha1": "712d71e68a75bf6aa9a0debdbffa5598167089df", "description": "Finnish rya half cleaned with pink foam"},
+    {"position": 3, "sha1": "973859ea54c6adb15fb8aeaa2b36200627dd176c", "description": "Spotless Transylvanian medallion rug"},
+    {"position": 4, "sha1": "75ef9654e1181b4bc727101aded9037fb64235ee", "description": "Pay slip"},
+    {"position": 5, "sha1": "4a1440391254fa5bdc8ca00ab8f625fb44b72206", "description": "Filthy Anatolian rug and wet vacuum"},
+    {"position": 6, "sha1": "7f30d57c079b5f85dc0352b549aefbecd0f05cdf", "description": "Green rug scraper"},
+    {"position": 7, "sha1": "46b25e18ba0b9f846634b70fca76fbb6de55bc5b", "description": "Red Turkmen rug hose"},
+    {"position": 8, "sha1": "729c896c1f3b23e44db4d161197b04d7f9b8d864", "description": "Moisture lamp"},
+    {"position": 9, "sha1": "0b540fbb719dacf628658586cd702db0cb666d8d", "description": "Carpet handover sparkles"},
+    {"position": 10, "sha1": "264164efcd95a441ef069e6a525d1921b52faa94", "description": "Upgrade shop", "category": "gamemenu"}
+  ],
+  "previous_nine_image_order_and_alt_text_preserved": true,
+  "store_diff_reviewed": true,
+  "store_publish_result": "Successfully published!",
+  "store_publish_result_url": "https://partner.steamgames.com/admin/game/publish/1337056?pubresult=success",
+  "evidence": [
+    "SteamStore/trailer/macro_20261025/revision4/steam_publish_success.jpg",
+    "SteamStore/trailer/macro_20261025/revision4/steam_live_trailer.jpg",
+    "SteamStore/trailer/macro_20261025/revision4/steam_live_first_screenshot.jpg"
+  ],
+  "scope": "Store trailer replacement, new first screenshot and screenshot categories only. No game release, build, branch, price or Steamworks App Admin publishing."
+}

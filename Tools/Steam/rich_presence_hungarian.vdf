@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "hungarian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Szőnyeget tisztít: %clean%-ban tiszta"
+		"#Status_Spotless" "A szőnyeg makulátlan, átadásra kész"
+		"#Status_BetweenCarpets" "Két szőnyeg között, a padlót takarítja"
+	}
+}

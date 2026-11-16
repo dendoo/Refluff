@@ -1,0 +1,13 @@
+{
+  "_lang": "no",
+  "ACH_FIRST_CARPET": { "name": "En myk start", "desc": "Lever ditt første teppe." },
+  "ACH_SPOTLESS": { "name": "Flekkfritt", "desc": "Lever et skittent teppe 100 % rent." },
+  "ACH_BONE_DRY": { "name": "Knusktørt", "desc": "Gjør et teppe klissvått, og lever det deretter 100 % tørt." },
+  "ACH_COMBO": { "name": "Rett fra butikken", "desc": "Lever et skittent teppe 100 % rent og 100 % tørt." },
+  "ACH_FILTHY": { "name": "Fra møkkete til mykt", "desc": "Lever et møkkete teppe 100 % rent." },
+  "ACH_EXPRESS": { "name": "Lynrask service", "desc": "Få hele fartsbonusen for et svært skittent teppe." },
+  "ACH_REGULARS": { "name": "Stamkunder", "desc": "Lever 25 tepper." },
+  "ACH_FULL_KIT": { "name": "Hele sulamitten", "desc": "Bruk alle 10 verktøyene." },
+  "ACH_MAXED_OUT": { "name": "Skrudd til maks", "desc": "Oppgrader KRAFT og AREAL på ett verktøy til MAKS." },
+  "ACH_INSPECTOR": { "name": "Inspektør", "desc": "Kjøp både Fuktmarkering og Smussmarkering." }
+}

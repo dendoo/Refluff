@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "thai"
+	"Tokens"
+	{
+		"#Status_Cleaning" "กำลังทำความสะอาดพรม: สะอาด %clean%"
+		"#Status_Spotless" "พรมไร้คราบแล้ว พร้อมส่งมอบ"
+		"#Status_BetweenCarpets" "ระหว่างรอพรมผืนถัดไป กำลังเก็บกวาดพื้น"
+	}
+}

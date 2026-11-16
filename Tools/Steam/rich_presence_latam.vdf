@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "latam"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Limpiando una alfombra: %clean% limpia"
+		"#Status_Spotless" "La alfombra está impecable, lista para entregar"
+		"#Status_BetweenCarpets" "Entre alfombra y alfombra, limpiando el piso"
+	}
+}

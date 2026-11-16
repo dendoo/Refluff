@@ -1,0 +1,10 @@
+"lang"
+{
+	"Language" "russian"
+	"Tokens"
+	{
+		"#Status_Cleaning" "Чистит ковёр: чисто на %clean%"
+		"#Status_Spotless" "Ковёр сияет, пора отдавать клиенту"
+		"#Status_BetweenCarpets" "Между коврами, прибирает пол"
+	}
+}

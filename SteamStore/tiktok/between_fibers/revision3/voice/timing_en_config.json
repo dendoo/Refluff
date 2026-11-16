@@ -1,0 +1,15 @@
+{
+  "verified_source_timing": true,
+  "note": "Source decoded 6.240 seconds. English base.en ASR matched every word. Source first audible 0.21–1.76, second 2.32–6.10 by 10ms RMS. Remove only 0.26s of near-silence after Wait to keep the real vacuum pass at6.4; no spoken samples are sped up.",
+  "phrases": [
+    { "source": [0.15, 1.95], "timeline_start": 0.3, "active_rms_dbfs": -21 },
+    { "source": [2.2, 6.2], "drop_ranges": [[2.78, 3.04]], "timeline_start": 2.6, "active_rms_dbfs": -19 }
+  ],
+  "captions": [
+    { "start": 0.3, "end": 2.2, "text": "Hmm… where am I?" },
+    { "start": 2.6, "end": 3.24, "text": "Wait…" },
+    { "start": 3.24, "end": 3.87, "text": "I'm between the" },
+    { "start": 3.87, "end": 5.12, "text": "carpet fibers…" },
+    { "start": 5.12, "end": 6.34, "text": "in my own game!" }
+  ]
+}

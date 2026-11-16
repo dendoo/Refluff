@@ -1,0 +1,13 @@
+{
+  "_lang": "de",
+  "ACH_FIRST_CARPET": { "name": "Flauschiger Einstand", "desc": "Gib deinen ersten Teppich ab." },
+  "ACH_SPOTLESS": { "name": "Makellos", "desc": "Gib einen schmutzigen Teppich 100 % sauber ab." },
+  "ACH_BONE_DRY": { "name": "Knochentrocken", "desc": "Mach einen Teppich klatschnass und gib ihn dann 100 % trocken ab." },
+  "ACH_COMBO": { "name": "Wie aus dem Katalog", "desc": "Gib einen schmutzigen Teppich 100 % sauber und 100 % trocken ab." },
+  "ACH_FILTHY": { "name": "Vom Dreck zum Flausch", "desc": "Gib einen völlig verdreckten Teppich 100 % sauber ab." },
+  "ACH_EXPRESS": { "name": "Blitzservice", "desc": "Hol dir den vollen Tempobonus für einen stark verschmutzten Teppich." },
+  "ACH_REGULARS": { "name": "Stammkundschaft", "desc": "Gib 25 Teppiche ab." },
+  "ACH_FULL_KIT": { "name": "Alle Register gezogen", "desc": "Setz alle 10 Werkzeuge ein." },
+  "ACH_MAXED_OUT": { "name": "Voll aufgerüstet", "desc": "Bring LEISTUNG und FLÄCHE eines Werkzeugs auf MAX." },
+  "ACH_INSPECTOR": { "name": "Qualitätskontrolle", "desc": "Kauf die Nässeanzeige und die Schmutzanzeige." }
+}

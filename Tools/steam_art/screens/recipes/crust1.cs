@@ -1,0 +1,10 @@
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+for (int i = 0; i < 6 && !CarpetCleaning.CarpetDebugApi.HandoverJson().Contains("rug_european"); i++) CarpetCleaning.CarpetDebugApi.NewCarpetNow();
+CarpetCleaning.CarpetDebugApi.Reset(36, 0.6f);
+CarpetCleaning.CarpetDebugApi.RunFrames(2);
+CarpetCleaning.StoreShotApi.RenderScene("test/cr0.png", 1280, 720);
+var a = CarpetCleaning.CarpetDebugApi.DirtJson();
+CarpetCleaning.CarpetDebugApi.Reset(29, 0.6f);
+CarpetCleaning.CarpetDebugApi.RunFrames(2);
+CarpetCleaning.StoreShotApi.RenderScene("test/cr1.png", 1280, 720);
+return CarpetCleaning.CarpetDebugApi.HandoverJson()+a+CarpetCleaning.CarpetDebugApi.DirtJson();

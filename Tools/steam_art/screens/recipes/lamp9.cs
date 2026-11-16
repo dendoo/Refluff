@@ -1,0 +1,10 @@
+CarpetCleaning.CarpetDebugApi.SetHighlight(1, false);
+CarpetCleaning.CarpetDebugApi.Reset(39, 0.3f);
+CarpetCleaning.CarpetDebugApi.RunFrames(3);
+CarpetCleaning.CarpetDebugApi.PinToolHead(4, 0.29f, 0.17f, true);
+CarpetCleaning.CarpetDebugApi.SetHighlight(1, true);
+UnityEditor.EditorApplication.isPaused = true;
+for (int i = 0; i < 30; i++) UnityEditor.EditorApplication.Step();
+UnityEditor.EditorApplication.isPaused = false;
+var r = CarpetCleaning.StoreShotApi.Shot("09_lamp_dirt");
+return CarpetCleaning.CarpetDebugApi.HighlightJson() + CarpetCleaning.CarpetDebugApi.HandoverJson();

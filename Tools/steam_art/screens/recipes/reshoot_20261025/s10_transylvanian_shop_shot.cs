@@ -1,0 +1,11 @@
+UnityEditor.EditorApplication.isPaused=true;
+var t=CarpetCleaning.CarpetDebugApi.Tools;
+t.ScriptedPointer=true;t.ScriptedUv=new UnityEngine.Vector2(-5,-5);t.ScriptedDown=false;t.ScriptedRight=false;
+CarpetCleaning.CarpetDebugApi.SetTool(1);
+CarpetCleaning.CarpetDebugApi.PinToolHead(1,0.47000f,0.90000f,true);
+CarpetCleaning.CarpetDebugApi.Sim.RefreshStatsSync();
+CarpetCleaning.CarpetDebugApi.Sim.Paused=true;
+for(int i=0;i<35;i++)UnityEditor.EditorApplication.Step();
+CarpetCleaning.CarpetDebugApi.Sim.Paused=false;
+CarpetCleaning.EconomyDebugApi.ShopOpen(true); for(int i=0;i<30;i++)UnityEditor.EditorApplication.Step();
+return CarpetCleaning.StoreShotApi.Shot("s10_transylvanian_shop")+" stats="+CarpetCleaning.CarpetDebugApi.StatsJson()+" floor="+CarpetCleaning.CarpetDebugApi.FloorStatsJson();

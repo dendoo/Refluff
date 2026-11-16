@@ -1,0 +1,43 @@
+{
+  "_lang": "pt-BR",
+  "ACH_FIRST_CARPET": {
+    "name": "Estreia fofinha",
+    "desc": "Entregue seu primeiro tapete."
+  },
+  "ACH_SPOTLESS": {
+    "name": "Impecável",
+    "desc": "Entregue 100% limpo um tapete que chegou sujo."
+  },
+  "ACH_BONE_DRY": {
+    "name": "Bem sequinho",
+    "desc": "Encharque um tapete e depois entregue-o 100% seco."
+  },
+  "ACH_COMBO": {
+    "name": "Novinho em folha",
+    "desc": "Entregue 100% limpo e 100% seco um tapete que chegou sujo."
+  },
+  "ACH_FILTHY": {
+    "name": "Do imundo ao fofinho",
+    "desc": "Entregue 100% limpo um tapete imundo."
+  },
+  "ACH_EXPRESS": {
+    "name": "Serviço expresso",
+    "desc": "Ganhe o bônus de rapidez completo em um tapete com sujeira pesada."
+  },
+  "ACH_REGULARS": {
+    "name": "Freguesia fiel",
+    "desc": "Entregue 25 tapetes."
+  },
+  "ACH_FULL_KIT": {
+    "name": "Não sobrou nada na van",
+    "desc": "Use as 10 ferramentas."
+  },
+  "ACH_MAXED_OUT": {
+    "name": "Turbinado ao máximo",
+    "desc": "Leve a POTÊNCIA e a ÁREA de uma mesma ferramenta ao MÁX."
+  },
+  "ACH_INSPECTOR": {
+    "name": "Olho de lince",
+    "desc": "Compre o Realce de umidade e o Realce de sujeira."
+  }
+}

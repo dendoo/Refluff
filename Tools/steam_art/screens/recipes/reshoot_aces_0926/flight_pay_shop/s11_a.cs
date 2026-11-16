@@ -1,0 +1,21 @@
+UnityEditor.EditorApplication.isPaused = true;
+var sw = System.Diagnostics.Stopwatch.StartNew();
+CarpetCleaning.CarpetDebugApi.UnpinToolHead();
+CarpetCleaning.EconomyDebugApi.ShopOpen(false);
+CarpetCleaning.CarpetDebugApi.SetHighlight(0, false, true);
+CarpetCleaning.CarpetDebugApi.SetHighlight(1, false, true);
+var E = CarpetCleaning.EconomyDebugApi.Eco;
+CarpetCleaning.EconomyDebugApi.Grant(1960 - E.Data.money);
+int[] pw = {1,2,1,1,2,0,1,0,0,0};
+int[] ar = {1,1,0,1,1,1,1,0,0,0};
+for (int t=0;t<10;t++){ CarpetCleaning.EconomyDebugApi.SetLevel(t,0,pw[t]); CarpetCleaning.EconomyDebugApi.SetLevel(t,1,ar[t]); }
+CarpetCleaning.EconomyDebugApi.SetOwned(0, true);
+CarpetCleaning.EconomyDebugApi.SetOwned(1, true);
+CarpetCleaning.EconomyDebugApi.LiveTuning(false);
+CarpetCleaning.StoreShotApi.MarketingHud(true);
+for (int i = 0; i < 6 && !CarpetCleaning.CarpetDebugApi.HandoverJson().Contains("rug_european"); i++) CarpetCleaning.CarpetDebugApi.NewCarpetNow();
+for (int i = 0; i < 5; i++) UnityEditor.EditorApplication.Step();
+CarpetCleaning.CarpetDebugApi.Reset(14, 0.7f);
+CarpetCleaning.CarpetDebugApi.Zigzag(2, 0.14f,0.55f, 0.86f,0.75f, 5, 45, 1f);
+CarpetCleaning.CarpetDebugApi.Zigzag(4, 0.14f,0.55f, 0.86f,0.75f, 5, 50, 1f);
+return "ms=" + sw.ElapsedMilliseconds + " " + CarpetCleaning.CarpetDebugApi.HandoverJson() + " neutral=" + CarpetCleaning.ToolTuning.Neutral;
